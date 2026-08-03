@@ -33,7 +33,7 @@ git add .
 git commit -m "Initial project setup"
 git remote add origin https://github.com/FlipOaktree/2D-Platformer-Template.git
 git push -u origin main
-- 
+- Connect Notion to Codex.
 
 
 
