@@ -63,6 +63,8 @@ Draft:
 - A learner exercise.
 - Acceptance checks.
 - The role of AI in the lesson, if it provides a clear advantage.
+- Any relevant Godot, Codex, or Notion best practice, tip, or shortcut that
+  makes the current work clearer, safer, or faster.
 
 The blueprint can change during validation.
 
@@ -71,6 +73,9 @@ The blueprint can change during validation.
 - Follow the blueprint in order.
 - Explain only the part of Godot, Codex, Notion, Git, or Affinity needed for
   the current task.
+- Introduce a practical best practice, tip, or shortcut when it directly helps
+  the current task. Keep it brief and in context rather than turning it into a
+  separate tool tutorial.
 - Introduce each concept before its first practical use, using only the detail
   needed for the current outcome.
 - Use a single integrated lesson flow when Codex is involved; do not create

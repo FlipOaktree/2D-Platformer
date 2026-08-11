@@ -1,4 +1,4 @@
-﻿# Module 0, Lesson 1: Create an Empty Godot Project
+﻿# Module 0, Lesson 2: Create an Empty Godot Project
 
 **Status:** Written procedure validated and logged in Notion
 
@@ -20,15 +20,17 @@ At the end of this lesson:
 - The learner understands what `project.godot` does.
 - No gameplay scenes or scripts have been added yet.
 
-## Why this comes first
+## Why this comes next
 
-Every later lesson adds to this project. Starting empty makes it easy to see
-where each setting, scene, script, and asset comes from.
+The core tools are ready. Every later project lesson adds to this project.
+Starting empty makes it easy to see where each setting, scene, script, and
+asset comes from.
 
 ## Before you start
 
 - No Godot or programming experience is required.
 - Basic Windows and file-management skills are expected.
+- Module 0, Lesson 1 is complete.
 - Godot 4.7.1, or another verified Godot 4.7 release, is installed.
 - A location for a new project folder is available.
 - The selected folder is empty and does not contain another Godot project.

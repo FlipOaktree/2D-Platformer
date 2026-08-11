@@ -110,6 +110,8 @@ project using only the written material.
 - **A reusable reference:** the course material remains useful after completion.
 - **Organization taught in context:** Notion task management and Codex appear
   when they genuinely help the current work.
+- **Practical tool fluency:** learners pick up useful Godot, Codex, and Notion
+  best practices, tips, and shortcuts while using each tool for real work.
 
 ## Claim Guardrails
 

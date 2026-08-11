@@ -28,6 +28,9 @@ the same written course material that learners will later use.
   has been rebuilt from an empty project and validated.
 - Explain concepts with short beginner-friendly language covering what, how,
   and why. Introduce tools only when they are needed.
+- Teach relevant Godot, Codex, and Notion best practices, tips, and shortcuts
+  in context when they make the current task clearer, safer, or faster. Keep
+  them brief; do not turn them into separate tool tours.
 - Assume no Godot or programming experience, while expecting basic computer
   and file-management skills.
 
