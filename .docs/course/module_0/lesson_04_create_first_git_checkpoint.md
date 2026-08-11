@@ -65,22 +65,37 @@ only on this computer until GitHub is introduced in Lesson 5.
 ### Part 1: Generate and inspect Godot's Git metadata
 
 1. Open the `2D Platformer` project in Godot.
-2. Open **Project → Version Control → Generate Version Control Metadata**.
-3. Choose **Git** when Godot asks for the version-control system.
+2. Open **Project → Version Control → Create/Override Version Control
+   Metadata…**.
+3. Confirm that **Git** is selected in the dialog, then click **OK**.
+   Godot warns that existing version-control metadata files will be
+   overwritten. Continue only after checking that no custom metadata needs to
+   be preserved.
 4. Confirm that Godot creates `.gitignore` and `.gitattributes` in the project
    root.
 5. Right-click `res://` in the FileSystem dock and select **Open in File
    Explorer**.
 6. Open `.gitignore` and `.gitattributes` in a text editor.
-7. Confirm that `.gitignore` excludes at least:
+7. For Godot 4.7, confirm that `.gitignore` contains:
 
    ```gitignore
    .godot/
-   *.translation
+   /android/
    ```
 
-8. Confirm that `.gitattributes` keeps text files on consistent LF line
-   endings.
+   - `.godot/` excludes Godot's generated editor cache and local project
+     data.
+   - `/android/` excludes generated Android build files at the project root.
+8. Confirm that `.gitattributes` contains:
+
+   ```gitattributes
+   * text=auto eol=lf
+   ```
+
+   This tells Git to keep text files in a consistent LF format, even when
+   different operating systems are used. Godot's generated metadata can vary
+   between versions, so inspect the actual files rather than adding older
+   rules from memory.
 9. Confirm that important source files are not ignored, including:
    - `project.godot`
    - Godot scenes such as `.tscn`
@@ -223,8 +238,9 @@ Without reading the commands again:
 
 - [ ] The repository root is the folder containing `project.godot`.
 - [ ] The active branch is `main`.
-- [ ] `.gitignore` excludes `.godot/` and generated translations.
-- [ ] `.gitattributes` keeps text line endings consistent.
+- [ ] `.gitignore` excludes Godot's generated cache and Android build files.
+- [ ] `.gitattributes` keeps text line endings consistent with
+      `* text=auto eol=lf`.
 - [ ] Expected project source files are staged.
 - [ ] Generated cache and confidential data are not staged.
 - [ ] The latest commit message is `Create empty Godot project`.

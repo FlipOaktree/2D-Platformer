@@ -1,6 +1,6 @@
 # Module 0, Lesson 3: Install and Configure Git
 
-**Status:** Draft blueprint; not implemented or validated
+**Status:** Written procedure validated and logged in Notion
 
 ## Learning outcome
 
@@ -132,9 +132,11 @@ visible if the project is shared online later, so choose them deliberately.
 Git stores the configured email inside every new commit. Use an address the
 learner is comfortable associating with future shared project history.
 
-A Git hosting provider can supply a private or no-reply commit address. The
-learner may use one now if it is already available, or update the setting
-before creating commits that will later be published.
+A Git hosting provider such as GitHub may offer a no-reply email address. It
+links commits to the intended account without revealing a personal email. Use
+one if it is available and belongs to the account you intend to use. An address
+such as `123456+username@users.noreply.github.com` is a normal GitHub no-reply
+address, not an error.
 
 ## Practical Git and PowerShell practices
 
@@ -186,14 +188,12 @@ Without reading the commands again:
       identity, and branch in simple language.
 - [ ] No Godot project files or Git repositories were changed.
 
-## Validation notes to complete during implementation
+## Validation record
 
-- Confirm the current Git for Windows installation and approval prompts.
-- Confirm whether reopening PowerShell is sufficient on a clean Windows
-  learner account.
-- Confirm the shortest recovery instruction when `winget` is unavailable.
-- Confirm that the privacy explanation occurs before the identity is set.
-- Record any Windows security or account prompt not covered by the blueprint.
+- The project owner validated the written procedure on Windows.
+- Git is installed and available through PowerShell as described.
+- Current Git for Windows installation and security prompts should be checked
+  again during the final end-to-end course rebuild before recording.
 
 ## Instructor and production notes
 
@@ -208,4 +208,3 @@ Without reading the commands again:
 
 - [Install Git for Windows](https://git-scm.com/install/windows)
 - [First-time Git configuration](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
-
