@@ -20,8 +20,8 @@ modern and calm, without looking like a full screenshot or a busy slide.
 
 ## Production and Learner Tools
 
-- ShareX is an internal screenshot-production tool. Learners do not need to
-  install or learn it to complete the course.
+- Screenshot-production tools are internal. Learners do not need to install or
+  learn them to complete the course.
 - Mention the software visible in a lesson only when the learner must interact
   with it.
 - Do not turn a production technique into a learner requirement merely because

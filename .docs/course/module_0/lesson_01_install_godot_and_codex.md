@@ -2,14 +2,11 @@
 
 **Status:** Written procedure validated and logged in Notion
 
-## Learning outcome
+## By the end
 
-Install, open, and verify the two core applications used throughout the
-course: Godot and Codex.
-
-## Finished result
-
-At the end of this lesson:
+Install, open, and verify Godot and Codex, the two core applications used
+throughout the course. Godot is where the game is built and run; Codex will
+later help inspect, edit, and check project files.
 
 - Godot 4.7.1 opens to the Project Manager.
 - The ChatGPT desktop app opens and the learner can access Codex.
@@ -18,66 +15,27 @@ At the end of this lesson:
 - The learner can explain the different role of each tool.
 - No Godot project or extra developer tool has been created or installed yet.
 
-## Why this comes first
-
-Godot is where the game is assembled and run. Codex is the agent that will
-help inspect and edit project files, run useful checks, explain changes, and
-reduce repetitive work. Verifying both now prevents setup problems from
-interrupting later project lessons.
-
-This is a short working setup, not a complete tour. Each tool will be learned
-as the project needs it.
-
 ## Before you start
 
-- No Godot or programming experience is required.
 - Basic Windows and file-management skills are expected.
 - A Windows PC with internet access is available.
 - The learner can download and run applications on that computer.
 - An OpenAI account with Codex access is available. Any required AI plan is a
   separate cost from the course's free core production tools.
 
-## Course decisions
-
-| Decision | Course choice | Why |
-| --- | --- | --- |
-| Supported course platform | Windows | Keeps paths, shortcuts, commands, and troubleshooting consistent for beginners. |
-| Godot edition | Standard Godot 4.7.1 for 64-bit Windows | The course uses GDScript, so the additional .NET/C# edition is unnecessary. |
-| Godot source | Official Godot website | Reduces the risk of downloading an outdated or modified copy. |
-| Codex application | ChatGPT desktop app for Windows | Provides a Windows-native agent, project workspace, file review, and PowerShell commands in one place. |
-| Codex protection | **Ask for approval** with the project sandbox | Keeps the agent focused on the selected project and makes broader actions visible to the learner. |
-| Additional setup | None in this lesson | Git, the Godot project, and the working Codex project are introduced in later focused lessons. |
-
-No Godot MCP server is required. Codex can work directly with Godot's
-text-based project files and can run Godot from the command line when that adds
-a useful check. Visual scene editing remains in the Godot editor.
-
-## New concepts
-
-- **Game engine:** A collection of tools and systems used to build and run a
-  game. Godot is the game engine used in this course.
-- **Agent:** An AI assistant that can inspect a selected project, propose or
-  make file changes, and run commands. The learner remains responsible for
-  reviewing and testing its work.
-- **Version:** A number identifying a particular release of an application.
-  Using the tested version helps the course instructions match the interface.
-- **Portable application:** An application that can run after its downloaded
-  files are extracted, without a traditional installer. Godot works this way
-  on Windows.
-- **Project sandbox:** A boundary that limits where Codex can work. Actions
-  outside that boundary can require the learner's approval.
-
-Only these concepts are introduced now. Creating projects and using the tools
-together come in later lessons.
-
-## Lesson steps
+## Build steps
 
 ### Part 1: Install and verify Godot
+
+> 💡 Godot is the **game engine** used in this course. A game engine is a
+> collection of tools that builds and runs the game.
 
 1. Open the official [Godot download page for Windows](https://godotengine.org/download/windows/).
 2. Download the standard **Godot Engine 4.7.1** 64-bit Windows version.
    Do not choose the **.NET** version; that edition is intended for C# support.
-3. Open the downloaded ZIP file and extract its contents.
+3. Open the downloaded ZIP file and extract its contents. Godot is a
+   **portable application**, so it runs from the extracted files rather than a
+   traditional installer.
 4. Move the extracted Godot folder to a stable location owned by the learner,
    outside the Downloads folder. For example:
 
@@ -91,7 +49,19 @@ together come in later lessons.
    reopen. This is optional.
 9. Close Godot, then reopen it from the stable location or shortcut.
 
+> ⚠️ **If something differs**
+>
+> - If the .NET edition was downloaded, return to the official page and choose
+>   the standard build; this course uses GDScript.
+> - If Windows warns about the application, stop and confirm the official
+>   source and expected publisher.
+> - If Godot is still in Downloads, move it before relying on a shortcut.
+
 ### Part 2: Install and verify Codex
+
+> 💡 An **agent** like Codex is an AI that can do more than answer questions:
+> it can work toward a goal by planning steps, using available tools, editing
+> files, and running commands. The learner still reviews and tests its work.
 
 1. Open the official [ChatGPT desktop app for Windows page](https://learn.chatgpt.com/docs/windows/windows-app).
 2. Follow its Microsoft Store download link and install the application.
@@ -106,49 +76,23 @@ verification.
    labeled **Windows-native**. Do not select a WSL or Linux environment.
 7. Beneath the message box, select **Ask for approval** so sandbox protections
    are active.
+
+   > 💡 **Ask for approval** keeps Codex inside the project sandbox. This
+   > limits where it can work and lets you review broader actions first. Once a
+   > project is connected, Codex can inspect its files, but you still need to
+   > review and test its suggestions.
 8. Do not add a project yet. The Godot project does not exist until Lesson 2,
    and the safe project workflow is introduced later.
 9. Close the application, then reopen it and confirm that Codex is still
    available.
 
-## Understand the tool roles
-
-### Godot builds and runs the game
-
-Use Godot to create and arrange nodes, edit Inspector properties, preview
-scenes, run the game, and inspect visual results.
-
-### Codex works with the project
-
-Once a project is connected, Codex can read and edit scripts, scenes,
-resources, and configuration files because these are stored as files on disk.
-It can also search the project, compare changes, run commands, and help check
-for errors.
-
-Codex does not make a change correct simply because it produced the change.
-The course will show a small task, inspect what changed, and test the result
-before accepting it.
-
-## Practical setup practices and tips
-
-- Download applications from their official sources.
-- Keep Godot in a stable folder so shortcuts and later command-line checks do
-  not break when Downloads is cleaned.
-- Record the installed versions when troubleshooting or asking for help.
-- Keep Codex inside the selected project sandbox and read approval requests
-  before accepting them.
-- Do not install extra tools in advance. Add a tool when the project has a
-  clear use for it.
-
-## Role of AI
-
-Codex cannot accelerate this lesson until it has been installed. Its first
-use is therefore a verification: open it successfully and recognize that it
-can act on project files later, not merely answer chat questions.
-
-The course maintains one lesson path. When Codex provides a clear advantage,
-learners use it after understanding the representative action and then review
-and test its output.
+> ⚠️ **If something differs**
+>
+> - If Codex is unavailable after signing in, confirm that the account has
+>   access and check the current official requirements.
+> - If the app is set to full access, switch it back to **Ask for approval**.
+>   Do not install extra tools yet; later lessons introduce each one when it
+>   has a clear use.
 
 ## Learner exercise
 
@@ -160,17 +104,7 @@ Without reading the steps again:
 4. Explain in one sentence what Godot does.
 5. Explain in one sentence how Codex will support the project.
 
-## Common mistakes
-
-| Problem | What to do |
-| --- | --- |
-| Godot remains in Downloads. | Move the extracted folder to a stable location before creating a shortcut. |
-| The .NET version was downloaded. | Download the standard version; the course uses GDScript rather than C#. |
-| Windows warns about the application. | Stop and confirm the official source and expected publisher before continuing. |
-| Codex is not available after signing in. | Confirm that the account has Codex access and check the current official access requirements. |
-| The app is set to full access. | Select **Ask for approval** so the project sandbox is active. |
-
-## Acceptance checks
+## Verification checklist
 
 - [ ] The standard Godot 4.7.1 Windows build is extracted.
 - [ ] Godot is stored outside the Downloads folder.
@@ -182,24 +116,6 @@ Without reading the steps again:
 - [ ] **Ask for approval** is selected.
 - [ ] The ChatGPT desktop app closes and reopens successfully.
 - [ ] The learner can explain the different roles of Godot and Codex.
-- [ ] No Godot MCP server or unrelated developer tool was installed.
-
-## Validation record
-
-- The project owner validated the written procedure on Windows.
-- Godot 4.7.1 and Codex both open and can be accessed as described.
-- Current interface wording and Codex access requirements should be checked
-  again during the final end-to-end course rebuild before recording.
-
-## Instructor and production notes
-
-- Keep this as a working setup, not a full Godot, Codex, or Windows tour.
-- Clearly disclose current Codex access or subscription requirements before
-  purchase. Godot remains free and open source.
-- The course itself can be followed without maintaining a second non-AI path;
-  short manual continuation notes are enough where Codex is unavailable.
-- Do not record video or create learner downloads until the complete written
-  course passes end-to-end validation.
 
 ## References
 

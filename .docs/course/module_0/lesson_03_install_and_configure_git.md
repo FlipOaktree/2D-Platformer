@@ -2,65 +2,35 @@
 
 **Status:** Written procedure validated and logged in Notion
 
-## Learning outcome
+## By the end
 
-Install Git for Windows and configure the identity and default branch that Git
-will use for this course.
-
-## Finished result
-
-At the end of this lesson:
+Git for Windows will be installed, with an intentional author name, email, and
+default `main` branch. This prepares the local safety checkpoints used in the
+next lesson; GitHub and online publishing come later.
 
 - `git --version` reports an installed Git for Windows version.
 - Git has a deliberate author name and author email.
 - New repositories use `main` as their default branch.
-- The learner can close and reopen PowerShell and still use Git.
+- Git remains available after PowerShell is closed and reopened.
 - The Godot project has not been turned into a Git repository yet.
-
-## Why this comes next
-
-The project exists, so it is time to prepare the tool that will record safe
-checkpoints. Separating installation from the first checkpoint keeps the new
-terminal commands and privacy decision small enough to understand.
-
-This is a working setup, not a complete PowerShell or Git tour.
 
 ## Before you start
 
 - Module 0, Lessons 1 and 2 are complete.
 - A Windows PC with internet access is available.
 - The learner can install applications on that computer.
-- Basic Windows and file-management skills are expected.
 
-## Course decisions
-
-| Decision | Course choice | Why |
-| --- | --- | --- |
-| Git distribution | Current Git for Windows | It is the maintained Windows build and works with PowerShell and Codex. |
-| Installation method | Official `winget` package command | Avoids a long installer tour and uses Windows' package manager. |
-| Configuration level | Global user settings | The chosen identity and default branch apply consistently to the learner's repositories on this computer. |
-| Default branch | `main` | Uses a clear modern default consistently throughout the course. |
-| GitHub | Not used in this lesson | Online accounts and repositories come after the learner understands a local checkpoint. |
-
-## New concepts
-
-- **Version control:** A system that records deliberate versions of files so
-  changes can be compared and earlier working states can be found.
-- **Git:** The version-control tool used in this course.
-- **Terminal:** A text-based place for giving the computer commands. This
-  lesson uses PowerShell for a few visible Git commands.
-- **Command:** A short instruction entered in a terminal.
-- **Commit identity:** The author name and email stored in each Git snapshot.
-- **Branch:** A line of project history. This course begins on `main`.
-
-Repositories, staging, and commits are introduced in Lesson 4 when the learner
-uses them for the first time.
-
-## Lesson steps
+## Build steps
 
 ### Part 1: Install and verify Git
 
+> 💡 **Git** is a version-control tool that saves deliberate versions of your
+> files, so you can compare changes or return to an earlier working version.
+
 1. Open **Windows PowerShell** from the Start menu.
+
+   > 💡 A **terminal** is an application used to give the computer text-based
+   > **commands**. PowerShell is the terminal used in this course.
 2. Enter:
 
    ```powershell
@@ -68,12 +38,16 @@ uses them for the first time.
    ```
 
 3. Press **Enter** and read the result.
+
 4. If a Git version appears, continue to Part 2.
 5. If Windows says that `git` is not recognized, enter:
 
    ```powershell
    winget install --id Git.Git -e --source winget
    ```
+
+> 💡 `winget` is Windows' package manager. This command installs the
+> maintained Git for Windows package without a long installer tour.
 
 6. Read the installation and approval prompts before accepting them.
 7. Close PowerShell after installation and reopen it. A terminal that was
@@ -82,18 +56,21 @@ uses them for the first time.
 9. Confirm that a Git version appears. The exact patch number can be newer
    than the one shown during course production.
 
-## What did the command do?
+`git --version` only reports Git's installed version; it does not change the
+computer or project.
 
-`git --version` asks Git to identify its installed version. It does not change
-the computer or project.
-
-The `winget install` command asks Windows' package manager to install the
-maintained Git package with the exact package identifier `Git.Git`.
+> ⚠️ **If something differs**
+>
+> - When setting your Git identity, replace any placeholder example name and
+>   email with the intended values.
+> - GitHub has not been used yet. This lesson only prepares Git on this
+>   computer.
 
 ### Part 2: Configure the commit identity
 
-Every future commit stores an author name and email. These values can become
-visible if the project is shared online later, so choose them deliberately.
+> 💡 A **commit identity** is the author name and email stored in each Git
+> snapshot. A **branch** is a line of project history. This course uses
+> `main` as the clear default branch for new repositories.
 
 1. Check whether an identity is already configured:
 
@@ -110,7 +87,7 @@ visible if the project is shared online later, so choose them deliberately.
    git config --global user.email "you@example.com"
    ```
 
-4. Do not copy the example name or email literally.
+4. Replace the example name and email; do not copy them literally.
 5. Set `main` as the default branch for new repositories:
 
    ```powershell
@@ -127,34 +104,22 @@ visible if the project is shared online later, so choose them deliberately.
 
 7. Confirm that the intended name, email, and `main` appear.
 
-## Privacy note about commit email
+Git stores the configured email in every new commit. Choose an address you are
+comfortable associating with shared project history. A hosting provider such as
+GitHub may offer a no-reply address that links commits to the intended account
+without exposing a personal email. For example,
+`123456+username@users.noreply.github.com` is a normal GitHub no-reply address.
 
-Git stores the configured email inside every new commit. Use an address the
-learner is comfortable associating with future shared project history.
+We complete this first Git safety boundary manually. Later, after a project is
+connected, Codex can help explain Git status and differences; you still review
+and approve its actions.
 
-A Git hosting provider such as GitHub may offer a no-reply email address. It
-links commits to the intended account without revealing a personal email. Use
-one if it is available and belongs to the account you intend to use. An address
-such as `123456+username@users.noreply.github.com` is a normal GitHub no-reply
-address, not an error.
-
-## Practical Git and PowerShell practices
-
-- Enter one command at a time and read its result before continuing.
-- Copy commands exactly, but replace clearly marked example values.
-- Do not paste a command from AI without understanding its intended effect.
-- Record the Git version when troubleshooting.
-- Check existing configuration before replacing it.
-- Treat the commit email as information that may become public later.
-
-## Role of AI
-
-Codex is not needed for these short setup commands. The learner should first
-recognize what each command checks or changes.
-
-Codex will use the installed Git tools after the project is connected. It can
-then help explain status and differences, but the learner remains responsible
-for reviewing and approving Git actions.
+> ⚠️ **If something differs**
+>
+> - If `git` is not recognized after installation, close and reopen PowerShell,
+>   then run `git --version` again.
+> - If `winget` is not recognized, update or install Windows App Installer,
+>   then retry the command.
 
 ## Learner exercise
 
@@ -166,43 +131,16 @@ Without reading the commands again:
 4. Display the default branch name.
 5. Explain why the email choice should be deliberate.
 
-## Common mistakes
-
-| Problem | What to do |
-| --- | --- |
-| `git` is not recognized after installation. | Close and reopen PowerShell, then run `git --version` again. |
-| `winget` is not recognized. | Update or install Windows App Installer, then retry the official package command. |
-| The example author name or email was copied literally. | Replace it with the learner's intended commit identity. |
-| An existing correct identity was overwritten. | Run the check commands first and change only an incorrect value. |
-| The learner expects GitHub to contain the project. | Explain that no repository or online account has been used yet. |
-| PowerShell feels overwhelming. | Focus only on entering one shown command and reading the line it returns. |
-
-## Acceptance checks
+## Verification checklist
 
 - [ ] `git --version` reports an installed Git for Windows version.
 - [ ] Git remains available after PowerShell is closed and reopened.
 - [ ] The configured author name is intentional.
 - [ ] The configured author email is intentional.
 - [ ] `init.defaultBranch` is `main`.
-- [ ] The learner can explain version control, Git, terminal, command, commit
-      identity, and branch in simple language.
+- [ ] The learner can explain Git, terminal, command, commit identity, and
+      branch in simple language.
 - [ ] No Godot project files or Git repositories were changed.
-
-## Validation record
-
-- The project owner validated the written procedure on Windows.
-- Git is installed and available through PowerShell as described.
-- Current Git for Windows installation and security prompts should be checked
-  again during the final end-to-end course rebuild before recording.
-
-## Instructor and production notes
-
-- Keep the PowerShell explanation limited to opening it, entering one command,
-  and reading the result.
-- Do not introduce repositories, staging, commits, GitHub, remotes, or recovery
-  commands here.
-- Do not record video or create learner downloads until the complete written
-  course passes end-to-end validation.
 
 ## References
 

@@ -50,7 +50,7 @@ results and previewing the next proposed step.
 
 ### 1. Blueprint
 
-Draft:
+Draft these planning considerations:
 
 - One learner outcome.
 - Prerequisites.
@@ -58,15 +58,38 @@ Draft:
 - New concepts and why they are needed.
 - Exact editor and code actions.
 - Inspector customization points.
-- Suggested visual support.
+- Visual needs to revisit during the later visual-support pass.
 - Common mistakes to watch for.
 - A learner exercise.
-- Acceptance checks.
+- A verification checklist.
 - The role of AI in the lesson, if it provides a clear advantage.
 - Any relevant Godot, Codex, or Notion best practice, tip, or shortcut that
   makes the current work clearer, safer, or faster.
 
 The blueprint can change during validation.
+
+These are planning considerations, not required learner-facing sections. Place
+concepts, reasons, AI guidance, practical tips, and recovery help inside the
+build steps where learners need them.
+
+Use this learner-facing lesson structure:
+
+1. **By the end** - combine the outcome, visible result, and one sentence of
+   context.
+2. **Before you start** - include only real prerequisites.
+3. **Build steps** - teach concepts and reasoning beside the relevant actions.
+4. **Learner exercise**.
+5. **Verification checklist**.
+6. **References**.
+
+Format contextual lesson notes consistently:
+
+- Put a new-concept explanation in a blue callout with a light-bulb icon. Use
+  plain paragraphs without a title or bullets, and place the callout at the
+  clearest point beside the concept's first practical use.
+- Put recovery guidance in a gray callout with a warning icon and the heading
+  **If something differs** without a colon. Keep it unindented and place it at
+  the end of the corresponding lesson part.
 
 ### 2. Build
 
@@ -76,17 +99,18 @@ The blueprint can change during validation.
 - Introduce a practical best practice, tip, or shortcut when it directly helps
   the current task. Keep it brief and in context rather than turning it into a
   separate tool tutorial.
-- Introduce each concept before its first practical use, using only the detail
-  needed for the current outcome.
+- Introduce each concept beside its first practical use, immediately before or
+  after the action when that produces the clearest learner flow. Use only the
+  detail needed for the current outcome.
 - Use a single integrated lesson flow when Codex is involved; do not create
   repeated AI and non-AI versions of the same instructions.
 - Run the project regularly.
 - Record any undocumented step, unclear explanation, or mismatch between the
   blueprint and actual behavior.
 - Keep AI-generated code and assets provisional until reviewed.
-- Distinguish learner tools from internal production tools. A tool used to
-  produce the course, such as ShareX, is not part of the learner workflow unless
-  the learner genuinely needs it.
+- Distinguish learner tools from internal production tools. A tool used only
+  to produce the course is not part of the learner workflow unless the learner
+  genuinely needs it.
 
 ### 3. Verify
 
@@ -108,7 +132,9 @@ A lesson is verified when:
 ### 4. Finalize
 
 - Correct the lesson using the verified implementation.
-- Identify required screenshots, diagrams, or short demonstrations.
+- Keep the first pass focused on validated written instruction. Identify and
+  add required screenshots, diagrams, or short demonstrations during a later
+  visual-support pass.
 - Associate the lesson with its Git commit and project version.
 - Present the proposed Notion entry.
 - Ask for permission before writing the lesson or updating its tasks in
@@ -166,7 +192,7 @@ Before video or download production:
 3. Rebuild the template using only the written course.
 4. Record and correct every missing, ambiguous, or outdated instruction.
 5. Repeat affected tests and the final modularity exercises.
-6. Confirm that every concept is explained before its first use.
+6. Confirm that every concept is explained beside its first practical use.
 7. Audit learner tools and clearly identify any optional paid service.
 8. Verify that the final license allows games made with the framework to be
    sold while prohibiting resale of the framework itself.

@@ -139,12 +139,3 @@ No script or reusable gameplay dependency is introduced yet.
 - [ ] The learner can explain node, scene, root node, child node, and main
       scene in simple language.
 - [ ] The learner can change the Label text through the Inspector.
-
-## Validation notes to complete during implementation
-
-- Confirm the exact Godot 4.7 labels and prompts for creating and selecting the
-  main scene.
-- Confirm that the default Label position is fully visible in the game window.
-- Record any save-dialog or run-dialog step that is not obvious to a beginner.
-- Check for parser errors, runtime errors, and unexplained warnings.
-- Revise the blueprint using what actually happens in the editor.

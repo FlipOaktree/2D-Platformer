@@ -17,9 +17,10 @@ through one coherent commercial-use project.
 
 ### Understand what, why, and how
 
-Concepts are explained before learners use them. The course introduces the
-fundamentals it needs—such as game engines, variables, pixels, and RGB—without
-turning into a broad theory course.
+Concepts are explained beside their first practical use, where the explanation
+has immediate context. The course introduces the fundamentals it needs—such as
+game engines, variables, pixels, and RGB—without turning into a broad theory
+course.
 
 ### Concise, never rushed
 
@@ -87,13 +88,15 @@ project using only the written material.
 - One measurable outcome per lesson.
 - Progressive disclosure of tools and concepts.
 - Explain, demonstrate, build, test, then recall.
-- A complete manual path for every required course outcome.
+- One integrated lesson path whose required outcomes remain achievable when AI
+  is unavailable.
 - Optional AI acceleration followed by explanation, review, correction, and
   testing.
 - Short learner exercises that do not simply repeat the written steps.
 - Visual support when it makes a relationship clearer.
-- Common mistakes and recovery instructions.
-- Modularity, customization, and removal checkpoints.
+- Short recovery notes beside the steps where learners may need them.
+- Modularity, customization, and removal checkpoints when a lesson introduces
+  or changes a gameplay module.
 - Frequent project validation.
 - A final end-to-end rebuild from an empty project.
 
@@ -119,8 +122,7 @@ project using only the written material.
   proven."
 - Say "free learner tools" and disclose optional AI costs.
 - Present AI as a major optional accelerator, not a completion requirement.
-- Keep internal production tools, including ShareX, out of learner-facing tool
-  requirements.
+- Keep internal production tools out of learner-facing tool requirements.
 - Say "designed to grow with the project," not "infinitely scalable."
 - Say "avoids unnecessary advanced concepts," not "contains nothing advanced."
 - Define complete beginner as no prior Godot or programming experience, while
@@ -128,8 +130,9 @@ project using only the written material.
 
 ## Public-Claim Validation Checklist
 
-- [ ] Every concept is explained before its first use.
-- [ ] Each lesson has an outcome, exercise, visual plan, and acceptance checks.
+- [ ] Every concept is explained beside its first practical use.
+- [ ] Each lesson has an outcome, exercise, and verification checklist.
+- [ ] Visual support is planned and added during the later visual-support pass.
 - [ ] Every optional module can be added, removed, and customized as taught.
 - [ ] AI and manual teaching are integrated into one lesson sequence rather
       than duplicated across separate paths.
