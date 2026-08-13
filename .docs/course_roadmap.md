@@ -24,17 +24,19 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4, and Lesson 1.1.
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4, and Module 1, Lessons
+  1.1-1.2.
 - **Godot evidence:** `scenes/main.tscn` contains a `Main` `Node2D` with a
   `Label` displaying `Project ready`; `project.godot` configures it as the main
   scene.
 - **Code state:** No GDScript or reusable gameplay systems exist yet.
-- **Observed Git head:** `42615e2` (`Simplify Module 0 setup lessons`); exact
-  lesson-to-commit associations still require reconciliation.
-- **Exact next lesson:** **1.2 Position Nodes in 2D** - Planned, pending
-  blueprint approval.
-- **Working-tree caution:** Lesson 1.1, the project configuration, and the new
-  scene have uncommitted changes. Preserve them and all unrelated user work.
+- **Observed Git head:** `e918e66` (`Document course continuity and validate
+  first scene lesson`); some earlier lesson-to-commit associations still
+  require reconciliation.
+- **Exact next lesson:** **1.3 Compose Scenes from Reusable Parts** - Planned,
+  pending blueprint drafting.
+- **Working-tree caution:** The Lesson 1.2 blueprint and its roadmap status are
+  uncommitted. Preserve them and all unrelated user work.
 
 ## Status Model
 
@@ -48,6 +50,26 @@ Lesson lifecycle and publication are independent:
 All lessons after 1.1 are provisional until their blueprints are reviewed.
 Unless a row says otherwise, lessons in a module are completed in order and
 depend on the preceding lesson.
+
+## Curriculum Modularity
+
+Treat each module as a cohesive learning and implementation unit with explicit
+prerequisites, a focused outcome, and a clear resulting project state.
+
+- Give each feature core one canonical home. Later modules may integrate with
+  that feature, but must not redefine or duplicate its core instruction.
+- Keep potentially reusable modules free of unnecessary platformer-specific
+  assumptions. Genre-specific behavior belongs where the course genuinely
+  diverges.
+- Interpret modularity as clear boundaries and explicit dependencies, not as a
+  promise that modules can be combined safely in any order.
+- Use this complete 2D Platformer course as the proving ground for module
+  boundaries and portability.
+
+Defer shared-module libraries, configurable course manifests, and validated
+alternate entry checkpoints until the complete written course has passed its
+empty-project rebuild. Reconsider them only after repeated use shows which
+modules transfer unchanged to another course or learner level.
 
 ## Framework Architecture
 
@@ -114,9 +136,9 @@ and scene composition before gameplay code is introduced.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
-| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, root/child hierarchy, `main.tscn`, main scene | Validated | Current | Uncommitted working tree |
-| 1.2 | Position Nodes in 2D | 2D coordinates, position, viewport navigation | Planned - exact next lesson | Not published | Unassigned |
-| 1.3 | Compose Scenes from Reusable Parts | Instantiation and reusable child scenes | Planned | Not published | Unassigned |
+| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, root/child hierarchy, `main.tscn`, main scene | Validated | Current | `e918e66` |
+| 1.2 | Position Nodes in 2D | 2D coordinates, position, viewport navigation | Validated | Current | Uncommitted working tree |
+| 1.3 | Compose Scenes from Reusable Parts | Instantiation and reusable child scenes | Planned - exact next lesson | Not published | Unassigned |
 
 ### Module 2: Actor and Player Foundations
 
@@ -409,3 +431,4 @@ Remaining reconciliation work:
 | Include combat, inventory, dialogue, quests, and robust saving in the core roadmap | The final template must support a coherent modular game framework, not only movement. |
 | Defer visual production until the written curriculum is complete | Visuals should reflect validated steps and avoid repeated rework. |
 | Keep learner verification boxes unchecked | They belong to each learner; production completion is tracked here. |
+| Keep curriculum modules cohesive and portability-aware without introducing configurable course assembly yet | The first complete course will reveal which modules are genuinely reusable; shared libraries, course manifests, and alternate entry checkpoints remain deferred until then. |

@@ -3,7 +3,8 @@
 [node name="Main" type="Node2D" unique_id=1280542419]
 
 [node name="Label" type="Label" parent="." unique_id=1554863232]
-offset_top = -1.0
-offset_right = 106.0
-offset_bottom = 48.0
+offset_left = 96.0
+offset_top = 72.0
+offset_right = 202.0
+offset_bottom = 123.0
 text = "Project ready"
