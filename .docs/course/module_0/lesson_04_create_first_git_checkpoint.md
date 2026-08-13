@@ -68,7 +68,7 @@ changes, begins.
    > cache; `/android/` is generated Android build content. `.gitattributes`
    > keeps text files in a consistent LF format across operating systems.
 
-10. Save only if a verified rule is missing or incorrect, then close the text
+9. Save only if a verified rule is missing or incorrect, then close the text
     editor.
 
    > ⚠️ **If something differs**

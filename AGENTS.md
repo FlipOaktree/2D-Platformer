@@ -34,6 +34,24 @@ the same written course material that learners will later use.
 - Assume no Godot or programming experience, while expecting basic computer
   and file-management skills.
 
+## Course Continuity
+
+- Treat `.docs/course_roadmap.md` as the canonical source for the course scope,
+  curriculum sequence, architectural direction, progress, and next lesson.
+- At the start of every course-related task, read `.docs/course_workflow.md`,
+  `.docs/course_roadmap.md`, and the affected completed and upcoming lessons.
+- Inspect the relevant Godot artifacts and `git status`, then compare the
+  observed state with the roadmap before proposing work.
+- Report discrepancies between the roadmap, lesson files, Godot project, Git,
+  and Notion before changing anything. Do not silently choose one version.
+- Follow the roadmap's next planned lesson unless an approved curriculum change
+  updates the roadmap first.
+- Update the roadmap after an approved change to course scope, lesson sequence,
+  architecture, lifecycle status, validation status, Notion publication, or
+  Git association.
+- Keep local repository files authoritative. Notion is the published mirror of
+  validated course material, not the source for unfinished curriculum state.
+
 ## Integrated AI Workflow
 
 - Treat Codex as a prominent optional accelerator within the same lessons, not
@@ -56,6 +74,8 @@ the same written course material that learners will later use.
   permission.
 - After a lesson is implemented and verified, present the proposed final entry
   and ask whether it should be logged in Notion.
+- When approved to log a lesson, create it inside its parent Module page under
+  the course page. Use a plain lesson title without a page or header icon.
 - Keep unfinished drafts local or in the conversation until permission is
   granted.
 

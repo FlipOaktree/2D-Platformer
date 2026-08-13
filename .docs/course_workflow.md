@@ -9,6 +9,44 @@ is accurate. Videos and learner downloads are a later production phase.
 The course assumes no Godot or programming experience. Learners should have
 basic computer and file-management skills.
 
+## Roadmap and Continuity
+
+`.docs/course_roadmap.md` is the canonical source for the course scope,
+curriculum sequence, architectural direction, progress, and next lesson.
+Individual lesson files remain authoritative for learner-facing instructions,
+and the Godot project is the evidence for what has actually been implemented.
+Notion mirrors validated material only.
+
+Before planning or changing a lesson:
+
+1. Read the roadmap and the affected completed and upcoming lessons.
+2. Inspect the relevant Godot artifacts and `git status`.
+3. Compare the observed state with the roadmap.
+4. Report discrepancies before proceeding.
+5. Review which prerequisites and concepts have already been taught so the
+   lesson neither assumes unexplained knowledge nor repeats a full introduction.
+
+Track the lesson lifecycle separately from publication:
+
+- **Planned** - the lesson exists only in the approved provisional roadmap.
+- **Blueprint drafted** - learner instructions exist but are not yet approved.
+- **Blueprint approved** - the written build plan is approved for implementation.
+- **Implemented** - the lesson result exists in the Godot project but has not
+  passed the complete lesson verification.
+- **Validated** - the written procedure and resulting project behavior have
+  passed the lesson verification.
+
+Track Notion independently as **Not published**, **Current**, or **Out of
+sync**. Learner verification checkboxes stay unchecked so learners can use
+them; production validation belongs in the lesson status and roadmap.
+
+Update the roadmap after an approved change to scope, sequence, dependencies,
+architecture, lifecycle, validation, Notion publication, or Git association.
+When implementation changes an earlier assumption, identify every downstream
+lesson, test, visual, and task affected before updating the roadmap. Curriculum
+changes remain welcome, but record the decision and its reason so future tasks
+continue from the same plan.
+
 ## Integrated AI Workflow
 
 AI is a prominent optional accelerator inside the course, not a separate
@@ -68,6 +106,11 @@ Draft these planning considerations:
 
 The blueprint can change during validation.
 
+Before drafting, confirm the lesson's roadmap outcome, prerequisites, expected
+artifacts, and concepts introduced for the first time. If the proposed lesson
+changes the curriculum or architecture, update the roadmap only after that
+change is approved.
+
 These are planning considerations, not required learner-facing sections. Place
 concepts, reasons, AI guidance, practical tips, and recovery help inside the
 build steps where learners need them.
@@ -107,6 +150,8 @@ Format contextual lesson notes consistently:
 - Run the project regularly.
 - Record any undocumented step, unclear explanation, or mismatch between the
   blueprint and actual behavior.
+- Perform a roadmap impact check when the implementation changes an earlier
+  assumption, dependency, shared interface, or planned lesson boundary.
 - Keep AI-generated code and assets provisional until reviewed.
 - Distinguish learner tools from internal production tools. A tool used only
   to produce the course is not part of the learner workflow unless the learner
@@ -139,6 +184,8 @@ A lesson is verified when:
 - Present the proposed Notion entry.
 - Ask for permission before writing the lesson or updating its tasks in
   Notion.
+- When approved, create the lesson page inside its parent Module page under
+  the course page. Use a plain lesson title without a page or header icon.
 
 ## Notion Task Workflow
 

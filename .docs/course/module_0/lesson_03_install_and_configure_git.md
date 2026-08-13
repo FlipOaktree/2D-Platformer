@@ -61,10 +61,10 @@ computer or project.
 
 > ⚠️ **If something differs**
 >
-> - When setting your Git identity, replace any placeholder example name and
->   email with the intended values.
-> - GitHub has not been used yet. This lesson only prepares Git on this
->   computer.
+> - If `git` is not recognized after installation, close and reopen PowerShell,
+>   then run `git --version` again.
+> - If `winget` is not recognized, update or install Windows App Installer,
+>   then retry the command.
 
 ### Part 2: Configure the commit identity
 
@@ -116,10 +116,8 @@ and approve its actions.
 
 > ⚠️ **If something differs**
 >
-> - If `git` is not recognized after installation, close and reopen PowerShell,
->   then run `git --version` again.
-> - If `winget` is not recognized, update or install Windows App Installer,
->   then retry the command.
+> - When setting your Git identity, replace any placeholder example name and
+>   email with the intended values.
 
 ## Learner exercise
 
