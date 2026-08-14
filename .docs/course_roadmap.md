@@ -25,17 +25,19 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4, and Module 1, Lessons
-  1.1-1.2.
-- **Godot evidence:** `scenes/main.tscn` contains a `Main` `Node2D` with a
-  `Label` displaying `Project ready`; `project.godot` configures it as the main
-  scene.
+  1.1-1.3.
+- **Godot evidence:** The validated Lesson 1.2 state is recorded at `1846a97`.
+  The working tree validates Lesson 1.3 with one `StatusMessage` instance of
+  `status_message.tscn` in `Main`, positioned at `(96, 72)` and displaying
+  `Project ready` without related errors or warnings.
 - **Code state:** No GDScript or reusable gameplay systems exist yet.
-- **Observed Git head:** `e918e66` (`Document course continuity and validate
-  first scene lesson`); some earlier lesson-to-commit associations still
+- **Observed Git head:** `1846a97` (`Position first scene content and validate
+  Module 1.2`); some earlier lesson-to-commit associations still
   require reconciliation.
-- **Exact next lesson:** **1.3 Compose Scenes from Reusable Parts** - Planned,
-  pending blueprint drafting.
-- **Working-tree caution:** The Lesson 1.2 blueprint and its roadmap status are
+- **Exact next lesson:** **2.1 Configure Keyboard and Controller Actions** -
+  Blueprint drafted, pending review and approval.
+- **Working-tree caution:** The validated Lesson 1.2 revision, validated Lesson
+  1.3 material and artifacts, the Lesson 2.1 blueprint, and roadmap status are
   uncommitted. Preserve them and all unrelated user work.
 
 ## Status Model
@@ -137,8 +139,8 @@ and scene composition before gameplay code is introduced.
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
 | 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, root/child hierarchy, `main.tscn`, main scene | Validated | Current | `e918e66` |
-| 1.2 | Position Nodes in 2D | 2D coordinates, position, viewport navigation | Validated | Current | Uncommitted working tree |
-| 1.3 | Compose Scenes from Reusable Parts | Instantiation and reusable child scenes | Planned - exact next lesson | Not published | Unassigned |
+| 1.2 | Position Nodes in 2D | 2D coordinates, position, viewport navigation, parent-relative movement | Validated | Current | `1846a97` + uncommitted validated revision |
+| 1.3 | Compose Scenes from Reusable Parts | Instantiation and reusable child scenes | Validated | Current | Uncommitted validated material |
 
 ### Module 2: Actor and Player Foundations
 
@@ -147,7 +149,7 @@ a basic keyboard/controller player without premature feature inheritance.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
-| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Planned | Not published | Unassigned |
+| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Blueprint drafted - exact next lesson | Not published | Uncommitted working tree |
 | 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Planned | Not published | Unassigned |
 | 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Planned | Not published | Unassigned |
 | 2.4 | Write Typed Horizontal Movement | Typed GDScript, input axis, velocity | Planned | Not published | Unassigned |

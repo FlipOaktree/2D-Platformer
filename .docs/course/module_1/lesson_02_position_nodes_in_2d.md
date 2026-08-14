@@ -73,11 +73,6 @@ place objects in 2D.
    > positioned relative to `Main`.
 
 7. Confirm that the `Label` moves right and down in the 2D viewport.
-8. Save the scene with `Ctrl+S`.
-9. Run the current scene with `F6`.
-10. Confirm that `Project ready` appears away from the top-left corner of the
-    game window.
-11. Stop the scene with `F8`.
 
    > ⚠️ **If something differs**
    >
@@ -85,8 +80,45 @@ place objects in 2D.
    >   and expand **Layout**, then **Transform**, in the Inspector.
    > - If the text disappears from the 2D viewport, enter `96` for `x` and `72`
    >   for `y`, then double-click `Label`'s icon in the Scene dock.
-   > - If the running scene still shows the old position, stop it, save with
-   >   `Ctrl+S`, and run it again.
+   > - If the Position does not remain at `x = 96` and `y = 72`, enter those
+   >   values again before continuing.
+
+### Part 3: Observe parent and child movement
+
+1. Select `Main` in the Scene dock.
+2. Select **Move Mode** in the toolbar above the 2D viewport or press `W`, then
+   drag `Main` to the right and down.
+
+> 💡 `Main` is a `Node2D`, so its **Transform** section appears directly in the
+> Inspector. `Label` is a `Control` node, so its **Transform** subsection is
+> organized under **Layout**. Both nodes have a Position, but Godot organizes
+> their Inspector properties differently.
+
+3. Confirm that the `Label` moves right and down with `Main` in the 2D
+   viewport.
+4. Select `Label` and confirm that **Layout → Transform → Position** is still
+   `x = 96` and `y = 72`.
+
+> 💡 A child's Position is measured relative to its parent. Moving `Main`
+> therefore moves the whole branch without changing the `Label`'s own
+> Position. The Label appears at its parent's Position plus its own Position.
+
+5. Select `Main` and restore its Position to `x = 0` and `y = 0`.
+6. Confirm that the `Label` returns to its earlier location in the 2D viewport.
+7. Save the scene with `Ctrl+S`.
+8. Run the current scene with `F6`.
+9. Confirm that `Project ready` appears away from the top-left corner of the
+   game window.
+10. Stop the scene with `F8`.
+
+> ⚠️ **If something differs**
+>
+> - If **Transform** is not visible directly in the Inspector, confirm that
+>   `Main`, not `Label`, is selected.
+> - If moving `Main` changes the Position shown for `Label`, undo with
+>   `Ctrl+Z`, then confirm that only `Main` is selected before trying again.
+> - If the final message appears in an unexpected location, restore `Main` to
+>   `(0, 0)` and `Label` to `(96, 72)`, then save and run the scene again.
 
 ## Learner exercise
 
@@ -96,11 +128,14 @@ Without repeating the build steps:
    to `160`.
 2. Make that change and run the current scene to check the prediction.
 3. Explain why panning the viewport does not change the running scene.
-4. Restore the Position to `x = 96` and `y = 72`, then save the scene.
+4. Explain why moving `Main` moved the `Label` without changing the Label's
+   own Position.
+5. Restore the Label Position to `x = 96` and `y = 72`, then save the scene.
 
 ## Verification checklist
 
 - [ ] `Label` remains a child of `Main`.
+- [ ] `Main` has Position `x = 0` and `y = 0`.
 - [ ] The Label still displays `Project ready`.
 - [ ] The Label Position is `x = 96` and `y = 72`.
 - [ ] Running the current scene shows the text away from the top-left corner.
@@ -109,6 +144,10 @@ Without repeating the build steps:
       directions.
 - [ ] The learner can explain that a child node's Position is relative to its
       parent.
+- [ ] The learner can move a parent and observe its child move without changing
+      the child's own Position.
+- [ ] The learner can find **Transform** directly on a `Node2D` and under
+      **Layout** on a `Control` node.
 - [ ] The learner can distinguish navigating the 2D viewport from moving a
       node.
 - [ ] The learner can move a node visually and set its exact Position in the
