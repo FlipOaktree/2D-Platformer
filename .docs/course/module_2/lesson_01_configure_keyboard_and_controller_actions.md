@@ -6,7 +6,8 @@
 
 Create three named input actions that later player code can use without caring
 whether the player uses a keyboard or a controller. The running project will
-still display `Project ready`, while the Input Map will contain:
+still display `Project ready` and `ProjectIcon`, while the Input Map will
+contain:
 
 - `move_left`, controlled by `A`, `Left Arrow`, controller D-pad left, and the
   left stick moved left.
@@ -17,6 +18,8 @@ still display `Project ready`, while the Input Map will contain:
 ## Before you start
 
 - Module 1 is complete.
+- `main.tscn` displays `Project ready` and contains one `ProjectIcon` instance
+  of `project_icon.tscn`.
 - The project opens and runs without related errors or warnings.
 - To add and check the controller inputs directly, connect a Godot-compatible
   controller before opening the Input Map.
@@ -143,8 +146,8 @@ still display `Project ready`, while the Input Map will contain:
    is still present and the left/right stick directions are opposite.
 4. Close **Project Settings**.
 5. Run the project with `F5`.
-6. Confirm that the existing `Project ready` message still appears and that
-   the project reports no related errors or warnings.
+6. Confirm that the existing `Project ready` message and project icon still
+   appear and that the project reports no related errors or warnings.
 7. Stop the project with `F8`.
 
    The new actions do not move anything yet. This lesson creates the shared
@@ -155,8 +158,8 @@ still display `Project ready`, while the Input Map will contain:
 >
 > - If an action or event disappears after reopening Project Settings, add it
 >   again, close Project Settings, and reopen the Input Map to recheck it.
-> - If the running project still only shows `Project ready`, that is expected.
->   No movement code exists yet.
+> - If the running project shows the same message and icon but nothing moves,
+>   that is expected. No movement code exists yet.
 > - If the project reports an error, stop it and confirm that only Input Map
 >   settings changed during this lesson.
 
@@ -183,8 +186,8 @@ Without repeating the build steps:
 - [ ] `jump` contains the controller's bottom face button.
 - [ ] Each action keeps the default deadzone of `0.5`.
 - [ ] Closing and reopening Project Settings preserves every action and event.
-- [ ] Running the project still displays `Project ready` without related
-      errors or warnings.
+- [ ] Running the project still displays `Project ready` and the project icon
+      without related errors or warnings.
 - [ ] The learner can explain the difference between an input event and an
       input action.
 - [ ] The learner can explain why action names describe intent instead of a

@@ -1,16 +1,18 @@
 # Module 1, Lesson 1: Create and Run Your First Scene
 
-**Status:** Written procedure validated and logged in Notion
+**Status:** Validated locally; Notion out of sync
 
 ## By the end
 
 Create, save, and run a small main scene that displays `Project ready`. This
 first visible result introduces the scene structure that later gameplay
-features will build on.
+features will build on. You will also learn how to find and inspect small
+content in the 2D viewport without moving it.
 
 - A `Main` scene exists at `res://scenes/main.tscn`.
 - Its root is a `Node2D` named `Main`.
-- It contains a `Label` child that displays `Project ready`.
+- It contains a `Label` child at Position `(0, 0)` that displays
+  `Project ready`.
 - Running the current scene and the whole project both show that message.
 
 ## Before you start
@@ -49,11 +51,31 @@ features will build on.
    > 💡 The **Inspector** shows settings for the selected node. Changing this
    > Label's Text property changes what it displays without writing code.
 
-8. Double-click Label's icon in the Scene dock to center it in the viewport.
-   You can use the zoom controls above the top-left of the 2D viewport to zoom in if the label appears too small.
-9. Save the scene with **Scene → Save Scene** or `Ctrl+S`.
-10. In the save dialog, create a folder named `scenes`.
-11. Open `scenes`, enter `main.tscn` as the file name, and select **Save**.
+8. Double-click `Label`'s icon in the Scene dock to center it in the 2D
+   viewport.
+9. Use the zoom controls above the top-left of the viewport to zoom in and out.
+10. Select **Pan Mode** in the toolbar above the viewport, then drag with the
+    left mouse button to move your view.
+11. Try either shortcut for panning without selecting Pan Mode:
+
+    - Hold the middle mouse button and drag.
+    - Hold `Space` while dragging with the left mouse button.
+
+12. Double-click `Label`'s icon again to return to it.
+
+    Panning and zooming change only your view inside the editor. They do not
+    move the Label or change what appears when the game runs.
+
+> ⚠️ **If something differs**
+>
+> - If the Label becomes hard to find, double-click its icon in the Scene dock
+>   to center it again.
+> - If dragging moves the Label instead of the view, undo with `Ctrl+Z`, then
+>   select Pan Mode or use one of the panning shortcuts.
+
+13. Save the scene with **Scene → Save Scene** or `Ctrl+S`.
+14. In the save dialog, create a folder named `scenes`.
+15. Open `scenes`, enter `main.tscn` as the file name, and select **Save**.
 
    > 💡 A `.tscn` file stores a Godot scene.
 
@@ -97,19 +119,22 @@ Without following the steps again:
 2. Run the current scene and confirm that the new message appears.
 3. Change the text back to `Project ready` and save the scene.
 4. Explain the difference between a node and a scene in one sentence each.
+5. Pan and zoom away from the Label, then center it again without moving it.
 
 ## Verification checklist
 
 - [ ] `res://scenes/main.tscn` exists.
 - [ ] The root node is a `Node2D` named `Main`.
 - [ ] A `Label` is a child of `Main`.
-- [ ] The Label displays `Project ready`.
+- [ ] The Label displays `Project ready` at Position `(0, 0)`.
 - [ ] Running the current scene succeeds without related errors or warnings.
 - [ ] Running the project opens `main.tscn` and shows the same message.
 - [ ] Closing and reopening the scene preserves its nodes and text.
 - [ ] The learner can explain node, scene, root node, child node, Inspector,
       and main scene in simple language.
 - [ ] The learner can change the Label text through the Inspector.
+- [ ] The learner can pan, zoom, and center a node without changing its
+      position.
 
 ## References
 

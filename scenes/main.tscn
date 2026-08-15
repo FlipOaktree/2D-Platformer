@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://xsf4auwc5hrq"]
 
-[ext_resource type="PackedScene" uid="uid://dnq2j18lklgt" path="res://scenes/status_message.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" path="res://scenes/project_icon.tscn" id="1_project_icon"]
 
 [node name="Main" type="Node2D" unique_id=1280542419]
 
-[node name="StatusMessage" parent="." unique_id=1634753456 instance=ExtResource("1_o5qli")]
-offset_left = 96.0
-offset_top = 72.0
-offset_right = 202.0
-offset_bottom = 123.0
+[node name="Label" type="Label" parent="." unique_id=1634753456]
+offset_right = 106.0
+offset_bottom = 51.0
+text = "Project ready"
+
+[node name="ProjectIcon" parent="." instance=ExtResource("1_project_icon")]
+position = Vector2(256, 240)

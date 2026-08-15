@@ -24,21 +24,35 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4, and Module 1, Lessons
-  1.1-1.3.
-- **Godot evidence:** The validated Lesson 1.2 state is recorded at `1846a97`.
-  The working tree validates Lesson 1.3 with one `StatusMessage` instance of
-  `status_message.tscn` in `Main`, positioned at `(96, 72)` and displaying
-  `Project ready` without related errors or warnings.
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4, and the currently
+  published versions of Module 1, Lessons 1.1-1.3. Approved revisions to all
+  three Module 1 lessons are approved locally and require implementation where
+  behavior changes and revalidation.
+- **Godot evidence:** Commit `4dc4d30` records the validated published Module 1
+  state: `Main` contains one `StatusMessage` instance of
+  `status_message.tscn` at `(96, 72)`, displaying `Project ready` without
+  related errors or warnings. The approved Lesson 1.1 revision now replaces
+  that instance in the working tree with a direct `Label` at `(0, 0)`,
+  displaying `Project ready`. The approved Lesson 1.2 revision adds a direct
+  `ProjectIcon` Sprite2D child at `(256, 240)`, with Rotation `0°`, Scale
+  `(0.125, 0.125)`, and the `res://icon.svg` texture. The approved Lesson 1.3
+  revision now stores that icon in `project_icon.tscn` and keeps one linked
+  instance beneath `Main`; `status_message.tscn` has no references and has
+  been removed.
+- **Approved revision target:** `Main` will contain a direct `Label` displaying
+  `Project ready` at `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`.
+  The source `project_icon.tscn` will use `icon.svg`, Rotation `0°`, and Scale
+  `(0.125, 0.125)`.
 - **Code state:** No GDScript or reusable gameplay systems exist yet.
-- **Observed Git head:** `1846a97` (`Position first scene content and validate
-  Module 1.2`); some earlier lesson-to-commit associations still
-  require reconciliation.
-- **Exact next lesson:** **2.1 Configure Keyboard and Controller Actions** -
-  Blueprint drafted, pending review and approval.
-- **Working-tree caution:** The validated Lesson 1.2 revision, validated Lesson
-  1.3 material and artifacts, the Lesson 2.1 blueprint, and roadmap status are
-  uncommitted. Preserve them and all unrelated user work.
+- **Observed Git head before this documentation revision:** `4dc4d30`
+  (`Validate parent-relative positioning and reusable status scene`), with a
+  clean working tree.
+- **Exact next step:** Review and approve the drafted Lesson 2.1 blueprint,
+  **Configure Keyboard and Controller Actions**, against the revalidated
+  Module 1 project state.
+- **Checkpoint:** The current Git checkpoint contains the revised Module 1
+  lessons, matching scene state, the affected Lesson 2.1 prerequisite/check,
+  and this roadmap reconciliation. Preserve unrelated user work.
 
 ## Status Model
 
@@ -133,14 +147,15 @@ it under version control.
 
 ### Module 1: Godot Scene Foundations
 
-**Depends on:** Module 0. **Outcome:** Understand nodes, scenes, positioning,
-and scene composition before gameplay code is introduced.
+**Depends on:** Module 0. **Outcome:** Understand nodes, scenes, basic 2D
+transforms, parent-relative transforms, scene composition, and instance
+overrides before gameplay code is introduced.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
-| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, root/child hierarchy, `main.tscn`, main scene | Validated | Current | `e918e66` |
-| 1.2 | Position Nodes in 2D | 2D coordinates, position, viewport navigation, parent-relative movement | Validated | Current | `1846a97` + uncommitted validated revision |
-| 1.3 | Compose Scenes from Reusable Parts | Instantiation and reusable child scenes | Validated | Current | Uncommitted validated material |
+| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | Out of sync | Current Module 1 revision checkpoint |
+| 1.2 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, parent-relative transforms | Validated | Out of sync | Current Module 1 revision checkpoint |
+| 1.3 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Out of sync | Current Module 1 revision checkpoint |
 
 ### Module 2: Actor and Player Foundations
 
@@ -149,7 +164,7 @@ a basic keyboard/controller player without premature feature inheritance.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
-| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Blueprint drafted - exact next lesson | Not published | Uncommitted working tree |
+| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Blueprint drafted - exact next lesson | Not published | Draft and affected prerequisite/check included in the current Module 1 revision checkpoint |
 | 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Planned | Not published | Unassigned |
 | 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Planned | Not published | Unassigned |
 | 2.4 | Write Typed Horizontal Movement | Typed GDScript, input axis, velocity | Planned | Not published | Unassigned |
@@ -380,9 +395,9 @@ practical use and later lessons can build on them without re-teaching them.
 
 | Concept family | First introduction | Principal reuse |
 | --- | --- | --- |
-| Nodes, scenes, hierarchy, running | 1.1 | Every later lesson |
-| 2D coordinates and transforms | 1.2 | Levels, actors, cameras, UI |
-| Scene composition and instantiation | 1.3 | Actors, components, levels, items |
+| Nodes, scenes, hierarchy, running, and viewport navigation | 1.1 | Every later lesson |
+| Position, Rotation, Scale, and parent-relative transforms | 1.2 | Levels, actors, cameras, combat, enemies, feedback, UI |
+| Scene composition, instantiation, source propagation, and instance overrides | 1.3 | Actors, components, levels, attacks, enemies, items |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
 | Actor boundary and specialization | 2.2-2.3 | Player, NPCs, enemies |
 | Typed GDScript and physics | 2.4-2.5 | All scripted gameplay |
@@ -391,6 +406,25 @@ practical use and later lessons can build on them without re-teaching them.
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
 | Minimal global services | 13.4 | Scene flow, saving, settings, quest state |
 | Versioned persistence | 15.1-15.9 | All persistent systems |
+
+### Downstream Transform Audit
+
+The approved Module 1 revision does not change the order of Modules 2-17.
+Later lessons may build on these foundations but must explain values that are
+specific to the feature being built:
+
+- Modules 2-4 may assume basic Position, Rotation, and Scale knowledge while
+  explaining actor, physics, and level-specific transform choices in context.
+- Module 5 reuses Sprite2D, texture assignment, and basic transforms for
+  character presentation instead of introducing them for the first time.
+- Modules 8-9 reuse transforms, reusable scenes, and instance overrides for
+  attacks, projectiles, and enemy variants.
+- Module 16 reuses Rotation and Scale when adding visual gameplay feedback.
+- Modules 6-7, 10-15, and 17 need no lesson-boundary or dependency change from
+  this revision; they may reuse the foundations wherever their practical
+  implementation requires them.
+- No later lesson should claim to introduce Position, Rotation, Scale,
+  source-scene propagation, or per-instance overrides for the first time.
 
 ## Production Gates After the Written Curriculum
 
@@ -434,3 +468,6 @@ Remaining reconciliation work:
 | Defer visual production until the written curriculum is complete | Visuals should reflect validated steps and avoid repeated rework. |
 | Keep learner verification boxes unchecked | They belong to each learner; production completion is tracked here. |
 | Keep curriculum modules cohesive and portability-aware without introducing configurable course assembly yet | The first complete course will reveal which modules are genuinely reusable; shared libraries, course manifests, and alternate entry checkpoints remain deferred until then. |
+| Teach viewport navigation when the first small Label appears in Lesson 1.1 | Centering, zooming, Pan Mode, and panning shortcuts solve an immediate viewing problem without changing scene content. |
+| Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | `ProjectIcon` makes all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
+| Demonstrate source propagation and per-instance overrides with `ProjectIcon` in Lesson 1.3 | Rotation makes the distinction visible while keeping the source scene and instance responsibilities small; Modules 2-17 retain their order. |
