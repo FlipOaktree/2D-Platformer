@@ -1,6 +1,6 @@
 # Module 1, Lesson 2: Transform Nodes in 2D
 
-**Status:** Validated locally; Notion out of sync
+**Status:** Validated locally; Notion current
 
 ## By the end
 

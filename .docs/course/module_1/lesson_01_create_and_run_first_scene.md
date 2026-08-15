@@ -1,6 +1,6 @@
 # Module 1, Lesson 1: Create and Run Your First Scene
 
-**Status:** Validated locally; Notion out of sync
+**Status:** Validated locally; Notion current
 
 ## By the end
 
@@ -66,18 +66,18 @@ content in the 2D viewport without moving it.
     Panning and zooming change only your view inside the editor. They do not
     move the Label or change what appears when the game runs.
 
+13. Save the scene with **Scene → Save Scene** or `Ctrl+S`.
+14. In the save dialog, create a folder named `scenes`.
+15. Open `scenes`, enter `main.tscn` as the file name, and select **Save**.
+
+   > 💡 A `.tscn` file stores a Godot scene.
+
 > ⚠️ **If something differs**
 >
 > - If the Label becomes hard to find, double-click its icon in the Scene dock
 >   to center it again.
 > - If dragging moves the Label instead of the view, undo with `Ctrl+Z`, then
 >   select Pan Mode or use one of the panning shortcuts.
-
-13. Save the scene with **Scene → Save Scene** or `Ctrl+S`.
-14. In the save dialog, create a folder named `scenes`.
-15. Open `scenes`, enter `main.tscn` as the file name, and select **Save**.
-
-   > 💡 A `.tscn` file stores a Godot scene.
 
 ### Part 2: Run the scene and set the project starting point
 

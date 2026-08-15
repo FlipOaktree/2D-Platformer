@@ -24,35 +24,25 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4, and the currently
-  published versions of Module 1, Lessons 1.1-1.3. Approved revisions to all
-  three Module 1 lessons are approved locally and require implementation where
-  behavior changes and revalidation.
-- **Godot evidence:** Commit `4dc4d30` records the validated published Module 1
-  state: `Main` contains one `StatusMessage` instance of
-  `status_message.tscn` at `(96, 72)`, displaying `Project ready` without
-  related errors or warnings. The approved Lesson 1.1 revision now replaces
-  that instance in the working tree with a direct `Label` at `(0, 0)`,
-  displaying `Project ready`. The approved Lesson 1.2 revision adds a direct
-  `ProjectIcon` Sprite2D child at `(256, 240)`, with Rotation `0°`, Scale
-  `(0.125, 0.125)`, and the `res://icon.svg` texture. The approved Lesson 1.3
-  revision now stores that icon in `project_icon.tscn` and keeps one linked
-  instance beneath `Main`; `status_message.tscn` has no references and has
-  been removed.
-- **Approved revision target:** `Main` will contain a direct `Label` displaying
-  `Project ready` at `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`.
-  The source `project_icon.tscn` will use `icon.svg`, Rotation `0°`, and Scale
-  `(0.125, 0.125)`.
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4, and locally validated
+  revisions of Module 1, Lessons 1.1-1.3. Their published Notion mirrors are
+  current.
+- **Godot evidence:** Commit `af97e0a` records the revised, validated Module 1
+  state. `Main` contains a direct `Label` displaying `Project ready` at
+  `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`. The source
+  `project_icon.tscn` uses `icon.svg`, Rotation `0°`, and Scale
+  `(0.125, 0.125)`. The earlier `status_message.tscn` has been removed.
 - **Code state:** No GDScript or reusable gameplay systems exist yet.
-- **Observed Git head before this documentation revision:** `4dc4d30`
-  (`Validate parent-relative positioning and reusable status scene`), with a
-  clean working tree.
+- **Observed Git head:** `af97e0a` (`Revise Module 1 scene transform
+  foundations`), one commit ahead of `origin/main`. The working tree contains
+  documentation reconciliation only; the Godot artifacts match the commit.
 - **Exact next step:** Review and approve the drafted Lesson 2.1 blueprint,
   **Configure Keyboard and Controller Actions**, against the revalidated
   Module 1 project state.
-- **Checkpoint:** The current Git checkpoint contains the revised Module 1
-  lessons, matching scene state, the affected Lesson 2.1 prerequisite/check,
-  and this roadmap reconciliation. Preserve unrelated user work.
+- **Checkpoint:** Commit `af97e0a` contains the revised Module 1 lessons,
+  matching scene state, and the affected Lesson 2.1 prerequisite and
+  regression check. The working tree contains subsequent publication-status,
+  Lesson 2.1, and roadmap reconciliation. Preserve unrelated user work.
 
 ## Status Model
 
@@ -153,9 +143,9 @@ overrides before gameplay code is introduced.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
-| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | Out of sync | Current Module 1 revision checkpoint |
-| 1.2 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, parent-relative transforms | Validated | Out of sync | Current Module 1 revision checkpoint |
-| 1.3 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Out of sync | Current Module 1 revision checkpoint |
+| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | Current | Current Module 1 revision checkpoint |
+| 1.2 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, parent-relative transforms | Validated | Current | Current Module 1 revision checkpoint |
+| 1.3 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Current | Current Module 1 revision checkpoint |
 
 ### Module 2: Actor and Player Foundations
 

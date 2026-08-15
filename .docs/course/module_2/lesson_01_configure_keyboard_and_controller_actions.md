@@ -6,7 +6,7 @@
 
 Create three named input actions that later player code can use without caring
 whether the player uses a keyboard or a controller. The running project will
-still display `Project ready` and `ProjectIcon`, while the Input Map will
+still display `Project ready` and the project icon, while the Input Map will
 contain:
 
 - `move_left`, controlled by `A`, `Left Arrow`, controller D-pad left, and the
@@ -21,8 +21,8 @@ contain:
 - `main.tscn` displays `Project ready` and contains one `ProjectIcon` instance
   of `project_icon.tscn`.
 - The project opens and runs without related errors or warnings.
-- To add and check the controller inputs directly, connect a Godot-compatible
-  controller before opening the Input Map.
+- No controller is required to configure the standard controller events. A
+  Godot-compatible controller is needed only to verify the physical controls.
 
 ## Build steps
 
@@ -93,23 +93,24 @@ contain:
 
 ### Part 3: Add controller events
 
-1. Confirm that the controller is connected.
-2. Expand `move_left`, select **Add Event**, press D-pad left, and confirm the
-   event.
-3. Add another event to `move_left`, move the left stick fully left, then
-   confirm the detected negative horizontal axis event.
-4. Expand `move_right`, add D-pad right, and confirm it.
-5. Add another event to `move_right`, move the left stick fully right, then
-   confirm the detected positive horizontal axis event.
-6. Expand `jump`, press the controller's bottom face button, and confirm the
-   event.
+1. Expand `move_left`, then select **Add Event**.
+2. Under **Filter Inputs**, expand **Joypad Buttons**.
+3. Select **Joypad Button 13 (D-pad Left)**, then select **OK**.
+4. Add another event to `move_left` and expand **Joypad Axes**.
+5. Select **Joypad Axis 0 - (Left Stick Left, Joystick 0 Left)**, then select
+   **OK**.
+6. Expand `move_right` and add **Joypad Button 14 (D-pad Right)**.
+7. Add **Joypad Axis 0 + (Left Stick Right, Joystick 0 Right)** to
+   `move_right`.
+8. Expand `jump` and add **Joypad Button 0 (Bottom Action, Sony Cross, Xbox A,
+   Nintendo B)**.
 
    The bottom face button is called `A` on an Xbox-style controller and
    Cross on a PlayStation-style controller. Godot maps supported controllers
    by the button's position, so the action does not need a brand-specific
    name.
 
-7. Confirm that the completed actions contain these controller inputs:
+9. Confirm that the completed actions contain these controller inputs:
 
    | Action | Controller events |
    | --- | --- |
@@ -117,7 +118,19 @@ contain:
    | `move_right` | D-pad right, left stick right |
    | `jump` | Bottom face button |
 
-8. Leave each action's deadzone at its default value of `0.5`.
+10. Leave each action's deadzone at its default value of `0.5`.
+11. If a compatible controller is connected, select **Add Event** beneath an
+    action and use **Listening for Input** to press or move its mapped control.
+    Confirm that Godot detects the expected event, then select **Cancel** so a
+    duplicate is not added. Repeat for D-pad left and right, left-stick left
+    and right, and the bottom face button.
+12. If no compatible controller is available, record the physical controller
+    test as pending. Keep all five standard controller events configured.
+
+> 💡 Selecting standard events from **Joypad Buttons** and **Joypad Axes**
+> configures controller support even when no controller is connected. Hardware
+> is needed to test the physical controls, not to create their Input Map
+> entries.
 
 > 💡 An analog stick reports a range of strengths instead of only on or
 > off. A **deadzone** ignores small values near the stick's resting position,
@@ -127,23 +140,23 @@ contain:
 
 > ⚠️ **If something differs**
 >
-> - If Godot does not detect the controller, confirm that the operating system
->   recognizes it, reconnect it, and reopen the **Add Event** dialog.
-> - If moving the stick adds a vertical axis, remove that event and move the
->   stick straight left or right when listening again.
-> - If the left and right stick events show the same direction, remove the
->   incorrect event and record it again under the matching action.
-> - If no controller is available, keep the keyboard events complete and mark
->   the controller checklist items for later verification on compatible
->   hardware. Do not substitute guessed button numbers.
+> - If a controller choice is not visible, expand **Joypad Buttons** or
+>   **Joypad Axes** under **Filter Inputs** instead of using the listening
+>   field.
+> - If the stick events show the same direction, remove the incorrect event.
+>   Add Axis `0 -` beneath `move_left` and Axis `0 +` beneath `move_right`.
+> - If connected hardware is not recognized, confirm that the operating system
+>   recognizes it and reconnect it. Keep the standard events configured and
+>   record the physical controller check as pending.
 
 ### Part 4: Save and inspect the result
 
 1. Close **Project Settings**. Godot saves Input Map changes in
    `project.godot`.
 2. Reopen **Project → Project Settings → Input Map**.
-3. Expand `move_left`, `move_right`, and `jump`, then confirm that every event
-   is still present and the left/right stick directions are opposite.
+3. Expand `move_left`, `move_right`, and `jump`, then confirm that every added
+   event is still present and the left and right stick directions are
+   opposite.
 4. Close **Project Settings**.
 5. Run the project with `F5`.
 6. Confirm that the existing `Project ready` message and project icon still
@@ -192,9 +205,11 @@ Without repeating the build steps:
       input action.
 - [ ] The learner can explain why action names describe intent instead of a
       particular key or controller button.
-- [ ] If compatible controller hardware is unavailable, the unfinished
-      controller checks are recorded for later verification rather than
-      assumed to pass.
+- [ ] If compatible controller hardware is available, the mapped controls are
+      recognized physically.
+- [ ] If compatible controller hardware is unavailable, all standard events
+      are still configured and the physical controller test is recorded as
+      pending rather than assumed to pass.
 
 ## References
 

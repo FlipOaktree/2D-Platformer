@@ -1,6 +1,6 @@
 # Module 1, Lesson 3: Compose Scenes from Reusable Parts
 
-**Status:** Validated locally; Notion out of sync
+**Status:** Validated locally; Notion current
 
 ## By the end
 
