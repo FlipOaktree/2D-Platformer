@@ -9,5 +9,5 @@ offset_right = 106.0
 offset_bottom = 51.0
 text = "Project ready"
 
-[node name="ProjectIcon" parent="." instance=ExtResource("1_project_icon")]
+[node name="ProjectIcon" parent="." unique_id=2058426337 instance=ExtResource("1_project_icon")]
 position = Vector2(256, 240)

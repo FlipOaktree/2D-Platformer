@@ -24,9 +24,9 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4, and locally validated
-  revisions of Module 1, Lessons 1.1-1.3. Their published Notion mirrors are
-  current.
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4, locally validated
+  revisions of Module 1, Lessons 1.1-1.3, and Module 2, Lesson 2.1. Their
+  Notion mirrors are current.
 - **Godot evidence:** Commit `af97e0a` records the revised, validated Module 1
   state. `Main` contains a direct `Label` displaying `Project ready` at
   `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`. The source
@@ -35,10 +35,10 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Code state:** No GDScript or reusable gameplay systems exist yet.
 - **Observed Git head:** `af97e0a` (`Revise Module 1 scene transform
   foundations`), one commit ahead of `origin/main`. The working tree contains
-  documentation reconciliation only; the Godot artifacts match the commit.
-- **Exact next step:** Review and approve the drafted Lesson 2.1 blueprint,
-  **Configure Keyboard and Controller Actions**, against the revalidated
-  Module 1 project state.
+  the locally validated Lesson 2.1 documentation and uncommitted Input Map and
+  `main.tscn` changes; preserve them until they are intentionally committed.
+- **Exact next step:** Draft the Lesson 2.2 blueprint, **Build the Shared Actor
+  Scene**, using the validated input actions as its prerequisite.
 - **Checkpoint:** Commit `af97e0a` contains the revised Module 1 lessons,
   matching scene state, and the affected Lesson 2.1 prerequisite and
   regression check. The working tree contains subsequent publication-status,
@@ -154,7 +154,7 @@ a basic keyboard/controller player without premature feature inheritance.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
-| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Blueprint drafted - exact next lesson | Not published | Draft and affected prerequisite/check included in the current Module 1 revision checkpoint |
+| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Validated locally | Current | Uncommitted working tree; commit association pending |
 | 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Planned | Not published | Unassigned |
 | 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Planned | Not published | Unassigned |
 | 2.4 | Write Typed Horizontal Movement | Typed GDScript, input axis, velocity | Planned | Not published | Unassigned |
