@@ -1,6 +1,6 @@
 # Module 0, Lesson 4: Create the First Git Checkpoint
 
-**Status:** Written procedure validated and logged in Notion
+**Status:** Validated
 
 ## By the end
 

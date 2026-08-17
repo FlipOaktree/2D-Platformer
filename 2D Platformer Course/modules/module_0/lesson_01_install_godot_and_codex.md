@@ -1,6 +1,6 @@
 # Module 0, Lesson 1: Install Godot and Codex on Windows
 
-**Status:** Written procedure validated and logged in Notion
+**Status:** Validated
 
 ## By the end
 

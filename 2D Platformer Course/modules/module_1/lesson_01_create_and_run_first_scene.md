@@ -1,6 +1,6 @@
 # Module 1, Lesson 1: Create and Run Your First Scene
 
-**Status:** Validated locally; Notion current
+**Status:** Validated
 
 ## By the end
 

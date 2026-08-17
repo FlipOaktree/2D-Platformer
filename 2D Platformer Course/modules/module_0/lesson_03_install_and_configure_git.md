@@ -1,6 +1,6 @@
 # Module 0, Lesson 3: Install and Configure Git
 
-**Status:** Written procedure validated and logged in Notion
+**Status:** Validated
 
 ## By the end
 

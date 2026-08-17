@@ -59,12 +59,12 @@ an optional accelerator for planning, explanation, coding, debugging, testing,
 documentation, and asset workflows. Learners direct, review, correct, and test
 its work rather than asking AI to generate a game as a black box.
 
-### A free learner toolchain
+### A free core learner toolchain
 
-The learner-facing workflow uses free tools such as Godot, Git, Notion's free
-tier, and Affinity. AI subscriptions or paid AI usage are optional and
-disclosed separately. Internal course-production utilities are not presented
-as learner requirements.
+The core learner-facing workflow uses free tools: Godot and Git. Codex is an
+optional accelerator, and any AI subscription or paid usage is disclosed
+separately. Internal course-production utilities are not presented as learner
+requirements.
 
 ### Build something reusable
 
@@ -111,10 +111,10 @@ project using only the written material.
   lessons. A representative pattern is taught before AI accelerates useful
   repetition or iteration.
 - **A reusable reference:** the course material remains useful after completion.
-- **Organization taught in context:** Notion task management and Codex appear
-  when they genuinely help the current work.
-- **Practical tool fluency:** learners pick up useful Godot, Codex, and Notion
-  best practices, tips, and shortcuts while using each tool for real work.
+- **Organization taught in context:** file organization, Git checkpoints, and
+  Codex appear when they genuinely help the current work.
+- **Practical tool fluency:** learners pick up useful Godot, Git, and Codex best
+  practices, tips, and shortcuts while using each tool for real work.
 
 ## Claim Guardrails
 

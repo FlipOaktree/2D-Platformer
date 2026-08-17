@@ -1,6 +1,6 @@
 # Module 2, Lesson 2: Build the Shared Actor Scene
 
-**Status:** Validated locally; Notion current
+**Status:** Validated
 
 ## By the end
 

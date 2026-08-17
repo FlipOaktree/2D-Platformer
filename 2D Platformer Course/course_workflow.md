@@ -11,11 +11,10 @@ basic computer and file-management skills.
 
 ## Roadmap and Continuity
 
-`.docs/course_roadmap.md` is the canonical source for the course scope,
-curriculum sequence, architectural direction, progress, and next lesson.
+`2D Platformer Course/course_roadmap.md` is the canonical source for the course
+scope, curriculum sequence, architectural direction, progress, and next lesson.
 Individual lesson files remain authoritative for learner-facing instructions,
 and the Godot project is the evidence for what has actually been implemented.
-Notion mirrors validated material only.
 
 Before planning or changing a lesson:
 
@@ -26,7 +25,7 @@ Before planning or changing a lesson:
 5. Review which prerequisites and concepts have already been taught so the
    lesson neither assumes unexplained knowledge nor repeats a full introduction.
 
-Track the lesson lifecycle separately from publication:
+Track each lesson with this lifecycle:
 
 - **Planned** - the lesson exists only in the approved provisional roadmap.
 - **Blueprint drafted** - learner instructions exist but are not yet approved.
@@ -36,12 +35,11 @@ Track the lesson lifecycle separately from publication:
 - **Validated** - the written procedure and resulting project behavior have
   passed the lesson verification.
 
-Track Notion independently as **Not published**, **Current**, or **Out of
-sync**. Learner verification checkboxes stay unchecked so learners can use
-them; production validation belongs in the lesson status and roadmap.
+Learner verification checkboxes stay unchecked so learners can use them;
+production validation belongs in the lesson status and roadmap.
 
 Update the roadmap after an approved change to scope, sequence, dependencies,
-architecture, lifecycle, validation, Notion publication, or Git association.
+architecture, lifecycle, validation, or Git association.
 When implementation changes an earlier assumption, identify every downstream
 lesson, test, visual, and task affected before updating the roadmap. Curriculum
 changes remain welcome, but record the decision and its reason so future tasks
@@ -77,7 +75,7 @@ Before proceeding, present:
 
 1. The learning or project outcome.
 2. Why this is the next step.
-3. The files, Godot scenes, tools, or Notion records it may affect.
+3. The files, Godot scenes, or tools it may affect.
 4. The expected visible result.
 5. The verification method.
 
@@ -101,8 +99,8 @@ Draft these planning considerations:
 - A learner exercise.
 - A verification checklist.
 - The role of AI in the lesson, if it provides a clear advantage.
-- Any relevant Godot, Codex, or Notion best practice, tip, or shortcut that
-  makes the current work clearer, safer, or faster.
+- Any relevant Godot or Codex best practice, tip, or shortcut that makes the
+  current work clearer, safer, or faster.
 
 The blueprint can change during validation.
 
@@ -137,8 +135,8 @@ Format contextual lesson notes consistently:
 ### 2. Build
 
 - Follow the blueprint in order.
-- Explain only the part of Godot, Codex, Notion, Git, or Affinity needed for
-  the current task.
+- Explain only the part of Godot, Codex, Git, or Affinity needed for the
+  current task.
 - Introduce a practical best practice, tip, or shortcut when it directly helps
   the current task. Keep it brief and in context rather than turning it into a
   separate tool tutorial.
@@ -181,27 +179,6 @@ A lesson is verified when:
   add required screenshots, diagrams, or short demonstrations during a later
   visual-support pass.
 - Associate the lesson with its Git commit and project version.
-- Present the proposed Notion entry.
-- Ask for permission before writing the lesson or updating its tasks in
-  Notion.
-- When approved, create the lesson page inside its parent Module page under
-  the course page. Use a plain lesson title without a page or header icon.
-
-## Notion Task Workflow
-
-Use a simple task flow:
-
-`Backlog -> Next -> In Progress -> Blocked or Done`
-
-- Create tasks from an approved module or lesson blueprint.
-- Keep tasks outcome-based and link them to the relevant lesson.
-- Include acceptance criteria rather than vague activity descriptions.
-- Separate curriculum, code, test, visual, and documentation work only when
-  doing so makes progress clearer.
-- Do not create recording or learner-download tasks until the entire written
-  course passes its end-to-end validation.
-- Ask permission before creating a task group or updating completed lesson
-  records in Notion.
 
 ## Change Management
 

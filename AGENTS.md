@@ -19,8 +19,8 @@ the same written course material that learners will later use.
 
 ## Course-First Workflow
 
-- Read `.docs/course_workflow.md` before planning, implementing, testing, or
-  documenting a course lesson.
+- Read `2D Platformer Course/course_workflow.md` before planning,
+  implementing, testing, or documenting a course lesson.
 - Draft the lesson blueprint before implementing its feature.
 - Build the feature by following the blueprint in order.
 - Test the result and revise the blueprint using what actually happened.
@@ -28,29 +28,30 @@ the same written course material that learners will later use.
   has been rebuilt from an empty project and validated.
 - Explain concepts with short beginner-friendly language covering what, how,
   and why. Introduce tools only when they are needed.
-- Teach relevant Godot, Codex, and Notion best practices, tips, and shortcuts
-  in context when they make the current task clearer, safer, or faster. Keep
-  them brief; do not turn them into separate tool tours.
+- Teach relevant Godot and Codex best practices, tips, and shortcuts in context
+  when they make the current task clearer, safer, or faster. Keep them brief;
+  do not turn them into separate tool tours.
 - Assume no Godot or programming experience, while expecting basic computer
   and file-management skills.
 
 ## Course Continuity
 
-- Treat `.docs/course_roadmap.md` as the canonical source for the course scope,
-  curriculum sequence, architectural direction, progress, and next lesson.
-- At the start of every course-related task, read `.docs/course_workflow.md`,
-  `.docs/course_roadmap.md`, and the affected completed and upcoming lessons.
+- Treat `2D Platformer Course/course_roadmap.md` as the canonical source for
+  the course scope, curriculum sequence, architectural direction, progress,
+  and next lesson.
+- At the start of every course-related task, read
+  `2D Platformer Course/course_workflow.md`,
+  `2D Platformer Course/course_roadmap.md`, and the affected completed and
+  upcoming lessons.
 - Inspect the relevant Godot artifacts and `git status`, then compare the
   observed state with the roadmap before proposing work.
-- Report discrepancies between the roadmap, lesson files, Godot project, Git,
-  and Notion before changing anything. Do not silently choose one version.
+- Report discrepancies between the roadmap, lesson files, Godot project, and
+  Git before changing anything. Do not silently choose one version.
 - Follow the roadmap's next planned lesson unless an approved curriculum change
   updates the roadmap first.
 - Update the roadmap after an approved change to course scope, lesson sequence,
-  architecture, lifecycle status, validation status, Notion publication, or
-  Git association.
-- Keep local repository files authoritative. Notion is the published mirror of
-  validated course material, not the source for unfinished curriculum state.
+  architecture, lifecycle status, validation status, or Git association.
+- Keep the Markdown course files in the local repository authoritative.
 
 ## Integrated AI Workflow
 
@@ -67,17 +68,6 @@ the same written course material that learners will later use.
   benefit.
 - Keep internal production tools, including ShareX, out of learner requirements
   unless the learner genuinely needs them.
-
-## Notion Permission
-
-- Never create or update course material or tasks in Notion without explicit
-  permission.
-- After a lesson is implemented and verified, present the proposed final entry
-  and ask whether it should be logged in Notion.
-- When approved to log a lesson, create it inside its parent Module page under
-  the course page. Use a plain lesson title without a page or header icon.
-- Keep unfinished drafts local or in the conversation until permission is
-  granted.
 
 ## Godot Development Rules
 

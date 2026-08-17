@@ -1,6 +1,6 @@
-﻿# Module 0, Lesson 2: Create an Empty Godot Project
+# Module 0, Lesson 2: Create an Empty Godot Project
 
-**Status:** Written procedure validated and logged in Notion
+**Status:** Validated
 
 ## By the end
 

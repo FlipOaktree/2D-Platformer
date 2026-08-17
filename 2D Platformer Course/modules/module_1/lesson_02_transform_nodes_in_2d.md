@@ -1,6 +1,6 @@
 # Module 1, Lesson 2: Transform Nodes in 2D
 
-**Status:** Validated locally; Notion current
+**Status:** Validated
 
 ## By the end
 

@@ -1,6 +1,6 @@
 # Module 2, Lesson 3: Specialize Actor into a Player
 
-**Status:** Blueprint drafted; Notion not published
+**Status:** Blueprint drafted
 
 ## By the end
 

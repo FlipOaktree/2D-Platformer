@@ -1,6 +1,6 @@
 # Module 2, Lesson 1: Configure Keyboard and Controller Actions
 
-**Status:** Validated locally; Notion current
+**Status:** Validated
 
 ## By the end
 

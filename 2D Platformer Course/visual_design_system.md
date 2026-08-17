@@ -9,13 +9,14 @@ modern and calm, without looking like a full screenshot or a busy slide.
 ## Asset Organization
 
 - Keep lesson-specific visual assets in that module's `assets` folder. For
-  example: `.docs/course/module_0/assets/`.
+  example: `2D Platformer Course/modules/module_0/assets/`.
 - Keep editable source files (such as `.af` and `.svg`) beside the exported
-  `.png` used in Notion and later course production.
+  `.png` used in the written lessons and later course production.
 - Treat the exported PNG as the learner-facing delivery asset. Keep raw
   captures and temporary production files out of the final lesson unless they
   serve a defined teaching purpose.
-- Keep course-wide resources, such as fonts, in `.docs/course/fonts/`.
+- Keep course-wide resources, such as fonts, in
+  `2D Platformer Course/fonts/`.
 - Link to a lesson asset from its Markdown file with a short relative path.
 
 ## Production and Learner Tools
@@ -85,7 +86,8 @@ is the working font for editable visual source files.
 - Avoid gradients, decorative illustrations, fake IDE chrome, and dense text.
 - Give every visual one defined teaching purpose. Remove visuals that only
   decorate or repeat the surrounding text.
-- Check readability at the size used in Notion and the future video frame.
+- Check readability at the size used in the written lesson and the future
+  video frame.
 - Do not use color as the only way to communicate meaning; pair it with labels,
   icons, position, or shape.
 - Give learner-facing images a concise descriptive caption or alternative-text
