@@ -25,24 +25,25 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4, locally validated
-  revisions of Module 1, Lessons 1.1-1.3, and Module 2, Lesson 2.1. Their
-  Notion mirrors are current.
-- **Godot evidence:** Commit `af97e0a` records the revised, validated Module 1
-  state. `Main` contains a direct `Label` displaying `Project ready` at
-  `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`. The source
-  `project_icon.tscn` uses `icon.svg`, Rotation `0°`, and Scale
-  `(0.125, 0.125)`. The earlier `status_message.tscn` has been removed.
+  revisions of Module 1, Lessons 1.1-1.3, and Module 2, Lessons 2.1-2.2. The
+  Notion mirrors through Lesson 2.2 are current.
+- **Godot evidence:** Commit `624d69b` records the validated Lesson 2.1 state.
+  `Main` still contains a direct `Label` displaying `Project ready` at
+  `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`. The Input Map adds
+  `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
+  validated keyboard/controller events. The locally validated Lesson 2.2
+  working tree adds `res://actors/actor.tscn`: a `CharacterBody2D` root with
+  `Visuals`, `CollisionShape2D`, and `Components` children.
 - **Code state:** No GDScript or reusable gameplay systems exist yet.
-- **Observed Git head:** `af97e0a` (`Revise Module 1 scene transform
-  foundations`), one commit ahead of `origin/main`. The working tree contains
-  the locally validated Lesson 2.1 documentation and uncommitted Input Map and
-  `main.tscn` changes; preserve them until they are intentionally committed.
-- **Exact next step:** Draft the Lesson 2.2 blueprint, **Build the Shared Actor
-  Scene**, using the validated input actions as its prerequisite.
-- **Checkpoint:** Commit `af97e0a` contains the revised Module 1 lessons,
-  matching scene state, and the affected Lesson 2.1 prerequisite and
-  regression check. The working tree contains subsequent publication-status,
-  Lesson 2.1, and roadmap reconciliation. Preserve unrelated user work.
+- **Observed Git head:** `624d69b` (`Configure keyboard and controller input
+  actions`), matching `origin/main`. The working tree contains the locally
+  validated Lesson 2.2 documentation, roadmap update, and `actor.tscn`; commit
+  association is pending.
+- **Exact next step:** Review and approve the drafted Lesson 2.3 blueprint,
+  **Specialize Actor into a Player**, before implementing it in Godot.
+- **Checkpoint:** Commit `624d69b` contains the validated Lesson 2.1 material,
+  matching Input Map, and Module 1 regression state. The working tree contains
+  the Lesson 2.2 blueprint and this roadmap update.
 
 ## Status Model
 
@@ -154,9 +155,9 @@ a basic keyboard/controller player without premature feature inheritance.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Notion | Git |
 | --- | --- | --- | --- | --- | --- |
-| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Validated locally | Current | Uncommitted working tree; commit association pending |
-| 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Planned | Not published | Unassigned |
-| 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Planned | Not published | Unassigned |
+| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Validated locally | Current | `624d69b` |
+| 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Validated locally | Current | Uncommitted working tree; commit association pending |
+| 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Blueprint drafted | Not published | Unassigned |
 | 2.4 | Write Typed Horizontal Movement | Typed GDScript, input axis, velocity | Planned | Not published | Unassigned |
 | 2.5 | Add Gravity and Floor Collision | Physics process, collision, grounded state | Planned | Not published | Unassigned |
 | 2.6 | Add Jumping | Jump action and vertical velocity | Planned | Not published | Unassigned |

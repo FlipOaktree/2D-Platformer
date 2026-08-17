@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cnfedd1im6bj8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkpjr"]
+size = Vector2(32, 32)
+
+[node name="Actor" type="CharacterBody2D" unique_id=1623537006]
+
+[node name="Visuals" type="Node2D" parent="." unique_id=953118008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=35094018]
+shape = SubResource("RectangleShape2D_lkpjr")
+
+[node name="Components" type="Node2D" parent="." unique_id=295032778]
