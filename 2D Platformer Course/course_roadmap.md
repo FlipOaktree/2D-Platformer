@@ -23,27 +23,30 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4, locally validated
-  revisions of Module 1, Lessons 1.1-1.3, and Module 2, Lessons 2.1-2.2.
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4, validated revisions of
+  Module 1, Lessons 1.1-1.3, and Module 2, Lessons 2.1-2.4.
 - **Godot evidence:** Commit `624d69b` records the validated Lesson 2.1 state.
   `Main` still contains a direct `Label` displaying `Project ready` at
   `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`. The Input Map adds
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
-  validated keyboard/controller events. The locally validated Lesson 2.2
-  working tree adds `res://actors/actor.tscn`: a `CharacterBody2D` root with
-  `Visuals`, `CollisionShape2D`, and `Components` children.
+  validated keyboard/controller events. The working tree adds
+  `res://actors/actor.tscn`: a `CharacterBody2D` root with `Visuals`,
+  `CollisionShape2D`, and `Components` children, plus
+  `res://actors/player.tscn`, which inherits Actor and is instanced in `Main`
+  at `(128, 128)`.
 - **Code state:** No GDScript or reusable gameplay systems exist yet.
 - **Observed Git head:** `624d69b` (`Configure keyboard and controller input
   actions`), matching `origin/main`. The working tree contains the course
-  directory move, the locally validated Lesson 2.2 documentation and
-  `actor.tscn`, the drafted Lesson 2.3 blueprint, and documentation cleanup;
-  commit association is pending.
-- **Exact next step:** Review and approve the drafted Lesson 2.3 blueprint,
-  **Specialize Actor into a Player**, before implementing it in Godot.
+  directory move, validated Lessons 2.2-2.3 documentation and scene changes,
+  and documentation cleanup; commit association is pending.
+- **Exact next step:** Review and approve the drafted Lesson 2.5 blueprint,
+  **Write Typed Horizontal Movement**, before implementing the Player movement
+  script.
 - **Checkpoint:** Commit `624d69b` contains the validated Lesson 2.1 material,
   matching Input Map, and Module 1 regression state. The working tree contains
-  course files through the drafted Lesson 2.3 blueprint and the validated
-  Lesson 2.2 Actor scene.
+  course files through validated Lesson 2.4 and the drafted Lesson 2.5
+  blueprint, plus the Actor and
+  Player scenes.
 
 ## Status Model
 
@@ -154,12 +157,13 @@ a basic keyboard/controller player without premature feature inheritance.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Validated locally | `624d69b` |
-| 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Validated locally | Uncommitted working tree; commit association pending |
-| 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Blueprint drafted | Unassigned |
-| 2.4 | Write Typed Horizontal Movement | Typed GDScript, input axis, velocity | Planned | Unassigned |
-| 2.5 | Add Gravity and Floor Collision | Physics process, collision, grounded state | Planned | Unassigned |
-| 2.6 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
+| 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Validated | `624d69b` |
+| 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Validated | Uncommitted working tree; commit association pending |
+| 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Validated | Uncommitted working tree; commit association pending |
+| 2.4 | Understand GDScript Fundamentals | GDScript syntax, values, types, variables, and operators | Validated | Unassigned |
+| 2.5 | Write Typed Horizontal Movement | Constants, functions, input axis, velocity, and `move_and_slide()` | Blueprint drafted | Unassigned |
+| 2.6 | Add Gravity and Floor Collision | Physics process, collision, grounded state | Planned | Unassigned |
+| 2.7 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
 
 ### Module 3: Responsive Player Movement
 
@@ -390,7 +394,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Scene composition, instantiation, source propagation, and instance overrides | 1.3 | Actors, components, levels, attacks, enemies, items |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
 | Actor boundary and specialization | 2.2-2.3 | Player, NPCs, enemies |
-| Typed GDScript and physics | 2.4-2.5 | All scripted gameplay |
+| GDScript fundamentals | 2.4 | All scripted gameplay |
+| Player movement and physics | 2.5-2.7 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
@@ -460,3 +465,4 @@ Remaining reconciliation work:
 | Teach viewport navigation when the first small Label appears in Lesson 1.1 | Centering, zooming, Pan Mode, and panning shortcuts solve an immediate viewing problem without changing scene content. |
 | Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | `ProjectIcon` makes all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
 | Demonstrate source propagation and per-instance overrides with `ProjectIcon` in Lesson 1.3 | Rotation makes the distinction visible while keeping the source scene and instance responsibilities small; Modules 2-17 retain their order. |
+| Introduce GDScript fundamentals before Player movement | Beginners should understand the small code vocabulary used in their first script before combining it with Godot input and physics. Lesson 2.4 introduces the foundations; horizontal movement moves to 2.5, gravity to 2.6, and jumping to 2.7. |

@@ -1,6 +1,6 @@
 # Module 2, Lesson 3: Specialize Actor into a Player
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
@@ -27,8 +27,8 @@ for debugging, its square collision boundary will appear when the project runs.
 
 ### Part 1: Create an inherited Player scene
 
-1. In Godot, select **Scene → New Inherited Scene**.
-2. In the file dialog, open `res://actors/actor.tscn`.
+1. In the FileSystem dock, right-click `res://actors/actor.tscn`.
+2. Select **New Inherited Scene**.
 3. Confirm that a new unsaved scene opens with `Actor` as its root and the
    inherited `Visuals`, `CollisionShape2D`, and `Components` children.
 4. Rename the root node `Player`.
@@ -55,8 +55,8 @@ for debugging, its square collision boundary will appear when the project runs.
 > ⚠️ **If something differs**
 >
 > - If the open tab is `actor.tscn` instead of a new unsaved inherited scene,
->   do not rename or save it. Select **Scene → New Inherited Scene** and choose
->   `actor.tscn` from the file dialog.
+>   do not rename or save it. In the FileSystem dock, right-click `actor.tscn`
+>   and select **New Inherited Scene**.
 > - If the new scene has an empty root or copied children that can be freely
 >   removed, it was created as an independent scene. Close that unsaved scene
 >   and create a new inherited scene from `actor.tscn`.
@@ -91,7 +91,7 @@ for debugging, its square collision boundary will appear when the project runs.
 
 ### Part 3: Verify the invisible Player
 
-1. Select **Debug → Visible Collision Shapes** so the option is enabled.
+1. In the top editor menu bar, select **Debug → Visible Collision Shapes** so the option is enabled.
 2. Run the project with `F6` or **Run Current Scene** while `main.tscn` is open.
 3. Confirm that `Project ready` and the project icon still appear.
 4. Confirm that a square collision outline appears around `(128, 128)`.

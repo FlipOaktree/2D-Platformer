@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xsf4auwc5hrq"]
 
 [ext_resource type="PackedScene" path="res://scenes/project_icon.tscn" id="1_project_icon"]
+[ext_resource type="PackedScene" uid="uid://4jclya8fye78" path="res://actors/player.tscn" id="2_0wfyh"]
 
 [node name="Main" type="Node2D" unique_id=1280542419]
 
@@ -11,3 +12,6 @@ text = "Project ready"
 
 [node name="ProjectIcon" parent="." unique_id=2058426337 instance=ExtResource("1_project_icon")]
 position = Vector2(256, 240)
+
+[node name="Player" parent="." unique_id=1623537006 instance=ExtResource("2_0wfyh")]
+position = Vector2(128, 128)
