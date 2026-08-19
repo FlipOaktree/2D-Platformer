@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://4jclya8fye78"]
 
 [ext_resource type="PackedScene" uid="uid://cnfedd1im6bj8" path="res://actors/actor.tscn" id="1_niuxy"]
+[ext_resource type="Script" uid="uid://bffdg8cksn4fr" path="res://actors/player.gd" id="2_mvpqy"]
 
 [node name="Player" unique_id=1623537006 instance=ExtResource("1_niuxy")]
+script = ExtResource("2_mvpqy")

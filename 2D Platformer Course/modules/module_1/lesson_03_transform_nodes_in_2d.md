@@ -1,4 +1,4 @@
-# Module 1, Lesson 2: Transform Nodes in 2D
+# Module 1, Lesson 3: Transform Nodes in 2D
 
 **Status:** Validated
 
@@ -16,9 +16,11 @@ affects its children.
 
 ## Before you start
 
-- Module 1, Lesson 1 is complete.
+- Module 1, Lesson 2 is complete.
 - `res://scenes/main.tscn` contains a `Label` displaying `Project ready` at
   Position `(0, 0)`.
+- You can read an `(x, y)` position and explain that a child's Position is
+  local to its parent.
 - You can pan, zoom, and center a selected node in the 2D viewport.
 
 ## Build steps
@@ -34,7 +36,7 @@ affects its children.
 6. Double-click `ProjectIcon`'s icon in the Scene dock to center it in the 2D
    viewport. Zoom out until you can comfortably see around the image.
 
-> 💡 A `Sprite2D` displays a 2D image called a **texture**. Godot centers the
+> 💡 A `Sprite2D` node displays a 2D image called a **texture**. Godot centers the
 > texture on the Sprite2D's position by default, which makes its movement,
 > rotation, and scaling easy to see.
 
@@ -54,20 +56,14 @@ affects its children.
 2. Drag the icon to the right and down.
 3. In the Inspector, expand **Transform** and watch the Position values change.
 
-> 💡 A position in 2D uses two coordinates written as `(x, y)`. The starting
-> point `(0, 0)` is called the **origin**. You may be used to graphs where `y`
-> increases upward. In Godot's 2D screen coordinates, the origin is at the
-> top-left: increasing `x` moves right, and increasing `y` moves down. This is
-> common in computer graphics because pixel rows are counted from the top of
-> an image or screen.
+   As established previously, increasing `x` moves the icon right and
+   increasing `y` moves it down.
 
 4. Under **Transform → Position**, set `x` to `256` and `y` to `240`.
 
    Dragging is useful for arranging a scene visually. Exact Inspector values
-   make a position repeatable.
-
-> 💡 A child node's Position is measured from its parent, so `ProjectIcon` is
-> positioned relative to `Main`.
+   make a position repeatable. Because `ProjectIcon` is a child, this Position
+   is local to `Main`.
 
 5. Confirm that Position is `(256, 240)`.
 
@@ -142,8 +138,8 @@ affects its children.
 5. Select `ProjectIcon` and confirm its Position remains `(256, 240)`, its
    Rotation remains `0°`, and its Scale remains `(0.125, 0.125)`.
 
-> 💡 A child's transform is relative to its parent. Moving `Main` changes where
-> the whole branch appears without changing either child's own local transform.
+   Moving `Main` changes where the whole branch appears without changing either child's own local
+   transform.
 
 6. Select `Main` and restore its Position to `(0, 0)`.
 7. Save the scene with `Ctrl+S`.
@@ -180,13 +176,11 @@ Without repeating the build steps:
       `(0.125, 0.125)`.
 - [ ] Running the current scene shows the text and icon without related errors
       or warnings.
-- [ ] The learner can identify the origin and positive `x` and `y` directions.
 - [ ] The learner can use Move, Rotate, and Scale in toolbar order and match
       them to their Inspector properties.
 - [ ] The learner can explain why equal Scale values preserve proportions and
       why enlarging a raster image can reduce its apparent quality.
-- [ ] The learner can explain that a child's transform is relative to its
-      parent.
+- [ ] The learner can apply the local-position rule when a parent moves.
 - [ ] The learner can find **Transform** directly on `Node2D`-based nodes and
       under **Layout** on a `Control` node.
 

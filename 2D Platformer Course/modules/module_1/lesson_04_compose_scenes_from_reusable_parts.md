@@ -1,4 +1,4 @@
-# Module 1, Lesson 3: Compose Scenes from Reusable Parts
+# Module 1, Lesson 4: Compose Scenes from Reusable Parts
 
 **Status:** Validated
 
@@ -16,7 +16,7 @@ property customized on one instance becomes an override.
 
 ## Before you start
 
-- Module 1, Lesson 2 is complete.
+- Module 1, Lesson 3 is complete.
 - `main.tscn` contains `Label` at Position `(0, 0)` and `ProjectIcon` at
   Position `(256, 240)`, Rotation `0°`, and Scale `(0.125, 0.125)`.
 - `ProjectIcon` is a `Sprite2D` displaying `res://icon.svg`.

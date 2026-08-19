@@ -5,8 +5,8 @@
 ## By the end
 
 Understand the small set of GDScript building blocks needed to read and write
-the Player movement script in the next lesson: values, variables, types,
-operators, and indentation.
+the Player movement script in the next lesson: comments, values, variables,
+types, operators, and indentation.
 
 This is a code-reading lesson. You will not attach a script or change the
 Godot project yet. Its purpose is to make the first gameplay script feel
@@ -23,16 +23,22 @@ understandable rather than mysterious.
 
 ### Part 1: Meet GDScript
 
-**GDScript** is Godot's own programming language. Its layout is similar to Python because both use indentation to group instructions, but GDScript is a separate language designed to work closely with Godot. A script is a text file containing instructions. Godot reads those instructions when the game runs.
+Programming is a way to give a computer instructions by writing text. This course uses GDScript, Godot’s own programming language. Its layout is similar to Python’s because both use indentation to group instructions, but GDScript is a separate language designed to work closely with Godot.
 
-Read this short script:
+A script is a text file containing instructions. When Godot runs a group of instructions, it normally follows the lines from top to bottom.
+
+Look at this short script:
 
    ```gdscript
    func greet() -> void:
-       print("Hello, Player!")
+       var greeting: String = "Hello!"
+       print(greeting)
    ```
 
-Notice that the `print("Hello, Player!")` line is indented beneath theline above it. The indentation tells GDScript that those lines belong together. For now, the important thing to understand is that indentation matters.
+For now, focus on the indentation. Both `var greeting: String = "Hello!"` and
+`print(greeting)` are indented beneath `func greet() -> void:`. The indentation
+is important because it tells GDScript that those lines belong together.
+
 
 > ⚠️ **If something differs**
 >
@@ -86,12 +92,14 @@ Read each line as “create a new variable, name it, and assign it a value.” L
    ```gdscript
    var coins: int = 2
 
+   coins = 4
    coins += 1
    ```
 
-Note that we only use `var` the first time we create a variable.
-
-In `coins += 1`, the `+=` operator adds `1` to the current value of the variable (`2`). The new value of `coins` is `3`.
+We use `var` and a type hint only when we first create a variable. After that,
+we use its name whenever we read or update its value. In `coins = 4`, the `=`
+operator assigns a new value, so `coins` becomes `4`. In `coins += 1`, the `+=`
+operator adds `1` to its current value, so `coins` becomes `5`.
 
 > 💡 Here are the meanings of the different operators you will use in this course:
 >
@@ -105,10 +113,26 @@ In `coins += 1`, the `+=` operator adds `1` to the current value of the variable
 > - `==`, `>=`, and `<` compare values and produce `true` or `false`.
 > - `and`, `or`, and `not` combine or reverse `true`/`false` values.
 
-> 💡 `=` and `==` look similar but answer different questions. `coins = 3`
-> stores `3` in `coins`. `coins == 3` asks whether the current value of
-> `coins` is `3`. In short, `=` assigns and `==` compares. Reading that
-> distinction carefully prevents many beginner mistakes.
+> 💡 `=` and `==` look similar but answer different questions. `coins = 5`
+> stores `5` in `coins`. `coins == 5` asks whether the current value of `coins`
+> is `5`. In short, `=` assigns and `==` compares. Reading that distinction
+> carefully prevents many beginner mistakes.
+
+### Part 4: Use comments to explain code
+
+Read this example:
+
+```gdscript
+# Start with two coins so the Player must collect one in the test level.
+var coins: int = 2
+```
+
+Everything after `#` is a **comment**. Godot ignores it when the game runs.
+Comments help people reading the code understand why a choice was made. Keep
+them short, and use them to add useful context instead of repeating what an
+obvious line already says.
+
+> 💡 Comments can appear on their own lines or at the end of a line of code.
 
 ## Learner exercise
 
@@ -116,7 +140,7 @@ Without running any code, answer these questions:
 
 ```gdscript
 var coins: int = 2
-var speed: float = 300.0
+var speed: float = 300.0 # Start with enough speed for the Player to cross the level.
 var is_dead: bool = false
 
 speed -= 100.0
@@ -125,12 +149,14 @@ speed -= 100.0
 1. What are the names of each variable?
 2. What is the value of `coins`?
 3. What is the value type of `is_dead`?
-4. What is the new value of `speed` after `speed -= 100.0`?
+4. What does the comment say?
+5. What is the new value of `speed` after the end of the script?
 
 ## Verification checklist
 
 - [ ] I can explain what GDScript is and why it is used in this Godot course.
 - [ ] I know that indentation groups related instructions.
+- [ ] I can identify a comment and explain why it is useful.
 - [ ] I can identify a variable, its value and type hint.
 - [ ] I can recognize `int`, `float`, `bool`, `String`, and `Vector2` values.
 - [ ] I can explain the difference between `=` and `==`.

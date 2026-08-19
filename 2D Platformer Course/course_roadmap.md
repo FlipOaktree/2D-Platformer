@@ -23,30 +23,31 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4, validated revisions of
-  Module 1, Lessons 1.1-1.3, and Module 2, Lessons 2.1-2.4.
-- **Godot evidence:** Commit `624d69b` records the validated Lesson 2.1 state.
-  `Main` still contains a direct `Label` displaying `Project ready` at
-  `(0, 0)` and one `ProjectIcon` instance at `(256, 240)`. The Input Map adds
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
+  1.1-1.4; and Module 2, Lessons 2.1-2.5. The coordinate-theory split and the
+  revised transform and composition procedures remain validated, and the first
+  Player script has been validated against the current Godot project.
+- **Godot evidence:** `Main` contains a direct `Label` displaying `Project
+  ready` at `(0, 0)`, one `ProjectIcon` instance at `(256, 240)`, and one
+  inherited `Player` instance at `(128, 128)`. The Input Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
-  validated keyboard/controller events. The working tree adds
-  `res://actors/actor.tscn`: a `CharacterBody2D` root with `Visuals`,
-  `CollisionShape2D`, and `Components` children, plus
-  `res://actors/player.tscn`, which inherits Actor and is instanced in `Main`
-  at `(128, 128)`.
-- **Code state:** No GDScript or reusable gameplay systems exist yet.
-- **Observed Git head:** `624d69b` (`Configure keyboard and controller input
-  actions`), matching `origin/main`. The working tree contains the course
-  directory move, validated Lessons 2.2-2.3 documentation and scene changes,
-  and documentation cleanup; commit association is pending.
-- **Exact next step:** Review and approve the drafted Lesson 2.5 blueprint,
-  **Write Typed Horizontal Movement**, before implementing the Player movement
-  script.
-- **Checkpoint:** Commit `624d69b` contains the validated Lesson 2.1 material,
-  matching Input Map, and Module 1 regression state. The working tree contains
-  course files through validated Lesson 2.4 and the drafted Lesson 2.5
-  blueprint, plus the Actor and
-  Player scenes.
+  validated keyboard/controller events. `res://actors/actor.tscn` provides the
+  shared `CharacterBody2D` structure, and `res://actors/player.tscn` inherits
+  it with `res://actors/player.gd` attached.
+- **Code state:** `res://actors/player.gd` contains only
+  `extends CharacterBody2D`. No gameplay behavior or reusable gameplay systems
+  exist yet.
+- **Observed Git head:** `5c284f8` (`Validate Player scene specialization and
+  update course roadmap`), matching `origin/main`. The tree was clean before
+  the approved, uncommitted Module 1 curriculum and blueprint revision.
+- **Exact next step:** Review and approve the drafted Module 2, Lesson 2.6
+  blueprint, **Write Typed Horizontal Movement**, before adding Player movement
+  code.
+- **Checkpoint:** Commit `5c284f8` contains the matching Actor and Player
+  scenes and the course baseline that preceded the current curriculum edits.
+  The current uncommitted work includes validated course revisions through
+  Lesson 2.5, the drafted Lesson 2.6, `res://actors/player.gd`, and the Player
+  scene's script attachment.
 
 ## Status Model
 
@@ -140,15 +141,16 @@ it under version control.
 
 ### Module 1: Godot Scene Foundations
 
-**Depends on:** Module 0. **Outcome:** Understand nodes, scenes, basic 2D
-transforms, parent-relative transforms, scene composition, and instance
+**Depends on:** Module 0. **Outcome:** Understand nodes, scenes, 2D coordinates,
+basic transforms, parent-relative positioning, scene composition, and instance
 overrides before gameplay code is introduced.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
 | 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | Current Module 1 revision checkpoint |
-| 1.2 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, parent-relative transforms | Validated | Current Module 1 revision checkpoint |
-| 1.3 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Current Module 1 revision checkpoint |
+| 1.2 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Uncommitted curriculum revision |
+| 1.3 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Previously validated project behavior; uncommitted blueprint revision |
+| 1.4 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Previously validated project behavior; uncommitted blueprint revision |
 
 ### Module 2: Actor and Player Foundations
 
@@ -160,10 +162,11 @@ a basic keyboard/controller player without premature feature inheritance.
 | 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Validated | `624d69b` |
 | 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Validated | Uncommitted working tree; commit association pending |
 | 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Validated | Uncommitted working tree; commit association pending |
-| 2.4 | Understand GDScript Fundamentals | GDScript syntax, values, types, variables, and operators | Validated | Unassigned |
-| 2.5 | Write Typed Horizontal Movement | Constants, functions, input axis, velocity, and `move_and_slide()` | Blueprint drafted | Unassigned |
-| 2.6 | Add Gravity and Floor Collision | Physics process, collision, grounded state | Planned | Unassigned |
-| 2.7 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
+| 2.4 | Understand GDScript Fundamentals | GDScript syntax, comments, values, types, variables, and operators | Validated | Unassigned |
+| 2.5 | Attach and Run Your First Player Script | Script attachment, `extends`, functions, callbacks, Output, and local scope | Validated | Uncommitted working tree |
+| 2.6 | Write Typed Horizontal Movement | Constants, physics callback, input axis, velocity, and `move_and_slide()` | Blueprint drafted | Unassigned |
+| 2.7 | Add Gravity and Floor Collision | Collision, vertical velocity, and grounded state | Planned | Unassigned |
+| 2.8 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
 
 ### Module 3: Responsive Player Movement
 
@@ -390,12 +393,14 @@ practical use and later lessons can build on them without re-teaching them.
 | Concept family | First introduction | Principal reuse |
 | --- | --- | --- |
 | Nodes, scenes, hierarchy, running, and viewport navigation | 1.1 | Every later lesson |
-| Position, Rotation, Scale, and parent-relative transforms | 1.2 | Levels, actors, cameras, combat, enemies, feedback, UI |
-| Scene composition, instantiation, source propagation, and instance overrides | 1.3 | Actors, components, levels, attacks, enemies, items |
+| Coordinate pairs, screen axes, and local positions | 1.2 | Transforms, levels, actors, cameras, combat, enemies, feedback, UI |
+| Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | 1.3 | Levels, actors, cameras, combat, enemies, feedback, UI |
+| Scene composition, instantiation, source propagation, and instance overrides | 1.4 | Actors, components, levels, attacks, enemies, items |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
 | Actor boundary and specialization | 2.2-2.3 | Player, NPCs, enemies |
 | GDScript fundamentals | 2.4 | All scripted gameplay |
-| Player movement and physics | 2.5-2.7 | Responsive movement and actor behavior |
+| Script attachment, functions, callbacks, Output, and local scope | 2.5 | All scripted gameplay |
+| Player movement and physics | 2.6-2.8 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
@@ -404,12 +409,13 @@ practical use and later lessons can build on them without re-teaching them.
 
 ### Downstream Transform Audit
 
-The approved Module 1 revision does not change the order of Modules 2-17.
-Later lessons may build on these foundations but must explain values that are
-specific to the feature being built:
+The approved coordinate-theory split does not change the order of Modules
+2-17. Later lessons may build on these foundations but must explain values
+that are specific to the feature being built:
 
-- Modules 2-4 may assume basic Position, Rotation, and Scale knowledge while
-  explaining actor, physics, and level-specific transform choices in context.
+- Modules 2-4 may assume basic 2D coordinate, Position, Rotation, and Scale
+  knowledge while explaining actor, physics, and level-specific choices in
+  context.
 - Module 5 reuses Sprite2D, texture assignment, and basic transforms for
   character presentation instead of introducing them for the first time.
 - Modules 8-9 reuse transforms, reusable scenes, and instance overrides for
@@ -418,8 +424,9 @@ specific to the feature being built:
 - Modules 6-7, 10-15, and 17 need no lesson-boundary or dependency change from
   this revision; they may reuse the foundations wherever their practical
   implementation requires them.
-- No later lesson should claim to introduce Position, Rotation, Scale,
-  source-scene propagation, or per-instance overrides for the first time.
+- No later lesson should claim to introduce the 2D screen axes, local
+  positions, Position, Rotation, Scale, source-scene propagation, or
+  per-instance overrides for the first time.
 
 ## Production Gates After the Written Curriculum
 
@@ -463,6 +470,8 @@ Remaining reconciliation work:
 | Keep learner verification boxes unchecked | They belong to each learner; production completion is tracked here. |
 | Keep curriculum modules cohesive and portability-aware without introducing configurable course assembly yet | The first complete course will reveal which modules are genuinely reusable; shared libraries, course manifests, and alternate entry checkpoints remain deferred until then. |
 | Teach viewport navigation when the first small Label appears in Lesson 1.1 | Centering, zooming, Pan Mode, and panning shortcuts solve an immediate viewing problem without changing scene content. |
-| Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | `ProjectIcon` makes all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
-| Demonstrate source propagation and per-instance overrides with `ProjectIcon` in Lesson 1.3 | Rotation makes the distinction visible while keeping the source scene and instance responsibilities small; Modules 2-17 retain their order. |
-| Introduce GDScript fundamentals before Player movement | Beginners should understand the small code vocabulary used in their first script before combining it with Godot input and physics. Lesson 2.4 introduces the foundations; horizontal movement moves to 2.5, gravity to 2.6, and jumping to 2.7. |
+| Separate 2D coordinates into a theory-focused Lesson 1.2 | Beginners can understand the origin, screen axes, and parent-relative local positions before applying them with editor tools; the existing transform and composition lessons move to 1.3 and 1.4 without changing the Godot result. |
+| Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | Lesson 1.3 uses `ProjectIcon` to make all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
+| Demonstrate source propagation and per-instance overrides with `ProjectIcon` in Lesson 1.4 | Rotation makes the distinction visible while keeping the source scene and instance responsibilities small; Modules 2-17 retain their order. |
+| Introduce GDScript fundamentals before Player movement | Beginners should understand the small code vocabulary used in their first script before combining it with Godot input and physics. Lesson 2.4 introduces the foundations. |
+| Add a first-script bridge before Player movement | Lesson 2.5 introduces script attachment, `extends`, functions, callbacks, Output, and local scope through a temporary position diagnostic. It removes the diagnostic afterward so horizontal movement can be assembled progressively in Lesson 2.6; gravity moves to 2.7 and jumping to 2.8. |
