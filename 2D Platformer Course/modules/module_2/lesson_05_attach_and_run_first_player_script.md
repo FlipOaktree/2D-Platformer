@@ -4,8 +4,8 @@
 
 ## By the end
 
-Attach the first script to `Player`, run a small piece of code, and read the
-Player's starting position in Godot's Output panel. You will build the script
+Attach the first script to `Player`, print a simple message in Godot's Output
+panel, and compare local and script-level variables. You will build the script
 one part at a time, then remove the temporary diagnostic code so the project is
 ready for movement in the next lesson.
 
@@ -13,7 +13,7 @@ ready for movement in the next lesson.
 
 - Module 2, Lesson 4 is complete.
 - `res://actors/player.tscn` inherits from `res://actors/actor.tscn`.
-- `main.tscn` contains one Player instance at Position `(128, 128)`.
+- `main.tscn` contains one Player instance.
 - The project runs without related errors or warnings.
 
 ## Build steps
@@ -68,16 +68,15 @@ func _ready() -> void:
     pass
 ```
 
-`func` starts a **function**. A function is a named group of instructions. You can create your own function to avoid writing the same large block of code multiple times: write the instructions once inside a function, then call that function by name when needed. We will explore this more later.
+`func` starts a **function**. A function is simply a named group of instructions.
 
 Some functions are **callbacks**. Godot calls these functions automatically at
 specific moments. `_ready()` is a Godot callback that runs when the Player is
 ready in the running scene.
 
 `-> void` is a **type hint** that describes the type of value a function
-returns. Some functions return a value; others do not. `void` tells GDScript
-that this function does not return a value. We will explore returned values
-later.
+returns. `void` is used when no value is returned. The next lesson explores
+functions that do return a value.
 
 A function needs at least one indented instruction; otherwise, Godot reports an error. You can use `pass`, which simply means “do nothing,” to keep a function valid while you add its instructions later.
 
@@ -88,14 +87,14 @@ A function needs at least one indented instruction; otherwise, Godot reports an 
 > - Use the same indentation for every instruction that belongs to this
 >   function.
 
-### Part 3: Print the Player's starting position
+### Part 3: Print a temporary message
 
 1. Delete the indented `pass` line.
 2. In its place, add these two indented lines:
 
    ```gdscript
-   var starting_position: Vector2 = position
-   print(starting_position)
+   var message: String = "Player is ready"
+   print(message)
    ```
 
 The complete temporary script is:
@@ -104,50 +103,44 @@ The complete temporary script is:
 extends CharacterBody2D
 
 func _ready() -> void:
-    var starting_position: Vector2 = position
-    print(starting_position)
+    var message: String = "Player is ready"
+    print(message)
 ```
 
 3. Save the script with `Ctrl+S`.
 
-`var starting_position: Vector2 = position` creates a new variable that stores
-the Player's position. `position` is a built-in **property**. A property is a
-value that belongs to a node, and every node type has its own set of
-properties. `position` is a `Vector2` value that stores the node’s X and Y
-position. Godot node types can be built on top of other node types.
-`CharacterBody2D` is built on `Node2D`, so it inherits `Node2D`’s `position`
-property.
+`var message: String = "Player is ready"` creates a variable that stores text.
+`String` is the value type for text, and the text between quotation marks is
+the value stored in `message`.
 
-`print(starting_position)` sends the value of that variable to the **Output** panel, located under the main viewport. `print()` is often used only for testing.
+`print(message)` sends the value of that variable to the **Output** panel,
+located under the main viewport. `print()` is often used only for testing.
 
-> 💡 Because the variable `starting_position` is declared inside `_ready()`, it
+> 💡 Because the variable `message` is declared inside `_ready()`, it
 > has **local scope**: it can be used only inside that function, not outside or
 > in another function.
 
 4. Open `res://scenes/main.tscn`.
-5. Run the current scene with `F6`.
-6. Find `(128.0, 128.0)`, `(128, 128)`, or an equivalent value in the
-   **Output** panel at the bottom of the editor. The output matches the Player
-   instance's position in `main.tscn`.
-7. Stop the running scene with `F8`.
+5. In the **Output** panel, select **Clear** if it contains messages from an
+   earlier run.
+6. Run the current scene with `F6`.
+7. Find `Player is ready` in the **Output** panel at the bottom of the editor.
+8. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
 >
-> - If the output is `(0, 0)`, you may have run `player.tscn` by itself. Open
->   `main.tscn` and use `F6` so the Player instance uses its `(128, 128)`
->   position from Main.
-> - If no position appears, confirm that `player.gd` is attached to the Player
+> - If no message appears, confirm that `main.tscn` is open, `player.gd` is attached to the Player
 >   root, the script was saved, and the **Output** panel is open.
 > - If the script editor shows an error, compare the spelling, punctuation,
 >   and indentation with the complete script above.
 
-### Part 4: Test local scope
+### Part 4: Compare local and script-level scope
 
 1. Beneath the complete `_ready()` function, add this new function:
 
    ```gdscript
-   func show_starting_position() -> void:
-       print(starting_position)
+   func show_message() -> void:
+       print(message)
    ```
 
 The complete temporary script is:
@@ -156,26 +149,116 @@ The complete temporary script is:
 extends CharacterBody2D
 
 func _ready() -> void:
-    var starting_position: Vector2 = position
-    print(starting_position)
+    var message: String = "Player is ready"
+    print(message)
 
-func show_starting_position() -> void:
-    print(starting_position)
+func show_message() -> void:
+    print(message)
 ```
+
+> 💡 `show_message()` is a **custom function**: you give it a name and choose
+> the instructions it contains. Unlike `_ready()`, Godot does not call it
+> automatically. A custom function can help you avoid writing the same large
+> block of instructions multiple times: write the instructions once, then call
+> the function by name when needed.
 
 2. Save the script with `Ctrl+S`.
 
-Godot reports an error because it cannot find `starting_position` inside
-`show_starting_position()`. The variable was created inside `_ready()`, so it
+Godot reports an error because it cannot find `message` inside
+`show_message()`. The variable was created inside `_ready()`, so it
 can be used only there.
 
-> 💡 `show_starting_position()` is a **custom function**: you give it a name
-> and choose the instructions it contains. Unlike `_ready()`, Godot does not
-> call it automatically.
+3. Move the `var message: String = "Player is ready"` line out of `_ready()`
+   and place it directly beneath `extends CharacterBody2D`. Make sure it is no longer indented and do not leave a copy inside `_ready()`.
+
+   The script now reads:
+
+   ```gdscript
+   extends CharacterBody2D
+
+   var message: String = "Player is ready"
+
+   func _ready() -> void:
+       print(message)
+
+   func show_message() -> void:
+       print(message)
+   ```
+
+4. Save the script with `Ctrl+S`. The scope error disappears.
+5. Open `res://scenes/main.tscn`. In the **Output** panel, select **Clear** so
+   you can compare this run by itself.
+6. Run the current scene with `F6`.
+7. The Output panel shows `Player is ready` only once. `_ready()` runs
+   automatically, but `show_message()` does not run yet because nothing calls
+   it.
+8. Stop the running scene with `F8`.
+9. In `_ready()`, add this indented line beneath `print(message)`:
+
+   ```gdscript
+   show_message()
+   ```
+
+   The complete temporary script is:
+
+   ```gdscript
+   extends CharacterBody2D
+
+   var message: String = "Player is ready"
+
+   func _ready() -> void:
+       print(message)
+       show_message()
+
+   func show_message() -> void:
+       print(message)
+   ```
+
+10. Save the script with `Ctrl+S`. In the **Output** panel, select **Clear**,
+    then run `main.tscn` with `F6` again.
+11. The Output panel now shows `Player is ready` twice. `_ready()` prints the
+    first line, then calls `show_message()`, which prints the second. You call
+    a custom function by typing its name followed by parentheses.
+12. Stop the running scene with `F8`.
+13. Change the variable's text from `"Player is ready"` to `"Hello World!"`.
+
+   ```gdscript
+   extends CharacterBody2D
+
+   var message: String = "Hello World!"
+
+   func _ready() -> void:
+       print(message)
+       show_message()
+
+   func show_message() -> void:
+       print(message)
+   ```
+
+14. Save the script with `Ctrl+S`. In the **Output** panel, select **Clear**,
+    then run `main.tscn` with `F6` again.
+15. The Output panel now shows `Hello World!` twice. You could write
+    `print("Hello World!")` directly in both functions, but the variable gives
+    that text one place to change. Both `print()` calls use the variable's
+    updated value.
+16. Stop the running scene with `F8`.
+
+> 💡 A variable declared directly in the script, outside every function, has
+> **script-level scope**. Any function in this Player script can use it. It is
+> still not a project-wide variable: each Player node has its own `message`
+> value.
+
+> ⚠️ **If something differs**
+>
+> - The error in step 2 is expected. After step 4, confirm that the variable
+>   was moved, rather than copied, so only one `var message` line remains.
+> - If the Output panel shows only one line after step 11 or 15, confirm that
+>   `show_message()` is indented inside `_ready()` and that the script was
+>   saved.
 
 ### Part 5: Remove the temporary diagnostic
 
-1. Delete the complete `_ready()` and `show_starting_position()` functions, including their indented lines.
+1. Delete the complete `_ready()` and `show_message()` functions, including their indented lines.
 2. Leave this single line in `player.gd`:
 
    ```gdscript
@@ -184,18 +267,23 @@ can be used only there.
 
 3. Save the script with `Ctrl+S`.
 
-The position output proved that the script ran correctly. Removing that
-temporary diagnostic keeps the script focused and gives the movement lesson a
-clean starting point.
+The temporary message proved that the script ran correctly and showed the
+difference between a callback and a custom function. Removing the diagnostic
+keeps the script focused and gives the next lesson a clean starting point.
 
 ## Learner exercise
 
 Without adding the temporary code again, explain:
 
-1. Why did the Output panel report the Player's position as `(128, 128)` when
-   you ran `main.tscn`?
-2. Why could `starting_position` be used only inside `_ready()`?
-3. What line remains in `player.gd`, and what does it tell GDScript?
+1. Why did `show_message()` produce an error before `message` was moved outside
+   `_ready()`?
+2. Why did the Output panel show one line after the variable moved, but before
+   `_ready()` called `show_message()`?
+3. Why did the Output panel show two lines after `_ready()` called
+   `show_message()`?
+4. Why did changing the script-level `message` variable change both printed
+   lines?
+5. What line remains in `player.gd`, and what does it tell GDScript?
 
 ## Verification checklist
 
@@ -204,9 +292,11 @@ Without adding the temporary code again, explain:
 - [ ] I can explain what a function and a Godot callback are.
 - [ ] I know that `-> void` means the function returns no value.
 - [ ] I used `pass` as a temporary instruction and then replaced it.
-- [ ] Running `main.tscn` printed the Player's starting position in the Output
-      panel.
-- [ ] I can explain why `starting_position` had local scope.
+- [ ] Running `main.tscn` printed `Player is ready` in the Output panel.
+- [ ] I saw why a local `message` variable caused an error in another function.
+- [ ] I can explain the difference between local and script-level scope.
+- [ ] I called `show_message()` from `_ready()` and saw the message twice.
+- [ ] I changed `message` once and saw both printed lines use its updated value.
 - [ ] The temporary `_ready()` diagnostic has been removed.
 - [ ] `player.gd` ends with only `extends CharacterBody2D`.
 - [ ] No input or physics behavior has been added yet.

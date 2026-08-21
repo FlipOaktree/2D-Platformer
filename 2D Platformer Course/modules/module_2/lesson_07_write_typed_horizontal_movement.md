@@ -1,4 +1,4 @@
-# Module 2, Lesson 6: Write Typed Horizontal Movement
+# Module 2, Lesson 7: Write Typed Horizontal Movement
 
 **Status:** Blueprint drafted
 
@@ -13,7 +13,7 @@ camera behavior, and player artwork will be added later.
 
 ## Before you start
 
-- Module 2, Lesson 5 is complete.
+- Module 2, Lesson 6 is complete.
 - `res://actors/player.gd` is attached to the Player root and contains only
   `extends CharacterBody2D`.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
@@ -27,23 +27,23 @@ camera behavior, and player artwork will be added later.
 
 1. Open `res://actors/player.gd`.
 2. Add a blank line beneath `extends CharacterBody2D`.
-3. Add this typed constant:
+3. Add this typed variable:
 
    ```gdscript
-   const SPEED: float = 300.0
+   var speed: float = 300.0
    ```
 
 4. Save the script with `Ctrl+S`.
 
-> 💡 `const` creates a named value that should not change while the game
-> runs. `SPEED` gives the Player's movement speed one clear name, and the
-> `float` type matches the decimal values used for movement. It remains a
-> constant for now so this first movement script stays focused. Lesson 3.1
-> will expose safe movement settings in the Inspector.
+> 💡 `var` creates a value that code can read or change later. `speed` gives
+> the Player's movement speed one clear name, and the `float` type matches the
+> decimal values used for movement. A later gameplay feature can change
+> `speed` when needed. Lesson 3.1 will make this variable adjustable in the
+> Inspector.
 
 ### Part 2: Add the physics callback
 
-1. Add a blank line beneath the `SPEED` constant.
+1. Add a blank line beneath the `speed` variable.
 2. Add this function:
 
    ```gdscript
@@ -93,7 +93,7 @@ between `-1.0` and `1.0`, so partially tilting it can produce a smaller value.
 1. Add this indented line beneath the `direction` variable:
 
    ```gdscript
-   velocity.x = direction * SPEED
+   velocity.x = direction * speed
    ```
 
 `CharacterBody2D` provides the `velocity` property. This line changes only its
@@ -116,11 +116,11 @@ collisions when collision geometry is added.
    ```gdscript
    extends CharacterBody2D
 
-   const SPEED: float = 300.0
+   var speed: float = 300.0
 
    func _physics_process(_delta: float) -> void:
        var direction: float = Input.get_axis("move_left", "move_right")
-       velocity.x = direction * SPEED
+       velocity.x = direction * speed
        move_and_slide()
    ```
 
@@ -157,17 +157,17 @@ collisions when collision geometry is added.
 
 ## Learner exercise
 
-1. Change `SPEED` from `300.0` to `150.0`.
+1. Change `speed` from `300.0` to `150.0`.
 2. Run `main.tscn` and compare the slower movement.
-3. Restore `SPEED` to `300.0`, save, and run the scene once more.
+3. Restore `speed` to `300.0`, save, and run the scene once more.
 4. Explain why the speed currently belongs to Player rather than Actor, and why
-   it is kept as a constant until the later movement-settings lesson.
+   a variable is useful when a later gameplay feature needs to change it.
 
 ## Verification checklist
 
 - [ ] `res://actors/player.gd` remains attached to the Player root.
 - [ ] The script extends `CharacterBody2D`.
-- [ ] The script uses typed `SPEED`, `_delta`, `direction`, and a `void` return
+- [ ] The script uses typed `speed`, `_delta`, `direction`, and a `void` return
       type.
 - [ ] `Input.get_axis()` uses the exact `move_left` and `move_right` action
       names.
@@ -178,7 +178,7 @@ collisions when collision geometry is added.
 - [ ] Configured controller movement works when a compatible controller is
       available.
 - [ ] `Project ready` and the project icon still appear when `main.tscn` runs.
-- [ ] The speed exercise ends with `SPEED` restored to `300.0`.
+- [ ] The speed exercise ends with `speed` restored to `300.0`.
 - [ ] The Player has no gravity, jumping, camera, or artwork behavior yet.
 
 ## References

@@ -25,8 +25,8 @@ not infer progress from chat history or from learner verification checkboxes.
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
   1.1-1.4; and Module 2, Lessons 2.1-2.5. The coordinate-theory split and the
-  revised transform and composition procedures remain validated, and the first
-  Player script has been validated against the current Godot project.
+  revised transform and composition procedures remain validated. The new
+  Lesson 2.6 bridge awaits review and approval.
 - **Godot evidence:** `Main` contains a direct `Label` displaying `Project
   ready` at `(0, 0)`, one `ProjectIcon` instance at `(256, 240)`, and one
   inherited `Player` instance at `(128, 128)`. The Input Map defines
@@ -41,13 +41,12 @@ not infer progress from chat history or from learner verification checkboxes.
   update course roadmap`), matching `origin/main`. The tree was clean before
   the approved, uncommitted Module 1 curriculum and blueprint revision.
 - **Exact next step:** Review and approve the drafted Module 2, Lesson 2.6
-  blueprint, **Write Typed Horizontal Movement**, before adding Player movement
-  code.
+  blueprint, **Use Function Parameters and Return Values**, before
+  implementing it.
 - **Checkpoint:** Commit `5c284f8` contains the matching Actor and Player
   scenes and the course baseline that preceded the current curriculum edits.
-  The current uncommitted work includes validated course revisions through
-  Lesson 2.5, the drafted Lesson 2.6, `res://actors/player.gd`, and the Player
-  scene's script attachment.
+  The current uncommitted work includes the validated Lesson 2.5 blueprint,
+  the new Lesson 2.6 bridge, and the renumbered Lesson 2.7 movement blueprint.
 
 ## Status Model
 
@@ -163,10 +162,11 @@ a basic keyboard/controller player without premature feature inheritance.
 | 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Validated | Uncommitted working tree; commit association pending |
 | 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Validated | Uncommitted working tree; commit association pending |
 | 2.4 | Understand GDScript Fundamentals | GDScript syntax, comments, values, types, variables, and operators | Validated | Unassigned |
-| 2.5 | Attach and Run Your First Player Script | Script attachment, `extends`, functions, callbacks, Output, and local scope | Validated | Uncommitted working tree |
-| 2.6 | Write Typed Horizontal Movement | Constants, physics callback, input axis, velocity, and `move_and_slide()` | Blueprint drafted | Unassigned |
-| 2.7 | Add Gravity and Floor Collision | Collision, vertical velocity, and grounded state | Planned | Unassigned |
-| 2.8 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
+| 2.5 | Attach and Run Your First Player Script | Script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls | Validated | Uncommitted working tree |
+| 2.6 | Use Function Parameters and Return Values | Typed parameters, arguments, return types, and returned values | Blueprint drafted | Unassigned |
+| 2.7 | Write Typed Horizontal Movement | Typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Blueprint drafted | Unassigned |
+| 2.8 | Add Gravity and Floor Collision | Collision, vertical velocity, and grounded state | Planned | Unassigned |
+| 2.9 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
 
 ### Module 3: Responsive Player Movement
 
@@ -399,8 +399,9 @@ practical use and later lessons can build on them without re-teaching them.
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
 | Actor boundary and specialization | 2.2-2.3 | Player, NPCs, enemies |
 | GDScript fundamentals | 2.4 | All scripted gameplay |
-| Script attachment, functions, callbacks, Output, and local scope | 2.5 | All scripted gameplay |
-| Player movement and physics | 2.6-2.8 | Responsive movement and actor behavior |
+| Script attachment, functions, callbacks, Output, local and script-level scope, and custom function calls | 2.5 | All scripted gameplay |
+| Function parameters, arguments, and returned values | 2.6 | Input, physics, and reusable gameplay logic |
+| Player movement and physics | 2.7-2.9 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
@@ -474,4 +475,4 @@ Remaining reconciliation work:
 | Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | Lesson 1.3 uses `ProjectIcon` to make all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
 | Demonstrate source propagation and per-instance overrides with `ProjectIcon` in Lesson 1.4 | Rotation makes the distinction visible while keeping the source scene and instance responsibilities small; Modules 2-17 retain their order. |
 | Introduce GDScript fundamentals before Player movement | Beginners should understand the small code vocabulary used in their first script before combining it with Godot input and physics. Lesson 2.4 introduces the foundations. |
-| Add a first-script bridge before Player movement | Lesson 2.5 introduces script attachment, `extends`, functions, callbacks, Output, and local scope through a temporary position diagnostic. It removes the diagnostic afterward so horizontal movement can be assembled progressively in Lesson 2.6; gravity moves to 2.7 and jumping to 2.8. |
+| Add first-script bridges before Player movement | Lesson 2.5 introduces script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls through a temporary message diagnostic. Lesson 2.6 then introduces typed parameters, arguments, and returned values before learners meet `_physics_process()` and `Input.get_axis()`. Both lessons remove their temporary code; horizontal movement moves to 2.7, gravity to 2.8, and jumping to 2.9. |
