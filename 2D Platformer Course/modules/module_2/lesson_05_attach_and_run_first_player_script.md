@@ -109,9 +109,8 @@ func _ready() -> void:
 
 3. Save the script with `Ctrl+S`.
 
-`var message: String = "Player is ready"` creates a variable that stores text.
-`String` is the value type for text, and the text between quotation marks is
-the value stored in `message`.
+`message` applies the variable and `String` type-hint syntax from Lesson 2.4.
+The text between quotation marks is its value.
 
 `print(message)` sends the value of that variable to the **Output** panel,
 located under the main viewport. `print()` is often used only for testing.

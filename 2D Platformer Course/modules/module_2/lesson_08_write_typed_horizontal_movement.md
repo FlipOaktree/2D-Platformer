@@ -1,4 +1,4 @@
-# Module 2, Lesson 7: Write Typed Horizontal Movement
+# Module 2, Lesson 8: Write Typed Horizontal Movement
 
 **Status:** Blueprint drafted
 
@@ -13,7 +13,7 @@ camera behavior, and player artwork will be added later.
 
 ## Before you start
 
-- Module 2, Lesson 6 is complete.
+- Module 2, Lesson 7 is complete.
 - `res://actors/player.gd` is attached to the Player root and contains only
   `extends CharacterBody2D`.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
@@ -35,11 +35,9 @@ camera behavior, and player artwork will be added later.
 
 4. Save the script with `Ctrl+S`.
 
-> 💡 `var` creates a value that code can read or change later. `speed` gives
-> the Player's movement speed one clear name, and the `float` type matches the
-> decimal values used for movement. A later gameplay feature can change
-> `speed` when needed. Lesson 3.1 will make this variable adjustable in the
-> Inspector.
+> 💡 `speed` applies the variable syntax from Lesson 2.4 to the Player's
+> movement speed. The `float` type matches the decimal values used for
+> movement. Lesson 3.1 will make this value adjustable in the Inspector.
 
 ### Part 2: Add the physics callback
 
@@ -51,12 +49,11 @@ camera behavior, and player artwork will be added later.
        pass
    ```
 
-> 💡 `_physics_process()` is a Godot callback that runs at a steady rate
-> for physics updates. A **parameter** is a value a function receives when it
-> runs. Godot provides `_delta`, the time since the previous physics update.
-> This lesson does not need that value yet, so the leading underscore marks it
-> as intentionally unused. The temporary `pass` keeps the function valid until
-> you add its movement instructions.
+> 💡 `_physics_process()` is a Godot callback that runs at a steady rate for
+> physics updates. Godot provides `_delta`, the time since the previous update.
+> This lesson does not need that parameter yet, so the leading underscore marks
+> it as intentionally unused. As in Lesson 2.5, `pass` temporarily keeps the
+> function valid until you add its movement instructions.
 
 > ⚠️ **If something differs**
 >
@@ -74,13 +71,21 @@ camera behavior, and player artwork will be added later.
 
 `Input.get_axis()` reads the negative action first and the positive action
 second. With a keyboard or D-pad, left produces `-1.0`, right produces `1.0`,
-and neither produces `0.0`. A controller stick can also produce decimal values
+and neither or both produces `0.0`. A controller stick can also produce values
 between `-1.0` and `1.0`, so partially tilting it can produce a smaller value.
 
-> 💡 `Input.get_axis()` reads named actions rather than individual keys
-> or controller buttons. Lesson 2.1 mapped both input devices to the same
-> actions, so this one line supports either device. `direction` is a typed
-> local variable because it is declared inside `_physics_process()`.
+> 💡 Godot makes some built-in names available to every script. `Input` is one
+> of them, and it is used to read keyboard, controller, and other device input.
+> In `Input.get_axis(...)`, the period accesses the `get_axis()` method
+> belonging to `Input`, and the parentheses call it with the two action-name
+> arguments.
+>
+> This applies the period, method, argument, and returned-value syntax from
+> Lessons 2.6 and 2.7 to a function provided by Godot.
+
+> 💡 This applies the named actions configured in Lesson 2.1, so one line
+> supports both keyboard and controller input. `direction` holds the result for
+> the current physics update.
 
 > ⚠️ **If something differs**
 >
@@ -97,8 +102,9 @@ between `-1.0` and `1.0`, so partially tilting it can produce a smaller value.
    ```
 
 `CharacterBody2D` provides the `velocity` property. This line changes only its
-horizontal X value. The later gravity lesson can therefore use `velocity.y`
-without replacing the horizontal movement.
+horizontal X value through the property-access syntax from Lesson 2.7. The
+later gravity lesson can therefore use `velocity.y` without replacing the
+horizontal movement.
 
 ### Part 5: Move the Player
 
@@ -108,8 +114,10 @@ without replacing the horizontal movement.
    move_and_slide()
    ```
 
-`move_and_slide()` asks `CharacterBody2D` to move using its velocity and handle
-collisions when collision geometry is added.
+`move_and_slide()` is a method provided by `CharacterBody2D`. The script can
+call a method belonging to its current node directly, so it does not need
+`CharacterBody2D.` before the method name. This method asks the body to move
+using its velocity and handle collisions when collision geometry is added.
 
 2. Compare your completed script with this version:
 
@@ -160,8 +168,7 @@ collisions when collision geometry is added.
 1. Change `speed` from `300.0` to `150.0`.
 2. Run `main.tscn` and compare the slower movement.
 3. Restore `speed` to `300.0`, save, and run the scene once more.
-4. Explain why the speed currently belongs to Player rather than Actor, and why
-   a variable is useful when a later gameplay feature needs to change it.
+4. Explain why the speed currently belongs to Player rather than Actor.
 
 ## Verification checklist
 

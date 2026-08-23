@@ -143,6 +143,10 @@ Format contextual lesson notes consistently:
 - Introduce each concept beside its first practical use, immediately before or
   after the action when that produces the clearest learner flow. Use only the
   detail needed for the current outcome.
+- Define a concept fully only at its first relevant use. Before drafting or
+  revising a lesson, check the concept sequencing ledger and earlier lessons.
+  Later lessons may briefly connect the concept to its new use, but must not
+  repeat its general definition, analogy, or rationale.
 - Use a single integrated lesson flow when Codex is involved; do not create
   repeated AI and non-AI versions of the same instructions.
 - Run the project regularly.

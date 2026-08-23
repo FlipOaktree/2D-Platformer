@@ -1,6 +1,6 @@
 # Module 2, Lesson 6: Use Function Parameters and Return Values
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
@@ -39,9 +39,8 @@ func _ready() -> void:
 
 3. Save the script with `Ctrl+S`.
 
-`_ready()` is the callback Godot runs automatically when the Player is ready
-in the running scene. Its `pass` instruction does nothing, but it keeps the
-function valid until you add the calculation that should run here.
+Use the same `_ready()` and temporary `pass` pattern from Lesson 2.5. You will
+replace `pass` with the calculation after creating the custom function.
 
 > ⚠️ **If something differs**
 >
@@ -75,14 +74,11 @@ func add_coins(current_coins: int, collected_coins: int) -> int:
 named value that a function receives and can use while it runs. The `int` type
 hints say that both parameters must receive whole numbers.
 
-`-> int` says that `add_coins()` returns an integer. This differs from
-`-> void`, which means a function does not return a value.
+`-> int` says that `add_coins()` returns an integer. Unlike the `-> void`
+function from Lesson 2.5, it sends a value back to the code that called it.
 
 `return current_coins + collected_coins` adds the two values and sends the
 result back to the code that called the function.
-
-> 💡 Defining a custom function does not run it. The function waits until
-> another part of the script calls it by name.
 
 > ⚠️ **If something differs**
 >
@@ -99,6 +95,10 @@ result back to the code that called the function.
    var total_coins: int = add_coins(2, 3)
    print(total_coins)
    ```
+
+> 💡 A variable can store the result of a function call. GDScript runs
+> `add_coins(2, 3)` first; the function returns `5`, then `total_coins` stores
+> that returned value. The variable stores the result, not the function itself.
 
 The complete temporary script is:
 
@@ -120,14 +120,16 @@ provided when a function is called. Godot gives them to the function's
 parameters in the same order: `2` becomes `current_coins`, and `3` becomes
 `collected_coins`.
 
-> 💡 Think of a reusable name tag. The blank space labeled **Name** is like a
-> parameter: it has a name but no value yet. Writing **Alex** on that tag is
-> like an argument: it is the actual value you provide. The same tag can be
-> reused with a different name, just as the same function can be called with
-> different arguments.
-
-`add_coins(2, 3)` returns `5`. That returned value is stored in the typed local
-variable `total_coins`, then `print(total_coins)` sends it to the Output panel.
+> 💡 A **parameter** is a named, typed placeholder for a value a function will
+> receive. An **argument** is the actual value supplied when the function is
+> called.
+>
+> Think of a reusable name tag. The blank labeled **Name** is like a parameter.
+> Writing **Alex** on the tag is like supplying an argument. Because it is a
+> name tag, you expect text rather than a number—just as a parameter's type
+> tells GDScript what kind of value it can receive. The same tag can be reused
+> with a different name, just as the same function can be called with different
+> arguments.
 
 4. Open `res://scenes/main.tscn`.
 5. In the **Output** panel, select **Clear** if it contains messages from an
@@ -187,7 +189,6 @@ Without adding the temporary code again, explain:
 4. What does `-> int` promise that the function will return?
 5. Why did changing only the second argument change the result from `5` to
    `7`?
-6. What line remains in `player.gd` after cleanup?
 
 ## Verification checklist
 
