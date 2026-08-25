@@ -114,10 +114,10 @@ In `player_name.begins_with("Play")`, the period accesses the method `begins_wit
 > called at a specific time.
 >
 > All methods and callbacks are functions. Not all functions are methods or
-> callbacks. `print()` is only a function; `_ready()` is a function, a method,
+> callbacks. For example, `print()` is only a function; `_ready()` is a function, a method,
 > and a callback.
 
-So, for both **properties** and **methods**, the period (.) is used essentially the same way; simply to access something that belongs to whatever's on the left.
+So, for both **properties** and **methods**, the period (.) is used essentially the same way; to access something that belongs to whatever's on the left.
 - `position.x` accesses the `x` property belonging to the `position` value.
 - `player_name.begins_with("Play")` accesses the `begins_with()` method belonging to the `player_name` value.
 

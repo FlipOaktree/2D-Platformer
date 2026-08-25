@@ -1,11 +1,11 @@
 # Module 2, Lesson 8: Write Typed Horizontal Movement
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
 Build the Player's horizontal movement script one part at a time. When you run
-`main.tscn`, the Player collision outline will move left with `A` or Left Arrow
+`main.tscn`, a temporary Player marker will move left with `A` or Left Arrow
 and right with `D` or Right Arrow, then stop when you release the input.
 
 This lesson adds only horizontal movement. Gravity, floor collision, jumping,
@@ -17,13 +17,38 @@ camera behavior, and player artwork will be added later.
 - `res://actors/player.gd` is attached to the Player root and contains only
   `extends CharacterBody2D`.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
+- `res://actors/player.tscn` has the inherited `Visuals` attachment point.
 - The Input Map contains the `move_left` and `move_right` actions from Lesson
   2.1.
 - The project runs without related errors or warnings.
 
 ## Build steps
 
-### Part 1: Add the movement speed
+### Part 1: Add a visible Player marker
+
+1. Open `res://actors/player.tscn`.
+2. In the **Scene** dock, select the inherited `Visuals` node.
+3. Click **Add Child Node**, search for `Sprite2D`, and create it.
+4. With the new `Sprite2D` selected, find **Texture** in the Inspector. Choose
+   **Quick Load** and select `res://icon.svg`.
+5. In the Inspector, expand **Transform** and set **Scale** to `(0.125, 0.125)`.
+6. Leave the new `Sprite2D` at its default Position `(0, 0)` beneath `Visuals`.
+7. Save the scene with `Ctrl+S`.
+
+> 💡 This icon is a temporary visible marker for testing movement. It is not
+> the Player's final artwork. The icon is 128 by 128 pixels; a Scale of
+> `(0.125, 0.125)` makes the marker 16 by 16 pixels, keeping it compact on
+> screen. Because it is beneath `Visuals`, it will inherit any later transform
+> changes made to that branch.
+
+> ⚠️ **If something differs**
+>
+> - If you cannot see `Visuals`, expand the inherited Actor nodes in the
+>   **Scene** dock.
+> - If the icon does not appear in the Texture picker, confirm that you chose
+>   `res://icon.svg`, then save `player.tscn` before running the scene.
+
+### Part 2: Add the movement speed
 
 1. Open `res://actors/player.gd`.
 2. Add a blank line beneath `extends CharacterBody2D`.
@@ -39,7 +64,7 @@ camera behavior, and player artwork will be added later.
 > movement speed. The `float` type matches the decimal values used for
 > movement. Lesson 3.1 will make this value adjustable in the Inspector.
 
-### Part 2: Add the physics callback
+### Part 3: Add the physics callback
 
 1. Add a blank line beneath the `speed` variable.
 2. Add this function:
@@ -49,18 +74,16 @@ camera behavior, and player artwork will be added later.
        pass
    ```
 
-> 💡 `_physics_process()` is a Godot callback that runs at a steady rate for
-> physics updates. Godot provides `_delta`, the time since the previous update.
-> This lesson does not need that parameter yet, so the leading underscore marks
-> it as intentionally unused. As in Lesson 2.5, `pass` temporarily keeps the
-> function valid until you add its movement instructions.
+`_physics_process()` is a callback Godot runs repeatedly at a steady rate. Each run is part of a physics update: a regular moment for handling movement, collisions, and other physics-related code for nodes such as the Player. Add code here when it needs to run continuously.
+
+`_delta` is the time since the previous physics update. Don't worry about it for now, as we do not need it yet. The leading underscore marks it as unused.
 
 > ⚠️ **If something differs**
 >
 > - If Godot marks the function as an error, check the colon after `void` and
 >   confirm that `pass` is indented beneath the function line.
 
-### Part 3: Read horizontal input
+### Part 4: Read horizontal input
 
 1. Delete the indented `pass` line.
 2. In its place, add:
@@ -68,24 +91,16 @@ camera behavior, and player artwork will be added later.
    ```gdscript
    var direction: float = Input.get_axis("move_left", "move_right")
    ```
+`Input` is a built-in Godot tool for reading input from devices, such as a keyboard or controller. `get_axis()` is one of its methods. It reads two named movement actions passed in the parentheses and returns a number that represents their combined direction.
 
 `Input.get_axis()` reads the negative action first and the positive action
 second. With a keyboard or D-pad, left produces `-1.0`, right produces `1.0`,
 and neither or both produces `0.0`. A controller stick can also produce values
 between `-1.0` and `1.0`, so partially tilting it can produce a smaller value.
 
-> 💡 Godot makes some built-in names available to every script. `Input` is one
-> of them, and it is used to read keyboard, controller, and other device input.
-> In `Input.get_axis(...)`, the period accesses the `get_axis()` method
-> belonging to `Input`, and the parentheses call it with the two action-name
-> arguments.
->
-> This applies the period, method, argument, and returned-value syntax from
-> Lessons 2.6 and 2.7 to a function provided by Godot.
+We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or controller input continuously.
 
-> 💡 This applies the named actions configured in Lesson 2.1, so one line
-> supports both keyboard and controller input. `direction` holds the result for
-> the current physics update.
+> 💡 "move_left" and "move_right" are the Input Map action names you created in Lesson 2.1. Godot checks the keyboard and controller events assigned to those actions, rather than checking individual keys or buttons directly.
 
 > ⚠️ **If something differs**
 >
@@ -93,7 +108,7 @@ between `-1.0` and `1.0`, so partially tilting it can produce a smaller value.
 >   spelling in **Project → Project Settings → Input Map**. Action names are
 >   case-sensitive.
 
-### Part 4: Set the horizontal velocity
+### Part 5: Set the horizontal velocity and move the Player
 
 1. Add this indented line beneath the `direction` variable:
 
@@ -101,25 +116,17 @@ between `-1.0` and `1.0`, so partially tilting it can produce a smaller value.
    velocity.x = direction * speed
    ```
 
-`CharacterBody2D` provides the `velocity` property. This line changes only its
-horizontal X value through the property-access syntax from Lesson 2.7. The
-later gravity lesson can therefore use `velocity.y` without replacing the
-horizontal movement.
+`velocity` is a built-in `CharacterBody2D` property that stores how fast and in which direction the Player should move. It is a `Vector2`: `velocity.x` is horizontal speed, and `velocity.y` is vertical speed. Setting `velocity.x` alone does not move the Player; `move_and_slide()` uses the velocity to move it and handle collisions.
 
-### Part 5: Move the Player
-
-1. Add this final indented line:
+2. Add this final indented line beneath `velocity.x = direction * speed`:
 
    ```gdscript
    move_and_slide()
    ```
 
-`move_and_slide()` is a method provided by `CharacterBody2D`. The script can
-call a method belonging to its current node directly, so it does not need
-`CharacterBody2D.` before the method name. This method asks the body to move
-using its velocity and handle collisions when collision geometry is added.
+`move_and_slide()` is a method provided by `CharacterBody2D`. Because the Player script extends `CharacterBody2D`, it can call this method directly—without writing `CharacterBody2D.` first. The method moves the body using its `velocity` and handles collisions when the body has collision geometry, so you do not have to code that behavior yourself.
 
-2. Compare your completed script with this version:
+3. Compare your completed script with this version:
 
    ```gdscript
    extends CharacterBody2D
@@ -132,7 +139,7 @@ using its velocity and handle collisions when collision geometry is added.
        move_and_slide()
    ```
 
-3. Save the script with `Ctrl+S`.
+4. Save the script with `Ctrl+S`.
 
 > ⚠️ **If something differs**
 >
@@ -142,16 +149,15 @@ using its velocity and handle collisions when collision geometry is added.
 ### Part 6: Run and test horizontal movement
 
 1. Open `res://scenes/main.tscn`.
-2. In the top editor menu bar, enable **Debug → Visible Collision Shapes**.
-3. Run the current scene with `F6`.
-4. Hold `A` or Left Arrow and confirm that the Player collision outline moves
+2. Run the current scene with `F6`.
+3. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
    left.
-5. Hold `D` or Right Arrow and confirm that it moves right.
-6. Release the input and confirm that the outline stops.
-7. If a compatible controller is connected, test its configured D-pad and left
+4. Hold `D` or Right Arrow and confirm that the marker moves right.
+5. Release the input and confirm that the marker stops.
+6. If a compatible controller is connected, test its configured D-pad and left
    stick directions too.
-8. Confirm that `Project ready` and the project icon still appear.
-9. Stop the running scene with `F8`.
+7. Confirm that `Project ready` and the project icon still appear.
+8. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -160,8 +166,8 @@ using its velocity and handle collisions when collision geometry is added.
 >   Map exactly.
 > - If the Player moves vertically, check that the assignment is `velocity.x`,
 >   not `velocity.y` or `velocity`.
-> - If no outline is visible, confirm that **Visible Collision Shapes** is
->   enabled and that Player still has its inherited `CollisionShape2D`.
+> - If no marker is visible, open `player.tscn` and confirm that the `Sprite2D`
+>   is beneath `Visuals` and has `res://icon.svg` assigned as its Texture.
 
 ## Learner exercise
 
@@ -180,13 +186,15 @@ using its velocity and handle collisions when collision geometry is added.
       names.
 - [ ] The script assigns horizontal velocity through `velocity.x` and calls
       `move_and_slide()`.
+- [ ] A `Sprite2D` with `res://icon.svg` is beneath the Player's `Visuals`
+      node as a temporary test marker.
 - [ ] `A`/Left Arrow moves the Player left, and `D`/Right Arrow moves it right.
 - [ ] Releasing the input stops horizontal movement.
 - [ ] Configured controller movement works when a compatible controller is
       available.
 - [ ] `Project ready` and the project icon still appear when `main.tscn` runs.
 - [ ] The speed exercise ends with `speed` restored to `300.0`.
-- [ ] The Player has no gravity, jumping, camera, or artwork behavior yet.
+- [ ] The Player has no gravity, jumping, camera, or final artwork yet.
 
 ## References
 

@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cnfedd1im6bj8" path="res://actors/actor.tscn" id="1_niuxy"]
 [ext_resource type="Script" uid="uid://bffdg8cksn4fr" path="res://actors/player.gd" id="2_mvpqy"]
+[ext_resource type="Texture2D" uid="uid://bf2f62gqjxpae" path="res://icon.svg" id="3_1yqc4"]
 
 [node name="Player" unique_id=1623537006 instance=ExtResource("1_niuxy")]
 script = ExtResource("2_mvpqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" parent_id_path=PackedInt32Array(953118008) index="0" unique_id=987071086]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_1yqc4")
