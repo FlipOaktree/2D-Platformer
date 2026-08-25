@@ -34,12 +34,7 @@ project will still display `Project ready` and the project icon.
 3. Search for `CharacterBody2D`, select it, then select **Create**.
 4. Rename the root node `Actor`.
 
-> 💡 A `CharacterBody2D` is a 2D physics body designed for characters whose
-> movement will be controlled by code. It can detect collisions when it moves,
-> but it does not move by itself. Later lessons will add that behavior. Using
-> it as the shared root gives players, NPCs, and enemies the same basic
-> movement-and-collision foundation without deciding their specific behavior
-> yet.
+> 💡 A physics body is a node that participates in Godot’s physics system. It can use collision shapes to detect or respond to collisions, and some physics body types can be moved by code. CharacterBody2D is a 2D physics body designed for characters whose movement will be controlled by code. It can detect collisions when it moves, but it does not move by itself.
 
 5. Save the scene with `Ctrl+S`.
 6. In the save dialog, create a folder named `actors` at the top level of the

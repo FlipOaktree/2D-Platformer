@@ -28,25 +28,27 @@ not infer progress from chat history or from learner verification checkboxes.
   transform and composition procedures, dot-syntax bridge, and horizontal
   movement remain validated.
 - **Godot evidence:** `Main` contains a direct `Label` displaying `Project
-  ready` at `(0, 0)`, one `ProjectIcon` instance at `(256, 240)`, and one
-  inherited `Player` instance at `(128, 128)`. The Input Map defines
+  ready` at `(0, 0)`, one inherited `Player` instance at `(128, 128)`, and a
+  `Floor` `StaticBody2D` at `(576, 560)` with a 1152-by-64 rectangle collision
+  shape. The Input Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
   shared `CharacterBody2D` structure, and `res://actors/player.tscn` inherits
   it with `res://actors/player.gd` attached. The Player has a temporary
-  16-by-16 `Sprite2D` marker beneath `Visuals`.
+  128-by-128 `Sprite2D` marker beneath `Visuals`.
 - **Code state:** `res://actors/player.gd` implements typed horizontal
-  movement through `Input.get_axis()`, `velocity.x`, and `move_and_slide()`.
-  Gravity, floor collision, jumping, and other gameplay systems remain absent.
+  movement through `Input.get_axis()`, `velocity.x`, and `move_and_slide()`,
+  plus gravity through `velocity.y += gravity * delta`. Conditional logic,
+  jumping, and other gameplay systems remain absent.
 - **Observed Git head:** `5c284f8` (`Validate Player scene specialization and
   update course roadmap`), matching `origin/main`. The tree was clean before
   the approved, uncommitted Module 1 curriculum and blueprint revision.
-- **Exact next step:** Review and approve the drafted Module 2, Lesson 2.9
-  blueprint, **Add Gravity and Floor Collision**.
+- **Exact next step:** Review and approve the drafted Module 2, Lesson 2.10
+  blueprint, **Use Conditions to Respond to Floor State**.
 - **Checkpoint:** Commit `5c284f8` contains the matching Actor and Player
   scenes and the course baseline that preceded the current curriculum edits.
-  The current uncommitted work includes the validated Lessons 2.5-2.8 and the
-  drafted Lesson 2.9 blueprint.
+  The current uncommitted work includes the validated Lessons 2.5-2.9 and the
+  drafted Lesson 2.10 blueprint.
 
 ## Status Model
 
@@ -166,8 +168,9 @@ a basic keyboard/controller player without premature feature inheritance.
 | 2.6 | Use Function Parameters and Return Values | Typed parameters, arguments, return types, and returned values | Validated | Uncommitted working tree |
 | 2.7 | Access Properties and Call Methods | Dot syntax, properties, and methods on existing values | Validated | Uncommitted working tree |
 | 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | Uncommitted working tree |
-| 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, floor collision, gravity, `delta`, conditional logic, and grounded state | Blueprint drafted | Unassigned |
-| 2.10 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
+| 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, floor collision, gravity, and `delta` | Validated | Uncommitted working tree |
+| 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Blueprint drafted | Unassigned |
+| 2.11 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
 
 ### Module 3: Responsive Player Movement
 
@@ -399,13 +402,14 @@ practical use and later lessons can build on them without re-teaching them.
 | Scene composition, instantiation, source propagation, and instance overrides | 1.4 | Actors, components, levels, attacks, enemies, items |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
 | Actor boundary and specialization | 2.2-2.3 | Player, NPCs, enemies |
+| Physics bodies and collision shapes | 2.2 | Movement, levels, platforms, combat, and enemies |
 | GDScript fundamentals | 2.4 | All scripted gameplay |
 | Script attachment, functions, callbacks, Output, local and script-level scope, and custom function calls | 2.5 | All scripted gameplay |
 | Function parameters, arguments, and returned values | 2.6 | Input, physics, and reusable gameplay logic |
 | Dot syntax, properties, and methods | 2.7 | All later engine and gameplay APIs |
 | Built-in Godot access through `Input` | 2.8 | Movement, combat, interaction, and UI |
-| Conditional logic and grounded state | 2.9 | Jumping, responsive movement, combat, and actor behavior |
-| Player movement and physics | 2.8-2.10 | Responsive movement and actor behavior |
+| Conditional logic and grounded state | 2.10 | Jumping, responsive movement, combat, and actor behavior |
+| Player movement and physics | 2.8-2.11 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
@@ -479,5 +483,6 @@ Remaining reconciliation work:
 | Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | Lesson 1.3 uses `ProjectIcon` to make all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
 | Demonstrate source propagation and per-instance overrides with `ProjectIcon` in Lesson 1.4 | Rotation makes the distinction visible while keeping the source scene and instance responsibilities small; Modules 2-17 retain their order. |
 | Introduce GDScript fundamentals before Player movement | Beginners should understand the small code vocabulary used in their first script before combining it with Godot input and physics. Lesson 2.4 introduces the foundations. |
-| Add first-script bridges before Player movement | Lesson 2.5 introduces script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls through a temporary message diagnostic. Lesson 2.6 introduces typed parameters, arguments, and returned values. Lesson 2.7 then teaches property access and method calls on existing values. Lesson 2.8 introduces built-in Godot access through `Input` when movement first needs it. Each bridge removes its temporary code; horizontal movement moves to 2.8, gravity to 2.9, and jumping to 2.10. |
-| Introduce conditional logic with gravity | Lesson 2.9 introduces `if`, `not`, and a grounded check where they immediately prevent gravity from being applied while the Player is standing on a floor. Lesson 2.10 can reuse the established floor state for jumping without redefining it. |
+| Add first-script bridges before Player movement | Lesson 2.5 introduces script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls through a temporary message diagnostic. Lesson 2.6 introduces typed parameters, arguments, and returned values. Lesson 2.7 then teaches property access and method calls on existing values. Lesson 2.8 introduces built-in Godot access through `Input` when movement first needs it. Each bridge removes its temporary code; horizontal movement moves to 2.8, gravity to 2.9, conditional logic to 2.10, and jumping to 2.11. |
+| Introduce conditional logic after gravity | Lesson 2.9 makes gravity and the floor state visible first. Lesson 2.10 then uses temporary Output messages to show `if`, `else`, `not`, and `is_on_floor()` in that working context before applying gravity only while airborne. Lesson 2.11 can reuse the established floor state for jumping without redefining it. |
+| Define physics bodies once, then use type-specific reminders | Lesson 2.2 is the first and only general definition of a physics body. Modules 3-17 must not repeat it; when they introduce another physics-body type, they should state only how that type differs from `CharacterBody2D` or `StaticBody2D`. |

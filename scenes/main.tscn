@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://xsf4auwc5hrq"]
 
-[ext_resource type="PackedScene" path="res://scenes/project_icon.tscn" id="1_project_icon"]
 [ext_resource type="PackedScene" uid="uid://4jclya8fye78" path="res://actors/player.tscn" id="2_0wfyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkpjr"]
+size = Vector2(1152, 64)
 
 [node name="Main" type="Node2D" unique_id=1280542419]
 
@@ -10,8 +12,11 @@ offset_right = 106.0
 offset_bottom = 51.0
 text = "Project ready"
 
-[node name="ProjectIcon" parent="." unique_id=2058426337 instance=ExtResource("1_project_icon")]
-position = Vector2(256, 240)
-
 [node name="Player" parent="." unique_id=1623537006 instance=ExtResource("2_0wfyh")]
 position = Vector2(128, 128)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1563314166]
+position = Vector2(576, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=712868675]
+shape = SubResource("RectangleShape2D_lkpjr")

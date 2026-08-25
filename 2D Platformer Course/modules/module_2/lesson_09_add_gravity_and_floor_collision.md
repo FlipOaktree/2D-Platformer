@@ -1,6 +1,6 @@
 # Module 2, Lesson 9: Add Gravity and Floor Collision
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
@@ -8,15 +8,16 @@ Add a temporary floor to `main.tscn`, then give the Player gravity. When you
 run the scene, the Player will fall, land on the floor, and retain the
 horizontal movement from Lesson 2.8.
 
-This lesson adds falling and floor collision only. Jumping will be added in
-Lesson 2.10.
+This lesson adds falling and floor collision only. Lesson 2.10 will use the
+floor state to introduce conditional logic, and jumping will be added in
+Lesson 2.11.
 
 ## Before you start
 
 - Module 2, Lesson 8 is complete.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
 - The Player has its inherited 32-by-32 collision shape and temporary
-  16-by-16 visual marker.
+  128-by-128 visual marker.
 - `res://actors/player.gd` contains the validated horizontal movement code
   from Lesson 2.8.
 - The project runs without related errors or warnings.
@@ -37,10 +38,7 @@ Lesson 2.10.
    `(1152, 64)`.
 9. Save the scene with `Ctrl+S`.
 
-> 💡 A `StaticBody2D` is a physics body that does not move. It is useful for
-> floors, walls, and other solid level geometry. Its `CollisionShape2D`
-> defines the solid area but does not draw visible artwork. This floor is
-> temporary test geometry; a later module will build reusable levels.
+> 💡 StaticBody2D is another kind of physics body. Unlike the Player’s CharacterBody2D, it does not move through code. It is useful for floors, walls, and other solid level geometry.
 
 > ⚠️ **If something differs**
 >
@@ -86,6 +84,15 @@ Lesson 2.10.
 gravity by `delta` keeps the rate of falling consistent over time. The leading
 underscore is removed from `delta` because the script now uses it.
 
+For example, if delta is approximately 1 / 60 of a second:
+
+gravity (980.0) × delta (1.0 / 60.0) = 16.33
+
+Each physics update adds about 16.33 pixels per second to velocity.y.
+Starting from 0, the Player’s vertical velocity becomes about 16.33
+pixels per second after the first update, then about 32.67 after the next.
+After about one second of falling, it reaches about 980 pixels per second.
+
 > ⚠️ **If something differs**
 >
 > - If Godot reports that `delta` is not declared, confirm that `_delta` was
@@ -93,27 +100,9 @@ underscore is removed from `delta` because the script now uses it.
 > - If the gravity line causes an indentation error, align it with the
 >   `direction`, `velocity.x`, and `move_and_slide()` lines.
 
-### Part 4: Apply gravity only while airborne
+### Part 4: Run and test falling and landing
 
-1. Add this line immediately above the gravity calculation:
-
-   ```gdscript
-   if not is_on_floor():
-   ```
-
-2. Indent the gravity calculation one additional level so both lines read:
-
-   ```gdscript
-   if not is_on_floor():
-       velocity.y += gravity * delta
-   ```
-
-> 💡 An `if` statement runs its indented instructions only when its condition
-> is `true`. `is_on_floor()` reports whether `move_and_slide()` detected a
-> floor during the previous movement. `not` reverses that result, so this
-> condition applies gravity only while the Player is not on a floor.
-
-3. Compare your completed script with this version:
+1. Compare your completed script with this version:
 
    ```gdscript
    extends CharacterBody2D
@@ -122,39 +111,31 @@ underscore is removed from `delta` because the script now uses it.
    var gravity: float = 980.0
 
    func _physics_process(delta: float) -> void:
-       if not is_on_floor():
-           velocity.y += gravity * delta
-
+       velocity.y += gravity * delta
        var direction: float = Input.get_axis("move_left", "move_right")
        velocity.x = direction * speed
        move_and_slide()
    ```
 
-4. Save the script with `Ctrl+S`.
+2. Save the script with `Ctrl+S`.
 
 `move_and_slide()` remains after the velocity calculations. It moves the
-Player, handles the collision with the floor, and updates the floor state used
-by `is_on_floor()` during the following physics update.
+Player and handles the collision with the floor. Lesson 2.10 will refine when
+the gravity calculation runs by using the floor state.
 
-> ⚠️ **If something differs**
->
-> - If the script editor reports an error on the `if` line, confirm that it
->   ends with a colon and that the gravity calculation is indented beneath it.
-
-### Part 5: Run and test falling and landing
-
-1. Open `res://scenes/main.tscn`.
-2. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
-3. Run the current scene with `F6`.
-4. Confirm that the Player falls and stops on top of the floor.
-5. Hold `A` or Left Arrow, then `D` or Right Arrow. Confirm that horizontal
+3. Open `res://scenes/main.tscn`.
+4. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
+5. Run the current scene with `F6`.
+6. Confirm that the Player falls and stops on top of the floor.
+7. Hold `A` or Left Arrow, then `D` or Right Arrow. Confirm that horizontal
    movement still works while the Player is on the floor.
-6. Release the input and confirm that the Player stops horizontally without
+8. Release the input and confirm that the Player stops horizontally without
    falling through the floor.
-7. If a compatible controller is connected, test its configured horizontal
+9. If a compatible controller is connected, test its configured horizontal
    controls too.
-8. Confirm that `Project ready` and the project icon still appear.
-9. Stop the running scene with `F8`.
+10. Confirm that `Project ready` still appears and that the Player marker is
+   the only icon on screen.
+11. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -173,7 +154,7 @@ by `is_on_floor()` during the following physics update.
 2. Run `main.tscn` and observe how the lower value changes the fall.
 3. Restore `gravity` to `980.0`, save, and run the scene again.
 4. Explain why gravity is multiplied by `delta`.
-5. Explain when the indented gravity calculation runs and when it is skipped.
+5. Explain why `move_and_slide()` must remain after the velocity calculations.
 
 ## Verification checklist
 
@@ -183,15 +164,16 @@ by `is_on_floor()` during the following physics update.
 - [ ] `res://actors/player.gd` declares typed `speed` and `gravity` variables.
 - [ ] `_physics_process()` uses the `delta` parameter without a leading
       underscore.
-- [ ] Gravity changes `velocity.y` by `gravity * delta` only when the Player
-      is not on the floor.
+- [ ] Gravity changes `velocity.y` by `gravity * delta` during each physics
+      update.
 - [ ] `move_and_slide()` remains after the vertical and horizontal velocity
       calculations.
 - [ ] The Player falls, lands on the floor, and does not fall through it.
 - [ ] Keyboard horizontal movement and stopping still work on the floor.
 - [ ] Configured controller movement still works when a compatible controller
       is available.
-- [ ] `Project ready` and the project icon still appear when `main.tscn` runs.
+- [ ] `Project ready` still appears, and the Player marker is the only icon on
+      screen when `main.tscn` runs.
 - [ ] The gravity exercise ends with `gravity` restored to `980.0`.
 - [ ] The Player cannot jump yet.
 

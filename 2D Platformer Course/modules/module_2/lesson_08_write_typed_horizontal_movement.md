@@ -36,10 +36,10 @@ camera behavior, and player artwork will be added later.
 7. Save the scene with `Ctrl+S`.
 
 > 💡 This icon is a temporary visible marker for testing movement. It is not
-> the Player's final artwork. The icon is 128 by 128 pixels; a Scale of
-> `(0.125, 0.125)` makes the marker 16 by 16 pixels, keeping it compact on
-> screen. Because it is beneath `Visuals`, it will inherit any later transform
-> changes made to that branch.
+> the Player's final artwork. The source icon is 1024 by 1024 pixels; a Scale
+> of `(0.125, 0.125)` makes the marker 128 by 128 pixels, which keeps it easy
+> to see during testing. Because it is beneath `Visuals`, it will inherit any
+> later transform changes made to that branch.
 
 > ⚠️ **If something differs**
 >
@@ -149,15 +149,18 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 ### Part 6: Run and test horizontal movement
 
 1. Open `res://scenes/main.tscn`.
-2. Run the current scene with `F6`.
-3. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
+2. In the **Scene** dock, select `ProjectIcon`, delete it, and save
+   `main.tscn` with `Ctrl+S`.
+3. Run the current scene with `F6`.
+4. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
    left.
-4. Hold `D` or Right Arrow and confirm that the marker moves right.
-5. Release the input and confirm that the marker stops.
-6. If a compatible controller is connected, test its configured D-pad and left
+5. Hold `D` or Right Arrow and confirm that the marker moves right.
+6. Release the input and confirm that the marker stops.
+7. If a compatible controller is connected, test its configured D-pad and left
    stick directions too.
-7. Confirm that `Project ready` and the project icon still appear.
-8. Stop the running scene with `F8`.
+8. Confirm that `Project ready` still appears and that the Player marker is
+   the only icon on screen.
+9. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -192,7 +195,8 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 - [ ] Releasing the input stops horizontal movement.
 - [ ] Configured controller movement works when a compatible controller is
       available.
-- [ ] `Project ready` and the project icon still appear when `main.tscn` runs.
+- [ ] `Project ready` still appears, and the Player marker is the only icon on
+      screen when `main.tscn` runs.
 - [ ] The speed exercise ends with `speed` restored to `300.0`.
 - [ ] The Player has no gravity, jumping, camera, or final artwork yet.
 
