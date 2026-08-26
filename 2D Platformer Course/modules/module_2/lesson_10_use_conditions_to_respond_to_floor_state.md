@@ -1,6 +1,6 @@
 # Module 2, Lesson 10: Use Conditions to Respond to Floor State
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
@@ -33,19 +33,22 @@ state to decide when the Player can jump.
 1. Open `res://actors/player.gd`.
 2. In `_physics_process()`, add this code immediately above the gravity
    calculation:
-
    ```gdscript
    if is_on_floor():
        print("Player is on the floor.")
    else:
        print("Player is airborne.")
    ```
+> 💡 An `if` statement lets code choose which instructions to run based on a
+> condition. The condition must produce `true` or `false`. When it is `true`,
+> the indented instructions beneath `if` run. When it is `false`, those
+> instructions are skipped. If an `else` branch is present, its indented
+> instructions run instead. Only one branch runs each time.
 
-> 💡 An `if` statement runs its indented instructions only when its condition
-> is `true`. `is_on_floor()` is a `CharacterBody2D` method that returns a
-> `bool`: `true` when `move_and_slide()` detected a floor during the previous
-> physics update, otherwise `false`. `else` supplies the instructions to run
-> when the `if` condition is `false`.
+> 💡 `is_on_floor()` is a built-in `CharacterBody2D` method that checks the
+> Player's floor state. It returns a `bool`: `true` if the last
+> `move_and_slide()` call detected a floor, otherwise `false`. In this code, it
+> tells the `if` statement which message to print.
 
 3. Save the script with `Ctrl+S`.
 4. Open `res://scenes/main.tscn` and run the current scene with `F6`.
@@ -135,8 +138,7 @@ landing, but the code now states that gravity applies only while airborne.
 5. Release the input and confirm that the Player stops horizontally.
 6. If a compatible controller is connected, test its configured horizontal
    controls too.
-7. Confirm that `Project ready` still appears and that the Player marker is
-   the only icon on screen.
+7. Confirm that neither `ProjectIcon` nor `Project ready` appears.
 8. Stop the running scene with `F8`.
 
 ## Learner exercise
@@ -159,8 +161,7 @@ landing, but the code now states that gravity applies only while airborne.
 - [ ] Keyboard horizontal movement and stopping still work on the floor.
 - [ ] Configured controller movement still works when a compatible controller
       is available.
-- [ ] `Project ready` still appears, and the Player marker is the only icon on
-      screen when `main.tscn` runs.
+- [ ] Neither `ProjectIcon` nor `Project ready` appears when `main.tscn` runs.
 - [ ] The learner exercise ends with `not` restored.
 - [ ] The Player cannot jump yet.
 

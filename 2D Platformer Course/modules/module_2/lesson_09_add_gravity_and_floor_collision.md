@@ -133,8 +133,7 @@ the gravity calculation runs by using the floor state.
    falling through the floor.
 9. If a compatible controller is connected, test its configured horizontal
    controls too.
-10. Confirm that `Project ready` still appears and that the Player marker is
-   the only icon on screen.
+10. Confirm that neither `ProjectIcon` nor `Project ready` appears.
 11. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
@@ -172,8 +171,7 @@ the gravity calculation runs by using the floor state.
 - [ ] Keyboard horizontal movement and stopping still work on the floor.
 - [ ] Configured controller movement still works when a compatible controller
       is available.
-- [ ] `Project ready` still appears, and the Player marker is the only icon on
-      screen when `main.tscn` runs.
+- [ ] Neither `ProjectIcon` nor `Project ready` appears when `main.tscn` runs.
 - [ ] The gravity exercise ends with `gravity` restored to `980.0`.
 - [ ] The Player cannot jump yet.
 

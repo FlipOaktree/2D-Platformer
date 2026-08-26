@@ -149,18 +149,18 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 ### Part 6: Run and test horizontal movement
 
 1. Open `res://scenes/main.tscn`.
-2. In the **Scene** dock, select `ProjectIcon`, delete it, and save
-   `main.tscn` with `Ctrl+S`.
-3. Run the current scene with `F6`.
-4. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
+2. In the **Scene** dock, select `ProjectIcon` and delete it.
+3. Select `Label` and delete it.
+4. Save `main.tscn` with `Ctrl+S`.
+5. Run the current scene with `F6`.
+6. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
    left.
-5. Hold `D` or Right Arrow and confirm that the marker moves right.
-6. Release the input and confirm that the marker stops.
-7. If a compatible controller is connected, test its configured D-pad and left
+7. Hold `D` or Right Arrow and confirm that the marker moves right.
+8. Release the input and confirm that the marker stops.
+9. If a compatible controller is connected, test its configured D-pad and left
    stick directions too.
-8. Confirm that `Project ready` still appears and that the Player marker is
-   the only icon on screen.
-9. Stop the running scene with `F8`.
+10. Confirm that the Player marker is the only visible element on screen.
+11. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -195,8 +195,8 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 - [ ] Releasing the input stops horizontal movement.
 - [ ] Configured controller movement works when a compatible controller is
       available.
-- [ ] `Project ready` still appears, and the Player marker is the only icon on
-      screen when `main.tscn` runs.
+- [ ] `main.tscn` no longer contains `ProjectIcon` or `Label`.
+- [ ] The Player marker is the only visible element when `main.tscn` runs.
 - [ ] The speed exercise ends with `speed` restored to `300.0`.
 - [ ] The Player has no gravity, jumping, camera, or final artwork yet.
 

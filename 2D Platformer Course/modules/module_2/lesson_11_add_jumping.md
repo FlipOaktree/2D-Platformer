@@ -1,0 +1,189 @@
+# Module 2, Lesson 11: Add Jumping
+
+**Status:** Blueprint drafted
+
+## By the end
+
+Make the Player jump from the floor with the existing `jump` action. The
+Player will jump when you press Space or the configured controller button, and
+will not start another jump while airborne.
+
+This completes the first basic Player movement set: horizontal movement,
+gravity, floor detection, and jumping.
+
+## Before you start
+
+- Module 2, Lesson 10 is complete.
+- `main.tscn` contains the Player and the temporary Floor.
+- The Player falls, lands on the floor, and moves horizontally.
+- `res://actors/player.gd` contains `if not is_on_floor():` above the gravity
+  calculation.
+- The `jump` action from Lesson 2.1 is still assigned to Space and the
+  controller's bottom button.
+
+## Build steps
+
+### Part 1: Choose the jump velocity
+
+1. Open `res://actors/player.gd`.
+2. Under the `gravity` variable, add this typed variable:
+
+   ```gdscript
+   var jump_velocity: float = -400.0
+   ```
+
+   Your variables should now look like this:
+
+   ```gdscript
+   var speed: float = 300.0
+   var gravity: float = 980.0
+   var jump_velocity: float = -400.0
+   ```
+
+> 💡 `velocity.y` controls vertical movement. The negative `jump_velocity`
+> sends the Player upward because 2D Y values increase downward. The value is
+> named `jump_velocity` because it is the value that will be assigned to
+> `velocity.y` when a jump begins.
+
+3. Save the script with `Ctrl+S`.
+
+### Part 2: Check for a new jump press
+
+1. In `_physics_process()`, add this temporary code above the gravity
+   condition:
+
+   ```gdscript
+   if Input.is_action_just_pressed("jump"):
+       print("Jump pressed.")
+   ```
+
+2. Save the script, run `main.tscn` with `F6`, then press Space once.
+3. Open the **Output** panel. Confirm that it reports `Jump pressed.` once for
+   each new press.
+4. Hold Space briefly. Confirm that holding the key does not repeatedly print
+   new messages.
+5. Stop the running scene with `F8`.
+
+> 💡 `Input.is_action_just_pressed("jump")` checks the existing `jump`
+> action. It returns `true` only when that action starts being pressed, then
+> returns `false` while the button remains held. This makes it useful for a
+> one-time action such as beginning a jump.
+
+> ⚠️ **If something differs**
+>
+> - If no message appears, confirm that the action name is exactly `"jump"`
+>   and that the code is inside `_physics_process()`.
+> - If the script reports an error, check the colon after the `if` condition
+>   and indent the `print()` line beneath it.
+
+### Part 3: Allow a jump only from the floor
+
+1. Add `and is_on_floor()` to the end of the temporary condition:
+
+   ```gdscript
+   if Input.is_action_just_pressed("jump") and is_on_floor():
+       print("Jump pressed.")
+   ```
+
+2. Save and run `main.tscn` again.
+3. Press Space while the Player is standing on the floor. Confirm that the
+   message appears.
+4. Press Space while the Player is falling. Confirm that no message appears.
+5. Stop the running scene with `F8`.
+
+> 💡 `and` combines two conditions. The indented instruction runs only when
+> both are `true`: the `jump` action has just been pressed and the Player is
+> on the floor. `is_on_floor()` was introduced in Lesson 2.10; it prevents an
+> airborne Player from starting another jump.
+
+### Part 4: Start the jump
+
+1. Replace the temporary `print()` line with this line:
+
+   ```gdscript
+   velocity.y = jump_velocity
+   ```
+
+2. Compare your completed script with this version:
+
+   ```gdscript
+   extends CharacterBody2D
+
+   var speed: float = 300.0
+   var gravity: float = 980.0
+   var jump_velocity: float = -400.0
+
+   func _physics_process(delta: float) -> void:
+       if Input.is_action_just_pressed("jump") and is_on_floor():
+           velocity.y = jump_velocity
+
+       if not is_on_floor():
+           velocity.y += gravity * delta
+
+       var direction: float = Input.get_axis("move_left", "move_right")
+       velocity.x = direction * speed
+       move_and_slide()
+   ```
+
+3. Save the script with `Ctrl+S`.
+
+`=` replaces the Player's current vertical velocity with the upward
+`jump_velocity` when the jump begins. The gravity condition then increases
+`velocity.y` over later physics updates, so the Player slows down, falls, and
+lands again.
+
+> ⚠️ **If something differs**
+>
+> - If the Player does not jump, check that `jump_velocity` is negative and
+>   that `velocity.y = jump_velocity` is indented beneath the jump condition.
+> - If the Player can jump in the air, make sure `and is_on_floor()` remains
+>   on the same `if` line.
+> - If the Player rises but never falls, confirm that the gravity condition
+>   from Lesson 2.10 is still present below the jump condition.
+
+### Part 5: Run and test jumping
+
+1. Run `main.tscn` with `F6`.
+2. Press Space. Confirm that the Player jumps upward, falls, and lands on the
+   floor.
+3. Hold Space. Confirm that the Player does not repeatedly jump while the
+   button is held.
+4. Press Space while the Player is airborne. Confirm that the Player does not
+   start a second jump.
+5. Hold `A` or Left Arrow while jumping, then hold `D` or Right Arrow during a
+   later jump. Confirm that horizontal movement still works in the air and on
+   the floor.
+6. Release horizontal input. Confirm that the Player stops moving sideways.
+7. If a compatible controller is connected, test its configured bottom button
+   and horizontal controls.
+8. Confirm that no temporary Output messages appear.
+9. Stop the running scene with `F8`.
+
+## Learner exercise
+
+1. Temporarily change `jump_velocity` from `-400.0` to `-250.0`.
+2. Run the scene and compare the height of the jump with the original.
+3. Restore `jump_velocity` to `-400.0`.
+4. Explain why both values make the Player move upward, but one produces a
+   lower jump.
+
+## Verification checklist
+
+- [ ] `jump_velocity` is a typed `float` with the value `-400.0`.
+- [ ] The final jump condition uses
+      `Input.is_action_just_pressed("jump") and is_on_floor()`.
+- [ ] `velocity.y = jump_velocity` is indented beneath that condition.
+- [ ] The temporary `print()` call was removed.
+- [ ] Space makes the Player jump, fall, and land on the floor.
+- [ ] Holding the jump button does not repeatedly start jumps.
+- [ ] The Player cannot jump again while airborne.
+- [ ] Keyboard horizontal movement and stopping still work in the air and on
+      the floor.
+- [ ] Configured controller jump and movement work when a compatible controller
+      is available.
+- [ ] No temporary Output messages appear.
+
+## References
+
+- [Input](https://docs.godotengine.org/en/4.7/classes/class_input.html)
+- [CharacterBody2D](https://docs.godotengine.org/en/4.7/classes/class_characterbody2d.html)

@@ -24,13 +24,13 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.4; and Module 2, Lessons 2.1-2.8. The coordinate-theory split, revised
-  transform and composition procedures, dot-syntax bridge, and horizontal
-  movement remain validated.
-- **Godot evidence:** `Main` contains a direct `Label` displaying `Project
-  ready` at `(0, 0)`, one inherited `Player` instance at `(128, 128)`, and a
-  `Floor` `StaticBody2D` at `(576, 560)` with a 1152-by-64 rectangle collision
-  shape. The Input Map defines
+  1.1-1.4; and Module 2, Lessons 2.1-2.10. The coordinate-theory split, revised
+  transform and composition procedures, dot-syntax bridge, horizontal movement,
+  gravity/floor procedures, and conditional floor-state procedure remain
+  validated.
+- **Godot evidence:** `Main` contains one inherited `Player` instance at
+  `(128, 128)` and a `Floor` `StaticBody2D` at `(576, 560)` with a 1152-by-64
+  rectangle collision shape. The Input Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
   shared `CharacterBody2D` structure, and `res://actors/player.tscn` inherits
@@ -38,17 +38,17 @@ not infer progress from chat history or from learner verification checkboxes.
   128-by-128 `Sprite2D` marker beneath `Visuals`.
 - **Code state:** `res://actors/player.gd` implements typed horizontal
   movement through `Input.get_axis()`, `velocity.x`, and `move_and_slide()`,
-  plus gravity through `velocity.y += gravity * delta`. Conditional logic,
-  jumping, and other gameplay systems remain absent.
+  plus gravity through `if not is_on_floor():` and
+  `velocity.y += gravity * delta`. Jumping and other gameplay systems remain
+  absent.
 - **Observed Git head:** `5c284f8` (`Validate Player scene specialization and
   update course roadmap`), matching `origin/main`. The tree was clean before
   the approved, uncommitted Module 1 curriculum and blueprint revision.
-- **Exact next step:** Review and approve the drafted Module 2, Lesson 2.10
-  blueprint, **Use Conditions to Respond to Floor State**.
+- **Exact next step:** Review and approve the drafted Module 2, Lesson 2.11
+  blueprint, **Add Jumping**.
 - **Checkpoint:** Commit `5c284f8` contains the matching Actor and Player
   scenes and the course baseline that preceded the current curriculum edits.
-  The current uncommitted work includes the validated Lessons 2.5-2.9 and the
-  drafted Lesson 2.10 blueprint.
+  The current uncommitted work includes the validated Lessons 2.5-2.10.
 
 ## Status Model
 
@@ -169,8 +169,8 @@ a basic keyboard/controller player without premature feature inheritance.
 | 2.7 | Access Properties and Call Methods | Dot syntax, properties, and methods on existing values | Validated | Uncommitted working tree |
 | 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | Uncommitted working tree |
 | 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, floor collision, gravity, and `delta` | Validated | Uncommitted working tree |
-| 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Blueprint drafted | Unassigned |
-| 2.11 | Add Jumping | Jump action and vertical velocity | Planned | Unassigned |
+| 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | Uncommitted working tree |
+| 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Blueprint drafted | Unassigned |
 
 ### Module 3: Responsive Player Movement
 
