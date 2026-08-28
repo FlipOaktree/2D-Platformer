@@ -42,14 +42,15 @@ not infer progress from chat history or from learner verification checkboxes.
   and grounded jumping through
   `Input.is_action_just_pressed("jump") and is_on_floor()`. Other gameplay
   systems remain absent.
-- **Observed Git head:** `5c284f8` (`Validate Player scene specialization and
-  update course roadmap`), matching `origin/main`. The tree was clean before
-  the approved, uncommitted Module 1 curriculum and blueprint revision.
-- **Exact next step:** Draft the Module 3, Lesson 3.1 blueprint,
-  **Expose Safe Movement Settings**.
-- **Checkpoint:** Commit `5c284f8` contains the matching Actor and Player
-  scenes and the course baseline that preceded the current curriculum edits.
-  The current uncommitted work includes the validated Lessons 2.5-2.11.
+- **Observed Git head:** `cf34c54` (`Validate jumping lesson and update course
+  roadmap`), matching `origin/main` before the approved, uncommitted Module 3,
+  Lesson 3.1 blueprint draft.
+- **Exact next step:** Review the Module 3, Lesson 3.1 blueprint,
+  **Expose Safe Movement Settings**, and decide whether to approve it for
+  implementation.
+- **Checkpoint:** Commit `cf34c54` contains the validated course and matching
+  Godot project through Lesson 2.11. The current uncommitted work contains the
+  Lesson 3.1 blueprint draft and its roadmap continuity update.
 
 ## Status Model
 
@@ -180,7 +181,7 @@ responsive controller while making player states explicit.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Planned | Unassigned |
+| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Blueprint drafted | Uncommitted working tree |
 | 3.2 | Add Acceleration and Deceleration | Smoothing movement values | Planned | Unassigned |
 | 3.3 | Add Coyote Time | Short grace timers | Planned | Unassigned |
 | 3.4 | Add Jump Buffering | Buffered input | Planned | Unassigned |
