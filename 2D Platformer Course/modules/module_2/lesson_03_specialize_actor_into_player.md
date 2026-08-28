@@ -143,7 +143,7 @@ Without repeating the build steps:
 
 ## References
 
-- [Godot's design philosophy](https://docs.godotengine.org/en/4.6/getting_started/introduction/godot_design_philosophy.html)
-- [Applying object-oriented principles in Godot](https://docs.godotengine.org/en/4.6/tutorials/best_practices/what_are_godot_classes.html)
-- [Nodes and scenes](https://docs.godotengine.org/en/4.6/getting_started/step_by_step/nodes_and_scenes.html)
-- [EditorInterface](https://docs.godotengine.org/en/4.6/classes/class_editorinterface.html)
+- [Godot's design philosophy](https://docs.godotengine.org/en/4.7/getting_started/introduction/godot_design_philosophy.html)
+- [Applying object-oriented principles in Godot](https://docs.godotengine.org/en/4.7/tutorials/best_practices/what_are_godot_classes.html)
+- [Nodes and scenes](https://docs.godotengine.org/en/4.7/getting_started/step_by_step/nodes_and_scenes.html)
+- [EditorInterface](https://docs.godotengine.org/en/4.7/classes/class_editorinterface.html)

@@ -65,7 +65,7 @@ A **variable** gives a **value** a name so code can read or change it later. Ins
 >   be used for the Player’s position.
 
 Read the following script:
-   
+
    ```gdscript
    var player_name: String = "Mina"
    var lives: int = 3
