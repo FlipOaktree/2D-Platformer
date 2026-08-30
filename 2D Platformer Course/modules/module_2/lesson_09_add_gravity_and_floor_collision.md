@@ -16,8 +16,8 @@ Lesson 2.11.
 
 - Module 2, Lesson 8 is complete.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
-- The Player has its inherited 32-by-32 collision shape and temporary
-  128-by-128 visual marker.
+- The Player has a 128-by-128 collision-shape override matching its temporary
+  128-by-128 visual marker. Actor retains its shared 32-by-32 placeholder.
 - `res://actors/player.gd` contains the validated horizontal movement code
   from Lesson 2.8.
 - The project runs without related errors or warnings.
@@ -127,19 +127,24 @@ the gravity calculation runs by using the floor state.
 4. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
 5. Run the current scene with `F6`.
 6. Confirm that the Player falls and stops on top of the floor.
-7. Hold `A` or Left Arrow, then `D` or Right Arrow. Confirm that horizontal
+7. Confirm that the bottoms of the Player marker and its collision outline
+   meet the top edge of the Floor collision shape.
+8. Hold `A` or Left Arrow, then `D` or Right Arrow. Confirm that horizontal
    movement still works while the Player is on the floor.
-8. Release the input and confirm that the Player stops horizontally without
+9. Release the input and confirm that the Player stops horizontally without
    falling through the floor.
-9. If a compatible controller is connected, test its configured horizontal
+10. If a compatible controller is connected, test its configured horizontal
    controls too.
-10. Confirm that neither `ProjectIcon` nor `Project ready` appears.
-11. Stop the running scene with `F8`.
+11. Confirm that neither `ProjectIcon` nor `Project ready` appears.
+12. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
 >
 > - If the Player falls through the floor, confirm that both the Player and
 >   Floor have a `CollisionShape2D` with a rectangle Shape assigned.
+> - If the marker appears embedded in the Floor, confirm that Player's Shape
+>   is its 128-by-128 override and that both the marker and collision shape
+>   remain at Position `(0, 0)`.
 > - If the Player does not fall, confirm that the calculation changes
 >   `velocity.y` and is inside `_physics_process()`.
 > - If the Player lands but does not move horizontally, compare the completed
@@ -160,6 +165,8 @@ the gravity calculation runs by using the floor state.
 - [ ] `main.tscn` contains a `Floor` `StaticBody2D` at Position `(576, 560)`.
 - [ ] `Floor` has a `CollisionShape2D` using a `RectangleShape2D` with Size
       `(1152, 64)`.
+- [ ] Player's 128-by-128 collision-shape override matches its temporary
+      128-by-128 marker.
 - [ ] `res://actors/player.gd` declares typed `speed` and `gravity` variables.
 - [ ] `_physics_process()` uses the `delta` parameter without a leading
       underscore.
@@ -168,6 +175,8 @@ the gravity calculation runs by using the floor state.
 - [ ] `move_and_slide()` remains after the vertical and horizontal velocity
       calculations.
 - [ ] The Player falls, lands on the floor, and does not fall through it.
+- [ ] The bottoms of the Player marker and collision outline meet the top edge
+      of the Floor collision shape.
 - [ ] Keyboard horizontal movement and stopping still work on the floor.
 - [ ] Configured controller movement still works when a compatible controller
       is available.

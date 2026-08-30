@@ -33,24 +33,26 @@ not infer progress from chat history or from learner verification checkboxes.
   rectangle collision shape. The Input Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
-  shared `CharacterBody2D` structure, and `res://actors/player.tscn` inherits
-  it with `res://actors/player.gd` attached. The Player has a temporary
-  128-by-128 `Sprite2D` marker beneath `Visuals`.
+  shared `CharacterBody2D` structure with a 32-by-32 placeholder collider.
+  `res://actors/player.tscn` inherits it with `res://actors/player.gd`
+  attached, then overrides the collider with a 128-by-128 rectangle matching
+  its temporary 128-by-128 `Sprite2D` marker beneath `Visuals`.
 - **Code state:** `res://actors/player.gd` implements typed horizontal
   movement through `Input.get_axis()`, `velocity.x`, and `move_and_slide()`,
   gravity through `if not is_on_floor():` and `velocity.y += gravity * delta`,
   and grounded jumping through
   `Input.is_action_just_pressed("jump") and is_on_floor()`. Other gameplay
   systems remain absent.
-- **Observed Git head:** `cf34c54` (`Validate jumping lesson and update course
-  roadmap`), matching `origin/main` before the approved, uncommitted Module 3,
-  Lesson 3.1 blueprint draft.
+- **Observed Git head:** `8f60f46` (`Update roadmap for Module 3.1 blueprint
+  review`), matching `origin/main` before the approved, uncommitted Player
+  collision-alignment correction.
 - **Exact next step:** Review the Module 3, Lesson 3.1 blueprint,
   **Expose Safe Movement Settings**, and decide whether to approve it for
   implementation.
-- **Checkpoint:** Commit `cf34c54` contains the validated course and matching
-  Godot project through Lesson 2.11. The current uncommitted work contains the
-  Lesson 3.1 blueprint draft and its roadmap continuity update.
+- **Checkpoint:** Commit `8f60f46` contains the validated course through
+  Lesson 2.11 and the Lesson 3.1 blueprint draft. The current uncommitted work
+  aligns the temporary Player marker and collider and revises the affected
+  validated lessons.
 
 ## Status Model
 
@@ -169,8 +171,8 @@ a basic keyboard/controller player without premature feature inheritance.
 | 2.5 | Attach and Run Your First Player Script | Script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls | Validated | Uncommitted working tree |
 | 2.6 | Use Function Parameters and Return Values | Typed parameters, arguments, return types, and returned values | Validated | Uncommitted working tree |
 | 2.7 | Access Properties and Call Methods | Dot syntax, properties, and methods on existing values | Validated | Uncommitted working tree |
-| 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | Uncommitted working tree |
-| 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, floor collision, gravity, and `delta` | Validated | Uncommitted working tree |
+| 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker and matching Player collider override, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | Uncommitted collision-alignment revision |
+| 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, aligned Player/floor collision, gravity, and `delta` | Validated | Uncommitted collision-alignment revision |
 | 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | Uncommitted working tree |
 | 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Validated | Uncommitted working tree |
 
@@ -181,7 +183,7 @@ responsive controller while making player states explicit.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Blueprint drafted | Uncommitted working tree |
+| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Blueprint drafted | `8f60f46` |
 | 3.2 | Add Acceleration and Deceleration | Smoothing movement values | Planned | Unassigned |
 | 3.3 | Add Coyote Time | Short grace timers | Planned | Unassigned |
 | 3.4 | Add Jump Buffering | Buffered input | Planned | Unassigned |
@@ -488,3 +490,4 @@ Remaining reconciliation work:
 | Add first-script bridges before Player movement | Lesson 2.5 introduces script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls through a temporary message diagnostic. Lesson 2.6 introduces typed parameters, arguments, and returned values. Lesson 2.7 then teaches property access and method calls on existing values. Lesson 2.8 introduces built-in Godot access through `Input` when movement first needs it. Each bridge removes its temporary code; horizontal movement moves to 2.8, gravity to 2.9, conditional logic to 2.10, and jumping to 2.11. |
 | Introduce conditional logic after gravity | Lesson 2.9 makes gravity and the floor state visible first. Lesson 2.10 then uses temporary Output messages to show `if`, `else`, `not`, and `is_on_floor()` in that working context before applying gravity only while airborne. Lesson 2.11 can reuse the established floor state for jumping without redefining it. |
 | Define physics bodies once, then use type-specific reminders | Lesson 2.2 is the first and only general definition of a physics body. Modules 3-17 must not repeat it; when they introduce another physics-body type, they should state only how that type differs from `CharacterBody2D` or `StaticBody2D`. |
+| Match temporary Player collision to its visible marker without changing Actor's shared default | Lesson 2.8 replaces Player's inherited Shape with a local 128-by-128 rectangle matching its temporary marker. Actor keeps its reusable 32-by-32 placeholder, and later actor specializations choose collision shapes that fit their own visuals. |

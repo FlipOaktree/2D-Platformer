@@ -8,6 +8,9 @@ Build the Player's horizontal movement script one part at a time. When you run
 `main.tscn`, a temporary Player marker will move left with `A` or Left Arrow
 and right with `D` or Right Arrow, then stop when you release the input.
 
+The Player's collision shape will also match the temporary 128-by-128 marker,
+so its visible boundary and physical boundary remain easy to compare.
+
 This lesson adds only horizontal movement. Gravity, floor collision, jumping,
 camera behavior, and player artwork will be added later.
 
@@ -33,7 +36,12 @@ camera behavior, and player artwork will be added later.
    **Quick Load** and select `res://icon.svg`.
 5. In the Inspector, expand **Transform** and set **Scale** to `(0.125, 0.125)`.
 6. Leave the new `Sprite2D` at its default Position `(0, 0)` beneath `Visuals`.
-7. Save the scene with `Ctrl+S`.
+7. Select the inherited `CollisionShape2D` beneath the Player root.
+8. In the Inspector, open the menu beside **Shape** and choose **New
+   RectangleShape2D**. This replaces the inherited Shape only for Player.
+9. Select the new rectangle resource and set its **Size** to `(128, 128)`.
+10. Confirm that `CollisionShape2D` remains at Position `(0, 0)`.
+11. Save the scene with `Ctrl+S`.
 
 > 💡 This icon is a temporary visible marker for testing movement. It is not
 > the Player's final artwork. The source icon is 1024 by 1024 pixels; a Scale
@@ -41,12 +49,22 @@ camera behavior, and player artwork will be added later.
 > to see during testing. Because it is beneath `Visuals`, it will inherit any
 > later transform changes made to that branch.
 
+The shared Actor keeps its 32-by-32 placeholder collision shape. Player now
+overrides that inherited property with a new 128-by-128 rectangle matching its
+temporary marker. Future NPCs and enemies can choose shapes that match their
+own visuals without inheriting the Player's size.
+
 > ⚠️ **If something differs**
 >
 > - If you cannot see `Visuals`, expand the inherited Actor nodes in the
 >   **Scene** dock.
 > - If the icon does not appear in the Texture picker, confirm that you chose
 >   `res://icon.svg`, then save `player.tscn` before running the scene.
+> - If changing the rectangle also changes `actor.tscn`, undo the change in
+>   Player. Create a new `RectangleShape2D` in Player's **Shape** property
+>   before setting its Size.
+> - If a warning remains beside `CollisionShape2D`, confirm that its Shape
+>   contains the new `RectangleShape2D` rather than being empty.
 
 ### Part 2: Add the movement speed
 
@@ -152,15 +170,18 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 2. In the **Scene** dock, select `ProjectIcon` and delete it.
 3. Select `Label` and delete it.
 4. Save `main.tscn` with `Ctrl+S`.
-5. Run the current scene with `F6`.
-6. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
+5. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
+6. Run the current scene with `F6`.
+7. Confirm that the Player's collision outline matches the edges of the
+   temporary marker.
+8. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
    left.
-7. Hold `D` or Right Arrow and confirm that the marker moves right.
-8. Release the input and confirm that the marker stops.
-9. If a compatible controller is connected, test its configured D-pad and left
+9. Hold `D` or Right Arrow and confirm that the marker moves right.
+10. Release the input and confirm that the marker stops.
+11. If a compatible controller is connected, test its configured D-pad and left
    stick directions too.
-10. Confirm that the Player marker is the only visible element on screen.
-11. Stop the running scene with `F8`.
+12. Confirm that the Player marker is the only visible element on screen.
+13. Stop the running scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -171,6 +192,8 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 >   not `velocity.y` or `velocity`.
 > - If no marker is visible, open `player.tscn` and confirm that the `Sprite2D`
 >   is beneath `Visuals` and has `res://icon.svg` assigned as its Texture.
+> - If the collision outline is smaller than the marker, open `player.tscn`
+>   and confirm that Player's rectangle Size is `(128, 128)`.
 
 ## Learner exercise
 
@@ -178,6 +201,9 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 2. Run `main.tscn` and compare the slower movement.
 3. Restore `speed` to `300.0`, save, and run the scene once more.
 4. Explain why the speed currently belongs to Player rather than Actor.
+5. Open `actor.tscn` and `player.tscn`, compare their collision-shape sizes,
+   and explain why Player uses an override instead of changing Actor's
+   placeholder.
 
 ## Verification checklist
 
@@ -191,6 +217,11 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
       `move_and_slide()`.
 - [ ] A `Sprite2D` with `res://icon.svg` is beneath the Player's `Visuals`
       node as a temporary test marker.
+- [ ] Actor retains its shared 32-by-32 placeholder collision shape.
+- [ ] Player overrides the inherited Shape with a 128-by-128
+      `RectangleShape2D` at Position `(0, 0)`.
+- [ ] With visible collision shapes enabled, the Player collision outline
+      matches the temporary marker.
 - [ ] `A`/Left Arrow moves the Player left, and `D`/Right Arrow moves it right.
 - [ ] Releasing the input stops horizontal movement.
 - [ ] Configured controller movement works when a compatible controller is
