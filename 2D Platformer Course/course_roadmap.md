@@ -24,10 +24,12 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.4; and Module 2, Lessons 2.1-2.11. The coordinate-theory split, revised
+  1.1-1.5; and Module 2, Lessons 2.1-2.12. The coordinate-theory split, revised
   transform and composition procedures, dot-syntax bridge, horizontal movement,
   gravity/floor procedures, conditional floor-state procedure, and jumping
-  procedure remain validated.
+  procedure remain validated. Lesson 0.4 is validated from the current Codex
+  project, Git metadata, and Changes-to-Review UI evidence; an empty-project
+  replay remains part of the full-course rebuild gate.
 - **Godot evidence:** `Main` contains one inherited `Player` instance at
   `(128, 128)` and a `Floor` `StaticBody2D` at `(576, 560)` with a 1152-by-64
   rectangle collision shape. The Input Map defines
@@ -41,18 +43,19 @@ not infer progress from chat history or from learner verification checkboxes.
   movement through `Input.get_axis()`, `velocity.x`, and `move_and_slide()`,
   gravity through `if not is_on_floor():` and `velocity.y += gravity * delta`,
   and grounded jumping through
-  `Input.is_action_just_pressed("jump") and is_on_floor()`. Other gameplay
-  systems remain absent.
-- **Observed Git head:** `8f60f46` (`Update roadmap for Module 3.1 blueprint
-  review`), matching `origin/main` before the approved, uncommitted Player
-  collision-alignment correction.
-- **Exact next step:** Review the Module 3, Lesson 3.1 blueprint,
-  **Expose Safe Movement Settings**, and decide whether to approve it for
-  implementation.
-- **Checkpoint:** Commit `8f60f46` contains the validated course through
-  Lesson 2.11 and the Lesson 3.1 blueprint draft. The current uncommitted work
-  aligns the temporary Player marker and collider and revises the affected
-  validated lessons.
+  `Input.is_action_just_pressed("jump") and is_on_floor()`. Module 3.1 is
+  implemented in the working tree: the three movement values use documented
+  `@export_range()` annotations, and the jump and gravity conditions have
+  regular implementation comments. Other gameplay systems remain absent.
+- **Observed Git head:** `9f0efc4` (`Align Player collision shape with temporary
+  marker`), matching `origin/main`.
+- **Exact next step:** Validate Module 3, Lesson 3.1, **Expose Safe Movement
+  Settings**, by following its Inspector customization and runtime checks.
+- **Checkpoint:** Commit `9f0efc4` contains the validated project through
+  Lesson 2.11 and the Player collision-alignment correction. The working tree
+  contains uncommitted curriculum revisions across Modules 0-3, including the
+  Module 1 and Module 2 checkpoint lessons, plus the implemented Module 3.1
+  Player script work.
 
 ## Status Model
 
@@ -134,21 +137,22 @@ small extensible cores over feature-heavy implementations.
 
 ### Module 0: Project Setup
 
-**Outcome:** Install the learner toolchain, create the empty project, and place
-it under version control.
+**Outcome:** Install the learner toolchain, create the empty project, connect
+its folder to Codex, and place it under version control.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 0.1 | Install Godot and Codex | Godot editor and optional Codex workflow | Validated | Existing history; exact commit pending reconciliation |
-| 0.2 | Create an Empty Godot Project | Project Manager, renderer, project folder | Validated | Existing history; exact commit pending reconciliation |
-| 0.3 | Install and Configure Git | Git installation and commit identity | Validated | Existing history; exact commit pending reconciliation |
-| 0.4 | Create the First Git Checkpoint | Repository, staging, commit, Godot metadata | Validated | Existing history; exact commit pending reconciliation |
+| 0.1 | Install Godot and Codex | Tool installation, Windows-native Codex, approval setting; no project association | Validated | Existing history; exact commit pending reconciliation |
+| 0.2 | Create an Empty Godot Project | Project Manager, renderer, `project.godot`, exact existing folder path | Validated | Existing history; exact commit pending reconciliation |
+| 0.3 | Install and Configure Git | Git installation, global commit identity, and default branch; no repository yet | Validated | Existing history; exact commit pending reconciliation |
+| 0.4 | Connect the Existing Project to Codex and Create the First Git Checkpoint | Existing-folder association, repository, read-only AI review, staging, diff, commit, Godot metadata | Validated | Uncommitted curriculum revision; clean-project replay deferred to the full-course rebuild |
 
 ### Module 1: Godot Scene Foundations
 
 **Depends on:** Module 0. **Outcome:** Understand nodes, scenes, 2D coordinates,
 basic transforms, parent-relative positioning, scene composition, and instance
-overrides before gameplay code is introduced.
+overrides before gameplay code is introduced, then record the tested result in
+a reviewed Git checkpoint.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
@@ -156,11 +160,13 @@ overrides before gameplay code is introduced.
 | 1.2 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Uncommitted curriculum revision |
 | 1.3 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Previously validated project behavior; uncommitted blueprint revision |
 | 1.4 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Previously validated project behavior; uncommitted blueprint revision |
+| 1.5 | Create a Module 1 Git Checkpoint | Tested module boundary, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | Uncommitted curriculum revision |
 
 ### Module 2: Actor and Player Foundations
 
 **Depends on:** Module 1. **Outcome:** Establish the shared actor boundary and
-a basic keyboard/controller player without premature feature inheritance.
+a basic keyboard/controller player without premature feature inheritance, then
+record the tested foundation in a reviewed Git checkpoint.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
@@ -175,6 +181,7 @@ a basic keyboard/controller player without premature feature inheritance.
 | 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, aligned Player/floor collision, gravity, and `delta` | Validated | Uncommitted collision-alignment revision |
 | 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | Uncommitted working tree |
 | 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Validated | Uncommitted working tree |
+| 2.12 | Create a Module 2 Git Checkpoint | Tested Player foundation, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | Uncommitted curriculum revision |
 
 ### Module 3: Responsive Player Movement
 
@@ -183,12 +190,13 @@ responsive controller while making player states explicit.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Blueprint drafted | `8f60f46` |
+| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Implemented | Uncommitted working tree; blueprint introduced in `8f60f46` |
 | 3.2 | Add Acceleration and Deceleration | Smoothing movement values | Planned | Unassigned |
 | 3.3 | Add Coyote Time | Short grace timers | Planned | Unassigned |
 | 3.4 | Add Jump Buffering | Buffered input | Planned | Unassigned |
 | 3.5 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
 | 3.6 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
+| 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 4: Modular Level Building
 
@@ -203,6 +211,7 @@ elements around clear spawn and boundary contracts.
 | 4.4 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
 | 4.5 | Add Moving Platforms | Reusable moving surface | Planned | Unassigned |
 | 4.6 | Add Level Bounds and Fall Detection | World bounds and fall signal | Planned | Unassigned |
+| 4.7 | Create a Module 4 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 5: Camera and Character Presentation
 
@@ -216,6 +225,7 @@ camera and animated character visuals.
 | 5.3 | Add Look-Ahead Behavior | Camera behavior component | Planned | Unassigned |
 | 5.4 | Import Character Art | Import settings and sprite presentation | Planned | Unassigned |
 | 5.5 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
+| 5.6 | Create a Module 5 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 6: Shared Actor Capabilities
 
@@ -230,6 +240,7 @@ that later player, NPC, and enemy features reuse.
 | 6.4 | Add an Interaction Component | Generic interaction contract | Planned | Unassigned |
 | 6.5 | Add Persistent Actor Identity | Stable persistent IDs | Planned | Unassigned |
 | 6.6 | Customize and Remove Actor Components | Optional-component verification | Planned | Unassigned |
+| 6.7 | Create a Module 6 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 7: Hazards, Defeat, and Respawning
 
@@ -241,8 +252,9 @@ identity to recovery and level reset behavior.
 | 7.1 | Build a Reusable Hazard | Hazard using damage contract | Planned | Unassigned |
 | 7.2 | Handle Actor Defeat | Defeat signal and policy | Planned | Unassigned |
 | 7.3 | Respawn the Player | Respawn flow | Planned | Unassigned |
-| 7.4 | Add Checkpoints | Checkpoint state | Planned | Unassigned |
+| 7.4 | Add Respawn Checkpoints | Respawn checkpoint state | Planned | Unassigned |
 | 7.5 | Reset Level Actors Safely | Reset contract across actors | Planned | Unassigned |
+| 7.6 | Create a Module 7 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 8: Player Combat
 
@@ -257,6 +269,7 @@ through the shared damage and faction contracts.
 | 8.4 | Add Knockback | Damage response data | Planned | Unassigned |
 | 8.5 | Add Temporary Invulnerability | Invulnerability window | Planned | Unassigned |
 | 8.6 | Customize or Remove Combat | Combat add/remove regression | Planned | Unassigned |
+| 8.7 | Create a Module 8 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 9: Modular Enemies
 
@@ -271,6 +284,7 @@ distinct ground and flying enemy behaviors.
 | 9.4 | Create a Chasing Enemy | Targeting and chase behavior | Planned | Unassigned |
 | 9.5 | Create a Flying Enemy | Alternate movement capability | Planned | Unassigned |
 | 9.6 | Handle Enemy Defeat, Drops, and Reset | Enemy lifecycle and drops | Planned | Unassigned |
+| 9.7 | Create a Module 9 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 10: Items, Inventory, and Equipment
 
@@ -287,6 +301,7 @@ with optional equipment and reusable world items.
 | 10.6 | Add Consumable Items | Item-use contract | Planned | Unassigned |
 | 10.7 | Add an Equipment Component | Optional equipment capability | Planned | Unassigned |
 | 10.8 | Extend Inventory Without Changing Its Core | Extension and regression exercise | Planned | Unassigned |
+| 10.9 | Create a Module 10 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 11: NPCs and Dialogue
 
@@ -302,6 +317,7 @@ Resource-driven branching dialogue through the shared interaction contract.
 | 11.5 | Add Branching Choices | Choice paths | Planned | Unassigned |
 | 11.6 | Add Conditions and Actions | Data-driven conditions/actions | Planned | Unassigned |
 | 11.7 | Reuse Dialogue Across NPCs | Dialogue reuse verification | Planned | Unassigned |
+| 11.8 | Create a Module 11 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 12: Quests and Objectives
 
@@ -318,6 +334,7 @@ composable objectives connected to dialogue, combat, items, and locations.
 | 12.6 | Connect Quests to Dialogue | Quest-aware conditions and actions | Planned | Unassigned |
 | 12.7 | Deliver Quest Rewards | Reward contract | Planned | Unassigned |
 | 12.8 | Build the Quest Journal | Quest view decoupled from state | Planned | Unassigned |
+| 12.9 | Create a Module 12 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 13: World Progression and Game Flow
 
@@ -332,6 +349,7 @@ preserving the world and actor state that should survive transitions.
 | 13.4 | Centralize Scene Flow | Minimal cross-scene service | Planned | Unassigned |
 | 13.5 | Build Title, Restart, and Game-Over Flows | Game flow states | Planned | Unassigned |
 | 13.6 | Restore Persistent Actors Across Levels | Cross-level actor restoration | Planned | Unassigned |
+| 13.7 | Create a Module 13 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 14: HUD, Menus, and Settings
 
@@ -346,6 +364,7 @@ settings without coupling UI to concrete actor implementations.
 | 14.4 | Add Audio Settings | Audio preferences | Planned | Unassigned |
 | 14.5 | Add Display and Accessibility Settings | Display/accessibility preferences | Planned | Unassigned |
 | 14.6 | Keep UI Independent from Actor Implementations | UI dependency audit | Planned | Unassigned |
+| 14.7 | Create a Module 14 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 15: Saving and Persistence
 
@@ -363,6 +382,7 @@ framework state safely across versions and failure cases.
 | 15.7 | Persist Settings Separately | Settings storage boundary | Planned | Unassigned |
 | 15.8 | Migrate Older Save Versions | Migration functions | Planned | Unassigned |
 | 15.9 | Validate, Back Up, Reset, and Recover Save Data | Atomic replace and recovery | Planned | Unassigned |
+| 15.10 | Create a Module 15 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 16: Audio and Gameplay Feedback
 
@@ -377,6 +397,7 @@ that respects player preferences and accessibility settings.
 | 16.4 | Add Particles and Hit Flash | Reusable visual feedback | Planned | Unassigned |
 | 16.5 | Add Camera Shake | Decoupled camera feedback | Planned | Unassigned |
 | 16.6 | Respect Feedback Accessibility Settings | Reduced/disabled feedback paths | Planned | Unassigned |
+| 16.7 | Create a Module 16 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 17: Validation, Packaging, and Extension
 
@@ -392,6 +413,7 @@ systems remain reusable, then package and document the framework.
 | 17.5 | Assemble Demonstration Levels | Representative framework demos | Planned | Unassigned |
 | 17.6 | Export the Framework Project | Export configuration | Planned | Unassigned |
 | 17.7 | Document Extension and Licensing Rules | Extension guide and licenses | Planned | Unassigned |
+| 17.8 | Create a Module 17 Git Checkpoint | Final tested course and framework checkpoint | Planned | Unassigned |
 
 ## Concept Sequencing Ledger
 
@@ -404,6 +426,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Coordinate pairs, screen axes, and local positions | 1.2 | Transforms, levels, actors, cameras, combat, enemies, feedback, UI |
 | Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | 1.3 | Levels, actors, cameras, combat, enemies, feedback, UI |
 | Scene composition, instantiation, source propagation, and instance overrides | 1.4 | Actors, components, levels, attacks, enemies, items |
+| Codex project context, read-only requests, and diff review | 0.4 | AI-assisted changes, review, debugging, testing, and documentation |
+| Git checkpoint cycle | 0.3-0.4 | End-of-module recovery points and reviewed course milestones |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
 | Actor boundary and specialization | 2.2-2.3 | Player, NPCs, enemies |
 | Physics bodies and collision shapes | 2.2 | Movement, levels, platforms, combat, and enemies |
@@ -470,6 +494,10 @@ Remaining reconciliation work:
   navigation material where needed.
 - Reconcile exact Git associations for validated lessons without rewriting
   unrelated working-tree changes.
+- Replay Lesson 0.4's revised `Checkpoint empty Godot project` staging and
+  commit path during the full-course empty-project rebuild. The production
+  repository's earliest historical message differs and must not be rewritten
+  merely to imitate the learner procedure.
 
 ## Decision Log
 
@@ -491,3 +519,7 @@ Remaining reconciliation work:
 | Introduce conditional logic after gravity | Lesson 2.9 makes gravity and the floor state visible first. Lesson 2.10 then uses temporary Output messages to show `if`, `else`, `not`, and `is_on_floor()` in that working context before applying gravity only while airborne. Lesson 2.11 can reuse the established floor state for jumping without redefining it. |
 | Define physics bodies once, then use type-specific reminders | Lesson 2.2 is the first and only general definition of a physics body. Modules 3-17 must not repeat it; when they introduce another physics-body type, they should state only how that type differs from `CharacterBody2D` or `StaticBody2D`. |
 | Match temporary Player collision to its visible marker without changing Actor's shared default | Lesson 2.8 replaces Player's inherited Shape with a local 128-by-128 rectangle matching its temporary marker. Actor keeps its reusable 32-by-32 placeholder, and later actor specializations choose collision shapes that fit their own visuals. |
+| Connect the existing Godot folder to Codex during the first Git checkpoint | Module 0 now gives each lesson one explicit responsibility: install the tools in 0.1, create the only Godot project in 0.2, configure Git without creating a repository in 0.3, then associate the existing folder with Codex and checkpoint it in 0.4. The learner initializes Git manually in Codex's terminal, uses a read-only prompt to review the proposed checkpoint, inspects the diff, and commits through Codex's Git controls. Later checkpoints should use prompts only when review, explanation, or error detection adds value. |
+| Keep the first Codex/Git checkpoint focused | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
+| Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
+| Add one reviewed Git checkpoint at the end of each completed module | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |

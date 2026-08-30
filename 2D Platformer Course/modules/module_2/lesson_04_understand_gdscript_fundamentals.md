@@ -5,8 +5,9 @@
 ## By the end
 
 Understand the small set of GDScript building blocks needed to read and write
-the Player movement script in the next lesson: comments, values, variables,
-types, operators, and indentation.
+the Player scripts introduced over the next lessons: comments, values,
+variables, types, operators, and indentation. Horizontal movement begins in
+Lesson 2.8 after three short programming bridges.
 
 This is a code-reading lesson. You will not attach a script or change the
 Godot project yet. Its purpose is to make the first gameplay script feel
@@ -51,18 +52,17 @@ is important because it tells GDScript that those lines belong together.
 
 A **variable** gives a **value** a name so code can read or change it later. Instead of repeating a value multiple times, use the variable’s name. When its value changes, every later use of that variable uses the updated value.
 
-> 💡 Here are the main value types you will use first:
->
-> - `int` for whole numbers, such as `3` or `-10`. An `int` could be used for
->   the Player’s remaining lives.
-> - `float` for decimal numbers, such as `10.2` or `-6.5`. A `float` could be
->   used for movement speed.
-> - `bool` for `true` or `false`. A `bool` could track whether the Player is on
->   the ground.
-> - `String` for text, such as `"Player"`. A `String` could be used for the
->   Player’s name.
-> - `Vector2` for an X/Y pair, such as `Vector2(5.4, 8.1)`. A `Vector2` could
->   be used for the Player’s position.
+> 💡 A value's **type** describes what kind of information it stores. The
+> first types used in this course are whole numbers, decimal numbers,
+> true-or-false values, text, and two-coordinate positions.
+
+| Type | Example | Possible Player use |
+| --- | --- | --- |
+| `int` | `3` or `-10` | Remaining lives |
+| `float` | `10.2` or `-6.5` | Movement speed |
+| `bool` | `true` or `false` | Whether the Player is grounded |
+| `String` | `"Player"` | The Player's name |
+| `Vector2` | `Vector2(5.4, 8.1)` | The Player's position |
 
 Read the following script:
 
@@ -101,17 +101,17 @@ we use its name whenever we read or update its value. In `coins = 4`, the `=`
 operator assigns a new value, so `coins` becomes `4`. In `coins += 1`, the `+=`
 operator adds `1` to its current value, so `coins` becomes `5`.
 
-> 💡 Here are the meanings of the different operators you will use in this course:
->
-> - `+` adds values. `+=` adds a value to the variable’s current value.
-> - `-` subtracts values. `-=` subtracts a value from the variable’s current
->   value.
-> - `*` multiplies values. `*=` multiplies the variable’s current value by a
->   value.
-> - `/` divides values. `/=` divides the variable’s current value by a value.
-> - `=` assigns a value to a variable.
-> - `==`, `>=`, and `<` compare values and produce `true` or `false`.
-> - `and`, `or`, and `not` combine or reverse `true`/`false` values.
+> 💡 An **operator** is a symbol or keyword that performs an action with one
+> or more values. Operators can calculate a result, update a variable, compare
+> values, or combine true-or-false conditions.
+
+| Operators | Purpose |
+| --- | --- |
+| `+`, `-`, `*`, `/` | Calculate with values |
+| `+=`, `-=`, `*=`, `/=` | Calculate and store the result in the variable |
+| `=` | Assign a value to a variable |
+| `==`, `>=`, `<` | Compare values and produce `true` or `false` |
+| `and`, `or`, `not` | Combine or reverse `true`/`false` values |
 
 > 💡 `=` and `==` look similar but answer different questions. `coins = 5`
 > stores `5` in `coins`. `coins == 5` asks whether the current value of `coins`

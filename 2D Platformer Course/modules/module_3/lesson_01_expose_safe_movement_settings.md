@@ -1,6 +1,6 @@
 # Module 3, Lesson 1: Expose Safe Movement Settings
 
-**Status:** Blueprint drafted
+**Status:** Implemented
 
 ## By the end
 
@@ -56,7 +56,48 @@ movement calculations that use them.
 > - Do not add acceleration or other responsive-movement behavior yet. Those
 >   changes begin in Lesson 3.2.
 
-### Part 2: Expose the horizontal speed
+### Part 2: Add useful regular comments
+
+1. Return to `res://actors/player.gd`.
+2. Add one regular comment above the jump condition and another above the
+   gravity condition:
+
+   ```gdscript
+   func _physics_process(delta: float) -> void:
+       # Prevent another jump from starting while the Player is airborne.
+       if Input.is_action_just_pressed("jump") and is_on_floor():
+           velocity.y = jump_velocity
+
+       # Skip gravity while the Player is grounded.
+       if not is_on_floor():
+           velocity.y += gravity * delta
+
+       var direction: float = Input.get_axis("move_left", "move_right")
+       velocity.x = direction * speed
+       move_and_slide()
+   ```
+
+Regular comments were introduced in Lesson 2.4. Godot ignores them when the
+game runs, but they can explain an implementation decision to someone reading
+the function. These comments describe why each condition exists instead of
+repeating the code word for word.
+
+3. Save `player.gd`, then run `main.tscn` with `F6`.
+4. Confirm that movement, falling, and grounded jumping behave exactly as they
+   did before the comments were added.
+5. Stop the scene with `F8`.
+
+The comments will remain in `_physics_process()`. In the next part, you will
+use a different kind of comment to document a setting for the Inspector.
+
+> ⚠️ **If something differs**
+>
+> - If the script reports an indentation error, align each comment with the
+>   `if` statement directly below it.
+> - If movement behavior changes, compare the function with the code block and
+>   confirm that only the two comment lines were added.
+
+### Part 3: Expose the horizontal speed
 
 1. Add this documentation comment and annotation immediately above the
    existing `speed` variable:
@@ -67,11 +108,12 @@ movement calculations that use them.
    var speed: float = 300.0
    ```
 
-> 💡 An **annotation** begins with `@` and gives Godot extra information
-> about the code that follows. `@export_range()` exposes this typed variable
-> in the Inspector and limits its editor control to a minimum, maximum, and
-> step size. The script still owns the value and the movement code still reads
-> the same variable.
+> 💡 An **annotation** starts with `@` and tells Godot how to treat the
+> declaration directly below it. `@export_range(...)` shows this variable in
+> the Inspector with an allowed range and step value. The first value between
+> the parentheses is the minimum, the second is the maximum, and the third is
+> the step. It does not change the movement logic: `speed` is still a normal
+> `float` that the script reads.
 
 The range starts at `0.0`, so an Inspector edit cannot turn a positive movement
 speed into an unintended negative direction. The upper limit keeps early
@@ -90,6 +132,11 @@ easy to adjust. The validated `300.0` remains the default.
 > as an Inspector tooltip. This explains a customization point where it is
 > used without adding comments to the movement calculation itself.
 
+The regular `#` comments inside `_physics_process()` explain implementation
+decisions to a code reader. The `##` documentation comment above `speed`
+describes that variable to Godot as well, allowing the editor to reuse the
+description as a tooltip. Both are useful, but they serve different purposes.
+
 6. Try dragging the Inspector control toward both ends. Confirm that it stays
    between `0.0` and `1000.0` and changes in steps of `10.0`.
 7. Restore **Speed** to `300.0` before continuing.
@@ -104,10 +151,34 @@ easy to adjust. The validated `300.0` remains the default.
 >   characters and sits directly above the annotation without unrelated code
 >   between them.
 
-### Part 3: Expose gravity and jump velocity
+### Part 4: Expose gravity and jump velocity
 
-1. Replace the existing `gravity` and `jump_velocity` declarations with these
-   documented ranges:
+You manually exported one representative setting in Part 3. Codex can now
+accelerate the repeated pattern for the other two settings while leaving the
+movement logic alone.
+
+1. If you are using Codex, give it this focused request:
+
+   ```text
+   In player.gd, use the exported speed declaration as the pattern. Add
+   @export_range() annotations with sensible minimum, maximum, and step
+   values, plus documentation comments, to gravity and jump_velocity. Do not
+   change their defaults or _physics_process().
+   ```
+
+2. Before accepting the result, inspect Codex's diff.
+3. Confirm that it changed only the `gravity` and `jump_velocity`
+   declarations. Their default values must remain `980.0` and `-400.0`, and
+   `_physics_process()` must retain both regular comments and all its existing
+   movement logic.
+4. Ask Codex to explain the minimum, maximum, and step values it chose. Treat
+   those choices as suggestions until you compare them with the intended
+   settings below.
+
+If you are not using Codex, continue with the same declarations manually. The
+lesson outcome and final code remain the same.
+
+5. Compare the proposed declarations with these required comments and ranges:
 
    ```gdscript
    ## Downward acceleration in pixels per second squared.
@@ -119,26 +190,17 @@ easy to adjust. The validated `300.0` remains the default.
    var jump_velocity: float = -400.0
    ```
 
-You manually exported one representative setting in Part 2. If you are using
-Codex, it can accelerate this repeated edit with a focused request such as:
-
-```text
-In res://actors/player.gd, expose only gravity and jump_velocity with the
-exact documented @export_range declarations shown in Lesson 3.1. Do not
-change their defaults or any movement logic. Then explain the resulting diff.
-```
-
-Whether you type the code or use Codex, compare the result with the block
-above before accepting it. Confirm that Codex changed only the two requested
-declarations, explained the diff accurately, and left `_physics_process()`
-unchanged.
+6. Manually correct every difference in wording or annotation values. If a
+   declaration already matches, leave it unchanged rather than introducing an
+   unnecessary edit.
 
 The minimum gravity is `0.0`, which prevents an Inspector value from
 accelerating the Player upward. Jump velocity stays between `-1000.0` and
 `0.0`, so it cannot become positive and send a jump downward. Its negative
-values reuse Godot's downward-positive Y direction from earlier lessons.
+values reuse Godot's downward-positive Y direction from earlier lessons. The
+step of `10.0` keeps both Inspector controls consistent with Speed.
 
-2. Compare the top of the completed script with this version:
+7. Compare the top of the completed script with this version:
 
    ```gdscript
    extends CharacterBody2D
@@ -156,15 +218,15 @@ values reuse Godot's downward-positive Y direction from earlier lessons.
    var jump_velocity: float = -400.0
    ```
 
-3. Confirm that the existing `_physics_process()` function below these
-   declarations has not changed.
-4. Save `player.gd` with `Ctrl+S`.
-5. In `player.tscn`, reselect the Player root and confirm that **Speed**,
+8. Confirm that `_physics_process()` still contains the two regular comments
+   from Part 2 and that none of its executable instructions changed.
+9. Save `player.gd` with `Ctrl+S`.
+10. In `player.tscn`, reselect the Player root and confirm that **Speed**,
    **Gravity**, and **Jump Velocity** appear in the Inspector.
-6. Confirm that the three Inspector values match their validated defaults.
-7. Hover over each property name and confirm that its tooltip explains the
+11. Confirm that the three Inspector values match their validated defaults.
+12. Hover over each property name and confirm that its tooltip explains the
    setting.
-8. Confirm that each control stops at its documented minimum and maximum,
+13. Confirm that each control stops at its documented minimum and maximum,
    then restore all three defaults.
 
 > ⚠️ **If something differs**
@@ -173,10 +235,13 @@ values reuse Godot's downward-positive Y direction from earlier lessons.
 >   `@export_range()` line and remains at script-level scope.
 > - If a default falls outside its range, compare all signs and decimal values
 >   with the completed code block.
-> - If Codex changed `_physics_process()` or another file, inspect the diff and
->   keep only the three approved exported declarations.
+> - If Codex changed `_physics_process()` or another file, reject those changes
+>   or restore the function from the inspected diff. Keep its two regular
+>   comments and existing executable instructions.
+> - If Codex chose different comments or ranges, this is not a failure. Replace
+>   those suggestions manually with the required declarations before testing.
 
-### Part 4: Verify the defaults and one Inspector customization
+### Part 5: Verify the defaults and one Inspector customization
 
 1. Open `res://scenes/main.tscn` and run the current scene with `F6`.
 2. Confirm that the default horizontal movement, gravity, and grounded jump
@@ -217,11 +282,16 @@ Without editing `player.gd`:
    original jump again.
 5. Explain the separate purpose of the exported default, range, step, and
    tooltip.
+6. Explain why the function comments use `#` while the exported-property
+   descriptions use `##`.
 
 ## Verification checklist
 
 - [ ] `speed`, `gravity`, and `jump_velocity` remain typed `float` variables
       with defaults `300.0`, `980.0`, and `-400.0`.
+- [ ] `_physics_process()` contains regular comments explaining why the jump
+      condition prevents airborne jumps and why gravity is skipped while
+      grounded.
 - [ ] Each movement variable has a documentation comment and an
       `@export_range()` annotation.
 - [ ] **Speed** is limited to `0.0` through `1000.0` in steps of `10.0`.
@@ -240,6 +310,8 @@ Without editing `player.gd`:
       or unexplained warnings.
 - [ ] The learner can explain how exported ranges and documentation tooltips
       make Inspector customization safer and clearer.
+- [ ] The learner can distinguish a regular implementation comment from a
+      documentation comment used for an Inspector property.
 - [ ] Any Codex-assisted edit was inspected, explained, corrected if needed,
       and tested before acceptance.
 

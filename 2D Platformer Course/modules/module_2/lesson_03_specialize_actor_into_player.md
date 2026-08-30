@@ -120,7 +120,7 @@ Without repeating the build steps:
 3. Open `actor.tscn` and confirm that `PlayerOnlyMarker` was not added to the
    shared Actor scene.
 4. Return to `player.tscn`, remove `PlayerOnlyMarker`, and save the scene.
-5. Explain why the movement script added in the next lesson should belong to
+5. Explain why the movement script added later in Lesson 2.8 should belong to
    `Player` instead of the shared `Actor`.
 
 ## Verification checklist

@@ -1,204 +1,202 @@
-# Module 0, Lesson 4: Create the First Git Checkpoint
+# Module 0, Lesson 4: Connect the Existing Project to Codex and Create the First Git Checkpoint
 
 **Status:** Validated
 
 ## By the end
 
-The Godot project will have its first clean local Git checkpoint on `main`.
-This gives you a known working state before future work, including Codex file
-changes, begins.
+Connect Codex to the Godot project folder created in Lesson 0.2, then make
+that existing project's first clean local Git checkpoint on `main`. This starts
+the review cycle used throughout the course; it does not create another Godot
+project.
 
-- The `2D Platformer` project folder is a local Git repository on `main`.
-- Godot's generated cache is excluded from Git.
-- Project source files are included in the first commit.
-- The latest commit is named `Create empty Godot project`.
-- `git status` reports a clean working tree.
-- Nothing has been uploaded to GitHub or another online service.
+- Codex opens the folder containing `project.godot`.
+- The folder is a local Git repository on `main`.
+- Generated Godot files are excluded from Git.
+- Codex first reviews the checkpoint without changing it.
+- The learner reviews the changes, then creates the checkpoint.
+- `git status` reports a clean working tree afterward.
 
 ## Before you start
 
 - Module 0, Lessons 1 through 3 are complete.
-- `git --version` works in a newly opened PowerShell window.
+- Codex opens with the Windows-native agent and **Ask for approval** selected.
 - Git has the intended author identity and `main` default branch.
 - The `2D Platformer` project opens without errors.
 - The project folder is not already inside another Git repository.
 
 ## Build steps
 
-### Part 1: Generate and inspect Godot's Git metadata
+> 💡 The **Godot project** already exists because you created it in Lesson
+> 0.2. Adding a **local project** to Codex only associates Codex with that
+> existing folder. It does not create, duplicate, or move the Godot project.
+
+### Part 1: Prepare the project for Git
 
 1. Open the `2D Platformer` project in Godot.
 2. Open **Project → Version Control → Create/Override Version Control
    Metadata…**.
-3. Confirm that **Git** is selected, then click **OK**. Godot warns that
-   existing version-control metadata files will be overwritten; continue only
-   when no custom metadata needs to be preserved.
-
-   > 💡 Godot creates two Git setup files: `.gitignore`, which lists files Git
-   > should leave out when committing, and `.gitattributes`, which keeps text
-   > files consistent across computers. We create them here, then check what
-   > they contain.
-
-4. Confirm that Godot creates `.gitignore` and `.gitattributes` in the project
-   root.
-5. Right-click `res://` in the FileSystem dock and select **Open in File
+3. Confirm that **Git** is selected, then click **OK**.
+4. In Godot's FileSystem dock, right-click `res://` and select **Open in File
    Explorer**.
-6. Open `.gitignore` and `.gitattributes` in a text editor.
-7. For Godot 4.7, confirm that `.gitignore` contains:
+5. Confirm that `.gitignore` and `.gitattributes` exist in the project folder.
+6. Open `.gitignore` and confirm that it contains:
 
    ```gitignore
    .godot/
    /android/
    ```
 
-   Confirm that important source files are not ignored, including:
-   - `project.godot`
-   - Godot scenes such as `.tscn`
-   - GDScript files such as `.gd`
-   - Godot resources such as `.tres`
+   > 💡 An **ignored file** is intentionally left out of Git history. `.godot/`
+   > is Godot's generated editor cache, so Git should not record it.
 
-8. Confirm that `.gitattributes` contains:
+7. Close the text editor and Godot.
 
-   ```gitattributes
-   * text=auto eol=lf
-   ```
+> ⚠️ **If something differs**
+>
+> - If `.godot/` is not ignored, stop before creating a checkpoint and correct
+>   `.gitignore`.
+> - Godot's generated metadata can vary between versions. Do not add old rules
+>   from memory.
 
-   > 💡 An **ignored file** is intentionally left out of Git history, usually
-   > because it is generated or private. `.godot/` is Godot's generated editor
-   > cache; `/android/` is generated Android build content. `.gitattributes`
-   > keeps text files in a consistent LF format across operating systems.
+### Part 2: Connect the existing folder to Codex
 
-9. Save only if a verified rule is missing or incorrect, then close the text
-    editor.
+1. Open Codex in the ChatGPT desktop app.
+2. In the sidebar's project area, add an existing local project.
+3. Select the `2D Platformer` folder that contains `project.godot`.
+4. Confirm that Codex shows `2D Platformer` as the current project, then start
+   a local task for it.
 
-   > ⚠️ **If something differs**
-   >
-   > - Godot metadata can vary between versions. Inspect the generated files;
-   >   do not add older rules from memory.
+   > 💡 A Codex **project** gives Codex the intended folder as working context.
+   > Check for `project.godot` whenever you need to confirm that it is the same
+   > Godot project you created in Lesson 0.2.
 
-### Part 2: Initialize and inspect the repository
+> ⚠️ **If something differs**
+>
+> - If `project.godot` is missing, choose the Godot project folder, not its
+>   parent folder or the generated `.godot` folder.
 
-1. Close Godot so its files are stable during the first checkpoint.
-2. In the open File Explorer window, select the address bar.
-3. Type `powershell` and press **Enter**. PowerShell opens in the project
-   folder.
-4. Confirm that the prompt path is the folder containing `project.godot`.
-5. Initialize the repository on `main`:
+### Part 3: Initialize Git and inspect its starting state
+
+1. Open Codex's integrated terminal for the local project.
+2. Confirm that its path is the folder containing `project.godot`.
+3. Initialize the repository on `main`:
 
    ```powershell
    git init -b main
    ```
 
-6. Inspect the repository:
+4. Inspect the starting state:
 
    ```powershell
    git status
    ```
 
-   > 💡 A **repository** is a project folder whose history Git manages. Its
-   > **working tree** is the current visible project files. Files Git already
-   > knows about are **tracked**; files it has not been asked to include are
-   > **untracked**.
+   > 💡 A **repository** is a project folder whose history Git manages. The
+   > **working tree** is its current files. At this point, the project files
+   > are **untracked**: Git can see them, but has not been asked to save them
+   > in a checkpoint yet.
 
-7. Confirm that Git reports `main` and lists the expected project files as
-   untracked.
-8. Confirm that `.godot/` is absent from the files offered for tracking.
+5. Confirm that Git reports `main`, lists the expected project files as
+   untracked, and does not list `.godot/`.
 
-   > ⚠️ **If something differs**
-   >
-   > - If PowerShell opens in the wrong folder, reopen it from the folder that
-   >   contains `project.godot`.
-   > - If `git init` was run in a parent folder, do not commit. Confirm the
-   >   intended root and get help removing only the mistaken Git metadata.
-   > - If Git asks for an author identity later, return to Lesson 0.3, configure
-   >   the intended identity, and retry.
+> ⚠️ **If something differs**
+>
+> - If the terminal is in the wrong folder, do not initialize Git. Return to
+>   Part 2 and connect the folder containing `project.godot`.
 
-The hidden `.git` folder stores Git's local history and settings. Do not edit,
-move, or delete its contents manually.
+### Part 4: Review, commit, and verify
 
-### Part 3: Stage, review, and commit
+1. Send Codex this prompt:
 
-1. Stage the small empty project:
+   > Inspect the Git status of this project and explain which files belong in
+   > the first checkpoint and which generated files should remain ignored. Do
+   > not change any files, stage anything, or create a commit.
 
-   ```powershell
-   git add .
-   ```
+   > 💡 A **read-only request** asks Codex to inspect or explain without making
+   > changes. Stating what Codex must not do keeps the first task small and
+   > easy to review.
+
+2. At the top right of the task, open the controls menu (the sliders icon) and
+   select **Changes**. Codex opens the changed-file diff in a **Review** tab.
+3. Compare Codex's explanation with `.gitignore` and the Review tab.
+4. Confirm that the project files, `.gitignore`, and `.gitattributes` should be
+   included, while the internal `.git/` directory, generated `.godot/` files,
+   and confidential data should not.
+5. If Codex's explanation is incomplete or incorrect, tell it what differs and
+   ask it to inspect again without making changes.
+6. In the Review tab, stage the intended files and review the staged diff.
 
    > 💡 The **staging area** is the reviewed set of changes prepared for the
-   > next snapshot. A **commit** is the named snapshot that Git records from
-   > that staged set. Staging does not save, upload, or commit anything yet.
+   > next snapshot. A **commit** is the named snapshot Git records from that
+   > set. Staging does not upload or commit anything yet.
 
-2. Review which files are staged and the size of their changes:
+7. Confirm that generated files and confidential data are not staged.
+8. At the top right of the task, open the controls menu (the sliders icon) and
+   select **Commit or push**.
+9. Create a **local commit** with this message:
 
-   ```powershell
-   git status
-   git diff --cached --stat
+   ```text
+   Checkpoint empty Godot project
    ```
 
-3. Confirm that only expected project source and metadata are staged.
-4. Confirm that generated `.godot/` files and private credentials are absent.
-5. Create the first commit:
+   The menu combines two different Git actions. A **commit** saves the
+   reviewed snapshot in this folder; a **push** would send it to a remote
+   repository. This course has not connected a remote repository yet, so
+   create the local commit and do not push.
 
-   ```powershell
-   git commit -m "Create empty Godot project"
-   ```
-
-6. Verify the checkpoint:
+10. Return to the integrated terminal and run:
 
    ```powershell
    git status
    git log --oneline -1
    ```
 
-Use this cycle for future small working results: inspect → stage intended
-changes → review → commit → verify. Run `git status` before and after every
-commit, and never commit passwords, tokens, private keys, or export
-credentials.
+11. Confirm that the working tree is clean and the latest commit message is
+   `Checkpoint empty Godot project`.
 
-After you understand and complete this first checkpoint manually, Codex can
-help explain status or a diff and suggest a commit message. You still inspect
-the staged changes and approve any commit.
+Use this cycle for future working results: inspect → stage intended changes →
+review → commit → verify. Never commit passwords, tokens, private keys, or
+export credentials.
 
-7. Confirm that the working tree is clean and the latest message is
-   `Create empty Godot project`.
-
-   > ⚠️ **If something differs**
-   >
-   > - If `.godot/` appears in the staged list, stop before committing and
-   >   correct `.gitignore`.
-   > - If important project files are missing, check for an overly broad ignore
-   >   rule before committing.
-   > - If the working tree is not clean afterward, run `git status` and inspect
-   >   what was not included; do not discard it automatically.
-   > - This commit exists only on this computer. It is not yet an online backup.
+> ⚠️ **If something differs**
+>
+> - If Codex changed or staged anything before you reviewed it, reopen the
+>   Review tab through the controls menu's **Changes** option. Do not discard
+>   or commit changes you cannot identify.
+> - If the working tree is not clean afterward, inspect what was left out; do
+>   not discard it automatically.
 
 ## Learner exercise
 
-Without reading the commands again:
+Without repeating the build steps:
 
 1. Run `git status` and identify the branch.
-2. Run `git log --oneline -1` and locate the commit message.
+2. Run `git log --oneline -1` and locate the checkpoint message.
 3. Explain untracked, ignored, staged, and committed files.
 4. Explain why `.godot/` is ignored.
-5. Explain why this checkpoint is useful but is not yet an online backup.
+5. Explain the difference between creating the Godot project in Lesson 0.2 and
+   connecting its existing folder to Codex in this lesson.
 
 ## Verification checklist
 
+- [ ] Codex is connected to the folder containing `project.godot`.
+- [ ] No second Godot project or duplicate project folder was created.
 - [ ] The repository root is the folder containing `project.godot`.
 - [ ] The active branch is `main`.
-- [ ] `.gitignore` excludes Godot's generated cache and Android build files.
-- [ ] `.gitattributes` keeps text line endings consistent with
-      `* text=auto eol=lf`.
-- [ ] Expected project source files are staged.
+- [ ] `.gitignore` excludes `.godot/`.
+- [ ] Codex's first task only inspected and explained the proposed checkpoint.
 - [ ] Generated cache and confidential data are not staged.
-- [ ] The latest commit message is `Create empty Godot project`.
+- [ ] The learner used **Commit or push** to create the local commit and did
+      not push.
+- [ ] The latest commit message is `Checkpoint empty Godot project`.
 - [ ] `git status` reports a clean working tree.
 - [ ] The learner can explain repository, staging area, commit, tracked,
       untracked, and ignored files.
-- [ ] The learner understands that the checkpoint exists only locally.
 
 ## References
 
-- [Initialize a Git repository](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
-- [Record changes with Git](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
+- [Codex local environments](https://learn.chatgpt.com/docs/environments/local-environment)
+- [Codex best practices](https://learn.chatgpt.com/guides/best-practices)
+- [Initialize a Git repository](https://git-scm.com/book/en/v2/Git-Basics/Getting-a-Git-Repository)
+- [Record changes with Git](https://git-scm.com/book/en/v2/Git-Basics/Recording-Changes-to-the-Repository)
 - [Godot version-control guidance](https://docs.godotengine.org/en/stable/tutorials/best_practices/version_control_systems.html)

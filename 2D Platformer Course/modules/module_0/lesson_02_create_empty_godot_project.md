@@ -6,19 +6,22 @@
 
 Create and reopen the empty Godot project that will become the reusable 2D
 platformer template. Starting empty makes it clear where every later setting,
-scene, script, and asset comes from.
+scene, script, and asset comes from. This is the only Module 0 lesson that
+creates the Godot project and its files.
 
 - The `2D Platformer` project opens without errors.
 - The project uses the **Forward+** renderer.
 - The learner can locate the complete project folder in Windows.
+- The learner records the folder's full Windows path for Lesson 0.4.
 - The learner understands what `project.godot` does.
 - No gameplay scenes or scripts have been added yet.
+- The folder is not connected to Codex and is not a Git repository yet.
 
 ## Before you start
 
 - Basic Windows and file-management skills are expected.
 - Module 0, Lesson 1 is complete.
-- Godot 4.7.1 is installed.
+- Godot 4.7.2 is installed.
 - A location for a new project folder is available.
 - The selected folder is empty and does not contain another Godot project.
 
@@ -49,7 +52,14 @@ scene, script, and asset comes from.
    > location defines the project root. Godot's FileSystem dock may not display
    > it, so use **Open in File Explorer** to view the complete project folder.
 
-11. Return to Godot.
+11. Select the File Explorer address bar and record the complete folder path.
+    You will select this exact folder when connecting the existing project to
+    Codex in Lesson 0.4.
+12. Return to Godot.
+
+> 💡 A **Godot project** is the folder whose `project.godot` file stores the
+> engine settings. Lesson 0.4 will add this existing folder to Codex; it will
+> not create a second Godot project or copy these files.
 
 > ⚠️ **If something differs**
 >
@@ -70,7 +80,8 @@ Without reading the steps again:
 2. Reopen it from the Godot Project Manager.
 3. Open the project folder from the `res://` root.
 4. Locate `project.godot`.
-5. Explain in one short sentence what that file does.
+5. Identify the complete Windows path to its folder.
+6. Explain in one short sentence what `project.godot` does.
 
 ## Verification checklist
 
@@ -78,9 +89,12 @@ Without reading the steps again:
 - [ ] The project name is `2D Platformer`.
 - [ ] **Open in File Explorer** opens the correct project folder.
 - [ ] `project.godot` is present in that folder.
+- [ ] The complete project-folder path is recorded for Lesson 0.4.
 - [ ] The rendering method is **Forward+**.
 - [ ] Closing and reopening the project succeeds.
 - [ ] The learner can explain the purpose of `project.godot`.
+- [ ] The folder has not been connected to Codex or initialized as a Git
+      repository yet.
 
 ## References
 

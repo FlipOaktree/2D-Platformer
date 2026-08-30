@@ -110,9 +110,10 @@ GitHub may offer a no-reply address that links commits to the intended account
 without exposing a personal email. For example,
 `123456+username@users.noreply.github.com` is a normal GitHub no-reply address.
 
-We complete this first Git safety boundary manually. Later, after a project is
-connected, Codex can help explain Git status and differences; you still review
-and approve its actions.
+These commands configure Git on the computer, but they do not initialize the
+Godot project as a repository. In Lesson 0.4, you will connect the existing
+Godot folder to Codex, manually initialize its repository, and use Codex to
+review the first checkpoint before you approve it.
 
 > ⚠️ **If something differs**
 >

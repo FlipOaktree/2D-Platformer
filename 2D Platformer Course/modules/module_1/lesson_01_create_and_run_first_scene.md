@@ -101,15 +101,15 @@ content in the 2D viewport without moving it.
 8. In the FileSystem dock, open `scenes/main.tscn` and confirm that `Main` and
    `Label` are still present.
 
-   > ⚠️ **If something differs**
-   >
-   > - If `Label` is not visible beneath `Main`, select the arrow beside `Main`
-   >   in the Scene dock to expand it.
-   > - If the game window is empty, select `Label` and confirm that its Text
-   >   property is `Project ready`, then save the scene before running again.
-   > - If your changes do not appear, save the scene with `Ctrl+S` and rerun it.
-   > - If Godot asks for a main scene when you run the project, select
-   >   `res://scenes/main.tscn`. This is expected the first time.
+> ⚠️ **If something differs**
+>
+> - If `Label` is not visible beneath `Main`, select the arrow beside `Main`
+>   in the Scene dock to expand it.
+> - If the game window is empty, select `Label` and confirm that its Text
+>   property is `Project ready`, then save the scene before running again.
+> - If your changes do not appear, save the scene with `Ctrl+S` and rerun it.
+> - If Godot asks for a main scene when you run the project, select
+>   `res://scenes/main.tscn`. This is expected the first time.
 
 ## Learner exercise
 

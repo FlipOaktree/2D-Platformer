@@ -6,8 +6,8 @@
 
 Attach the first script to `Player`, print a simple message in Godot's Output
 panel, and compare local and script-level variables. You will build the script
-one part at a time, then remove the temporary diagnostic code so the project is
-ready for movement in the next lesson.
+one part at a time, then remove the temporary diagnostic code so the following
+programming bridges can build toward movement in Lesson 2.8.
 
 ## Before you start
 
@@ -18,7 +18,7 @@ ready for movement in the next lesson.
 
 ## Build steps
 
-### Part 1: Attach an empty script to Player
+### Part 1: Attach the Player script and add a function Godot runs automatically
 
 1. Open `res://actors/player.tscn`.
 2. In the Scene dock, select the `Player` root node.
@@ -50,9 +50,7 @@ provided by `CharacterBody2D`.
 >   `Player` root instead. Shared Actor must remain free of player-specific
 >   behavior.
 
-### Part 2: Add a function Godot runs automatically
-
-1. Add the following code beneath `extends CharacterBody2D`, including the indentation before `pass`:
+8. Add the following code beneath `extends CharacterBody2D`, including the indentation before `pass`:
 
    ```gdscript
    func _ready() -> void:
@@ -87,7 +85,7 @@ A function needs at least one indented instruction; otherwise, Godot reports an 
 > - Use the same indentation for every instruction that belongs to this
 >   function.
 
-### Part 3: Print a temporary message
+### Part 2: Print a temporary message
 
 1. Delete the indented `pass` line.
 2. In its place, add these two indented lines:
@@ -133,7 +131,7 @@ located under the main viewport. `print()` is often used only for testing.
 > - If the script editor shows an error, compare the spelling, punctuation,
 >   and indentation with the complete script above.
 
-### Part 4: Compare local and script-level scope
+### Part 3: Compare local and script-level scope
 
 1. Beneath the complete `_ready()` function, add this new function:
 
@@ -255,7 +253,7 @@ can be used only there.
 >   `show_message()` is indented inside `_ready()` and that the script was
 >   saved.
 
-### Part 5: Remove the temporary diagnostic
+### Part 4: Remove the temporary diagnostic
 
 1. Delete the complete `_ready()` and `show_message()` functions, including their indented lines.
 2. Leave this single line in `player.gd`:

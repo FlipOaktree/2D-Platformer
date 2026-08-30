@@ -6,14 +6,16 @@
 
 Install, open, and verify Godot and Codex, the two core applications used
 throughout the course. Godot is where the game is built and run; Codex will
-later help inspect, edit, and check project files.
+later help inspect, edit, and check project files after the existing Godot
+project folder is connected in Lesson 0.4.
 
-- Godot 4.7.1 opens to the Project Manager.
+- Godot 4.7.2 opens to the Project Manager.
 - The ChatGPT desktop app opens and the learner can access Codex.
 - Both applications can be closed and reopened from Windows.
 - Godot is stored in a stable location outside the Downloads folder.
 - The learner can explain the different role of each tool.
-- No Godot project or extra developer tool has been created or installed yet.
+- No Godot project has been created and no local project has been added to
+  Codex yet.
 
 ## Before you start
 
@@ -31,7 +33,7 @@ later help inspect, edit, and check project files.
 > collection of tools that builds and runs the game.
 
 1. Open the official [Godot download page for Windows](https://godotengine.org/download/windows/).
-2. Download the standard **Godot Engine 4.7.1** 64-bit Windows version.
+2. Download the standard **Godot Engine 4.7.2** 64-bit Windows version.
    Do not choose the **.NET** version; that edition is intended for C# support.
 3. Open the downloaded ZIP file and extract its contents. Godot is a
    **portable application**, so it runs from the extracted files rather than a
@@ -39,12 +41,12 @@ later help inspect, edit, and check project files.
 4. Move the extracted Godot folder to a stable location owned by the learner,
    outside the Downloads folder. For example:
 
-   `C:\Users\<your-name>\Applications\Godot-4.7.1\`
+   `C:\Users\<your-name>\Applications\Godot-4.7.2\`
 
 5. Open the extracted Godot executable.
 6. If Windows displays a security prompt, confirm that the publisher and
    download source are expected before continuing.
-7. Confirm that the Godot Project Manager opens and shows version **4.7.1**.
+7. Confirm that the Godot Project Manager opens and shows version **4.7.2**.
 8. Pin Godot to the taskbar or create a shortcut if that makes it easier to
    reopen. This is optional.
 9. Close Godot, then reopen it from the stable location or shortcut.
@@ -81,8 +83,8 @@ verification.
    > limits where it can work and lets you review broader actions first. Once a
    > project is connected, Codex can inspect its files, but you still need to
    > review and test its suggestions.
-8. Do not add a project yet. The Godot project does not exist until Lesson 2,
-   and the safe project workflow is introduced later.
+8. Do not add a local project to Codex yet. Lesson 0.2 first creates the Godot
+   project folder; Lesson 0.4 then connects that existing folder to Codex.
 9. Close the application, then reopen it and confirm that Codex is still
    available.
 
@@ -103,17 +105,19 @@ Without reading the steps again:
 3. Reopen the ChatGPT desktop app and access Codex.
 4. Explain in one sentence what Godot does.
 5. Explain in one sentence how Codex will support the project.
+6. Explain why no project folder is connected to Codex yet.
 
 ## Verification checklist
 
-- [ ] The standard Godot 4.7.1 Windows build is extracted.
+- [ ] The standard Godot 4.7.2 Windows build is extracted.
 - [ ] Godot is stored outside the Downloads folder.
-- [ ] The Godot Project Manager opens and shows version 4.7.1.
+- [ ] The Godot Project Manager opens and shows version 4.7.2.
 - [ ] Godot closes and reopens successfully.
 - [ ] The ChatGPT desktop app is installed from the official source.
 - [ ] The learner can sign in and access Codex.
 - [ ] The Windows-native agent is selected.
 - [ ] **Ask for approval** is selected.
+- [ ] No local project has been added to Codex yet.
 - [ ] The ChatGPT desktop app closes and reopens successfully.
 - [ ] The learner can explain the different roles of Godot and Codex.
 
