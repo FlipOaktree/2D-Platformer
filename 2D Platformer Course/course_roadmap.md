@@ -24,10 +24,12 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.5; and Module 2, Lessons 2.1-2.12. The coordinate-theory split, revised
-  transform and composition procedures, dot-syntax bridge, horizontal movement,
-  gravity/floor procedures, conditional floor-state procedure, and jumping
-  procedure remain validated. Lesson 0.4 is validated from the current Codex
+  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.2. The
+  coordinate-theory split, revised transform and composition procedures,
+  dot-syntax bridge, horizontal movement, gravity/floor procedures,
+  conditional floor-state procedure, jumping procedure, exported movement
+  settings, and target-based movement model remain validated. Lesson 0.4 is
+  validated from the current Codex
   project, Git metadata, and Changes-to-Review UI evidence; an empty-project
   replay remains part of the full-course rebuild gate.
 - **Godot evidence:** `Main` contains one inherited `Player` instance at
@@ -44,18 +46,20 @@ not infer progress from chat history or from learner verification checkboxes.
   gravity through `if not is_on_floor():` and `velocity.y += gravity * delta`,
   and grounded jumping through
   `Input.is_action_just_pressed("jump") and is_on_floor()`. Module 3.1 is
-  implemented in the working tree: the three movement values use documented
+  validated in the current project: the three movement values use documented
   `@export_range()` annotations, and the jump and gravity conditions have
   regular implementation comments. Other gameplay systems remain absent.
-- **Observed Git head:** `9f0efc4` (`Align Player collision shape with temporary
-  marker`), matching `origin/main`.
-- **Exact next step:** Validate Module 3, Lesson 3.1, **Expose Safe Movement
-  Settings**, by following its Inspector customization and runtime checks.
-- **Checkpoint:** Commit `9f0efc4` contains the validated project through
-  Lesson 2.11 and the Player collision-alignment correction. The working tree
-  contains uncommitted curriculum revisions across Modules 0-3, including the
-  Module 1 and Module 2 checkpoint lessons, plus the implemented Module 3.1
-  Player script work.
+- **Observed Git head:** `2452c6e` (`Update course roadmap and implement
+  movement settings lesson`), matching `origin/main`.
+- **Exact next step:** Review the Module 3, Lesson 3.3 blueprint, **Add
+  Acceleration and Deceleration**, and decide whether to approve it for
+  implementation.
+- **Checkpoint:** Commit `2452c6e` contains the validated curriculum through
+  Module 2, the implemented Module 3.1 Player settings, the corrected course
+  continuity, and planned module-boundary checkpoints. The working tree
+  contains the validated Lesson 3.1 wording and lifecycle revision, the
+  validated Lesson 3.2 theory bridge, and the drafted Lesson 3.3 implementation
+  blueprint.
 
 ## Status Model
 
@@ -190,13 +194,14 @@ responsive controller while making player states explicit.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Implemented | Uncommitted working tree; blueprint introduced in `8f60f46` |
-| 3.2 | Add Acceleration and Deceleration | Smoothing movement values | Planned | Unassigned |
-| 3.3 | Add Coyote Time | Short grace timers | Planned | Unassigned |
-| 3.4 | Add Jump Buffering | Buffered input | Planned | Unassigned |
-| 3.5 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
-| 3.6 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
-| 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Validated | Implementation in `2452c6e`; validation revision uncommitted |
+| 3.2 | Understand Target-Based Movement | Current and target velocity, acceleration rates, `delta`, and `move_toward()` tracing | Validated | Uncommitted working tree |
+| 3.3 | Add Acceleration and Deceleration | Exported acceleration/deceleration settings and target-based horizontal movement | Blueprint drafted | Uncommitted working tree |
+| 3.4 | Add Coyote Time | Short grace timers | Planned | Unassigned |
+| 3.5 | Add Jump Buffering | Buffered input | Planned | Unassigned |
+| 3.6 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
+| 3.7 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
+| 3.8 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 4: Modular Level Building
 
@@ -439,6 +444,7 @@ practical use and later lessons can build on them without re-teaching them.
 | Conditional logic and grounded state | 2.10 | Jumping, responsive movement, combat, and actor behavior |
 | Player movement and physics | 2.8-2.11 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
+| Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
 | Minimal global services | 13.4 | Scene flow, saving, settings, quest state |
@@ -523,3 +529,4 @@ Remaining reconciliation work:
 | Keep the first Codex/Git checkpoint focused | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
 | Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
 | Add one reviewed Git checkpoint at the end of each completed module | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
+| Insert a target-based movement theory bridge before acceleration code | Lesson 3.2 separates current velocity, target velocity, rates, `delta`, and repeated `move_toward()` results before the learner edits movement code. The acceleration implementation moves to Lesson 3.3, and later Module 3 lessons shift forward by one. |

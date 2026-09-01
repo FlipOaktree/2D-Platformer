@@ -1,6 +1,6 @@
 # Module 3, Lesson 1: Expose Safe Movement Settings
 
-**Status:** Implemented
+**Status:** Validated
 
 ## By the end
 
@@ -53,8 +53,9 @@ movement calculations that use them.
 >
 > - If any baseline behavior fails, compare `player.gd`, `main.tscn`, and the
 >   Input Map with the Module 2 verification checklists before continuing.
-> - Do not add acceleration or other responsive-movement behavior yet. Those
->   changes begin in Lesson 3.2.
+> - Do not add acceleration or other responsive-movement behavior yet. The
+>   movement model is introduced in Lesson 3.2, and the code changes begin in
+>   Lesson 3.3.
 
 ### Part 2: Add useful regular comments
 
@@ -79,13 +80,9 @@ movement calculations that use them.
 
 Regular comments were introduced in Lesson 2.4. Godot ignores them when the
 game runs, but they can explain an implementation decision to someone reading
-the function. These comments describe why each condition exists instead of
-repeating the code word for word.
+the code.
 
-3. Save `player.gd`, then run `main.tscn` with `F6`.
-4. Confirm that movement, falling, and grounded jumping behave exactly as they
-   did before the comments were added.
-5. Stop the scene with `F8`.
+3. Save `player.gd`.
 
 The comments will remain in `_physics_process()`. In the next part, you will
 use a different kind of comment to document a setting for the Inspector.
@@ -129,8 +126,7 @@ easy to adjust. The validated `300.0` remains the default.
 
 > 💡 A documentation comment begins with `##` and describes the code
 > directly below it. On an exported variable, Godot can show that description
-> as an Inspector tooltip. This explains a customization point where it is
-> used without adding comments to the movement calculation itself.
+> as an Inspector tooltip.
 
 The regular `#` comments inside `_physics_process()` explain implementation
 decisions to a code reader. The `##` documentation comment above `speed`
@@ -190,9 +186,9 @@ lesson outcome and final code remain the same.
    var jump_velocity: float = -400.0
    ```
 
-6. Manually correct every difference in wording or annotation values. If a
-   declaration already matches, leave it unchanged rather than introducing an
-   unnecessary edit.
+6. For the purpose of this exercise, manually correct every difference in
+   wording or annotation values. If a declaration already matches, leave it
+   unchanged rather than introducing an unnecessary edit.
 
 The minimum gravity is `0.0`, which prevents an Inspector value from
 accelerating the Player upward. Jump velocity stays between `-1000.0` and
