@@ -136,6 +136,9 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
 
 `velocity` is a built-in `CharacterBody2D` property that stores how fast and in which direction the Player should move. It is a `Vector2`: `velocity.x` is horizontal speed, and `velocity.y` is vertical speed. Setting `velocity.x` alone does not move the Player; `move_and_slide()` uses the velocity to move it and handle collisions.
 
+This direct assignment replaces the previous `velocity.x` on every physics
+update. That is why the Player starts, stops, and changes direction instantly.
+
 2. Add this final indented line beneath `velocity.x = direction * speed`:
 
    ```gdscript

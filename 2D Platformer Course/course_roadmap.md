@@ -24,17 +24,20 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.2. The
+  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.3. The
   coordinate-theory split, revised transform and composition procedures,
   dot-syntax bridge, horizontal movement, gravity/floor procedures,
   conditional floor-state procedure, jumping procedure, exported movement
-  settings, and target-based movement model remain validated. Lesson 0.4 is
+  settings, target-based horizontal acceleration and deceleration, and coyote
+  time remain validated. Lesson 0.4 is
   validated from the current Codex
   project, Git metadata, and Changes-to-Review UI evidence; an empty-project
   replay remains part of the full-course rebuild gate.
 - **Godot evidence:** `Main` contains one inherited `Player` instance at
-  `(128, 128)` and a `Floor` `StaticBody2D` at `(576, 560)` with a 1152-by-64
-  rectangle collision shape. The Input Map defines
+  `(128, 128)`, a `Floor` `StaticBody2D` at `(576, 560)` with a 1152-by-64
+  rectangle collision shape, and a centered `CoyoteTestPlatform` `StaticBody2D`
+  at `(576, 470)` with its own 320-by-32 rectangle collision shape. The Input
+  Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
   shared `CharacterBody2D` structure with a 32-by-32 placeholder collider.
@@ -42,24 +45,27 @@ not infer progress from chat history or from learner verification checkboxes.
   attached, then overrides the collider with a 128-by-128 rectangle matching
   its temporary 128-by-128 `Sprite2D` marker beneath `Visuals`.
 - **Code state:** `res://actors/player.gd` implements typed horizontal
-  movement through `Input.get_axis()`, `velocity.x`, and `move_and_slide()`,
-  gravity through `if not is_on_floor():` and `velocity.y += gravity * delta`,
-  and grounded jumping through
-  `Input.is_action_just_pressed("jump") and is_on_floor()`. Module 3.1 is
-  validated in the current project: the three movement values use documented
-  `@export_range()` annotations, and the jump and gravity conditions have
-  regular implementation comments. Other gameplay systems remain absent.
-- **Observed Git head:** `2452c6e` (`Update course roadmap and implement
-  movement settings lesson`), matching `origin/main`.
-- **Exact next step:** Review the Module 3, Lesson 3.3 blueprint, **Add
-  Acceleration and Deceleration**, and decide whether to approve it for
-  implementation.
-- **Checkpoint:** Commit `2452c6e` contains the validated curriculum through
-  Module 2, the implemented Module 3.1 Player settings, the corrected course
-  continuity, and planned module-boundary checkpoints. The working tree
-  contains the validated Lesson 3.1 wording and lifecycle revision, the
-  validated Lesson 3.2 theory bridge, and the drafted Lesson 3.3 implementation
-  blueprint.
+  movement through `Input.get_axis()`, a target horizontal speed, and
+  `move_toward()` with exported acceleration and deceleration rates. It uses a
+  `coyote_timer` countdown and `can_jump` condition to allow a short
+  grace-period jump after leaving the raised test platform. It retains
+  `move_and_slide()`, gravity, and grounded jumping. Modules 3.1-3.3 are
+  validated in the current project: the six movement values use
+  documented `@export_range()` annotations, and the jump and gravity
+  conditions have regular implementation comments. Other gameplay systems
+  remain absent.
+- **Observed Git head:** `2a23afa` (`Validate movement settings lesson and add
+  target-based movement theory`), matching `origin/main`.
+- **Exact next step:** Review the Module 3, Lesson 3.4 blueprint, **Add Jump
+  Buffering**, and decide whether it is approved before implementation.
+- **Checkpoint:** Commit `2a23afa` contains the validated curriculum through
+  Module 2, validated Module 3.1 Player settings, and the now-superseded
+  standalone target-based movement bridge. The working tree replaces that
+  bridge with a Lesson 2.8 direct-assignment clarification and the validated,
+  integrated Lesson 3.2 acceleration lesson and the validated Lesson 3.3
+  coyote-time feature. The Lesson 3.4 jump-buffering blueprint is also drafted
+  in the working tree. Headless Godot loading and runtime checks passed for
+  Lessons 3.2 and 3.3, followed by successful interactive validation.
 
 ## Status Model
 
@@ -181,7 +187,7 @@ record the tested foundation in a reviewed Git checkpoint.
 | 2.5 | Attach and Run Your First Player Script | Script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls | Validated | Uncommitted working tree |
 | 2.6 | Use Function Parameters and Return Values | Typed parameters, arguments, return types, and returned values | Validated | Uncommitted working tree |
 | 2.7 | Access Properties and Call Methods | Dot syntax, properties, and methods on existing values | Validated | Uncommitted working tree |
-| 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker and matching Player collider override, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | Uncommitted collision-alignment revision |
+| 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker and matching Player collider override, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | Validated implementation; direct-assignment clarification uncommitted |
 | 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, aligned Player/floor collision, gravity, and `delta` | Validated | Uncommitted collision-alignment revision |
 | 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | Uncommitted working tree |
 | 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Validated | Uncommitted working tree |
@@ -194,14 +200,13 @@ responsive controller while making player states explicit.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Validated | Implementation in `2452c6e`; validation revision uncommitted |
-| 3.2 | Understand Target-Based Movement | Current and target velocity, acceleration rates, `delta`, and `move_toward()` tracing | Validated | Uncommitted working tree |
-| 3.3 | Add Acceleration and Deceleration | Exported acceleration/deceleration settings and target-based horizontal movement | Blueprint drafted | Uncommitted working tree |
-| 3.4 | Add Coyote Time | Short grace timers | Planned | Unassigned |
-| 3.5 | Add Jump Buffering | Buffered input | Planned | Unassigned |
-| 3.6 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
-| 3.7 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
-| 3.8 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Validated | Validation in `2a23afa`; sequence-reference revision uncommitted |
+| 3.2 | Add Acceleration and Deceleration | Current and target velocity, exported acceleration/deceleration settings, `delta`, `move_toward()`, and target-based horizontal movement | Validated | Uncommitted working tree; headless and interactive validation passed |
+| 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | Uncommitted working tree; headless and interactive validation passed |
+| 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Blueprint drafted | Uncommitted working tree |
+| 3.5 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
+| 3.6 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
+| 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 4: Modular Level Building
 
@@ -445,6 +450,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Player movement and physics | 2.8-2.11 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
+| Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
+| Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
 | Minimal global services | 13.4 | Scene flow, saving, settings, quest state |
@@ -529,4 +536,4 @@ Remaining reconciliation work:
 | Keep the first Codex/Git checkpoint focused | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
 | Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
 | Add one reviewed Git checkpoint at the end of each completed module | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
-| Insert a target-based movement theory bridge before acceleration code | Lesson 3.2 separates current velocity, target velocity, rates, `delta`, and repeated `move_toward()` results before the learner edits movement code. The acceleration implementation moves to Lesson 3.3, and later Module 3 lessons shift forward by one. |
+| Teach target-based movement beside its first implementation | Lesson 2.8 identifies direct assignment as the reason basic movement starts, stops, and reverses instantly. Lesson 3.2 then introduces current and target velocity, horizontal rates, and `move_toward()` beside the acceleration code that needs them, while referring back to Lesson 2.9's established `rate * delta` pattern. This removes the separate theory bridge and keeps later Module 3 lessons focused. |

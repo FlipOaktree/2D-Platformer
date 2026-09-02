@@ -1,14 +1,13 @@
-# Module 3, Lesson 3: Add Acceleration and Deceleration
+# Module 3, Lesson 2: Add Acceleration and Deceleration
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
-Apply the target-based movement model from Lesson 3.2 to replace the Player's
-instant horizontal starts and stops with configurable acceleration and
-deceleration. Maximum speed will remain unchanged, while the Player will take
-a short, visible amount of time to reach that speed and stop after input is
-released.
+Replace the Player's instant horizontal starts and stops with configurable
+acceleration and deceleration. Maximum speed will remain unchanged, while the
+Player will take a short, visible amount of time to reach that speed and stop
+after input is released.
 
 - **Acceleration** defaults to `1200.0` pixels per second squared.
 - **Deceleration** defaults to `1800.0` pixels per second squared.
@@ -19,11 +18,7 @@ released.
 
 ## Before you start
 
-- Module 3, Lesson 2 is complete.
-- You can distinguish current velocity, target velocity, maximum speed,
-  acceleration, and deceleration.
-- You can identify the three arguments passed to `move_toward()` and explain
-  why its returned value must be assigned.
+- Module 3, Lesson 1 is complete and validated.
 - `res://actors/player.gd` contains the exported `speed`, `gravity`, and
   `jump_velocity` settings with their validated defaults.
 - `_physics_process()` assigns `direction * speed` directly to `velocity.x`.
@@ -47,6 +42,11 @@ released.
 
 This is the working baseline. The lesson will change how `velocity.x`
 approaches a target without changing the maximum `speed` or vertical physics.
+
+In Lesson 2.8, direct assignment replaced `velocity.x` on every physics
+update. The Player therefore reached the newly requested velocity immediately.
+This lesson will instead keep the current velocity separate from the requested
+velocity so one can approach the other over time.
 
 > ⚠️ **If something differs**
 >
@@ -73,6 +73,12 @@ approaches a target without changing the maximum `speed` or vertical physics.
 The minimum is `100.0` so neither setting can disable its behavior and leave
 the Player unable to start or stop. Deceleration starts higher than
 acceleration so the Player gains speed smoothly but still stops promptly.
+
+> 💡 `speed` is the maximum horizontal velocity requested by full input, in
+> pixels per second. `acceleration` controls how quickly the current velocity
+> approaches an input target, while `deceleration` controls how quickly it
+> approaches zero without input. Both rates are measured in pixels per second
+> squared because they describe a change in velocity over time.
 
 3. Save `player.gd` with `Ctrl+S`.
 4. Open `res://actors/player.tscn` and select the Player root.
@@ -104,19 +110,52 @@ acceleration so the Player gains speed smoothly but still stops promptly.
 
    ```gdscript
    var target_speed: float = direction * speed
+   ```
 
+> 💡 A **target velocity** is the horizontal velocity requested by the current
+> input. The **current velocity** is the value the Player has reached so far.
+> For example, full right input produces `1.0 * 300.0`, so `target_speed` is
+> `300.0`, even while the current `velocity.x` is still lower. Keeping the two
+> values separate allows the current velocity to approach the target over
+> time.
+
+Before adding that gradual change, meet the function that will calculate it:
+
+> 💡 `move_toward()` is a global GDScript function that produces a number
+> closer to a target. It receives three values: the current value, the target
+> value, and the maximum amount the current value may change during this
+> update. It stops exactly at the target rather than passing it.
+>
+> For example, `move_toward(0.0, 300.0, 20.0)` returns `20.0`. If the current
+> value is already `290.0`, it returns `300.0`, not `310.0`.
+>
+> Inside `_physics_process()`, Godot calls this code repeatedly. With this
+> example, the value can increase by up to `20.0` on each physics update until
+> it reaches the target value, `300.0`.
+
+3. Beneath `target_speed`, add:
+
+   ```gdscript
    if direction != 0.0:
        velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
    else:
        velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
    ```
 
-As traced in Lesson 3.2, the first branch moves current horizontal velocity
-toward the input target. Without input, the second branch moves it toward
-`0.0`. Multiplying each rate by `delta` limits the change for this physics
-update.
+Read each call from left to right: current velocity, target velocity, and the
+maximum change allowed during this update. `move_toward()` returns the new
+number, so the assignment stores that result back in `velocity.x`. The first
+branch approaches `target_speed` while input exists; the second approaches
+`0.0` when it does not.
 
-3. Compare the completed script with this version:
+Lesson 2.9 used `gravity * delta` to turn a per-second acceleration rate into
+the vertical velocity change for one physics update. These calls reuse the
+same time-based pattern horizontally. At roughly 60 physics updates per
+second, `1200.0 * (1.0 / 60.0)` permits a change of about `20.0` during one
+update. Using the actual `delta` keeps the behavior based on elapsed time when
+an update is slightly shorter or longer.
+
+4. Compare the completed script with this version:
 
    ```gdscript
    extends CharacterBody2D
@@ -161,19 +200,19 @@ update.
        move_and_slide()
    ```
 
-4. Confirm that the existing defaults, comments, vertical calculations, input
+5. Confirm that the existing defaults, comments, vertical calculations, input
    action names, and `move_and_slide()` call remain unchanged.
-5. Save the script and run `main.tscn`.
-6. Hold a horizontal direction and confirm that the Player takes a short time
+6. Save the script and run `main.tscn`.
+7. Hold a horizontal direction and confirm that the Player takes a short time
    to reach full speed.
-7. Release the input and confirm that the Player travels a short additional
+8. Release the input and confirm that the Player travels a short additional
    distance while slowing to a complete stop.
-8. Test a quick direction change and confirm that horizontal velocity changes
+9. Test a quick direction change and confirm that horizontal velocity changes
    smoothly instead of reversing instantly.
-9. Confirm that the Player still falls, lands, and jumps only while grounded.
-10. If a compatible controller is connected, repeat the movement and jump
+10. Confirm that the Player still falls, lands, and jumps only while grounded.
+11. If a compatible controller is connected, repeat the movement and jump
     checks with its configured inputs.
-11. Stop the scene with `F8`.
+12. Stop the scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -182,7 +221,7 @@ update.
 > - If the Player never stops, confirm that the `else` branch targets `0.0`
 >   and uses `deceleration * delta`.
 > - If the Player stops instantly, confirm that the old direct
->   `velocity.x = 0.0` assignment is absent.
+>   `velocity.x = direction * speed` assignment is absent.
 > - If vertical behavior changes, compare the jump and gravity sections with
 >   the completed code block; this lesson changes only horizontal movement.
 
@@ -249,8 +288,10 @@ Without editing `player.gd`:
 - [ ] All tuning exercises end with defaults `1200.0` and `1800.0` restored.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors,
       or unexplained warnings.
-- [ ] The learner can explain how the implementation applies the target-based
-      model traced in Lesson 3.2.
+- [ ] The learner can distinguish maximum speed, target velocity, current
+      velocity, acceleration, and deceleration in the completed code.
+- [ ] The learner can identify the current value, target value, and
+      maximum-change arguments in either `move_toward()` call.
 
 ## References
 

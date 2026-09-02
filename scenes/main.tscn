@@ -5,6 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkpjr"]
 size = Vector2(1152, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coyote_test"]
+size = Vector2(320, 32)
+
 [node name="Main" type="Node2D" unique_id=1280542419]
 
 [node name="Player" parent="." unique_id=1623537006 instance=ExtResource("2_0wfyh")]
@@ -15,3 +18,9 @@ position = Vector2(576, 560)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=712868675]
 shape = SubResource("RectangleShape2D_lkpjr")
+
+[node name="CoyoteTestPlatform" type="StaticBody2D" parent="." unique_id=1903396311]
+position = Vector2(576, 470)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoyoteTestPlatform" unique_id=425189344]
+shape = SubResource("RectangleShape2D_coyote_test")

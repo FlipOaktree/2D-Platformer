@@ -53,9 +53,8 @@ movement calculations that use them.
 >
 > - If any baseline behavior fails, compare `player.gd`, `main.tscn`, and the
 >   Input Map with the Module 2 verification checklists before continuing.
-> - Do not add acceleration or other responsive-movement behavior yet. The
->   movement model is introduced in Lesson 3.2, and the code changes begin in
->   Lesson 3.3.
+> - Do not add acceleration or other responsive-movement behavior yet. Lesson
+>   3.2 introduces that movement model beside the code that uses it.
 
 ### Part 2: Add useful regular comments
 
