@@ -24,7 +24,14 @@ var jump_velocity: float = -400.0
 @export_range(0.0, 0.5, 0.01)
 var coyote_time: float = 0.1
 
+## Seconds before landing during which a jump press is remembered.
+@export_range(0.0, 0.5, 0.01)
+var jump_buffer_time: float = 0.1
+
 var coyote_timer: float = 0.0
+var jump_buffer_timer: float = 0.0
+
+
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -32,16 +39,24 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer = move_toward(coyote_timer, 0.0, delta)
 
+	var jump_requested: bool = Input.is_action_just_pressed("jump")
+	if jump_requested:
+		jump_buffer_timer = jump_buffer_time
+	else:
+		jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
+
 	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
+	var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
 
 	# Skip gravity while the Player is grounded.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Allow one jump from the floor or during the grace period.
-	if Input.is_action_just_pressed("jump") and can_jump:
+	# Start a jump when a request and permission overlap.
+	if has_jump_request and can_jump:
 		velocity.y = jump_velocity
 		coyote_timer = 0.0
+		jump_buffer_timer = 0.0
 
 	var direction: float = Input.get_axis("move_left", "move_right")
 	var target_speed: float = direction * speed

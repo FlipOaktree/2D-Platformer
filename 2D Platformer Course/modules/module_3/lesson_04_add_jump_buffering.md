@@ -1,6 +1,6 @@
 # Module 3, Lesson 4: Add Jump Buffering
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 

@@ -24,7 +24,7 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.3. The
+  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.4. The
   coordinate-theory split, revised transform and composition procedures,
   dot-syntax bridge, horizontal movement, gravity/floor procedures,
   conditional floor-state procedure, jumping procedure, exported movement
@@ -48,24 +48,27 @@ not infer progress from chat history or from learner verification checkboxes.
   movement through `Input.get_axis()`, a target horizontal speed, and
   `move_toward()` with exported acceleration and deceleration rates. It uses a
   `coyote_timer` countdown and `can_jump` condition to allow a short
-  grace-period jump after leaving the raised test platform. It retains
-  `move_and_slide()`, gravity, and grounded jumping. Modules 3.1-3.3 are
-  validated in the current project: the six movement values use
+  grace-period jump after leaving the raised test platform. It also uses a
+  `jump_buffer_timer` and `has_jump_request` condition to remember a recent
+  jump press until landing. It retains `move_and_slide()`, gravity, and
+  grounded jumping. Modules 3.1-3.4 are validated in the current project: the
+  seven movement values use
   documented `@export_range()` annotations, and the jump and gravity
   conditions have regular implementation comments. Other gameplay systems
   remain absent.
 - **Observed Git head:** `2a23afa` (`Validate movement settings lesson and add
   target-based movement theory`), matching `origin/main`.
-- **Exact next step:** Review the Module 3, Lesson 3.4 blueprint, **Add Jump
-  Buffering**, and decide whether it is approved before implementation.
+- **Exact next step:** Draft the Module 3, Lesson 3.5 blueprint, **Add Variable
+  Jump Height**, without implementing it until its blueprint is approved.
 - **Checkpoint:** Commit `2a23afa` contains the validated curriculum through
   Module 2, validated Module 3.1 Player settings, and the now-superseded
   standalone target-based movement bridge. The working tree replaces that
   bridge with a Lesson 2.8 direct-assignment clarification and the validated,
   integrated Lesson 3.2 acceleration lesson and the validated Lesson 3.3
-  coyote-time feature. The Lesson 3.4 jump-buffering blueprint is also drafted
-  in the working tree. Headless Godot loading and runtime checks passed for
-  Lessons 3.2 and 3.3, followed by successful interactive validation.
+  coyote-time feature and the validated Lesson 3.4 jump-buffering feature.
+  Headless Godot loading and runtime checks passed for Lessons 3.2 and 3.3,
+  followed by successful interactive validation. Lesson 3.4 received focused
+  Godot validation.
 
 ## Status Model
 
@@ -203,7 +206,7 @@ responsive controller while making player states explicit.
 | 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Validated | Validation in `2a23afa`; sequence-reference revision uncommitted |
 | 3.2 | Add Acceleration and Deceleration | Current and target velocity, exported acceleration/deceleration settings, `delta`, `move_toward()`, and target-based horizontal movement | Validated | Uncommitted working tree; headless and interactive validation passed |
 | 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | Uncommitted working tree; headless and interactive validation passed |
-| 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Blueprint drafted | Uncommitted working tree |
+| 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | Uncommitted working tree; focused Godot validation passed |
 | 3.5 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
 | 3.6 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
 | 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
