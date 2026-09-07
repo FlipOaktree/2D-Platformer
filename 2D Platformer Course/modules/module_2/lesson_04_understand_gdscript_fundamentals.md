@@ -154,13 +154,16 @@ speed -= 100.0
 
 ## Verification checklist
 
-- [ ] I can explain what GDScript is and why it is used in this Godot course.
-- [ ] I know that indentation groups related instructions.
-- [ ] I can identify a comment and explain why it is useful.
-- [ ] I can identify a variable, its value and type hint.
-- [ ] I can recognize `int`, `float`, `bool`, `String`, and `Vector2` values.
-- [ ] I can explain the difference between `=` and `==`.
-- [ ] I can read basic arithmetic, assignment, comparison, and logical operators.
+- [ ] The learner can explain what GDScript is and why it is used in this
+      Godot course.
+- [ ] The learner knows that indentation groups related instructions.
+- [ ] The learner can identify a comment and explain why it is useful.
+- [ ] The learner can identify a variable, its value and type hint.
+- [ ] The learner can recognize `int`, `float`, `bool`, `String`, and
+      `Vector2` values.
+- [ ] The learner can explain the difference between `=` and `==`.
+- [ ] The learner can read basic arithmetic, assignment, comparison, and
+      logical operators.
 
 ## References
 

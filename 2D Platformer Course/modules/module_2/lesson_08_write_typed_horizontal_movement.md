@@ -182,7 +182,7 @@ update. That is why the Player starts, stops, and changes direction instantly.
 9. Hold `D` or Right Arrow and confirm that the marker moves right.
 10. Release the input and confirm that the marker stops.
 11. If a compatible controller is connected, test its configured D-pad and left
-   stick directions too.
+    stick directions too.
 12. Confirm that the Player marker is the only visible element on screen.
 13. Stop the running scene with `F8`.
 

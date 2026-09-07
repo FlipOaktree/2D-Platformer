@@ -106,10 +106,12 @@ affects its children.
 > values above `1` make it larger. Equal `x` and `y` values preserve the
 > image's proportions; different values stretch it.
 >
-> Enlarging raster images such as PNG or JPEG files above 100% can make them
-> look blurry or pixelated because they contain a fixed number of pixels. SVG
-> images such as `icon.svg` are designed to scale more cleanly, and Godot
-> imports them as automatically scalable textures.
+> Enlarging an image above 100% can make it look blurry, because an image
+> contains a fixed number of pixels. `icon.svg` is a vector file, which stores
+> shapes instead of pixels, but Godot converts it into a fixed-size image when
+> it imports it. The advantage of keeping the vector source is that it can be
+> re-imported at any size without losing quality: select `icon.svg`, open the
+> **Import** dock, change **Svg > Scale**, and click **Reimport**.
 
 5. Confirm that the icon becomes smaller without looking stretched.
 
@@ -189,6 +191,5 @@ Without repeating the build steps:
 - [Node2D](https://docs.godotengine.org/en/4.7/classes/class_node2d.html)
 - [Sprite2D](https://docs.godotengine.org/en/4.7/classes/class_sprite2d.html)
 - [Control](https://docs.godotengine.org/en/4.7/classes/class_control.html)
-- [ResourceImporterSVG](https://docs.godotengine.org/en/4.7/classes/class_resourceimportersvg.html)
 - [Introduction to 2D](https://docs.godotengine.org/en/4.7/tutorials/2d/introduction_to_2d.html)
 - [Default editor shortcuts](https://docs.godotengine.org/en/4.7/tutorials/editor/default_key_mapping.html)

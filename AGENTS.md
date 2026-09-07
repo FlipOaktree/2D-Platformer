@@ -98,4 +98,29 @@ the same written course material that learners will later use.
 - Preserve unrelated user changes and never rewrite files merely to match a
   preferred style.
 
+## Evidence and Delegation
+
+These rules govern the AI assistant working on this project. They are not
+learner-facing content.
+
+- Report a finding with its evidence: the file, the line, a verbatim quote, and
+  what that quote proves. A finding without a quote is not a finding.
+- Confirm a claim before presenting it. Hedging words such as "probably" or
+  "worth checking" are not a substitute. Either verify it, or label the item
+  UNVERIFIED and state the exact check required.
+- Separate claims about this repository from claims about the outside world.
+  Engine behavior, editor labels, documentation URLs, and version details
+  cannot be settled by reading these files. Check them against the running
+  editor, the project's own `.import` and configuration files, or the official
+  documentation before asserting them.
+- Answer consistency questions by searching the entire course rather than a
+  sample, and report counts. A claim that only one lesson does something is
+  wrong whenever the search covered part of the material.
+- Prefer a deterministic check to a judgment call whenever the question is
+  countable, such as indentation, terminology, link versions, or repeated
+  lines.
+- When delegating to a parallel assistant, give it the tools its claims
+  require and record the boundary of what it examined. Treat any claim beyond
+  that boundary as unverified until checked directly.
+
 

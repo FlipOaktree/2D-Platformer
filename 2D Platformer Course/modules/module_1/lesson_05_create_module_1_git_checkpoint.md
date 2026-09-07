@@ -63,9 +63,16 @@ changes, then use Codex's Git controls to create the local commit.
 5. Confirm that the Module 1 project changes are limited to the expected
    files:
 
-   - `project.godot`, which records `main.tscn` as the project's main scene.
+   - `project.godot`, which records `main.tscn` as the project's main scene
+     through a `uid://` reference.
    - `scenes/main.tscn`, which stores `Main`, its Label, and the icon instance.
    - `scenes/project_icon.tscn`, which stores the reusable icon scene.
+
+   > 💡 A **UID** is a stable identifier Godot assigns to each file. It looks
+   > like `uid://` followed by a short code, and it is unique to your project.
+   > Godot records the main scene by its UID instead of its file path, so the
+   > reference keeps working if the file is later renamed or moved. That is why
+   > the diff shows a `uid://` value rather than `main.tscn`.
 
    Course notes, generated `.godot/` files, credentials, or any change you
    cannot explain do not belong in this checkpoint.

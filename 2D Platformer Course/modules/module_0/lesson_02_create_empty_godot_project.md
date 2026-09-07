@@ -48,9 +48,10 @@ creates the Godot project and its files.
 8. In the FileSystem dock, right-click the `res://` root folder.
 9. Select **Open in File Explorer**.
 10. In Windows File Explorer, confirm that `project.godot` is present.
-   > 💡 The **`project.godot`** file stores the project name and settings. Its
-   > location defines the project root. Godot's FileSystem dock may not display
-   > it, so use **Open in File Explorer** to view the complete project folder.
+
+    > 💡 The **`project.godot`** file stores the project name and settings. Its
+    > location defines the project root. Godot's FileSystem dock may not display
+    > it, so use **Open in File Explorer** to view the complete project folder.
 
 11. Select the File Explorer address bar and record the complete folder path.
     You will select this exact folder when connecting the existing project to
@@ -99,5 +100,5 @@ Without reading the steps again:
 ## References
 
 - [Godot Project Manager](https://docs.godotengine.org/en/4.7/tutorials/editor/project_manager.html)
-- [Godot renderer overview](https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html)
+- [Godot renderer overview](https://docs.godotengine.org/en/4.7/tutorials/rendering/renderers.html)
 - [Godot project file system](https://docs.godotengine.org/en/4.7/tutorials/scripting/filesystem.html)

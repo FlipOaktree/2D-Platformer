@@ -134,7 +134,7 @@ the gravity calculation runs by using the floor state.
 9. Release the input and confirm that the Player stops horizontally without
    falling through the floor.
 10. If a compatible controller is connected, test its configured horizontal
-   controls too.
+    controls too.
 11. Confirm that neither `ProjectIcon` nor `Project ready` appears.
 12. Stop the running scene with `F8`.
 

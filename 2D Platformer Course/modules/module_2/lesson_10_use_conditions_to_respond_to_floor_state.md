@@ -96,7 +96,10 @@ state to decide when the Player can jump.
    velocity.y += gravity * delta
    ```
 
-3. Compare your completed script with this version:
+3. Delete the original `velocity.y += gravity * delta` line that still sits
+   below the condition, left over from Lesson 2.9. The calculation now runs
+   only inside the condition.
+4. Compare your completed script with this version:
 
    ```gdscript
    extends CharacterBody2D
@@ -113,7 +116,7 @@ state to decide when the Player can jump.
        move_and_slide()
    ```
 
-4. Save the script with `Ctrl+S`.
+5. Save the script with `Ctrl+S`.
 
 When the Player is airborne, the condition is `true`, so gravity is added to
 `velocity.y`. When the Player is on the floor, the condition is `false`, so
@@ -125,6 +128,9 @@ landing, but the code now states that gravity applies only while airborne.
 > - If the Player no longer falls, confirm that `not` appears before
 >   `is_on_floor()` and that the gravity calculation is indented beneath the
 >   `if` line.
+> - If the Player falls noticeably faster than before, confirm that
+>   `velocity.y += gravity * delta` appears only once and is indented beneath
+>   the condition. The original line from Lesson 2.9 must be removed.
 > - If the Player falls through the floor, revisit the collision checks in
 >   Lesson 2.9; this lesson does not change the floor setup.
 
@@ -156,6 +162,7 @@ landing, but the code now states that gravity applies only while airborne.
       and were removed before the lesson ended.
 - [ ] The final script uses `if not is_on_floor():`.
 - [ ] The gravity calculation is indented beneath that condition.
+- [ ] `velocity.y += gravity * delta` appears exactly once in the script.
 - [ ] The final script contains no `else` branch or temporary `print()` calls.
 - [ ] The Player falls, lands on the floor, and does not fall through it.
 - [ ] Keyboard horizontal movement and stopping still work on the floor.

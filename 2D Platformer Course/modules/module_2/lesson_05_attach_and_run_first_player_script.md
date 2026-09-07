@@ -219,18 +219,18 @@ can be used only there.
 12. Stop the running scene with `F8`.
 13. Change the variable's text from `"Player is ready"` to `"Hello World!"`.
 
-   ```gdscript
-   extends CharacterBody2D
+    ```gdscript
+    extends CharacterBody2D
 
-   var message: String = "Hello World!"
+    var message: String = "Hello World!"
 
-   func _ready() -> void:
-       print(message)
-       show_message()
+    func _ready() -> void:
+        print(message)
+        show_message()
 
-   func show_message() -> void:
-       print(message)
-   ```
+    func show_message() -> void:
+        print(message)
+    ```
 
 14. Save the script with `Ctrl+S`. In the **Output** panel, select **Clear**,
     then run `main.tscn` with `F6` again.
@@ -285,15 +285,19 @@ Without adding the temporary code again, explain:
 ## Verification checklist
 
 - [ ] `res://actors/player.gd` exists and is attached to the Player root.
-- [ ] I can explain what `extends CharacterBody2D` means.
-- [ ] I can explain what a function and a Godot callback are.
-- [ ] I know that `-> void` means the function returns no value.
-- [ ] I used `pass` as a temporary instruction and then replaced it.
+- [ ] The learner can explain what `extends CharacterBody2D` means.
+- [ ] The learner can explain what a function and a Godot callback are.
+- [ ] The learner knows that `-> void` means the function returns no value.
+- [ ] The learner used `pass` as a temporary instruction and then replaced it.
 - [ ] Running `main.tscn` printed `Player is ready` in the Output panel.
-- [ ] I saw why a local `message` variable caused an error in another function.
-- [ ] I can explain the difference between local and script-level scope.
-- [ ] I called `show_message()` from `_ready()` and saw the message twice.
-- [ ] I changed `message` once and saw both printed lines use its updated value.
+- [ ] The learner saw why a local `message` variable caused an error in
+      another function.
+- [ ] The learner can explain the difference between local and script-level
+      scope.
+- [ ] The learner called `show_message()` from `_ready()` and saw the message
+      twice.
+- [ ] The learner changed `message` once and saw both printed lines use its
+      updated value.
 - [ ] The temporary `_ready()` diagnostic has been removed.
 - [ ] `player.gd` ends with only `extends CharacterBody2D`.
 - [ ] No input or physics behavior has been added yet.

@@ -53,6 +53,11 @@ content in the 2D viewport without moving it.
 
 8. Double-click `Label`'s icon in the Scene dock to center it in the 2D
    viewport.
+
+   > 💡 The **2D viewport** is the large central area where you see and arrange
+   > your scene. Moving your view in the viewport changes only what you are
+   > looking at; it does not move the nodes themselves.
+
 9. Use the zoom controls above the top-left of the viewport to zoom in and out.
 10. Select **Pan Mode** in the toolbar above the viewport, then drag with the
     left mouse button to move your view.
@@ -70,7 +75,7 @@ content in the 2D viewport without moving it.
 14. In the save dialog, create a folder named `scenes`.
 15. Open `scenes`, enter `main.tscn` as the file name, and select **Save**.
 
-   > 💡 A `.tscn` file stores a Godot scene.
+    > 💡 A `.tscn` file stores a Godot scene.
 
 > ⚠️ **If something differs**
 >

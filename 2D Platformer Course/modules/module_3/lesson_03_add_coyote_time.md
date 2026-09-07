@@ -41,7 +41,7 @@ press will feel more forgiving.
    `(576, 560)` and its 1152-by-64 rectangle shape.
 9. Save `main.tscn` with `Ctrl+S`.
 10. In the editor's **Debug** menu, confirm that **Visible Collision Shapes** is
-   enabled.
+    enabled.
 11. Run the current scene with `F6` and let the Player land on the original
     Floor.
 12. Move to either side of the raised platform, then jump while moving toward

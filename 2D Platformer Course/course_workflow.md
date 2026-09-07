@@ -132,6 +132,21 @@ Format contextual lesson notes consistently:
   **If something differs** without a colon. Keep it unindented and place it at
   the end of the corresponding lesson part.
 
+Write each verification checklist item in the voice that matches what it
+verifies:
+
+- State a fact about the project directly, without naming the learner, such as
+  "`player.gd` ends with only `extends CharacterBody2D`".
+- Use "The learner can ..." or "The learner knows ..." for understanding the
+  learner should be able to demonstrate.
+- Use "The learner ..." with a past-tense verb for an action the lesson had the
+  learner perform, such as "The learner used `return` to send the calculated
+  value back to `_ready()`".
+
+Do not write checklist items in the first person. The boxes stay unchecked for
+learners to use, but the wording is production-facing and stays consistent
+across every lesson.
+
 ### 2. Build
 
 - Follow the blueprint in order.
@@ -164,6 +179,11 @@ Format contextual lesson notes consistently:
 A lesson is verified when:
 
 - Following its steps produces the stated result.
+- Replaying the lesson's edit steps from the previous lesson's end state
+  reproduces the lesson's own final code listing exactly, with no leftover or
+  duplicated lines. Verifying the project's behavior is not a substitute: a
+  step that adds a line without removing the one it replaces can leave the
+  project working and the written procedure wrong.
 - The project has no related parser or runtime errors.
 - Existing completed features still work.
 - Inspector values are understandable and safe.
@@ -175,6 +195,10 @@ A lesson is verified when:
   and tested.
 - The lesson remains understandable without maintaining a second non-AI
   version of its content.
+- The verification checklist tests the shape of the result as well as its
+  behavior, so an incorrect script cannot pass every item. When a lesson moves
+  or replaces an existing line, include an item of the form "X appears exactly
+  once".
 
 ### 4. Finalize
 

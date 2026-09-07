@@ -118,6 +118,11 @@ project.
 
 2. At the top right of the task, open the controls menu (the sliders icon) and
    select **Changes**. Codex opens the changed-file diff in a **Review** tab.
+
+   > 💡 A **diff** is a line-by-line comparison that shows exactly what changed
+   > between two versions of a file. Added lines and removed lines are marked
+   > so you can review a change without reading the whole file.
+
 3. Compare Codex's explanation with `.gitignore` and the Review tab.
 4. Confirm that the project files, `.gitignore`, and `.gitattributes` should be
    included, while the internal `.git/` directory, generated `.godot/` files,
@@ -146,13 +151,13 @@ project.
 
 10. Return to the integrated terminal and run:
 
-   ```powershell
-   git status
-   git log --oneline -1
-   ```
+    ```powershell
+    git status
+    git log --oneline -1
+    ```
 
 11. Confirm that the working tree is clean and the latest commit message is
-   `Checkpoint empty Godot project`.
+    `Checkpoint empty Godot project`.
 
 Use this cycle for future working results: inspect → stage intended changes →
 review → commit → verify. Never commit passwords, tokens, private keys, or
@@ -199,4 +204,4 @@ Without repeating the build steps:
 - [Codex best practices](https://learn.chatgpt.com/guides/best-practices)
 - [Initialize a Git repository](https://git-scm.com/book/en/v2/Git-Basics/Getting-a-Git-Repository)
 - [Record changes with Git](https://git-scm.com/book/en/v2/Git-Basics/Recording-Changes-to-the-Repository)
-- [Godot version-control guidance](https://docs.godotengine.org/en/stable/tutorials/best_practices/version_control_systems.html)
+- [Godot version-control guidance](https://docs.godotengine.org/en/4.7/tutorials/best_practices/version_control_systems.html)

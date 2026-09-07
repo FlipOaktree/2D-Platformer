@@ -181,9 +181,12 @@ Without adding the temporary code again:
 - [ ] `position.x` reports the Player's horizontal position from `main.tscn`.
 - [ ] `player_name.begins_with("Play")` reports `true`.
 - [ ] Changing the argument to `"Enemy"` makes the method report `false`.
-- [ ] I can explain that a property stores a value belonging to something.
-- [ ] I can explain that a method is a function belonging to something.
-- [ ] I can distinguish property access from a method call by the parentheses.
+- [ ] The learner can explain that a property stores a value belonging to
+      something.
+- [ ] The learner can explain that a method is a function belonging to
+      something.
+- [ ] The learner can distinguish property access from a method call by the
+      parentheses.
 - [ ] `res://actors/player.gd` ends with only `extends CharacterBody2D`.
 
 ## References

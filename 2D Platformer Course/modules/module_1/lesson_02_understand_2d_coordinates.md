@@ -85,14 +85,16 @@ Without opening Godot, answer these questions:
 
 ## Verification checklist
 
-- [ ] I can identify `x` and `y` in a coordinate pair.
-- [ ] I can locate the origin at `(0, 0)`.
-- [ ] I know that positive `x` points right and negative `x` points left.
-- [ ] I know that positive `y` points down and negative `y` points up in
-      Godot's 2D screen coordinates.
-- [ ] I can explain why screen coordinates commonly begin at the top-left.
-- [ ] I can explain that a child's Position is local to its parent.
-- [ ] I can predict how moving a parent affects its children.
+- [ ] The learner can identify `x` and `y` in a coordinate pair.
+- [ ] The learner can locate the origin at `(0, 0)`.
+- [ ] The learner knows that positive `x` points right and negative `x` points
+      left.
+- [ ] The learner knows that positive `y` points down and negative `y` points
+      up in Godot's 2D screen coordinates.
+- [ ] The learner can explain why screen coordinates commonly begin at the
+      top-left.
+- [ ] The learner can explain that a child's Position is local to its parent.
+- [ ] The learner can predict how moving a parent affects its children.
 
 ## References
 

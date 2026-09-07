@@ -79,10 +79,12 @@ verification.
 7. Beneath the message box, select **Ask for approval** so sandbox protections
    are active.
 
-   > 💡 **Ask for approval** keeps Codex inside the project sandbox. This
-   > limits where it can work and lets you review broader actions first. Once a
-   > project is connected, Codex can inspect its files, but you still need to
-   > review and test its suggestions.
+   > 💡 **Ask for approval** keeps Codex inside the project sandbox. A
+   > **sandbox** is a restricted area an application is allowed to work in, so
+   > Codex cannot reach files elsewhere on your computer. This limits where it
+   > can work and lets you review broader actions first. Once a project is
+   > connected, Codex can inspect its files, but you still need to review and
+   > test its suggestions.
 8. Do not add a local project to Codex yet. Lesson 0.2 first creates the Godot
    project folder; Lesson 0.4 then connects that existing folder to Codex.
 9. Close the application, then reopen it and confirm that Codex is still
@@ -124,5 +126,5 @@ Without reading the steps again:
 ## References
 
 - [Godot download for Windows](https://godotengine.org/download/windows/)
-- [Godot installation and stable-location guidance](https://docs.godotengine.org/en/stable/about/faq.html#how-do-i-install-the-godot-editor-on-my-system-for-desktop-integration)
+- [Godot installation and stable-location guidance](https://docs.godotengine.org/en/4.7/about/faq.html#how-do-i-install-the-godot-editor-on-my-system-for-desktop-integration)
 - [ChatGPT desktop app for Windows](https://learn.chatgpt.com/docs/windows/windows-app)

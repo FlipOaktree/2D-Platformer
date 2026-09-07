@@ -56,19 +56,19 @@ not infer progress from chat history or from learner verification checkboxes.
   documented `@export_range()` annotations, and the jump and gravity
   conditions have regular implementation comments. Other gameplay systems
   remain absent.
-- **Observed Git head:** `2a23afa` (`Validate movement settings lesson and add
-  target-based movement theory`), matching `origin/main`.
+- **Observed Git head:** `dd966c0` (`Validate jump buffering lesson`), matching
+  `origin/main`.
 - **Exact next step:** Draft the Module 3, Lesson 3.5 blueprint, **Add Variable
   Jump Height**, without implementing it until its blueprint is approved.
-- **Checkpoint:** Commit `2a23afa` contains the validated curriculum through
-  Module 2, validated Module 3.1 Player settings, and the now-superseded
-  standalone target-based movement bridge. The working tree replaces that
-  bridge with a Lesson 2.8 direct-assignment clarification and the validated,
-  integrated Lesson 3.2 acceleration lesson and the validated Lesson 3.3
-  coyote-time feature and the validated Lesson 3.4 jump-buffering feature.
-  Headless Godot loading and runtime checks passed for Lessons 3.2 and 3.3,
-  followed by successful interactive validation. Lesson 3.4 received focused
-  Godot validation.
+- **Checkpoint:** Commit `dd966c0` contains the validated curriculum through
+  Module 2 and validated Module 3 Lessons 3.1-3.4. Commit `2a23afa` validated
+  the Module 3.1 Player settings alongside a standalone target-based movement
+  bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
+  direct-assignment clarification and the integrated Lesson 3.2 acceleration
+  and Lesson 3.3 coyote-time features; commit `dd966c0` added the Lesson 3.4
+  jump-buffering feature. Headless Godot loading and runtime checks passed for
+  Lessons 3.2 and 3.3, followed by successful interactive validation. Lesson
+  3.4 received focused Godot validation.
 
 ## Status Model
 
@@ -155,10 +155,10 @@ its folder to Codex, and place it under version control.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 0.1 | Install Godot and Codex | Tool installation, Windows-native Codex, approval setting; no project association | Validated | Existing history; exact commit pending reconciliation |
-| 0.2 | Create an Empty Godot Project | Project Manager, renderer, `project.godot`, exact existing folder path | Validated | Existing history; exact commit pending reconciliation |
-| 0.3 | Install and Configure Git | Git installation, global commit identity, and default branch; no repository yet | Validated | Existing history; exact commit pending reconciliation |
-| 0.4 | Connect the Existing Project to Codex and Create the First Git Checkpoint | Existing-folder association, repository, read-only AI review, staging, diff, commit, Godot metadata | Validated | Uncommitted curriculum revision; clean-project replay deferred to the full-course rebuild |
+| 0.1 | Install Godot and Codex | Tool installation, Windows-native Codex, approval setting; no project association | Validated | `2452c6e` |
+| 0.2 | Create an Empty Godot Project | Project Manager, renderer, `project.godot`, exact existing folder path | Validated | `2452c6e` |
+| 0.3 | Install and Configure Git | Git installation, global commit identity, and default branch; no repository yet | Validated | `2452c6e` |
+| 0.4 | Connect the Existing Project to Codex and Create the First Git Checkpoint | Existing-folder association, repository, read-only AI review, staging, diff, commit, Godot metadata | Validated | `2452c6e`; clean-project replay deferred to the full-course rebuild |
 
 ### Module 1: Godot Scene Foundations
 
@@ -169,11 +169,11 @@ a reviewed Git checkpoint.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | Current Module 1 revision checkpoint |
-| 1.2 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Uncommitted curriculum revision |
-| 1.3 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Previously validated project behavior; uncommitted blueprint revision |
-| 1.4 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Previously validated project behavior; uncommitted blueprint revision |
-| 1.5 | Create a Module 1 Git Checkpoint | Tested module boundary, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | Uncommitted curriculum revision |
+| 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | `2452c6e` |
+| 1.2 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
+| 1.3 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
+| 1.4 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed; exact commit pending reconciliation |
+| 1.5 | Create a Module 1 Git Checkpoint | Tested module boundary, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | `2452c6e` |
 
 ### Module 2: Actor and Player Foundations
 
@@ -184,17 +184,17 @@ record the tested foundation in a reviewed Git checkpoint.
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
 | 2.1 | Configure Keyboard and Controller Actions | Input Map and action abstraction | Validated | `624d69b` |
-| 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Validated | Uncommitted working tree; commit association pending |
-| 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Validated | Uncommitted working tree; commit association pending |
-| 2.4 | Understand GDScript Fundamentals | GDScript syntax, comments, values, types, variables, and operators | Validated | Unassigned |
-| 2.5 | Attach and Run Your First Player Script | Script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls | Validated | Uncommitted working tree |
-| 2.6 | Use Function Parameters and Return Values | Typed parameters, arguments, return types, and returned values | Validated | Uncommitted working tree |
-| 2.7 | Access Properties and Call Methods | Dot syntax, properties, and methods on existing values | Validated | Uncommitted working tree |
-| 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker and matching Player collider override, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | Validated implementation; direct-assignment clarification uncommitted |
-| 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, aligned Player/floor collision, gravity, and `delta` | Validated | Uncommitted collision-alignment revision |
-| 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | Uncommitted working tree |
-| 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Validated | Uncommitted working tree |
-| 2.12 | Create a Module 2 Git Checkpoint | Tested Player foundation, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | Uncommitted curriculum revision |
+| 2.2 | Build the Shared Actor Scene | Small `Actor` base and attachment points | Validated | `62a02c3` |
+| 2.3 | Specialize Actor into a Player | Scene inheritance/specialization | Validated | `2452c6e` |
+| 2.4 | Understand GDScript Fundamentals | GDScript syntax, comments, values, types, variables, and operators | Validated | `2452c6e` |
+| 2.5 | Attach and Run Your First Player Script | Script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls | Validated | `2452c6e` |
+| 2.6 | Use Function Parameters and Return Values | Typed parameters, arguments, return types, and returned values | Validated | Committed; exact commit pending reconciliation |
+| 2.7 | Access Properties and Call Methods | Dot syntax, properties, and methods on existing values | Validated | `cf34c54` |
+| 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker and matching Player collider override, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | `3b0f0c5` |
+| 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, aligned Player/floor collision, gravity, and `delta` | Validated | `9f0efc4` |
+| 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | `ae5d31c`; audit fix uncommitted |
+| 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Validated | `cf34c54` |
+| 2.12 | Create a Module 2 Git Checkpoint | Tested Player foundation, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | `2452c6e` |
 
 ### Module 3: Responsive Player Movement
 
@@ -203,10 +203,10 @@ responsive controller while making player states explicit.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Validated | Validation in `2a23afa`; sequence-reference revision uncommitted |
-| 3.2 | Add Acceleration and Deceleration | Current and target velocity, exported acceleration/deceleration settings, `delta`, `move_toward()`, and target-based horizontal movement | Validated | Uncommitted working tree; headless and interactive validation passed |
-| 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | Uncommitted working tree; headless and interactive validation passed |
-| 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | Uncommitted working tree; focused Godot validation passed |
+| 3.1 | Expose Safe Movement Settings | Exported properties, defaults, tooltips | Validated | Validated in `2a23afa`; sequence-reference revision in `3b0f0c5` |
+| 3.2 | Add Acceleration and Deceleration | Current and target velocity, exported acceleration/deceleration settings, `delta`, `move_toward()`, and target-based horizontal movement | Validated | `3b0f0c5`; headless and interactive validation passed |
+| 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | `3b0f0c5`; headless and interactive validation passed |
+| 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | `dd966c0`; focused Godot validation passed |
 | 3.5 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
 | 3.6 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
 | 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
@@ -508,8 +508,8 @@ Remaining reconciliation work:
 
 - Propagate the roadmap's descriptive Module titles to local lesson and
   navigation material where needed.
-- Reconcile exact Git associations for validated lessons without rewriting
-  unrelated working-tree changes.
+- Reconcile the exact Git associations still marked pending for Lessons 1.2,
+  1.3, 1.4, and 2.6. Modules 0, 2, and 3 are reconciled.
 - Replay Lesson 0.4's revised `Checkpoint empty Godot project` staging and
   commit path during the full-course empty-project rebuild. The production
   repository's earliest historical message differs and must not be rewritten

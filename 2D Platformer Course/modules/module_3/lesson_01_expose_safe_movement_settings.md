@@ -217,12 +217,12 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
    from Part 2 and that none of its executable instructions changed.
 9. Save `player.gd` with `Ctrl+S`.
 10. In `player.tscn`, reselect the Player root and confirm that **Speed**,
-   **Gravity**, and **Jump Velocity** appear in the Inspector.
+    **Gravity**, and **Jump Velocity** appear in the Inspector.
 11. Confirm that the three Inspector values match their validated defaults.
 12. Hover over each property name and confirm that its tooltip explains the
-   setting.
+    setting.
 13. Confirm that each control stops at its documented minimum and maximum,
-   then restore all three defaults.
+    then restore all three defaults.
 
 > ⚠️ **If something differs**
 >

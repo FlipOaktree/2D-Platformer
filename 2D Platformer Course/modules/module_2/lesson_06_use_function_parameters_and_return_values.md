@@ -192,12 +192,14 @@ Without adding the temporary code again, explain:
 
 ## Verification checklist
 
-- [ ] I created `_ready()` with a temporary `pass` instruction.
-- [ ] I can explain the difference between a parameter and an argument.
+- [ ] The learner created `_ready()` with a temporary `pass` instruction.
+- [ ] The learner can explain the difference between a parameter and an
+      argument.
 - [ ] Both parameters in `add_coins()` use `int` type hints.
-- [ ] I know that `-> int` means the function returns an integer.
-- [ ] I replaced `pass` with code that calls `add_coins()`.
-- [ ] I used `return` to send the calculated value back to `_ready()`.
+- [ ] The learner knows that `-> int` means the function returns an integer.
+- [ ] The learner replaced `pass` with code that calls `add_coins()`.
+- [ ] The learner used `return` to send the calculated value back to
+      `_ready()`.
 - [ ] `add_coins(2, 3)` printed `5`.
 - [ ] Changing the call to `add_coins(2, 5)` printed `7`.
 - [ ] The temporary `_ready()` and `add_coins()` functions have been removed.
