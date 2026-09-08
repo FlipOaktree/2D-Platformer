@@ -149,6 +149,24 @@ project.
    repository. This course has not connected a remote repository yet, so
    create the local commit and do not push.
 
+   > 💡 **The same checkpoint in the terminal.** Staging and committing are
+   > ordinary Git commands, and the buttons above simply run them for you.
+   > These three lines do exactly what steps 6 through 9 did:
+   >
+   > ```powershell
+   > git add .
+   > git status
+   > git commit -m "Checkpoint empty Godot project"
+   > ```
+   >
+   > `git add .` stages every change that `.gitignore` does not exclude, which
+   > is why the generated `.godot/` files stay out. Running `git status`
+   > between the two commands is the terminal equivalent of reading the staged
+   > diff: never commit a staged list you have not looked at. Use whichever
+   > path you prefer for future checkpoints; both produce the same commit, and
+   > the terminal one keeps working if the Codex app is unavailable or its
+   > menus change.
+
 10. Return to the integrated terminal and run:
 
     ```powershell
@@ -191,12 +209,14 @@ Without repeating the build steps:
 - [ ] `.gitignore` excludes `.godot/`.
 - [ ] Codex's first task only inspected and explained the proposed checkpoint.
 - [ ] Generated cache and confidential data are not staged.
-- [ ] The learner used **Commit or push** to create the local commit and did
-      not push.
+- [ ] The learner created the local commit through **Commit or push** or the
+      equivalent terminal commands, and did not push.
 - [ ] The latest commit message is `Checkpoint empty Godot project`.
 - [ ] `git status` reports a clean working tree.
 - [ ] The learner can explain repository, staging area, commit, tracked,
       untracked, and ignored files.
+- [ ] The learner can name the commands that stage and commit from the
+      terminal, and knows they produce the same result as the Codex controls.
 
 ## References
 

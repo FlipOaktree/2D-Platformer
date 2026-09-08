@@ -61,14 +61,10 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `34c9235` (`Move movement-state lesson from Module 3.6
   to Module 5.5`), matching `origin/main` before the approved, uncommitted
   Module 3, Lesson 3.6 blueprint draft.
-- **Exact next step:** Revise Module 0, Lesson 0.4 to teach `git add` and
-  `git commit` in the terminal alongside the existing Codex UI path, then
-  update the checkpoint lessons so their "another familiar Git interface"
-  fallback names the taught commands. Lesson 0.4 is Validated, so this revision
-  resets it to Implemented until revalidated. Lesson 3.6 is approved and awaits
-  validation. The **Track Player Movement States** blueprint stays drafted at
-  Lesson 5.5 until Module 5 is reached, and must be re-checked against the
-  Module 4 result before implementation.
+- **Exact next step:** Validate Module 3, Lesson 3.6, **Create a Module 3 Git
+  Checkpoint**, which closes the module. The **Track Player Movement States**
+  blueprint stays drafted at Lesson 5.5 until Module 5 is reached, and must be
+  re-checked against the Module 4 result before implementation.
 - **Checkpoint:** Commit `34c9235` contains the validated curriculum through
   Module 2, validated Module 3 Lessons 3.1-3.5, and the movement-state
   blueprint relocated to Lesson 5.5. The current uncommitted work contains the
@@ -557,5 +553,6 @@ Remaining reconciliation work:
 | Keep the first Codex/Git checkpoint focused | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
 | Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
 | Add one reviewed Git checkpoint at the end of each completed module | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
+| Teach the terminal staging and commit commands beside the Codex controls | Lesson 0.4 showed `git add` and `git commit -m` as the equivalent of the **Commit or push** control, so the checkpoint lessons' offline fallback names commands the learner has actually seen. The Codex Review tab remains the recommended way to inspect a diff, and the read-only AI review is unchanged. This also limits how much of the course depends on third-party UI wording that cannot be version-frozen the way the Godot version is. |
 | Track movement state in Module 5 rather than Module 3 | The state has no consumer until the animation lesson, so teaching it in Module 3 produced a lesson with no observable result and a payoff two modules away. This applies the same rule that removed the standalone target-based movement bridge. Module 3 now ends with five felt movement features and its checkpoint. Placing the lesson after Module 4 also lets its conditions account for one-way and moving platforms: a Player standing on a moving platform can carry horizontal velocity, which a naive `velocity.x != 0.0` check would report as running. |
 | Teach target-based movement beside its first implementation | Lesson 2.8 identifies direct assignment as the reason basic movement starts, stops, and reverses instantly. Lesson 3.2 then introduces current and target velocity, horizontal rates, and `move_toward()` beside the acceleration code that needs them, while referring back to Lesson 2.9's established `rate * delta` pattern. This removes the separate theory bridge and keeps later Module 3 lessons focused. |
