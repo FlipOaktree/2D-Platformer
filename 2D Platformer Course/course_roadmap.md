@@ -58,16 +58,15 @@ not infer progress from chat history or from learner verification checkboxes.
   documented `@export_range()` annotations, and the jump, gravity, and
   jump-shortening conditions have regular implementation comments. Other
   gameplay systems remain absent.
-- **Observed Git head:** `5efd79a` (`Tighten lesson verification and add AI
-  evidence/delegation rules`), matching `origin/main` before the approved,
-  implemented, and validated, uncommitted Module 3, Lesson 3.5.
-- **Exact next step:** Commit the validated Module 3, Lesson 3.5, **Add
-  Variable Jump Height**, then draft the Module 3, Lesson 3.6 blueprint,
-  **Track Player Movement States**.
-- **Checkpoint:** Commit `5efd79a` contains the validated curriculum through
-  Module 2, validated Module 3 Lessons 3.1-3.4, and the tightened lesson
-  verification and AI evidence rules. The current uncommitted work contains the
-  validated Lesson 3.5, its lesson file, and this roadmap continuity update.
+- **Observed Git head:** `63f1115` (`Validate variable jump height lesson`),
+  matching `origin/main` before the approved, uncommitted Module 3, Lesson 3.6
+  blueprint draft.
+- **Exact next step:** Review the Module 3, Lesson 3.6 blueprint, **Track
+  Player Movement States**, and decide whether to approve it for
+  implementation. Nothing in the Godot project has changed for this lesson.
+- **Checkpoint:** Commit `63f1115` contains the validated curriculum through
+  Module 2 and validated Module 3 Lessons 3.1-3.5. The current uncommitted work
+  contains the Lesson 3.6 blueprint draft and this roadmap continuity update.
   Commit `2a23afa` validated
   the Module 3.1 Player settings alongside a standalone target-based movement
   bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
@@ -217,8 +216,8 @@ responsive controller while making player states explicit.
 | 3.2 | Add Acceleration and Deceleration | Current and target velocity, exported acceleration/deceleration settings, `delta`, `move_toward()`, and target-based horizontal movement | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | `dd966c0`; focused Godot validation passed |
-| 3.5 | Add Variable Jump Height | Released-input detection, proportional velocity change, and a rising-only condition | Validated | Uncommitted working tree; headless behavior checks and interactive Godot validation passed |
-| 3.6 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
+| 3.5 | Add Variable Jump Height | Released-input detection, proportional velocity change, and a rising-only condition | Validated | `63f1115`; headless behavior checks and interactive Godot validation passed |
+| 3.6 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()` | Blueprint drafted | Uncommitted working tree |
 | 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 4: Modular Level Building
@@ -466,6 +465,7 @@ practical use and later lessons can build on them without re-teaching them.
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
 | Released-input detection and proportional velocity change | 3.5 | Held actions, charged abilities, and responsive controls |
+| `enum` and a stored movement state | 3.6 | Animation, facing direction, enemy behavior, and combat state |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
 | Minimal global services | 13.4 | Scene flow, saving, settings, quest state |
