@@ -28,6 +28,10 @@ var coyote_time: float = 0.1
 @export_range(0.0, 0.5, 0.01)
 var jump_buffer_time: float = 0.1
 
+## Portion of upward speed kept when the jump action is released early.
+@export_range(0.0, 1.0, 0.05)
+var jump_release_multiplier: float = 0.5
+
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 
@@ -57,6 +61,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_velocity
 		coyote_timer = 0.0
 		jump_buffer_timer = 0.0
+
+	# Shorten the jump when the action is released while the Player is rising.
+	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+		velocity.y *= jump_release_multiplier
 
 	var direction: float = Input.get_axis("move_left", "move_right")
 	var target_speed: float = direction * speed

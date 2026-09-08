@@ -24,12 +24,12 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.4. The
+  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.5. The
   coordinate-theory split, revised transform and composition procedures,
   dot-syntax bridge, horizontal movement, gravity/floor procedures,
   conditional floor-state procedure, jumping procedure, exported movement
-  settings, target-based horizontal acceleration and deceleration, and coyote
-  time remain validated. Lesson 0.4 is
+  settings, target-based horizontal acceleration and deceleration, coyote
+  time, jump buffering, and variable jump height remain validated. Lesson 0.4 is
   validated from the current Codex
   project, Git metadata, and Changes-to-Review UI evidence; an empty-project
   replay remains part of the full-course rebuild gate.
@@ -50,25 +50,35 @@ not infer progress from chat history or from learner verification checkboxes.
   `coyote_timer` countdown and `can_jump` condition to allow a short
   grace-period jump after leaving the raised test platform. It also uses a
   `jump_buffer_timer` and `has_jump_request` condition to remember a recent
-  jump press until landing. It retains `move_and_slide()`, gravity, and
-  grounded jumping. Modules 3.1-3.4 are validated in the current project: the
-  seven movement values use
-  documented `@export_range()` annotations, and the jump and gravity
-  conditions have regular implementation comments. Other gameplay systems
-  remain absent.
-- **Observed Git head:** `dd966c0` (`Validate jump buffering lesson`), matching
-  `origin/main`.
-- **Exact next step:** Draft the Module 3, Lesson 3.5 blueprint, **Add Variable
-  Jump Height**, without implementing it until its blueprint is approved.
-- **Checkpoint:** Commit `dd966c0` contains the validated curriculum through
-  Module 2 and validated Module 3 Lessons 3.1-3.4. Commit `2a23afa` validated
+  jump press until landing. It shortens a rising jump by multiplying
+  `velocity.y` by `jump_release_multiplier` when the `jump` action is released,
+  giving variable jump height. It retains `move_and_slide()`, gravity, and
+  grounded jumping. Modules 3.1-3.5 are validated in the current project: the
+  eight movement values use
+  documented `@export_range()` annotations, and the jump, gravity, and
+  jump-shortening conditions have regular implementation comments. Other
+  gameplay systems remain absent.
+- **Observed Git head:** `5efd79a` (`Tighten lesson verification and add AI
+  evidence/delegation rules`), matching `origin/main` before the approved,
+  implemented, and validated, uncommitted Module 3, Lesson 3.5.
+- **Exact next step:** Commit the validated Module 3, Lesson 3.5, **Add
+  Variable Jump Height**, then draft the Module 3, Lesson 3.6 blueprint,
+  **Track Player Movement States**.
+- **Checkpoint:** Commit `5efd79a` contains the validated curriculum through
+  Module 2, validated Module 3 Lessons 3.1-3.4, and the tightened lesson
+  verification and AI evidence rules. The current uncommitted work contains the
+  validated Lesson 3.5, its lesson file, and this roadmap continuity update.
+  Commit `2a23afa` validated
   the Module 3.1 Player settings alongside a standalone target-based movement
   bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
   direct-assignment clarification and the integrated Lesson 3.2 acceleration
   and Lesson 3.3 coyote-time features; commit `dd966c0` added the Lesson 3.4
   jump-buffering feature. Headless Godot loading and runtime checks passed for
   Lessons 3.2 and 3.3, followed by successful interactive validation. Lesson
-  3.4 received focused Godot validation.
+  3.4 received focused Godot validation. Lesson 3.5 passed headless parse,
+  load, and behavior checks, then passed interactive Godot validation
+  including the Inspector presentation of **Jump Release Multiplier** and
+  keyboard/controller jump testing.
 
 ## Status Model
 
@@ -207,7 +217,7 @@ responsive controller while making player states explicit.
 | 3.2 | Add Acceleration and Deceleration | Current and target velocity, exported acceleration/deceleration settings, `delta`, `move_toward()`, and target-based horizontal movement | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | `dd966c0`; focused Godot validation passed |
-| 3.5 | Add Variable Jump Height | Held/released input behavior | Planned | Unassigned |
+| 3.5 | Add Variable Jump Height | Released-input detection, proportional velocity change, and a rising-only condition | Validated | Uncommitted working tree; headless behavior checks and interactive Godot validation passed |
 | 3.6 | Track Player Movement States | Explicit movement state | Planned | Unassigned |
 | 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
@@ -455,6 +465,7 @@ practical use and later lessons can build on them without re-teaching them.
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
+| Released-input detection and proportional velocity change | 3.5 | Held actions, charged abilities, and responsive controls |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
 | Minimal global services | 13.4 | Scene flow, saving, settings, quest state |
