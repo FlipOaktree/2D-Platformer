@@ -13,7 +13,8 @@ project.
 - The folder is a local Git repository on `main`.
 - Generated Godot files are excluded from Git.
 - Codex first reviews the checkpoint without changing it.
-- The learner reviews the changes, then creates the checkpoint.
+- The learner reviews the changes, then stages and commits them with Git
+  commands in the terminal.
 - `git status` reports a clean working tree afterward.
 
 ## Before you start
@@ -129,45 +130,47 @@ project.
    and confidential data should not.
 5. If Codex's explanation is incomplete or incorrect, tell it what differs and
    ask it to inspect again without making changes.
-6. In the Review tab, stage the intended files and review the staged diff.
+6. Return to the integrated terminal and stage the reviewed files:
+
+   ```powershell
+   git add .
+   ```
 
    > 💡 The **staging area** is the reviewed set of changes prepared for the
    > next snapshot. A **commit** is the named snapshot Git records from that
    > set. Staging does not upload or commit anything yet.
 
-7. Confirm that generated files and confidential data are not staged.
-8. At the top right of the task, open the controls menu (the sliders icon) and
-   select **Commit or push**.
-9. Create a **local commit** with this message:
+   `git add .` stages every change that `.gitignore` does not exclude, which is
+   why the generated `.godot/` files stay out.
 
-   ```text
-   Checkpoint empty Godot project
+7. Confirm what you are about to commit:
+
+   ```powershell
+   git status
    ```
 
-   The menu combines two different Git actions. A **commit** saves the
+8. Read the list under **Changes to be committed** and confirm that it contains
+   the project files, `.gitignore`, and `.gitattributes`, and that no generated
+   file or confidential data appears. Never commit a staged list you have not
+   read.
+9. Create the **local commit**:
+
+   ```powershell
+   git commit -m "Checkpoint empty Godot project"
+   ```
+
+   `-m` supplies the commit message on the same line. A **commit** saves the
    reviewed snapshot in this folder; a **push** would send it to a remote
-   repository. This course has not connected a remote repository yet, so
-   create the local commit and do not push.
+   repository. This course has not connected a remote repository yet, so there
+   is nothing to push and no `git push` command to run.
 
-   > 💡 **The same checkpoint in the terminal.** Staging and committing are
-   > ordinary Git commands, and the buttons above simply run them for you.
-   > These three lines do exactly what steps 6 through 9 did:
-   >
-   > ```powershell
-   > git add .
-   > git status
-   > git commit -m "Checkpoint empty Godot project"
-   > ```
-   >
-   > `git add .` stages every change that `.gitignore` does not exclude, which
-   > is why the generated `.godot/` files stay out. Running `git status`
-   > between the two commands is the terminal equivalent of reading the staged
-   > diff: never commit a staged list you have not looked at. Use whichever
-   > path you prefer for future checkpoints; both produce the same commit, and
-   > the terminal one keeps working if the Codex app is unavailable or its
-   > menus change.
+   > 💡 Codex also offers **Changes** and **Commit or push** controls that
+   > perform these same actions as buttons. This course uses the commands
+   > because they behave the same in every editor, keep working if the Codex
+   > app is unavailable, and are the ones you will find in any Git
+   > documentation.
 
-10. Return to the integrated terminal and run:
+10. Verify the result:
 
     ```powershell
     git status
@@ -209,14 +212,15 @@ Without repeating the build steps:
 - [ ] `.gitignore` excludes `.godot/`.
 - [ ] Codex's first task only inspected and explained the proposed checkpoint.
 - [ ] Generated cache and confidential data are not staged.
-- [ ] The learner created the local commit through **Commit or push** or the
-      equivalent terminal commands, and did not push.
+- [ ] The learner staged with `git add .`, read the `git status` output, and
+      created the commit with `git commit -m`.
+- [ ] The learner read the **Changes to be committed** list before committing.
+- [ ] No `git push` was run, and the checkpoint exists only in this folder.
 - [ ] The latest commit message is `Checkpoint empty Godot project`.
 - [ ] `git status` reports a clean working tree.
 - [ ] The learner can explain repository, staging area, commit, tracked,
       untracked, and ignored files.
-- [ ] The learner can name the commands that stage and commit from the
-      terminal, and knows they produce the same result as the Codex controls.
+- [ ] The learner can explain the difference between a commit and a push.
 
 ## References
 
