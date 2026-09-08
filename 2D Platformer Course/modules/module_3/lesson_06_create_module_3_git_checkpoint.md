@@ -1,6 +1,6 @@
 # Module 3, Lesson 6: Create a Module 3 Git Checkpoint
 
-**Status:** Blueprint approved
+**Status:** Validated
 
 ## By the end
 

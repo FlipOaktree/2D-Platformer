@@ -24,7 +24,8 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.5. The
+  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.6, which
+  completes Module 3. The
   coordinate-theory split, revised transform and composition procedures,
   dot-syntax bridge, horizontal movement, gravity/floor procedures,
   conditional floor-state procedure, jumping procedure, exported movement
@@ -58,17 +59,20 @@ not infer progress from chat history or from learner verification checkboxes.
   documented `@export_range()` annotations, and the jump, gravity, and
   jump-shortening conditions have regular implementation comments. Other
   gameplay systems remain absent.
-- **Observed Git head:** `34c9235` (`Move movement-state lesson from Module 3.6
-  to Module 5.5`), matching `origin/main` before the approved, uncommitted
-  Module 3, Lesson 3.6 blueprint draft.
-- **Exact next step:** Validate Module 3, Lesson 3.6, **Create a Module 3 Git
-  Checkpoint**, which closes the module. The **Track Player Movement States**
-  blueprint stays drafted at Lesson 5.5 until Module 5 is reached, and must be
-  re-checked against the Module 4 result before implementation.
-- **Checkpoint:** Commit `34c9235` contains the validated curriculum through
-  Module 2, validated Module 3 Lessons 3.1-3.5, and the movement-state
-  blueprint relocated to Lesson 5.5. The current uncommitted work contains the
-  Lesson 3.6 blueprint draft and this roadmap continuity update.
+- **Observed Git head:** `8e07139` (`Create the first checkpoint with Git
+  commands in Lesson 0.4`), matching `origin/main` before the uncommitted
+  Lesson 3.6 validation.
+- **Exact next step:** Draft the Module 4, Lesson 4.1 blueprint, **Build a
+  TileSet with Collision**, which opens Module 4 and begins replacing the
+  temporary Floor and `CoyoteTestPlatform` with real level content. The
+  **Track Player Movement States** blueprint stays drafted at Lesson 5.5 until
+  Module 5 is reached, and must be re-checked against the Module 4 result
+  before implementation.
+- **Checkpoint:** Commit `8e07139` contains the validated curriculum through
+  Module 2, validated Module 3 Lessons 3.1-3.5, the movement-state blueprint
+  relocated to Lesson 5.5, and the Lesson 0.4 revision that creates the first
+  checkpoint with Git commands. The current uncommitted work validates Lesson
+  3.6 and closes Module 3.
   Commit `2a23afa` validated
   the Module 3.1 Player settings alongside a standalone target-based movement
   bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
@@ -219,7 +223,7 @@ responsive controller.
 | 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | `dd966c0`; focused Godot validation passed |
 | 3.5 | Add Variable Jump Height | Released-input detection, proportional velocity change, and a rising-only condition | Validated | `63f1115`; headless behavior checks and interactive Godot validation passed |
-| 3.6 | Create a Module 3 Git Checkpoint | Tested module boundary, Inspector default audit, Codex-assisted read-only review, local UI commit, and post-commit verification | Blueprint approved | Uncommitted working tree |
+| 3.6 | Create a Module 3 Git Checkpoint | Tested module boundary, Inspector default audit, Codex-assisted read-only review, local commit, and post-commit verification | Validated | `3c28cb6`; expected file list, staging, commit, and verification commands replayed in a scratch clone; Codex UI path deferred to the full-course rebuild |
 
 ### Module 4: Modular Level Building
 
