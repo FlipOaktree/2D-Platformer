@@ -58,15 +58,18 @@ not infer progress from chat history or from learner verification checkboxes.
   documented `@export_range()` annotations, and the jump, gravity, and
   jump-shortening conditions have regular implementation comments. Other
   gameplay systems remain absent.
-- **Observed Git head:** `63f1115` (`Validate variable jump height lesson`),
-  matching `origin/main` before the approved, uncommitted Module 3, Lesson 3.6
-  blueprint draft.
-- **Exact next step:** Review the Module 3, Lesson 3.6 blueprint, **Track
-  Player Movement States**, and decide whether to approve it for
-  implementation. Nothing in the Godot project has changed for this lesson.
+- **Observed Git head:** `2721c61` (`Draft Module 3.6 blueprint and update
+  roadmap`), ahead of `origin/main` at `63f1115`, before the uncommitted move
+  of the movement-state blueprint to Lesson 5.5.
+- **Exact next step:** Draft the Module 3, Lesson 3.6 blueprint, **Create a
+  Module 3 Git Checkpoint**, which closes the module. The **Track Player
+  Movement States** blueprint has moved to Lesson 5.5 and stays drafted until
+  Module 5 is reached; it must be re-checked against the Module 4 result before
+  implementation.
 - **Checkpoint:** Commit `63f1115` contains the validated curriculum through
   Module 2 and validated Module 3 Lessons 3.1-3.5. The current uncommitted work
-  contains the Lesson 3.6 blueprint draft and this roadmap continuity update.
+  moves the movement-state blueprint to Lesson 5.5 and renumbers the affected
+  Module 3 and Module 5 rows.
   Commit `2a23afa` validated
   the Module 3.1 Player settings alongside a standalone target-based movement
   bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
@@ -208,7 +211,7 @@ record the tested foundation in a reviewed Git checkpoint.
 ### Module 3: Responsive Player Movement
 
 **Depends on:** Module 2. **Outcome:** Turn basic movement into a configurable,
-responsive controller while making player states explicit.
+responsive controller.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
@@ -217,8 +220,7 @@ responsive controller while making player states explicit.
 | 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | `dd966c0`; focused Godot validation passed |
 | 3.5 | Add Variable Jump Height | Released-input detection, proportional velocity change, and a rising-only condition | Validated | `63f1115`; headless behavior checks and interactive Godot validation passed |
-| 3.6 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()` | Blueprint drafted | Uncommitted working tree |
-| 3.7 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 3.6 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 4: Modular Level Building
 
@@ -238,7 +240,8 @@ elements around clear spawn and boundary contracts.
 ### Module 5: Camera and Character Presentation
 
 **Depends on:** Module 4. **Outcome:** Present movement clearly with a reusable
-camera and animated character visuals.
+camera and animated character visuals, making the Player's movement state
+explicit where the animation work first needs it.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
@@ -246,8 +249,9 @@ camera and animated character visuals.
 | 5.2 | Configure Camera Limits and Smoothing | Limits and smoothing | Planned | Unassigned |
 | 5.3 | Add Look-Ahead Behavior | Camera behavior component | Planned | Unassigned |
 | 5.4 | Import Character Art | Import settings and sprite presentation | Planned | Unassigned |
-| 5.5 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
-| 5.6 | Create a Module 5 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 5.5 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()` | Blueprint drafted | Uncommitted working tree |
+| 5.6 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
+| 5.7 | Create a Module 5 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 6: Shared Actor Capabilities
 
@@ -465,7 +469,7 @@ practical use and later lessons can build on them without re-teaching them.
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
 | Released-input detection and proportional velocity change | 3.5 | Held actions, charged abilities, and responsive controls |
-| `enum` and a stored movement state | 3.6 | Animation, facing direction, enemy behavior, and combat state |
+| `enum` and a stored movement state | 5.5 | Animation, facing direction, enemy behavior, and combat state |
 | Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
 | Minimal global services | 13.4 | Scene flow, saving, settings, quest state |
@@ -550,4 +554,5 @@ Remaining reconciliation work:
 | Keep the first Codex/Git checkpoint focused | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
 | Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
 | Add one reviewed Git checkpoint at the end of each completed module | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
+| Track movement state in Module 5 rather than Module 3 | The state has no consumer until the animation lesson, so teaching it in Module 3 produced a lesson with no observable result and a payoff two modules away. This applies the same rule that removed the standalone target-based movement bridge. Module 3 now ends with five felt movement features and its checkpoint. Placing the lesson after Module 4 also lets its conditions account for one-way and moving platforms: a Player standing on a moving platform can carry horizontal velocity, which a naive `velocity.x != 0.0` check would report as running. |
 | Teach target-based movement beside its first implementation | Lesson 2.8 identifies direct assignment as the reason basic movement starts, stops, and reverses instantly. Lesson 3.2 then introduces current and target velocity, horizontal rates, and `move_toward()` beside the acceleration code that needs them, while referring back to Lesson 2.9's established `rate * delta` pattern. This removes the separate theory bridge and keeps later Module 3 lessons focused. |

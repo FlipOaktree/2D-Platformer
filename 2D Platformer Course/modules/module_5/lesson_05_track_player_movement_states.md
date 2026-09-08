@@ -1,4 +1,4 @@
-# Module 3, Lesson 6: Track Player Movement States
+# Module 5, Lesson 5: Track Player Movement States
 
 **Status:** Blueprint drafted
 
@@ -14,17 +14,19 @@ across separate conditions and nothing stores the result.
 - The state is decided after `move_and_slide()`, so it describes movement that
   has already been resolved.
 - `movement_state` is runtime state, so it is not exported.
-- The Player moves exactly as it did in Lesson 3.5. This lesson adds a
-  description of the movement, not a change to it.
+- The Player moves exactly as it did before. This lesson adds a description of
+  the movement, not a change to it, and the next lesson uses that description
+  to choose an animation.
 
 ## Before you start
 
-- Module 3, Lesson 5 is complete and validated.
-- `res://actors/player.gd` contains the validated acceleration, deceleration,
-  gravity, grounded jump, coyote-time, jump-buffering, and variable
-  jump-height logic.
-- `res://scenes/main.tscn` contains the original Floor and the centered raised
-  `CoyoteTestPlatform`.
+- Module 5, Lesson 4 is complete and validated.
+- `res://actors/player.gd` contains the validated movement logic from Module 3:
+  acceleration, deceleration, gravity, grounded jump, coyote time, jump
+  buffering, and variable jump height.
+- The Player has imported character art and a working camera from Lessons 5.1
+  through 5.4.
+- A level from Module 4 is available to move and jump around in.
 - Keyboard movement and jumping work, and configured controller input works
   when compatible hardware is available.
 
@@ -52,13 +54,13 @@ to know what the Player is doing has to work it out again from scratch.
 
 > 💡 A **movement state** is a single stored value naming what the Player is
 > doing. Storing it once means later features can read one answer instead of
-> repeating the same conditions. Module 5 uses this state to choose which
-> animation to play.
+> repeating the same conditions. The next lesson uses this state to choose
+> which animation to play.
 
 > ⚠️ **If something differs**
 >
 > - If any of the three conditions is missing, compare `player.gd` with the
->   validated Lesson 3.5 script before continuing.
+>   validated Module 3 movement script before continuing.
 
 ### Part 2: Name the states
 
@@ -299,7 +301,7 @@ with the completed script in Part 5, then continue.
 5. Confirm that no numbers appear in the Output.
 6. Confirm that acceleration, deceleration, reversal, gravity, landing, maximum
    speed, grounded jumping, coyote time, jump buffering, and variable jump
-   height all behave exactly as they did in Lesson 3.5.
+   height all behave exactly as they did before this lesson.
 7. If a compatible controller is connected, repeat the movement and jump checks
    with its configured inputs.
 8. Stop the scene with `F8`.
