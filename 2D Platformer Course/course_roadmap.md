@@ -58,18 +58,21 @@ not infer progress from chat history or from learner verification checkboxes.
   documented `@export_range()` annotations, and the jump, gravity, and
   jump-shortening conditions have regular implementation comments. Other
   gameplay systems remain absent.
-- **Observed Git head:** `2721c61` (`Draft Module 3.6 blueprint and update
-  roadmap`), ahead of `origin/main` at `63f1115`, before the uncommitted move
-  of the movement-state blueprint to Lesson 5.5.
-- **Exact next step:** Draft the Module 3, Lesson 3.6 blueprint, **Create a
-  Module 3 Git Checkpoint**, which closes the module. The **Track Player
-  Movement States** blueprint has moved to Lesson 5.5 and stays drafted until
-  Module 5 is reached; it must be re-checked against the Module 4 result before
-  implementation.
-- **Checkpoint:** Commit `63f1115` contains the validated curriculum through
-  Module 2 and validated Module 3 Lessons 3.1-3.5. The current uncommitted work
-  moves the movement-state blueprint to Lesson 5.5 and renumbers the affected
-  Module 3 and Module 5 rows.
+- **Observed Git head:** `34c9235` (`Move movement-state lesson from Module 3.6
+  to Module 5.5`), matching `origin/main` before the approved, uncommitted
+  Module 3, Lesson 3.6 blueprint draft.
+- **Exact next step:** Revise Module 0, Lesson 0.4 to teach `git add` and
+  `git commit` in the terminal alongside the existing Codex UI path, then
+  update the checkpoint lessons so their "another familiar Git interface"
+  fallback names the taught commands. Lesson 0.4 is Validated, so this revision
+  resets it to Implemented until revalidated. Lesson 3.6 is approved and awaits
+  validation. The **Track Player Movement States** blueprint stays drafted at
+  Lesson 5.5 until Module 5 is reached, and must be re-checked against the
+  Module 4 result before implementation.
+- **Checkpoint:** Commit `34c9235` contains the validated curriculum through
+  Module 2, validated Module 3 Lessons 3.1-3.5, and the movement-state
+  blueprint relocated to Lesson 5.5. The current uncommitted work contains the
+  Lesson 3.6 blueprint draft and this roadmap continuity update.
   Commit `2a23afa` validated
   the Module 3.1 Player settings alongside a standalone target-based movement
   bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
@@ -220,7 +223,7 @@ responsive controller.
 | 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | `dd966c0`; focused Godot validation passed |
 | 3.5 | Add Variable Jump Height | Released-input detection, proportional velocity change, and a rising-only condition | Validated | `63f1115`; headless behavior checks and interactive Godot validation passed |
-| 3.6 | Create a Module 3 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 3.6 | Create a Module 3 Git Checkpoint | Tested module boundary, Inspector default audit, Codex-assisted read-only review, local UI commit, and post-commit verification | Blueprint approved | Uncommitted working tree |
 
 ### Module 4: Modular Level Building
 
