@@ -2,23 +2,23 @@ extends CharacterBody2D
 
 ## Maximum horizontal movement speed in pixels per second.
 @export_range(0.0, 1000.0, 10.0)
-var speed: float = 300.0
+var speed: float = 450.0
 
 ## How quickly horizontal speed increases toward its target.
 @export_range(100.0, 5000.0, 100.0)
-var acceleration: float = 1200.0
+var acceleration: float = 1800.0
 
 ## How quickly horizontal speed decreases after input is released.
 @export_range(100.0, 5000.0, 100.0)
-var deceleration: float = 1800.0
+var deceleration: float = 2700.0
 
 ## Downward acceleration in pixels per second squared.
 @export_range(0.0, 3000.0, 10.0)
-var gravity: float = 980.0
+var gravity: float = 2400.0
 
 ## Upward velocity applied when a grounded jump begins.
-@export_range(-1000.0, 0.0, 10.0)
-var jump_velocity: float = -700.0
+@export_range(-1500.0, 0.0, 10.0)
+var jump_velocity: float = -1100.0
 
 ## Seconds after leaving a ledge during which jumping remains allowed.
 @export_range(0.0, 0.5, 0.01)

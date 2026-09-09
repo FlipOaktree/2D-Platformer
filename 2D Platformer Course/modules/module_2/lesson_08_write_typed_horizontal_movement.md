@@ -73,7 +73,7 @@ own visuals without inheriting the Player's size.
 3. Add this typed variable:
 
    ```gdscript
-   var speed: float = 300.0
+   var speed: float = 450.0
    ```
 
 4. Save the script with `Ctrl+S`.
@@ -152,7 +152,7 @@ update. That is why the Player starts, stops, and changes direction instantly.
    ```gdscript
    extends CharacterBody2D
 
-   var speed: float = 300.0
+   var speed: float = 450.0
 
    func _physics_process(_delta: float) -> void:
        var direction: float = Input.get_axis("move_left", "move_right")
@@ -200,9 +200,9 @@ update. That is why the Player starts, stops, and changes direction instantly.
 
 ## Learner exercise
 
-1. Change `speed` from `300.0` to `150.0`.
+1. Change `speed` from `450.0` to `150.0`.
 2. Run `main.tscn` and compare the slower movement.
-3. Restore `speed` to `300.0`, save, and run the scene once more.
+3. Restore `speed` to `450.0`, save, and run the scene once more.
 4. Explain why the speed currently belongs to Player rather than Actor.
 5. Open `actor.tscn` and `player.tscn`, compare their collision-shape sizes,
    and explain why Player uses an override instead of changing Actor's
@@ -231,7 +231,7 @@ update. That is why the Player starts, stops, and changes direction instantly.
       available.
 - [ ] `main.tscn` no longer contains `ProjectIcon` or `Label`.
 - [ ] The Player marker is the only visible element when `main.tscn` runs.
-- [ ] The speed exercise ends with `speed` restored to `300.0`.
+- [ ] The speed exercise ends with `speed` restored to `450.0`.
 - [ ] The Player has no gravity, jumping, camera, or final artwork yet.
 
 ## References

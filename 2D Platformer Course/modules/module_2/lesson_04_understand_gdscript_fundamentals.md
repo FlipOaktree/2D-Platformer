@@ -69,7 +69,7 @@ Read the following script:
    ```gdscript
    var player_name: String = "Mina"
    var lives: int = 3
-   var speed: float = 300.0
+   var speed: float = 450.0
    var is_grounded: bool = false
    var spawn_position: Vector2 = Vector2(128.0, 128.0)
    ```
@@ -140,7 +140,7 @@ Without running any code, answer these questions:
 
 ```gdscript
 var coins: int = 2
-var speed: float = 300.0 # Start with enough speed for the Player to cross the level.
+var speed: float = 450.0 # Start with enough speed for the Player to cross the level.
 var is_dead: bool = false
 
 speed -= 100.0

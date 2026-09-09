@@ -53,11 +53,11 @@ ones you meant to keep.
 
     | Setting | Default |
     | --- | --- |
-    | Speed | `300.0` |
-    | Acceleration | `1200.0` |
-    | Deceleration | `1800.0` |
-    | Gravity | `980.0` |
-    | Jump Velocity | `-700.0` |
+    | Speed | `450.0` |
+    | Acceleration | `1800.0` |
+    | Deceleration | `2700.0` |
+    | Gravity | `2400.0` |
+    | Jump Velocity | `-1100.0` |
     | Coyote Time | `0.1` |
     | Jump Buffer Time | `0.1` |
     | Jump Release Multiplier | `0.5` |

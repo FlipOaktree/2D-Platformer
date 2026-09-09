@@ -104,8 +104,8 @@ state to decide when the Player can jump.
    ```gdscript
    extends CharacterBody2D
 
-   var speed: float = 300.0
-   var gravity: float = 980.0
+   var speed: float = 450.0
+   var gravity: float = 2400.0
 
    func _physics_process(delta: float) -> void:
        if not is_on_floor():

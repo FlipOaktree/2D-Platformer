@@ -9,9 +9,9 @@ tuned without editing the movement code. Each setting will keep the validated
 default from Module 2, use a range that prevents values which reverse its
 intended direction, and provide a short tooltip explaining what it controls.
 
-- **Speed** defaults to `300.0` and allows values from `0.0` to `1000.0`.
-- **Gravity** defaults to `980.0` and allows values from `0.0` to `3000.0`.
-- **Jump Velocity** defaults to `-700.0` and allows values from `-1000.0` to
+- **Speed** defaults to `450.0` and allows values from `0.0` to `1000.0`.
+- **Gravity** defaults to `2400.0` and allows values from `0.0` to `3000.0`.
+- **Jump Velocity** defaults to `-1100.0` and allows values from `-1500.0` to
   `0.0`.
 - Running `main.tscn` with the defaults preserves the movement, falling,
   landing, and grounded jumping validated in Module 2.
@@ -33,9 +33,9 @@ intended direction, and provide a short tooltip explaining what it controls.
 2. Confirm that the three movement variables still have these values:
 
    ```gdscript
-   var speed: float = 300.0
-   var gravity: float = 980.0
-   var jump_velocity: float = -700.0
+   var speed: float = 450.0
+   var gravity: float = 2400.0
+   var jump_velocity: float = -1100.0
    ```
 
 3. Open `res://scenes/main.tscn` and run the current scene with `F6`.
@@ -101,7 +101,7 @@ use a different kind of comment to document a setting for the Inspector.
    ```gdscript
    ## Maximum horizontal movement speed in pixels per second.
    @export_range(0.0, 1000.0, 10.0)
-   var speed: float = 300.0
+   var speed: float = 450.0
    ```
 
 > 💡 An **annotation** starts with `@` and tells Godot how to treat the
@@ -114,12 +114,12 @@ use a different kind of comment to document a setting for the Inspector.
 The range starts at `0.0`, so an Inspector edit cannot turn a positive movement
 speed into an unintended negative direction. The upper limit keeps early
 tuning within a practical test range, while steps of `10.0` make the slider
-easy to adjust. The validated `300.0` remains the default.
+easy to adjust. The validated `450.0` remains the default.
 
 2. Save `player.gd` with `Ctrl+S`.
 3. Open `res://actors/player.tscn` and select the `Player` root.
 4. Find **Speed** near the top of the Inspector and confirm that it displays
-   `300.0`.
+   `450.0`.
 5. Hover over the **Speed** property name and confirm that its tooltip
    describes the maximum horizontal movement speed.
 
@@ -134,7 +134,7 @@ description as a tooltip. Both are useful, but they serve different purposes.
 
 6. Try dragging the Inspector control toward both ends. Confirm that it stays
    between `0.0` and `1000.0` and changes in steps of `10.0`.
-7. Restore **Speed** to `300.0` before continuing.
+7. Restore **Speed** to `450.0` before continuing.
 
 > ⚠️ **If something differs**
 >
@@ -163,7 +163,7 @@ movement logic alone.
 
 2. Before accepting the result, inspect Codex's diff.
 3. Confirm that it changed only the `gravity` and `jump_velocity`
-   declarations. Their default values must remain `980.0` and `-700.0`, and
+   declarations. Their default values must remain `2400.0` and `-1100.0`, and
    `_physics_process()` must retain both regular comments and all its existing
    movement logic.
 4. Ask Codex to explain the minimum, maximum, and step values it chose. Treat
@@ -178,11 +178,11 @@ lesson outcome and final code remain the same.
    ```gdscript
    ## Downward acceleration in pixels per second squared.
    @export_range(0.0, 3000.0, 10.0)
-   var gravity: float = 980.0
+   var gravity: float = 2400.0
 
    ## Upward velocity applied when a grounded jump begins.
-   @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -700.0
+   @export_range(-1500.0, 0.0, 10.0)
+   var jump_velocity: float = -1100.0
    ```
 
 6. For the purpose of this exercise, manually correct every difference in
@@ -190,7 +190,7 @@ lesson outcome and final code remain the same.
    unchanged rather than introducing an unnecessary edit.
 
 The minimum gravity is `0.0`, which prevents an Inspector value from
-accelerating the Player upward. Jump velocity stays between `-1000.0` and
+accelerating the Player upward. Jump velocity stays between `-1500.0` and
 `0.0`, so it cannot become positive and send a jump downward. Its negative
 values reuse Godot's downward-positive Y direction from earlier lessons. The
 step of `10.0` keeps both Inspector controls consistent with Speed.
@@ -202,15 +202,15 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 
    ## Maximum horizontal movement speed in pixels per second.
    @export_range(0.0, 1000.0, 10.0)
-   var speed: float = 300.0
+   var speed: float = 450.0
 
    ## Downward acceleration in pixels per second squared.
    @export_range(0.0, 3000.0, 10.0)
-   var gravity: float = 980.0
+   var gravity: float = 2400.0
 
    ## Upward velocity applied when a grounded jump begins.
-   @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -700.0
+   @export_range(-1500.0, 0.0, 10.0)
+   var jump_velocity: float = -1100.0
    ```
 
 8. Confirm that `_physics_process()` still contains the two regular comments
@@ -245,10 +245,10 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
    controller controls.
 4. Stop the scene with `F8`.
 5. Open `res://actors/player.tscn`, select the Player root, and change
-   **Speed** from `300.0` to `150.0` in the Inspector.
+   **Speed** from `450.0` to `150.0` in the Inspector.
 6. Save `player.tscn`, run `main.tscn`, and confirm that horizontal movement
    is slower while gravity and jumping still work.
-7. Stop the scene, restore **Speed** to `300.0`, and save `player.tscn`.
+7. Stop the scene, restore **Speed** to `450.0`, and save `player.tscn`.
 8. Run `main.tscn` once more and confirm that the validated default movement
    has returned without parser errors, runtime errors, or unexplained
    warnings.
@@ -260,20 +260,20 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 > - If changing **Speed** also changes falling or jumping, compare
 >   `_physics_process()` with the validated Module 2 script and confirm that
 >   its calculations were not edited.
-> - If the final movement remains slow, restore **Speed** to `300.0` on the
+> - If the final movement remains slow, restore **Speed** to `450.0` on the
 >   Player source scene and save it before running again.
 
 ## Learner exercise
 
 Without editing `player.gd`:
 
-1. In the Player Inspector, change **Jump Velocity** from `-700.0` to
-   `-350.0`.
+1. In the Player Inspector, change **Jump Velocity** from `-1100.0` to
+   `-550.0`.
 2. Predict how the new value will change the jump, then run `main.tscn` and
    check the prediction.
 3. Try to move **Jump Velocity** above `0.0` and explain why the Inspector
    range prevents it.
-4. Restore **Jump Velocity** to `-700.0`, save `player.tscn`, and verify the
+4. Restore **Jump Velocity** to `-1100.0`, save `player.tscn`, and verify the
    original jump again.
 5. Explain the separate purpose of the exported default, range, step, and
    tooltip.
@@ -283,7 +283,7 @@ Without editing `player.gd`:
 ## Verification checklist
 
 - [ ] `speed`, `gravity`, and `jump_velocity` remain typed `float` variables
-      with defaults `300.0`, `980.0`, and `-700.0`.
+      with defaults `450.0`, `2400.0`, and `-1100.0`.
 - [ ] `_physics_process()` contains regular comments explaining why the jump
       condition prevents airborne jumps and why gravity is skipped while
       grounded.
@@ -291,7 +291,7 @@ Without editing `player.gd`:
       `@export_range()` annotation.
 - [ ] **Speed** is limited to `0.0` through `1000.0` in steps of `10.0`.
 - [ ] **Gravity** is limited to `0.0` through `3000.0` in steps of `10.0`.
-- [ ] **Jump Velocity** is limited to `-1000.0` through `0.0` in steps of
+- [ ] **Jump Velocity** is limited to `-1500.0` through `0.0` in steps of
       `10.0`.
 - [ ] All three settings appear on the Player root in the Inspector.
 - [ ] Hovering each setting reveals a useful tooltip.
@@ -299,8 +299,8 @@ Without editing `player.gd`:
 - [ ] The default keyboard movement and grounded jump still work.
 - [ ] Configured controller movement and jumping still work when a compatible
       controller is available.
-- [ ] The slower-Speed test works and ends with **Speed** restored to `300.0`.
-- [ ] The learner exercise ends with **Jump Velocity** restored to `-700.0`.
+- [ ] The slower-Speed test works and ends with **Speed** restored to `450.0`.
+- [ ] The learner exercise ends with **Jump Velocity** restored to `-1100.0`.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors,
       or unexplained warnings.
 - [ ] The learner can explain how exported ranges and documentation tooltips

@@ -170,23 +170,23 @@ starts. Pressing jump again while airborne therefore cannot start another jump.
 
    ## Maximum horizontal movement speed in pixels per second.
    @export_range(0.0, 1000.0, 10.0)
-   var speed: float = 300.0
+   var speed: float = 450.0
 
    ## How quickly horizontal speed increases toward its target.
    @export_range(100.0, 5000.0, 100.0)
-   var acceleration: float = 1200.0
+   var acceleration: float = 1800.0
 
    ## How quickly horizontal speed decreases after input is released.
    @export_range(100.0, 5000.0, 100.0)
-   var deceleration: float = 1800.0
+   var deceleration: float = 2700.0
 
    ## Downward acceleration in pixels per second squared.
    @export_range(0.0, 3000.0, 10.0)
-   var gravity: float = 980.0
+   var gravity: float = 2400.0
 
    ## Upward velocity applied when a grounded jump begins.
-   @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -700.0
+   @export_range(-1500.0, 0.0, 10.0)
+   var jump_velocity: float = -1100.0
 
    ## Seconds after leaving a ledge during which jumping remains allowed.
    @export_range(0.0, 0.5, 0.01)
@@ -297,7 +297,7 @@ prompt directly with the completed script in Part 3, then continue.
 >   while grounded and that the jump condition uses `can_jump`.
 > - If the Player cannot reach the platform from the Floor, confirm that the
 >   platform Position is `(960, 704)` and that `jump_velocity` still uses its
->   validated default of `-700.0`.
+>   validated default of `-1100.0`.
 
 ## Learner exercise
 

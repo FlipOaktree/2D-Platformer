@@ -55,13 +55,13 @@ Lesson 2.11.
 2. Add this typed variable beneath `speed`:
 
    ```gdscript
-   var gravity: float = 980.0
+   var gravity: float = 2400.0
    ```
 
 3. Save the script with `Ctrl+S`.
 
 > 💡 Gravity is an acceleration: it changes vertical speed over time. The
-> value `980.0` means the Player's downward speed can increase by 980 pixels
+> value `2400.0` means the Player's downward speed can increase by 2400 pixels
 > per second over one second. As established in Lesson 1.3, positive Y points
 > downward in Godot's 2D coordinate system.
 
@@ -86,12 +86,12 @@ underscore is removed from `delta` because the script now uses it.
 
 For example, if delta is approximately 1 / 60 of a second:
 
-gravity (980.0) × delta (1.0 / 60.0) = 16.33
+gravity (2400.0) × delta (1.0 / 60.0) = 40.0
 
-Each physics update adds about 16.33 pixels per second to velocity.y.
-Starting from 0, the Player’s vertical velocity becomes about 16.33
-pixels per second after the first update, then about 32.67 after the next.
-After about one second of falling, it reaches about 980 pixels per second.
+Each physics update adds 40 pixels per second to velocity.y.
+Starting from 0, the Player’s vertical velocity becomes 40
+pixels per second after the first update, then 80 after the next.
+After about one second of falling, it reaches about 2400 pixels per second.
 
 > ⚠️ **If something differs**
 >
@@ -107,8 +107,8 @@ After about one second of falling, it reaches about 980 pixels per second.
    ```gdscript
    extends CharacterBody2D
 
-   var speed: float = 300.0
-   var gravity: float = 980.0
+   var speed: float = 450.0
+   var gravity: float = 2400.0
 
    func _physics_process(delta: float) -> void:
        velocity.y += gravity * delta
@@ -154,9 +154,9 @@ the gravity calculation runs by using the floor state.
 
 ## Learner exercise
 
-1. Change `gravity` from `980.0` to `490.0`.
+1. Change `gravity` from `2400.0` to `1200.0`.
 2. Run `main.tscn` and observe how the lower value changes the fall.
-3. Restore `gravity` to `980.0`, save, and run the scene again.
+3. Restore `gravity` to `2400.0`, save, and run the scene again.
 4. Explain why gravity is multiplied by `delta`.
 5. Explain why `move_and_slide()` must remain after the velocity calculations.
 
@@ -181,7 +181,7 @@ the gravity calculation runs by using the floor state.
 - [ ] Configured controller movement still works when a compatible controller
       is available.
 - [ ] Neither `ProjectIcon` nor `Project ready` appears when `main.tscn` runs.
-- [ ] The gravity exercise ends with `gravity` restored to `980.0`.
+- [ ] The gravity exercise ends with `gravity` restored to `2400.0`.
 - [ ] The Player cannot jump yet.
 
 ## References

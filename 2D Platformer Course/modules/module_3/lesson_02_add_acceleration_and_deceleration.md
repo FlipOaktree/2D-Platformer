@@ -9,8 +9,8 @@ acceleration and deceleration. Maximum speed will remain unchanged, while the
 Player will take a short, visible amount of time to reach that speed and stop
 after input is released.
 
-- **Acceleration** defaults to `1200.0` pixels per second squared.
-- **Deceleration** defaults to `1800.0` pixels per second squared.
+- **Acceleration** defaults to `1800.0` pixels per second squared.
+- **Deceleration** defaults to `2700.0` pixels per second squared.
 - Both settings appear in the Player Inspector with documentation tooltips and
   safe ranges from `100.0` to `5000.0` in steps of `100.0`.
 - Horizontal movement becomes smoother without changing gravity, floor
@@ -63,11 +63,11 @@ velocity so one can approach the other over time.
    ```gdscript
    ## How quickly horizontal speed increases toward its target.
    @export_range(100.0, 5000.0, 100.0)
-   var acceleration: float = 1200.0
+   var acceleration: float = 1800.0
 
    ## How quickly horizontal speed decreases after input is released.
    @export_range(100.0, 5000.0, 100.0)
-   var deceleration: float = 1800.0
+   var deceleration: float = 2700.0
    ```
 
 The minimum is `100.0` so neither setting can disable its behavior and leave
@@ -82,8 +82,8 @@ acceleration so the Player gains speed smoothly but still stops promptly.
 
 3. Save `player.gd` with `Ctrl+S`.
 4. Open `res://actors/player.tscn` and select the Player root.
-5. Confirm that **Acceleration** displays `1200.0` and **Deceleration** displays
-   `1800.0` in the Inspector.
+5. Confirm that **Acceleration** displays `1800.0` and **Deceleration** displays
+   `2700.0` in the Inspector.
 6. Hover over both properties and confirm that their tooltips describe
    increasing speed and stopping.
 7. Confirm that both controls remain between `100.0` and `5000.0` and change
@@ -114,8 +114,8 @@ acceleration so the Player gains speed smoothly but still stops promptly.
 
 > 💡 A **target velocity** is the horizontal velocity requested by the current
 > input. The **current velocity** is the value the Player has reached so far.
-> For example, full right input produces `1.0 * 300.0`, so `target_speed` is
-> `300.0`, even while the current `velocity.x` is still lower. Keeping the two
+> For example, full right input produces `1.0 * 450.0`, so `target_speed` is
+> `450.0`, even while the current `velocity.x` is still lower. Keeping the two
 > values separate allows the current velocity to approach the target over
 > time.
 
@@ -126,12 +126,12 @@ Before adding that gradual change, meet the function that will calculate it:
 > value, and the maximum amount the current value may change during this
 > update. It stops exactly at the target rather than passing it.
 >
-> For example, `move_toward(0.0, 300.0, 20.0)` returns `20.0`. If the current
-> value is already `290.0`, it returns `300.0`, not `310.0`.
+> For example, `move_toward(0.0, 450.0, 20.0)` returns `20.0`. If the current
+> value is already `290.0`, it returns `450.0`, not `310.0`.
 >
 > Inside `_physics_process()`, Godot calls this code repeatedly. With this
 > example, the value can increase by up to `20.0` on each physics update until
-> it reaches the target value, `300.0`.
+> it reaches the target value, `450.0`.
 
 3. Beneath `target_speed`, add:
 
@@ -151,7 +151,7 @@ branch approaches `target_speed` while input exists; the second approaches
 Lesson 2.9 used `gravity * delta` to turn a per-second acceleration rate into
 the vertical velocity change for one physics update. These calls reuse the
 same time-based pattern horizontally. At roughly 60 physics updates per
-second, `1200.0 * (1.0 / 60.0)` permits a change of about `20.0` during one
+second, `1800.0 * (1.0 / 60.0)` permits a change of about `20.0` during one
 update. Using the actual `delta` keeps the behavior based on elapsed time when
 an update is slightly shorter or longer.
 
@@ -162,23 +162,23 @@ an update is slightly shorter or longer.
 
    ## Maximum horizontal movement speed in pixels per second.
    @export_range(0.0, 1000.0, 10.0)
-   var speed: float = 300.0
+   var speed: float = 450.0
 
    ## How quickly horizontal speed increases toward its target.
    @export_range(100.0, 5000.0, 100.0)
-   var acceleration: float = 1200.0
+   var acceleration: float = 1800.0
 
    ## How quickly horizontal speed decreases after input is released.
    @export_range(100.0, 5000.0, 100.0)
-   var deceleration: float = 1800.0
+   var deceleration: float = 2700.0
 
    ## Downward acceleration in pixels per second squared.
    @export_range(0.0, 3000.0, 10.0)
-   var gravity: float = 980.0
+   var gravity: float = 2400.0
 
    ## Upward velocity applied when a grounded jump begins.
-   @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -700.0
+   @export_range(-1500.0, 0.0, 10.0)
+   var jump_velocity: float = -1100.0
 
    func _physics_process(delta: float) -> void:
        # Prevent another jump from starting while the Player is airborne.
@@ -228,14 +228,14 @@ an update is slightly shorter or longer.
 ### Part 4: Tune the two rates
 
 1. Open `res://actors/player.tscn` and select the Player root.
-2. Change **Acceleration** from `1200.0` to `600.0`.
+2. Change **Acceleration** from `1800.0` to `600.0`.
 3. Run `main.tscn` and confirm that reaching the same maximum speed takes
    longer.
-4. Restore **Acceleration** to `1200.0` and save `player.tscn`.
-5. Change **Deceleration** from `1800.0` to `600.0`.
+4. Restore **Acceleration** to `1800.0` and save `player.tscn`.
+5. Change **Deceleration** from `2700.0` to `600.0`.
 6. Run `main.tscn` and confirm that the Player slides farther after input is
    released.
-7. Restore **Deceleration** to `1800.0`, save, and run the scene again.
+7. Restore **Deceleration** to `2700.0`, save, and run the scene again.
 8. Confirm that the default response has returned and that gravity and
    grounded jumping still work.
 
@@ -255,12 +255,12 @@ rewriting movement code.
 
 Without editing `player.gd`:
 
-1. Change **Deceleration** from `1800.0` to `900.0` in the Player Inspector.
+1. Change **Deceleration** from `2700.0` to `900.0` in the Player Inspector.
 2. Predict how the change will affect stopping distance.
 3. Run `main.tscn`, gain horizontal speed, release the input, and check the
    prediction.
 4. Explain why this change does not alter maximum `speed` or jump height.
-5. Restore **Deceleration** to `1800.0`, save `player.tscn`, and verify the
+5. Restore **Deceleration** to `2700.0`, save `player.tscn`, and verify the
    default response again.
 6. Explain the separate roles of `speed`, `target_speed`, `acceleration`, and
    `deceleration`.
@@ -268,8 +268,8 @@ Without editing `player.gd`:
 ## Verification checklist
 
 - [ ] `speed`, `gravity`, and `jump_velocity` retain their validated defaults.
-- [ ] `acceleration` is an exported `float` with default `1200.0`.
-- [ ] `deceleration` is an exported `float` with default `1800.0`.
+- [ ] `acceleration` is an exported `float` with default `1800.0`.
+- [ ] `deceleration` is an exported `float` with default `2700.0`.
 - [ ] Both new settings use a range of `100.0` through `5000.0` in steps of
       `100.0` and have useful documentation tooltips.
 - [ ] `target_speed` is a typed local `float` calculated from
@@ -285,7 +285,7 @@ Without editing `player.gd`:
 - [ ] Falling, landing, floor collision, and grounded jumping still work.
 - [ ] Keyboard behavior works, and configured controller behavior works when
       compatible hardware is available.
-- [ ] All tuning exercises end with defaults `1200.0` and `1800.0` restored.
+- [ ] All tuning exercises end with defaults `1800.0` and `2700.0` restored.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors,
       or unexplained warnings.
 - [ ] The learner can distinguish maximum speed, target velocity, current
