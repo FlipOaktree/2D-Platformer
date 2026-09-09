@@ -116,30 +116,16 @@ it.
 > That is an editor preference, so it affects only your machine and is not
 > stored in the project.
 
+> 💡 Everything you set in this lesson is saved into `project.godot`, the file
+> Lesson 0.2 introduced. These settings belong to the project rather than to
+> your copy of Godot, so they travel with the folder.
+
 > ⚠️ **If something differs**
 >
 > - If the window still fills your screen, confirm that both override values
 >   were entered and that the project was saved.
 > - If the window is tiny, confirm that you set the overrides and not the
 >   viewport size.
-
-### Part 5: Confirm the settings were kept
-
-1. Close the **Project Settings** window.
-2. Open **Project > Project Settings** again and return to **Display >
-   Window**.
-3. Confirm that the viewport size, stretch mode, aspect, and window overrides
-   all still show the values you chose.
-4. Close the window.
-
-> 💡 These settings are stored in `project.godot`, the file Lesson 0.2
-> introduced. They belong to the project rather than to your copy of Godot, so
-> they travel with the folder and apply to anyone who opens it.
-
-> 💡 As Lesson 0.2 noted, the FileSystem dock does not display
-> `project.godot`. To look at it, right-click `res://` and choose **Open in
-> File Explorer**. You will also see it listed by name in the Module 1
-> checkpoint, where the Git diff shows every file the module changed.
 
 ## Learner exercise
 
@@ -160,10 +146,8 @@ it.
 - [ ] An unusual window shape adds bars instead of distorting the picture.
 - [ ] The window override values suit the learner's monitor, and the running
       window is comfortable to look at.
-- [ ] Reopening Project Settings shows the viewport, stretch, and override
-      values unchanged.
-- [ ] The learner knows the settings are stored in `project.godot` and that the
-      FileSystem dock does not list that file.
+- [ ] The learner knows these settings are stored in `project.godot` and travel
+      with the project.
 - [ ] Running `main.tscn` still shows the Lesson 1.1 label and reports no
       related errors or warnings.
 - [ ] The exercise ends with **Aspect** restored to `keep`.
