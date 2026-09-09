@@ -1,4 +1,4 @@
-# Module 1, Lesson 3: Transform Nodes in 2D
+# Module 1, Lesson 4: Transform Nodes in 2D
 
 **Status:** Validated
 
@@ -16,7 +16,7 @@ affects its children.
 
 ## Before you start
 
-- Module 1, Lesson 2 is complete.
+- Module 1, Lesson 3 is complete.
 - `res://scenes/main.tscn` contains a `Label` displaying `Project ready` at
   Position `(0, 0)`.
 - You can read an `(x, y)` position and explain that a child's Position is

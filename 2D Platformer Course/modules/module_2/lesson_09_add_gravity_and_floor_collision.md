@@ -30,12 +30,12 @@ Lesson 2.11.
 2. In the **Scene** dock, select the `Main` root.
 3. Click **Add Child Node**, search for `StaticBody2D`, and create it.
 4. Rename the new node `Floor`.
-5. With `Floor` selected, set its Inspector **Position** to `(576, 560)`.
+5. With `Floor` selected, set its Inspector **Position** to `(960, 920)`.
 6. Add a `CollisionShape2D` as a child of `Floor`.
 7. Select the new `CollisionShape2D`. In the Inspector, choose **New
    RectangleShape2D** for its **Shape**.
 8. Click the new rectangle resource to expand it, then set its **Size** to
-   `(1152, 64)`.
+   `(1920, 64)`.
 9. Save the scene with `Ctrl+S`.
 
 > 💡 StaticBody2D is another kind of physics body. Unlike the Player’s CharacterBody2D, it does not move through code. It is useful for floors, walls, and other solid level geometry.
@@ -62,7 +62,7 @@ Lesson 2.11.
 
 > 💡 Gravity is an acceleration: it changes vertical speed over time. The
 > value `980.0` means the Player's downward speed can increase by 980 pixels
-> per second over one second. As established in Lesson 1.2, positive Y points
+> per second over one second. As established in Lesson 1.3, positive Y points
 > downward in Godot's 2D coordinate system.
 
 ### Part 3: Apply gravity over time
@@ -162,9 +162,9 @@ the gravity calculation runs by using the floor state.
 
 ## Verification checklist
 
-- [ ] `main.tscn` contains a `Floor` `StaticBody2D` at Position `(576, 560)`.
+- [ ] `main.tscn` contains a `Floor` `StaticBody2D` at Position `(960, 920)`.
 - [ ] `Floor` has a `CollisionShape2D` using a `RectangleShape2D` with Size
-      `(1152, 64)`.
+      `(1920, 64)`.
 - [ ] Player's 128-by-128 collision-shape override matches its temporary
       128-by-128 marker.
 - [ ] `res://actors/player.gd` declares typed `speed` and `gravity` variables.

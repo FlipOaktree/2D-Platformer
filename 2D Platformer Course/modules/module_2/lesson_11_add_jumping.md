@@ -29,7 +29,7 @@ gravity, floor detection, and jumping.
 2. Under the `gravity` variable, add this typed variable:
 
    ```gdscript
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
    ```
 
    Your variables should now look like this:
@@ -37,7 +37,7 @@ gravity, floor detection, and jumping.
    ```gdscript
    var speed: float = 300.0
    var gravity: float = 980.0
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
    ```
 
 > 💡 The negative `jump_velocity` sends the Player upward because 2D Y values
@@ -103,7 +103,7 @@ lands again.
 
    var speed: float = 300.0
    var gravity: float = 980.0
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
 
    func _physics_process(delta: float) -> void:
        if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -143,15 +143,15 @@ lands again.
 
 ## Learner exercise
 
-1. Temporarily change `jump_velocity` from `-400.0` to `-250.0`.
+1. Temporarily change `jump_velocity` from `-700.0` to `-350.0`.
 2. Run the scene and compare the height of the jump with the original.
-3. Restore `jump_velocity` to `-400.0`.
+3. Restore `jump_velocity` to `-700.0`.
 4. Explain why both values make the Player move upward, but one produces a
    lower jump.
 
 ## Verification checklist
 
-- [ ] `jump_velocity` is a typed `float` with the value `-400.0`.
+- [ ] `jump_velocity` is a typed `float` with the value `-700.0`.
 - [ ] The final jump condition uses
       `Input.is_action_just_pressed("jump") and is_on_floor()`.
 - [ ] `velocity.y = jump_velocity` is indented beneath that condition.

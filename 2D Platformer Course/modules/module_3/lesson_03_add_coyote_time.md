@@ -31,14 +31,14 @@ press will feel more forgiving.
 1. Open `res://scenes/main.tscn`.
 2. Select the `Floor` root and duplicate it with `Ctrl+D`.
 3. Rename the duplicate `CoyoteTestPlatform` with `F2`.
-4. With `CoyoteTestPlatform` selected, set its Position to `(576, 470)`.
+4. With `CoyoteTestPlatform` selected, set its Position to `(960, 704)`.
 5. Select `CoyoteTestPlatform/CollisionShape2D`. In the Inspector, open the
    menu beside **Shape** and choose **New RectangleShape2D**.
-6. Select the new rectangle resource and set its Size to `(320, 32)`.
+6. Select the new rectangle resource and set its Size to `(512, 32)`.
 7. Confirm that `CoyoteTestPlatform/CollisionShape2D` remains at local
    Position `(0, 0)`.
 8. Select the original `Floor` and confirm that it still has Position
-   `(576, 560)` and its 1152-by-64 rectangle shape.
+   `(960, 920)` and its 1920-by-64 rectangle shape.
 9. Save `main.tscn` with `Ctrl+S`.
 10. In the editor's **Debug** menu, confirm that **Visible Collision Shapes** is
     enabled.
@@ -59,7 +59,7 @@ press will feel more forgiving.
 > ⚠️ **If something differs**
 >
 > - If the Player misses the raised platform while falling, confirm that
->   `CoyoteTestPlatform` is at Position `(576, 470)` with a 320-by-32
+>   `CoyoteTestPlatform` is at Position `(960, 704)` with a 512-by-32
 >   rectangle shape, and that its collision shape remains at local Position
 >   `(0, 0)`.
 > - If changing the platform's shape also changes the original Floor, undo the
@@ -186,7 +186,7 @@ starts. Pressing jump again while airborne therefore cannot start another jump.
 
    ## Upward velocity applied when a grounded jump begins.
    @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
 
    ## Seconds after leaving a ledge during which jumping remains allowed.
    @export_range(0.0, 0.5, 0.01)
@@ -278,7 +278,7 @@ prompt directly with the completed script in Part 3, then continue.
    longer before pressing jump, and
    confirm that the Player does not jump and lands on the original Floor.
 5. From the Floor, jump back onto the platform from its other side. The
-   platform is 74 pixels higher than the Floor, so the default jump can still
+   platform is 200 pixels higher than the Floor, so the default jump can still
    reach it.
 6. Start a coyote-time jump, then press jump again while airborne. Confirm that
    a second jump does not start.
@@ -296,8 +296,8 @@ prompt directly with the completed script in Part 3, then continue.
 > - If the grace jump never works, confirm that `coyote_timer` is refreshed
 >   while grounded and that the jump condition uses `can_jump`.
 > - If the Player cannot reach the platform from the Floor, confirm that the
->   platform Position is `(576, 470)` and that `jump_velocity` still uses its
->   validated default of `-400.0`.
+>   platform Position is `(960, 704)` and that `jump_velocity` still uses its
+>   validated default of `-700.0`.
 
 ## Learner exercise
 
@@ -314,10 +314,10 @@ prompt directly with the completed script in Part 3, then continue.
 
 ## Verification checklist
 
-- [ ] The original Floor retains Position `(576, 560)` and its 1152-by-64
+- [ ] The original Floor retains Position `(960, 920)` and its 1920-by-64
       rectangle collision shape.
 - [ ] `CoyoteTestPlatform` is a duplicate `StaticBody2D` at Position
-      `(576, 470)` with its own 320-by-32 rectangle collision shape at local
+      `(960, 704)` with its own 512-by-32 rectangle collision shape at local
       Position `(0, 0)`.
 - [ ] After walking off the raised platform, the Player lands safely on the
       original Floor and can jump back onto the platform from either side.

@@ -57,7 +57,7 @@ ones you meant to keep.
     | Acceleration | `1200.0` |
     | Deceleration | `1800.0` |
     | Gravity | `980.0` |
-    | Jump Velocity | `-400.0` |
+    | Jump Velocity | `-700.0` |
     | Coyote Time | `0.1` |
     | Jump Buffer Time | `0.1` |
     | Jump Release Multiplier | `0.5` |

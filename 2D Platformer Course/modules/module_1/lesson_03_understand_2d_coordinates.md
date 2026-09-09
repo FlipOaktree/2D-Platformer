@@ -1,4 +1,4 @@
-# Module 1, Lesson 2: Understand 2D Coordinates
+# Module 1, Lesson 3: Understand 2D Coordinates
 
 **Status:** Validated
 
@@ -13,7 +13,7 @@ is to make the transform tools in the next lesson easier to understand.
 
 ## Before you start
 
-- Module 1, Lesson 1 is complete.
+- Module 1, Lesson 2 is complete.
 - You understand that `Main` is the parent of `Label` in the scene tree.
 
 ## Build steps

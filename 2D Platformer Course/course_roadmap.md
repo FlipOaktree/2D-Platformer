@@ -23,9 +23,11 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.5; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.6, which
-  completes Module 3. The
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons 1.1
+  and 1.3-1.6; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.6, which
+  completes Module 3. Lesson 1.2 is a new blueprint awaiting review, and the
+  lessons that state Floor, platform, or jump values were revised for the
+  1920-by-1080 viewport and the `-700.0` jump velocity. The
   coordinate-theory split, revised transform and composition procedures,
   dot-syntax bridge, horizontal movement, gravity/floor procedures,
   conditional floor-state procedure, jumping procedure, exported movement
@@ -34,10 +36,13 @@ not infer progress from chat history or from learner verification checkboxes.
   validated from the current Codex
   project, Git metadata, and Changes-to-Review UI evidence; an empty-project
   replay remains part of the full-course rebuild gate.
-- **Godot evidence:** `Main` contains one inherited `Player` instance at
-  `(128, 128)`, a `Floor` `StaticBody2D` at `(576, 560)` with a 1152-by-64
+- **Godot evidence:** The project draws a 1920-by-1080 viewport with stretch
+  mode `canvas_items` and aspect `keep`. `Main` contains one inherited `Player`
+  instance at
+  `(128, 128)`, a `Floor` `StaticBody2D` at `(960, 920)` with a 1920-by-64
   rectangle collision shape, and a centered `CoyoteTestPlatform` `StaticBody2D`
-  at `(576, 470)` with its own 320-by-32 rectangle collision shape. The Input
+  at `(960, 704)` with its own 512-by-32 rectangle collision shape, leaving a
+  200-pixel step between the Floor surface and the platform surface. The Input
   Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
@@ -54,17 +59,22 @@ not infer progress from chat history or from learner verification checkboxes.
   jump press until landing. It shortens a rising jump by multiplying
   `velocity.y` by `jump_release_multiplier` when the `jump` action is released,
   giving variable jump height. It retains `move_and_slide()`, gravity, and
-  grounded jumping. Modules 3.1-3.5 are validated in the current project: the
-  eight movement values use
+  grounded jumping. `jump_velocity` defaults to `-700.0`, which lifts the
+  128-pixel Player 256 pixels, or twice its own height. Modules 3.1-3.5 are
+  validated in the current project: the eight movement values use
   documented `@export_range()` annotations, and the jump, gravity, and
   jump-shortening conditions have regular implementation comments. Other
   gameplay systems remain absent.
 - **Observed Git head:** `8e07139` (`Create the first checkpoint with Git
   commands in Lesson 0.4`), matching `origin/main` before the uncommitted
   Lesson 3.6 validation.
-- **Exact next step:** Draft the Module 4, Lesson 4.1 blueprint, **Build a
-  TileSet with Collision**, which opens Module 4 and begins replacing the
-  temporary Floor and `CoyoteTestPlatform` with real level content. The
+- **Exact next step:** Review the Module 1, Lesson 1.2 blueprint, **Set Up the
+  Game Window**, and decide whether to approve it. The viewport, stretch
+  settings, geometry, and jump velocity it describes are already applied to the
+  Godot project and revalidated. Afterwards, draft the Module 4, Lesson 4.1
+  blueprint, **Build a TileSet with Collision**, which opens Module 4 and
+  begins replacing the temporary Floor and `CoyoteTestPlatform` with real level
+  content. The
   **Track Player Movement States** blueprint stays drafted at Lesson 5.5 until
   Module 5 is reached, and must be re-checked against the Module 4 result
   before implementation.
@@ -185,10 +195,11 @@ a reviewed Git checkpoint.
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
 | 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | `2452c6e` |
-| 1.2 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
-| 1.3 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
-| 1.4 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed; exact commit pending reconciliation |
-| 1.5 | Create a Module 1 Git Checkpoint | Tested module boundary, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | `2452c6e` |
+| 1.2 | Set Up the Game Window | Viewport size versus window size, `1920`-by-`1080` world, stretch mode and aspect, window override | Blueprint drafted | Uncommitted working tree |
+| 1.3 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
+| 1.4 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
+| 1.5 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed; exact commit pending reconciliation |
+| 1.6 | Create a Module 1 Git Checkpoint | Tested module boundary, Codex-assisted read-only review, local commit, and post-commit verification | Validated | `2452c6e` |
 
 ### Module 2: Actor and Player Foundations
 
@@ -452,9 +463,10 @@ practical use and later lessons can build on them without re-teaching them.
 | Concept family | First introduction | Principal reuse |
 | --- | --- | --- |
 | Nodes, scenes, hierarchy, running, and viewport navigation | 1.1 | Every later lesson |
-| Coordinate pairs, screen axes, and local positions | 1.2 | Transforms, levels, actors, cameras, combat, enemies, feedback, UI |
-| Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | 1.3 | Levels, actors, cameras, combat, enemies, feedback, UI |
-| Scene composition, instantiation, source propagation, and instance overrides | 1.4 | Actors, components, levels, attacks, enemies, items |
+| Viewport size, window size, stretch mode, and aspect | 1.2 | Every placed position and size, level design, cameras, and UI |
+| Coordinate pairs, screen axes, and local positions | 1.3 | Transforms, levels, actors, cameras, combat, enemies, feedback, UI |
+| Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | 1.4 | Levels, actors, cameras, combat, enemies, feedback, UI |
+| Scene composition, instantiation, source propagation, and instance overrides | 1.5 | Actors, components, levels, attacks, enemies, items |
 | Codex project context, read-only requests, and diff review | 0.4 | AI-assisted changes, review, debugging, testing, and documentation |
 | Git checkpoint cycle | 0.3-0.4 | End-of-module recovery points and reviewed course milestones |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
@@ -545,8 +557,8 @@ Remaining reconciliation work:
 | Keep learner verification boxes unchecked | They belong to each learner; production completion is tracked here. |
 | Keep curriculum modules cohesive and portability-aware without introducing configurable course assembly yet | The first complete course will reveal which modules are genuinely reusable; shared libraries, course manifests, and alternate entry checkpoints remain deferred until then. |
 | Teach viewport navigation when the first small Label appears in Lesson 1.1 | Centering, zooming, Pan Mode, and panning shortcuts solve an immediate viewing problem without changing scene content. |
-| Separate 2D coordinates into a theory-focused Lesson 1.2 | Beginners can understand the origin, screen axes, and parent-relative local positions before applying them with editor tools; the existing transform and composition lessons move to 1.3 and 1.4 without changing the Godot result. |
-| Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | Lesson 1.3 uses `ProjectIcon` to make all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
+| Separate 2D coordinates into a theory-focused Lesson 1.3 | Beginners can understand the origin, screen axes, and parent-relative local positions before applying them with editor tools; the existing transform and composition lessons move to 1.4 and 1.5 without changing the Godot result. |
+| Teach Position, Rotation, and Scale together in Module 1 with a Sprite2D | Lesson 1.4 uses `ProjectIcon` to make all three transforms visible without introducing Control pivots; later modules can reuse the complete basic transform vocabulary. |
 | Demonstrate source propagation and per-instance overrides with `ProjectIcon` in Lesson 1.4 | Rotation makes the distinction visible while keeping the source scene and instance responsibilities small; Modules 2-17 retain their order. |
 | Introduce GDScript fundamentals before Player movement | Beginners should understand the small code vocabulary used in their first script before combining it with Godot input and physics. Lesson 2.4 introduces the foundations. |
 | Add first-script bridges before Player movement | Lesson 2.5 introduces script attachment, `extends`, functions, callbacks, Output, local and script-level scope, and custom function calls through a temporary message diagnostic. Lesson 2.6 introduces typed parameters, arguments, and returned values. Lesson 2.7 then teaches property access and method calls on existing values. Lesson 2.8 introduces built-in Godot access through `Input` when movement first needs it. Each bridge removes its temporary code; horizontal movement moves to 2.8, gravity to 2.9, conditional logic to 2.10, and jumping to 2.11. |
@@ -557,6 +569,7 @@ Remaining reconciliation work:
 | Keep the first Codex/Git checkpoint focused | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
 | Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
 | Add one reviewed Git checkpoint at the end of each completed module | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
+| Set the game window in Module 1 and size the world at 1920 by 1080 | Lesson 1.1 ran the project in Godot's default 1152-by-648 window, which is uncomfortably small on a high-resolution monitor and was never a deliberate choice. New Lesson 1.2 sets the viewport, stretch mode, and aspect right after the learner first feels the problem, following the same reasoning that placed viewport navigation in 1.1. Later Module 1 lessons shift to 1.3-1.6. Because jump height is a fixed pixel distance rather than a proportion of the screen, a larger viewport makes the same jump look smaller, so `jump_velocity` moved from `-400.0` to `-700.0` and the Player again clears twice its own height. The Floor, the test platform, and the 200-pixel step between them were repositioned to match. `gravity` was deliberately left at `980.0` to avoid revalidating fall behavior; the jump is floatier as a result and can be retuned later. |
 | Create the first checkpoint with Git commands, not the Codex controls | Lesson 0.4 now has the learner stage with `git add .`, read `git status`, and commit with `git commit -m`. The Codex Review tab and the read-only AI review are unchanged, because inspecting a diff visually is genuinely easier for a beginner. Typing the commands once makes the later checkpoint lessons' offline fallback actionable, keeps the commands transferable to any editor, and limits how much of the course depends on third-party UI wording that cannot be version-frozen the way the Godot version is. Modules 1 onward still use the Codex controls as the convenient path, so the manual cycle is taught first and the tool is used afterward. |
 | Track movement state in Module 5 rather than Module 3 | The state has no consumer until the animation lesson, so teaching it in Module 3 produced a lesson with no observable result and a payoff two modules away. This applies the same rule that removed the standalone target-based movement bridge. Module 3 now ends with five felt movement features and its checkpoint. Placing the lesson after Module 4 also lets its conditions account for one-way and moving platforms: a Player standing on a moving platform can carry horizontal velocity, which a naive `velocity.x != 0.0` check would report as running. |
 | Teach target-based movement beside its first implementation | Lesson 2.8 identifies direct assignment as the reason basic movement starts, stops, and reverses instantly. Lesson 3.2 then introduces current and target velocity, horizontal rates, and `move_toward()` beside the acceleration code that needs them, while referring back to Lesson 2.9's established `rate * delta` pattern. This removes the separate theory bridge and keeps later Module 3 lessons focused. |

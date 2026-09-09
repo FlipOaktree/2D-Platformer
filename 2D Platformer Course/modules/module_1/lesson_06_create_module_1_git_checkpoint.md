@@ -1,4 +1,4 @@
-# Module 1, Lesson 5: Create a Module 1 Git Checkpoint
+# Module 1, Lesson 6: Create a Module 1 Git Checkpoint
 
 **Status:** Validated
 
@@ -15,7 +15,7 @@ changes, then use Codex's Git controls to create the local commit.
 
 ## Before you start
 
-- Module 1, Lessons 1 through 4 are complete.
+- Module 1, Lessons 1 through 5 are complete.
 - The Module 0 Git checkpoint exists, and Codex is connected to the folder
   containing `project.godot`.
 - `main.tscn` contains the `Label` and one `ProjectIcon` instance, and the
@@ -64,7 +64,8 @@ changes, then use Codex's Git controls to create the local commit.
    files:
 
    - `project.godot`, which records `main.tscn` as the project's main scene
-     through a `uid://` reference.
+     through a `uid://` reference, and the `[display]` section holding the
+     viewport size and stretch settings from Lesson 1.2.
    - `scenes/main.tscn`, which stores `Main`, its Label, and the icon instance.
    - `scenes/project_icon.tscn`, which stores the reusable icon scene.
 

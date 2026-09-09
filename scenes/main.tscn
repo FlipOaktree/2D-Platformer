@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://4jclya8fye78" path="res://actors/player.tscn" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkpjr"]
-size = Vector2(1152, 64)
+size = Vector2(1920, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coyote_test"]
-size = Vector2(320, 32)
+size = Vector2(512, 32)
 
 [node name="Main" type="Node2D" unique_id=1280542419]
 
@@ -14,13 +14,13 @@ size = Vector2(320, 32)
 position = Vector2(128, 128)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1563314166]
-position = Vector2(576, 560)
+position = Vector2(960, 920)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=712868675]
 shape = SubResource("RectangleShape2D_lkpjr")
 
 [node name="CoyoteTestPlatform" type="StaticBody2D" parent="." unique_id=1903396311]
-position = Vector2(576, 470)
+position = Vector2(960, 704)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoyoteTestPlatform" unique_id=425189344]
 shape = SubResource("RectangleShape2D_coyote_test")

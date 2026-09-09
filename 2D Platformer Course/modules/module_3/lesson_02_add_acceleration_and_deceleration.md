@@ -178,7 +178,7 @@ an update is slightly shorter or longer.
 
    ## Upward velocity applied when a grounded jump begins.
    @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
 
    func _physics_process(delta: float) -> void:
        # Prevent another jump from starting while the Player is airborne.

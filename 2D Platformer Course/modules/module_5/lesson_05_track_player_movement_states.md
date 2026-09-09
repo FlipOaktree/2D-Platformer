@@ -226,7 +226,7 @@ with the completed script in Part 5, then continue.
 
    ## Upward velocity applied when a grounded jump begins.
    @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
 
    ## Seconds after leaving a ledge during which jumping remains allowed.
    @export_range(0.0, 0.5, 0.01)

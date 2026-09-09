@@ -11,7 +11,7 @@ intended direction, and provide a short tooltip explaining what it controls.
 
 - **Speed** defaults to `300.0` and allows values from `0.0` to `1000.0`.
 - **Gravity** defaults to `980.0` and allows values from `0.0` to `3000.0`.
-- **Jump Velocity** defaults to `-400.0` and allows values from `-1000.0` to
+- **Jump Velocity** defaults to `-700.0` and allows values from `-1000.0` to
   `0.0`.
 - Running `main.tscn` with the defaults preserves the movement, falling,
   landing, and grounded jumping validated in Module 2.
@@ -35,7 +35,7 @@ intended direction, and provide a short tooltip explaining what it controls.
    ```gdscript
    var speed: float = 300.0
    var gravity: float = 980.0
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
    ```
 
 3. Open `res://scenes/main.tscn` and run the current scene with `F6`.
@@ -163,7 +163,7 @@ movement logic alone.
 
 2. Before accepting the result, inspect Codex's diff.
 3. Confirm that it changed only the `gravity` and `jump_velocity`
-   declarations. Their default values must remain `980.0` and `-400.0`, and
+   declarations. Their default values must remain `980.0` and `-700.0`, and
    `_physics_process()` must retain both regular comments and all its existing
    movement logic.
 4. Ask Codex to explain the minimum, maximum, and step values it chose. Treat
@@ -182,7 +182,7 @@ lesson outcome and final code remain the same.
 
    ## Upward velocity applied when a grounded jump begins.
    @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
    ```
 
 6. For the purpose of this exercise, manually correct every difference in
@@ -210,7 +210,7 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 
    ## Upward velocity applied when a grounded jump begins.
    @export_range(-1000.0, 0.0, 10.0)
-   var jump_velocity: float = -400.0
+   var jump_velocity: float = -700.0
    ```
 
 8. Confirm that `_physics_process()` still contains the two regular comments
@@ -267,13 +267,13 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 
 Without editing `player.gd`:
 
-1. In the Player Inspector, change **Jump Velocity** from `-400.0` to
-   `-250.0`.
+1. In the Player Inspector, change **Jump Velocity** from `-700.0` to
+   `-350.0`.
 2. Predict how the new value will change the jump, then run `main.tscn` and
    check the prediction.
 3. Try to move **Jump Velocity** above `0.0` and explain why the Inspector
    range prevents it.
-4. Restore **Jump Velocity** to `-400.0`, save `player.tscn`, and verify the
+4. Restore **Jump Velocity** to `-700.0`, save `player.tscn`, and verify the
    original jump again.
 5. Explain the separate purpose of the exported default, range, step, and
    tooltip.
@@ -283,7 +283,7 @@ Without editing `player.gd`:
 ## Verification checklist
 
 - [ ] `speed`, `gravity`, and `jump_velocity` remain typed `float` variables
-      with defaults `300.0`, `980.0`, and `-400.0`.
+      with defaults `300.0`, `980.0`, and `-700.0`.
 - [ ] `_physics_process()` contains regular comments explaining why the jump
       condition prevents airborne jumps and why gravity is skipped while
       grounded.
@@ -300,7 +300,7 @@ Without editing `player.gd`:
 - [ ] Configured controller movement and jumping still work when a compatible
       controller is available.
 - [ ] The slower-Speed test works and ends with **Speed** restored to `300.0`.
-- [ ] The learner exercise ends with **Jump Velocity** restored to `-400.0`.
+- [ ] The learner exercise ends with **Jump Velocity** restored to `-700.0`.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors,
       or unexplained warnings.
 - [ ] The learner can explain how exported ranges and documentation tooltips
