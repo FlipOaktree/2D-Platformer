@@ -123,16 +123,23 @@ it.
 > - If the window is tiny, confirm that you set the overrides and not the
 >   viewport size.
 
-### Part 5: Confirm the setting is stored in the project
+### Part 5: Confirm the settings were kept
 
-1. In the **FileSystem** dock, open `res://project.godot`.
-2. Confirm that it now contains a `[display]` section listing the viewport size
-   and the stretch settings.
-3. Close the file without editing it.
+1. Close the **Project Settings** window.
+2. Open **Project > Project Settings** again and return to **Display >
+   Window**.
+3. Confirm that the viewport size, stretch mode, aspect, and window overrides
+   all still show the values you chose.
+4. Close the window.
 
-> 💡 Project Settings writes to `project.godot`, the same file Lesson 0.2
-> introduced. Settings you change in the editor are stored in the project and
-> travel with it, which is why the next Git checkpoint will include this file.
+> 💡 These settings are stored in `project.godot`, the file Lesson 0.2
+> introduced. They belong to the project rather than to your copy of Godot, so
+> they travel with the folder and apply to anyone who opens it.
+
+> 💡 As Lesson 0.2 noted, the FileSystem dock does not display
+> `project.godot`. To look at it, right-click `res://` and choose **Open in
+> File Explorer**. You will also see it listed by name in the Module 1
+> checkpoint, where the Git diff shows every file the module changed.
 
 ## Learner exercise
 
@@ -153,8 +160,10 @@ it.
 - [ ] An unusual window shape adds bars instead of distorting the picture.
 - [ ] The window override values suit the learner's monitor, and the running
       window is comfortable to look at.
-- [ ] `project.godot` contains a `[display]` section with the viewport and
-      stretch settings.
+- [ ] Reopening Project Settings shows the viewport, stretch, and override
+      values unchanged.
+- [ ] The learner knows the settings are stored in `project.godot` and that the
+      FileSystem dock does not list that file.
 - [ ] Running `main.tscn` still shows the Lesson 1.1 label and reports no
       related errors or warnings.
 - [ ] The exercise ends with **Aspect** restored to `keep`.
