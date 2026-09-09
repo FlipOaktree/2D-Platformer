@@ -122,5 +122,22 @@ learner-facing content.
 - When delegating to a parallel assistant, give it the tools its claims
   require and record the boundary of what it examined. Treat any claim beyond
   that boundary as unverified until checked directly.
+- Verify a bulk edit instead of assuming it applied. After any find-and-replace
+  across files, search again for the old value and report that the count is
+  zero. A silent non-match looks identical to success.
+- Update values derived from a value you changed. A replaced number often
+  leaves behind a result computed from it, such as a per-frame rate, a halved
+  exercise value, or a stated total. Search for the arithmetic, not only the
+  input.
+- State the margin whenever a claim depends on one. Words such as "thin",
+  "close", or "should still work" hide the number that decides whether the
+  claim is true. Give the two values and their difference.
+- Report a measurement with the parameters that produced it and say whether
+  those parameters are realistic. A simulated input that no person could
+  perform produces a real number and a false conclusion.
+- Question a planned lesson before drafting it. Check its position against the
+  Concept Sequencing Ledger and the Decision Log, and propose moving it when
+  its first practical use comes later. A roadmap row records an earlier
+  intention, not a verified decision.
 
 
