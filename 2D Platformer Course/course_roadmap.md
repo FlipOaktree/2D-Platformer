@@ -95,7 +95,10 @@ not infer progress from chat history or from learner verification checkboxes.
   3.4 received focused Godot validation. Lesson 3.5 passed headless parse,
   load, and behavior checks, then passed interactive Godot validation
   including the Inspector presentation of **Jump Release Multiplier** and
-  keyboard/controller jump testing.
+  keyboard/controller jump testing. The 1920-by-1080 viewport change and the
+  movement retune each passed a headless check of every stated value, geometry
+  measurement, and timing, and the retuned jump and run speed were then
+  confirmed by interactive play.
 
 ## Status Model
 
