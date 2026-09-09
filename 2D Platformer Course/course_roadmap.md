@@ -23,9 +23,13 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons 1.1
-  and 1.3-1.6; Module 2, Lessons 2.1-2.12; and Module 3, Lessons 3.1-3.6, which
-  completes Module 3. Lesson 1.2 is a new blueprint awaiting review, and the
+- **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
+  1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; and Module 3,
+  Lessons 3.1-3.6, which completes Module 3. Lesson 1.2 was replay-verified
+  against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
+  Part 2-4 settings, applied there, reproduced the live project's `[display]`
+  block exactly, the Label survived, and a headless load and run produced no
+  errors or warnings. The
   lessons that state Floor, platform, or jump values were revised for the
   1920-by-1080 viewport and the retuned movement defaults. The
   coordinate-theory split, revised transform and composition procedures,
@@ -67,24 +71,34 @@ not infer progress from chat history or from learner verification checkboxes.
   documented `@export_range()` annotations, and the jump, gravity, and
   jump-shortening conditions have regular implementation comments. Other
   gameplay systems remain absent.
-- **Observed Git head:** `8e07139` (`Create the first checkpoint with Git
-  commands in Lesson 0.4`), matching `origin/main` before the uncommitted
-  Lesson 3.6 validation.
-- **Exact next step:** Review the Module 1, Lesson 1.2 blueprint, **Set Up the
-  Game Window**, and decide whether to approve it. The viewport, stretch
-  settings, geometry, and jump velocity it describes are already applied to the
-  Godot project and revalidated. Afterwards, draft the Module 4, Lesson 4.1
-  blueprint, **Build a TileSet with Collision**, which opens Module 4 and
-  begins replacing the temporary Floor and `CoyoteTestPlatform` with real level
-  content. The
+- **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
+  mistakes`), with a clean working tree. Local `main` is one commit ahead of
+  `origin/main`, which is at `b653f5d`.
+- **Exact next step:** Review the two Module 4 blueprints that open the module,
+  Lesson 4.1 **Build a TileSet with Collision** and Lesson 4.2 **Paint a Level
+  with Terrain Autotiling**, and decide whether to approve them for
+  implementation. Together they replace the temporary Floor and
+  `CoyoteTestPlatform` with a painted tiled level. Their combined procedure,
+  tile data, and resulting geometry were prototyped in a scratch copy of the
+  project and checked against Godot 4.7.2; nothing in the repository Godot
+  project has changed yet. Several editor labels in both lessons still need
+  confirming against the running editor during implementation, including the
+  FileSystem re-scan wording, whether the TileMap editor shows a hovered cell
+  coordinate, and the controls for adding a collision polygon and painting
+  peering bits. Module 1, Lesson 1.2, **Set Up the Game Window**, is now
+  Validated: its procedure was replayed from Lesson 1.1's end state in a
+  scratch copy and reproduced the live project's window settings exactly. The
   **Track Player Movement States** blueprint stays drafted at Lesson 5.5 until
   Module 5 is reached, and must be re-checked against the Module 4 result
   before implementation.
 - **Checkpoint:** Commit `8e07139` contains the validated curriculum through
   Module 2, validated Module 3 Lessons 3.1-3.5, the movement-state blueprint
   relocated to Lesson 5.5, and the Lesson 0.4 revision that creates the first
-  checkpoint with Git commands. The current uncommitted work validates Lesson
-  3.6 and closes Module 3.
+  checkpoint with Git commands. Commit `c1874a8` then validated Lesson 3.6 and
+  closed Module 3. Commits `3abdd88`, `5ca7c9d`, and `b9ccbd2` set the
+  1920-by-1080 world, retuned movement, and recorded the interactive
+  confirmation; `6c74ab2` and `ffa165d` repaired Lesson 1.2 Part 5; `b653f5d`
+  and `d4d0b09` corrected two stale references and added the evidence rules.
   Commit `2a23afa` validated
   the Module 3.1 Player settings alongside a standalone target-based movement
   bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
@@ -200,7 +214,7 @@ a reviewed Git checkpoint.
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
 | 1.1 | Create and Run Your First Scene | `Node2D`, `Label`, hierarchy, `main.tscn`, running, viewport navigation | Validated | `2452c6e` |
-| 1.2 | Set Up the Game Window | Viewport size versus window size, `1920`-by-`1080` world, stretch mode and aspect, window override | Blueprint drafted | Uncommitted working tree |
+| 1.2 | Set Up the Game Window | Viewport size versus window size, `1920`-by-`1080` world, stretch mode and aspect, window override | Validated | `3abdd88`; Part 5 repaired in `6c74ab2` and `ffa165d`; replay-verified against the Lesson 1.1 end state in `e918e66` |
 | 1.3 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
 | 1.4 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
 | 1.5 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed; exact commit pending reconciliation |
@@ -223,7 +237,7 @@ record the tested foundation in a reviewed Git checkpoint.
 | 2.7 | Access Properties and Call Methods | Dot syntax, properties, and methods on existing values | Validated | `cf34c54` |
 | 2.8 | Write Typed Horizontal Movement | Temporary `Sprite2D` test marker and matching Player collider override, typed movement speed, physics callback, input axis, velocity, and `move_and_slide()` | Validated | `3b0f0c5` |
 | 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, aligned Player/floor collision, gravity, and `delta` | Validated | `9f0efc4` |
-| 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | `ae5d31c`; audit fix uncommitted |
+| 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | `ae5d31c`; audit fix in `5efd79a` |
 | 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Validated | `cf34c54` |
 | 2.12 | Create a Module 2 Git Checkpoint | Tested Player foundation, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | `2452c6e` |
 
@@ -248,13 +262,14 @@ elements around clear spawn and boundary contracts.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 4.1 | Build a TileSet with Collision | TileSet and terrain collision | Planned | Unassigned |
-| 4.2 | Build a Reusable Level Scene | Level scene boundary | Planned | Unassigned |
-| 4.3 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
-| 4.4 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
-| 4.5 | Add Moving Platforms | Reusable moving surface | Planned | Unassigned |
-| 4.6 | Add Level Bounds and Fall Detection | World bounds and fall signal | Planned | Unassigned |
-| 4.7 | Create a Module 4 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, tile size, a tile physics layer, and per-tile collision polygons | Blueprint drafted | Uncommitted working tree |
+| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Blueprint drafted | Uncommitted working tree |
+| 4.3 | Build a Reusable Level Scene | Level scene boundary | Planned | Unassigned |
+| 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
+| 4.5 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
+| 4.6 | Add Moving Platforms | Reusable moving surface | Planned | Unassigned |
+| 4.7 | Add Level Bounds and Fall Detection | World bounds and fall signal | Planned | Unassigned |
+| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 5: Camera and Character Presentation
 
@@ -268,7 +283,7 @@ explicit where the animation work first needs it.
 | 5.2 | Configure Camera Limits and Smoothing | Limits and smoothing | Planned | Unassigned |
 | 5.3 | Add Look-Ahead Behavior | Camera behavior component | Planned | Unassigned |
 | 5.4 | Import Character Art | Import settings and sprite presentation | Planned | Unassigned |
-| 5.5 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()` | Blueprint drafted | Uncommitted working tree |
+| 5.5 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()` | Blueprint drafted | `34c9235`; retuned values in `3abdd88` and `5ca7c9d` |
 | 5.6 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
 | 5.7 | Create a Module 5 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
@@ -485,6 +500,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Conditional logic and grounded state | 2.10 | Jumping, responsive movement, combat, and actor behavior |
 | Player movement and physics | 2.8-2.11 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
+| TileSets, TileMapLayer, and per-tile collision | 4.1 | Level scenes, spawn points, one-way and moving platforms, level bounds, and all later level content |
+| Terrain sets, Match Sides matching, and terrain painting | 4.2 | Every later level and platform element built from tiles |
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
@@ -543,8 +560,9 @@ Remaining reconciliation work:
 
 - Propagate the roadmap's descriptive Module titles to local lesson and
   navigation material where needed.
-- Reconcile the exact Git associations still marked pending for Lessons 1.2,
-  1.3, 1.4, and 2.6. Modules 0, 2, and 3 are reconciled.
+- Reconcile the exact Git associations still marked pending for Lessons 1.3,
+  1.4, and 2.6. Modules 0, 2, and 3 are reconciled, and Lesson 1.2 now names
+  its commits.
 - Replay Lesson 0.4's revised `Checkpoint empty Godot project` staging and
   commit path during the full-course empty-project rebuild. The production
   repository's earliest historical message differs and must not be rewritten
@@ -578,3 +596,7 @@ Remaining reconciliation work:
 | Create the first checkpoint with Git commands, not the Codex controls | Lesson 0.4 now has the learner stage with `git add .`, read `git status`, and commit with `git commit -m`. The Codex Review tab and the read-only AI review are unchanged, because inspecting a diff visually is genuinely easier for a beginner. Typing the commands once makes the later checkpoint lessons' offline fallback actionable, keeps the commands transferable to any editor, and limits how much of the course depends on third-party UI wording that cannot be version-frozen the way the Godot version is. Modules 1 onward still use the Codex controls as the convenient path, so the manual cycle is taught first and the tool is used afterward. |
 | Track movement state in Module 5 rather than Module 3 | The state has no consumer until the animation lesson, so teaching it in Module 3 produced a lesson with no observable result and a payoff two modules away. This applies the same rule that removed the standalone target-based movement bridge. Module 3 now ends with five felt movement features and its checkpoint. Placing the lesson after Module 4 also lets its conditions account for one-way and moving platforms: a Player standing on a moving platform can carry horizontal velocity, which a naive `velocity.x != 0.0` check would report as running. |
 | Teach target-based movement beside its first implementation | Lesson 2.8 identifies direct assignment as the reason basic movement starts, stops, and reverses instantly. Lesson 3.2 then introduces current and target velocity, horizontal rates, and `move_toward()` beside the acceleration code that needs them, while referring back to Lesson 2.9's established `rate * delta` pattern. This removes the separate theory bridge and keeps later Module 3 lessons focused. |
+| Open Module 4 with tiles, and include terrain autotiling before any level is drawn | Autotiling is what makes painting a level faster than placing bodies by hand, so teaching the TileSet without it would leave the learner choosing corner tiles manually through the rest of Module 4 and returning to the TileSet later. Match Sides compares only the four sides, so 16 tiles cover every combination; Match Corners and Sides would need 47. |
+| Split the TileSet lesson in two at the collision boundary | The first draft carried two outcomes in one lesson: tiles that are solid, and tiles that connect automatically. Lesson 4.1 now ends when the Player stands on tiles the learner painted, and Lesson 4.2 adds the terrain and draws the level. Both halves keep an observable result, so neither becomes the kind of payoff-deferred lesson that moved the movement-state lesson to Module 5. The terrain half also carries the repetition risk of sixteen tiles, so it earns its own Codex review and its own checklist. Former Lessons 4.2-4.7 shift to 4.3-4.8. |
+| Supply placeholder tile artwork with the course | The project contained no art but `icon.svg`, and Module 5.4 is the first lesson that teaches import settings. A course-supplied `placeholder_terrain_tiles.png` keeps Lessons 4.1 and 4.2 on the tiles themselves, works with Godot import defaults, and leaves character-art importing to 5.4. The atlas is drawn so that every tile shows which of its sides are open, which turns assigning terrain peering bits into reading the artwork rather than copying a table. Its generator script is stored beside it so the art can be regenerated or recoloured. |
+| Replace both temporary bodies in Lesson 4.2 rather than across Module 4 | Leaving the grey `Floor` or `CoyoteTestPlatform` beside painted tiles would show two kinds of ground at once. The painted level reproduces both roles: a full-width ground with its surface at `y = 896` and a raised terrace at `y = 704`. The step becomes 192 pixels instead of 200, against a measured jump rise of 261 pixels, leaving 69 pixels of clearance, so coyote time, jump buffering, and variable jump height all stay testable. |

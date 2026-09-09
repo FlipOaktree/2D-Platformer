@@ -1,6 +1,6 @@
 # Module 1, Lesson 2: Set Up the Game Window
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
