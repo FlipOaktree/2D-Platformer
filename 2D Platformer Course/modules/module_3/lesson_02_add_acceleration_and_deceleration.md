@@ -151,7 +151,7 @@ branch approaches `target_speed` while input exists; the second approaches
 Lesson 2.9 used `gravity * delta` to turn a per-second acceleration rate into
 the vertical velocity change for one physics update. These calls reuse the
 same time-based pattern horizontally. At roughly 60 physics updates per
-second, `1800.0 * (1.0 / 60.0)` permits a change of about `20.0` during one
+second, `1800.0 * (1.0 / 60.0)` permits a change of `30.0` during one
 update. Using the actual `delta` keeps the behavior based on elapsed time when
 an update is slightly shorter or longer.
 
