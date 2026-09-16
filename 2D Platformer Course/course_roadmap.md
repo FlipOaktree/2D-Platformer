@@ -85,7 +85,26 @@ not infer progress from chat history or from learner verification checkboxes.
   confirming against the running editor during implementation, including the
   FileSystem re-scan wording, whether the TileMap editor shows a hovered cell
   coordinate, and the controls for adding a collision polygon and painting
-  peering bits. Module 1, Lesson 1.2, **Set Up the Game Window**, is now
+  peering bits. Both lessons now use `terrain.png`, which is a 2x redraw of the
+  terrain example tilesheet in Godot's own **Using TileSets** page: the same
+  12-by-4 arrangement, the same four shapes, and the same hole at `(10, 1)`.
+  Lesson 4.2 does not publish a per-tile peering-bit table. Two attempts to
+  derive one failed and were discarded: reading it from the artwork stalls
+  because an open bottom edge is drawn the same plain ground as a bottom that
+  continues, and assuming each drawn shape is a solid rectangle produces a
+  terrain that paints every cell while putting grass along the underside of
+  the level. The shapes carry notches that the rectangle model misses. The
+  lesson therefore teaches reading the marks from the artwork, points at the
+  configured example in the Godot page as a second opinion, and states plainly
+  that an absence of empty cells does not mean the terrain is right. Producing
+  a verified table belongs to implementing the lesson. The level geometry was
+  re-measured for 128-pixel tiles in a scratch copy: the ground surface stays
+  at `y = 896` and the Player still rests with its collider bottom there, the
+  terrace moves to `y = 768` for a one-tile step of 128 pixels, a held jump
+  rises 261 pixels leaving 133 pixels of clearance, and a tapped jump reaches
+  95 pixels so it still cannot make the step. A two-tile step of 256 pixels
+  would leave 5 pixels and must not be used.
+  Module 1, Lesson 1.2, **Set Up the Game Window**, is now
   Validated: its procedure was replayed from Lesson 1.1's end state in a
   scratch copy and reproduced the live project's window settings exactly. The
   **Track Player Movement States** blueprint stays drafted at Lesson 5.5 until
@@ -262,8 +281,8 @@ elements around clear spawn and boundary contracts.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, tile size, a tile physics layer, and per-tile collision polygons | Blueprint drafted | Uncommitted working tree |
-| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Blueprint drafted | Uncommitted working tree |
+| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 128-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Blueprint drafted | Uncommitted working tree |
+| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Blueprint drafted | Uncommitted working tree |
 | 4.3 | Build a Reusable Level Scene | Level scene boundary | Planned | Unassigned |
 | 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
 | 4.5 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
@@ -501,7 +520,7 @@ practical use and later lessons can build on them without re-teaching them.
 | Player movement and physics | 2.8-2.11 | Responsive movement and actor behavior |
 | Exported configuration | 3.1 | Reusable systems and content |
 | TileSets, TileMapLayer, and per-tile collision | 4.1 | Level scenes, spawn points, one-way and moving platforms, level bounds, and all later level content |
-| Terrain sets, Match Sides matching, and terrain painting | 4.2 | Every later level and platform element built from tiles |
+| Terrain sets, Match Corners and Sides matching, and terrain painting | 4.2 | Every later level and platform element built from tiles |
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
@@ -598,5 +617,5 @@ Remaining reconciliation work:
 | Teach target-based movement beside its first implementation | Lesson 2.8 identifies direct assignment as the reason basic movement starts, stops, and reverses instantly. Lesson 3.2 then introduces current and target velocity, horizontal rates, and `move_toward()` beside the acceleration code that needs them, while referring back to Lesson 2.9's established `rate * delta` pattern. This removes the separate theory bridge and keeps later Module 3 lessons focused. |
 | Open Module 4 with tiles, and include terrain autotiling before any level is drawn | Autotiling is what makes painting a level faster than placing bodies by hand, so teaching the TileSet without it would leave the learner choosing corner tiles manually through the rest of Module 4 and returning to the TileSet later. Match Sides compares only the four sides, so 16 tiles cover every combination; Match Corners and Sides would need 47. |
 | Split the TileSet lesson in two at the collision boundary | The first draft carried two outcomes in one lesson: tiles that are solid, and tiles that connect automatically. Lesson 4.1 now ends when the Player stands on tiles the learner painted, and Lesson 4.2 adds the terrain and draws the level. Both halves keep an observable result, so neither becomes the kind of payoff-deferred lesson that moved the movement-state lesson to Module 5. The terrain half also carries the repetition risk of sixteen tiles, so it earns its own Codex review and its own checklist. Former Lessons 4.2-4.7 shift to 4.3-4.8. |
-| Supply placeholder tile artwork with the course | The project contained no art but `icon.svg`, and Module 5.4 is the first lesson that teaches import settings. A course-supplied `placeholder_terrain_tiles.png` keeps Lessons 4.1 and 4.2 on the tiles themselves, works with Godot import defaults, and leaves character-art importing to 5.4. The atlas is drawn so that every tile shows which of its sides are open, which turns assigning terrain peering bits into reading the artwork rather than copying a table. Its generator script is stored beside it so the art can be regenerated or recoloured. |
+| Supply the tile artwork with the course | The project contained no art but `icon.svg`, and Module 5.4 is the first lesson that teaches import settings. A course-supplied atlas keeps Lessons 4.1 and 4.2 on the tiles themselves, works with Godot import defaults, and leaves character-art importing to 5.4. The first draft used a generated 16-tile placeholder of 64-pixel tiles; it was replaced by `terrain.png`, a hand-drawn 47-tile blob atlas of 128-pixel tiles authored in `terrain-template.af`, and the placeholder and its generator were deleted. The atlas was verified in Godot 4.7.2: 12 by 4 cells with one transparent cell at `(10, 1)`, which is a hole in a drawn shape rather than a spare slot, giving 47 tiles for `Match Corners and Sides`. Its exposed-edge silhouette insets the artwork about 10 pixels from the tile boundary on open vertical edges, so tile collision is still the full square. |
 | Replace both temporary bodies in Lesson 4.2 rather than across Module 4 | Leaving the grey `Floor` or `CoyoteTestPlatform` beside painted tiles would show two kinds of ground at once. The painted level reproduces both roles: a full-width ground with its surface at `y = 896` and a raised terrace at `y = 704`. The step becomes 192 pixels instead of 200, against a measured jump rise of 261 pixels, leaving 69 pixels of clearance, so coyote time, jump buffering, and variable jump height all stay testable. |

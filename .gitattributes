@@ -1,2 +1,7 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+# Binary course assets: never normalize line endings in these.
+*.af binary
+*.png binary
+*.webp binary

@@ -4,3 +4,6 @@
 
 # Local course-reading workspace settings
 2D Platformer Course/.obsidian/
+
+# Affinity lock files, created while a document is open
+*~lock~
