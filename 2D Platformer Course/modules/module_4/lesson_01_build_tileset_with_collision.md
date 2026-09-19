@@ -1,6 +1,6 @@
 # Module 4, Lesson 1: Build a TileSet with Collision
 
-**Status:** Blueprint drafted
+**Status:** Implemented
 
 ## By the end
 

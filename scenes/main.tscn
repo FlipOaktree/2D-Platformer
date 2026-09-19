@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://xsf4auwc5hrq"]
+[gd_scene format=3]
 
-[ext_resource type="PackedScene" uid="uid://4jclya8fye78" path="res://actors/player.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" path="res://actors/player.tscn" id="2_0wfyh"]
+[ext_resource type="Script" path="res://actors/player.gd" id="2_sugp2"]
+[ext_resource type="TileSet" path="res://levels/tiles/terrain_tileset.tres" id="3_jyhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkpjr"]
 size = Vector2(1920, 64)
@@ -10,8 +12,9 @@ size = Vector2(512, 32)
 
 [node name="Main" type="Node2D" unique_id=1280542419]
 
-[node name="Player" parent="." unique_id=1623537006 instance=ExtResource("2_0wfyh")]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1623537006 instance=ExtResource("2_0wfyh")]
 position = Vector2(128, 128)
+script = ExtResource("2_sugp2")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1563314166]
 position = Vector2(960, 920)
@@ -24,3 +27,6 @@ position = Vector2(960, 704)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoyoteTestPlatform" unique_id=425189344]
 shape = SubResource("RectangleShape2D_coyote_test")
+
+[node name="Terrain" type="TileMapLayer" parent="." unique_id=740964673]
+tile_set = ExtResource("3_jyhfs")

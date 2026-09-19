@@ -54,6 +54,12 @@ not infer progress from chat history or from learner verification checkboxes.
   `res://actors/player.tscn` inherits it with `res://actors/player.gd`
   attached, then overrides the collider with a 128-by-128 rectangle matching
   its temporary 128-by-128 `Sprite2D` marker beneath `Visuals`.
+  `Main` also holds an empty `Terrain` `TileMapLayer` at `(0, 0)` using
+  `res://levels/tiles/terrain_tileset.tres`, a 47-tile TileSet of 128-pixel
+  tiles built from `res://levels/tiles/terrain.png`, every tile carrying one
+  full-square collision polygon on a single physics layer. That is the Lesson
+  4.1 result; the temporary `Floor` and `CoyoteTestPlatform` are still present
+  because Lesson 4.2 removes them.
 - **Code state:** `res://actors/player.gd` implements typed horizontal
   movement through `Input.get_axis()`, a target horizontal speed, and
   `move_toward()` with exported acceleration and deceleration rates. It uses a
@@ -109,7 +115,10 @@ not infer progress from chat history or from learner verification checkboxes.
   scratch copy and reproduced the live project's window settings exactly. The
   **Track Player Movement States** blueprint stays drafted at Lesson 5.5 until
   Module 5 is reached, and must be re-checked against the Module 4 result
-  before implementation.
+  before implementation. Module 6 was also restructured to open with extracting
+  input and movement into components, so 5.5 writes the movement state into
+  `player.gd` and Lesson 6.1 then moves it into the movement component that
+  owns it.
 - **Checkpoint:** Commit `8e07139` contains the validated curriculum through
   Module 2, validated Module 3 Lessons 3.1-3.5, the movement-state blueprint
   relocated to Lesson 5.5, and the Lesson 0.4 revision that creates the first
@@ -178,6 +187,16 @@ Use shallow inheritance plus composition:
   irrelevant features.
 - Systems communicate through typed methods and signals, not fragile node
   paths or repeated actor-type checks.
+- An actor script is an orchestrator. It owns the body state that only the
+  body can own, such as `velocity`, `is_on_floor()`, and the single call to
+  `move_and_slide()`, and it drives its components in a defined order.
+- Components own their own configuration and their own runtime state. They do
+  not reach upward into their owner and do not call `move_and_slide()`.
+- Input is separated from movement by an intent boundary. An input component
+  turns devices into intent, such as a direction and whether jump is pressed
+  or held; a movement component consumes intent and never reads `Input`. A
+  non-player actor supplies the same intent from an AI source instead, which
+  is what makes one movement component serve players, NPCs, and enemies.
 - Data-driven content uses Godot Resources and stable IDs.
 - Global services are limited to state that genuinely crosses scenes, such as
   scene flow, saving, settings, and persistent quest state.
@@ -281,7 +300,7 @@ elements around clear spawn and boundary contracts.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 128-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Blueprint drafted | Uncommitted working tree |
+| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 128-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Implemented | Uncommitted working tree |
 | 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Blueprint drafted | Uncommitted working tree |
 | 4.3 | Build a Reusable Level Scene | Level scene boundary | Planned | Unassigned |
 | 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
@@ -302,24 +321,28 @@ explicit where the animation work first needs it.
 | 5.2 | Configure Camera Limits and Smoothing | Limits and smoothing | Planned | Unassigned |
 | 5.3 | Add Look-Ahead Behavior | Camera behavior component | Planned | Unassigned |
 | 5.4 | Import Character Art | Import settings and sprite presentation | Planned | Unassigned |
-| 5.5 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()` | Blueprint drafted | `34c9235`; retuned values in `3abdd88` and `5ca7c9d` |
+| 5.5 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()`; the state moves into the movement component in Lesson 6.1 | Blueprint drafted | `34c9235`; retuned values in `3abdd88` and `5ca7c9d` |
 | 5.6 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
 | 5.7 | Create a Module 5 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 6: Shared Actor Capabilities
 
-**Depends on:** Modules 2-5. **Outcome:** Add the common removable components
-that later player, NPC, and enemy features reuse.
+**Depends on:** Modules 2-5. **Outcome:** Turn the Player's built-in movement
+into reusable components, then add the common removable capabilities that later
+player, NPC, and enemy features reuse.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 6.1 | Create a Reusable Health Component | Health API and change signals | Planned | Unassigned |
-| 6.2 | Create Hitbox and Hurtbox Components | Damage contract and collision layers | Planned | Unassigned |
-| 6.3 | Add Actor Factions | Faction data and targeting rules | Planned | Unassigned |
-| 6.4 | Add an Interaction Component | Generic interaction contract | Planned | Unassigned |
-| 6.5 | Add Persistent Actor Identity | Stable persistent IDs | Planned | Unassigned |
-| 6.6 | Customize and Remove Actor Components | Optional-component verification | Planned | Unassigned |
-| 6.7 | Create a Module 6 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 6.1 | Extract Input and Movement into Components | Component contract, the intent boundary, an orchestrator script, and refactoring working code without changing its behavior | Planned | Unassigned |
+| 6.2 | Reuse Movement on a Second Actor | A minimal NPC driven by the same movement component through a different intent source | Planned | Unassigned |
+| 6.3 | Create a Reusable Health Component | Health API and change signals | Planned | Unassigned |
+| 6.4 | Build a Destructible Box | An actor with health and no movement or input, proving components are independent | Planned | Unassigned |
+| 6.5 | Create Hitbox and Hurtbox Components | Damage contract and collision layers | Planned | Unassigned |
+| 6.6 | Add Actor Factions | Faction data and targeting rules | Planned | Unassigned |
+| 6.7 | Add an Interaction Component | Generic interaction contract | Planned | Unassigned |
+| 6.8 | Add Persistent Actor Identity | Stable persistent IDs | Planned | Unassigned |
+| 6.9 | Customize and Remove Actor Components | Optional-component verification | Planned | Unassigned |
+| 6.10 | Create a Module 6 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 7: Hazards, Defeat, and Respawning
 
@@ -526,8 +549,9 @@ practical use and later lessons can build on them without re-teaching them.
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
 | Released-input detection and proportional velocity change | 3.5 | Held actions, charged abilities, and responsive controls |
 | `enum` and a stored movement state | 5.5 | Animation, facing direction, enemy behavior, and combat state |
-| Signals and removable components | 6.1-6.6 | Combat, inventory, quests, UI, saving |
-| Stable IDs and Resources | 6.5, 10.1 | Dialogue, quests, persistence |
+| Component contract, intent boundary, and orchestrator script | 6.1 | Every later component, and all NPC and enemy behavior |
+| Signals and removable components | 6.1-6.9 | Combat, inventory, quests, UI, saving |
+| Stable IDs and Resources | 6.8, 10.1 | Dialogue, quests, persistence |
 | Minimal global services | 13.4 | Scene flow, saving, settings, quest state |
 | Versioned persistence | 15.1-15.9 | All persistent systems |
 
@@ -619,3 +643,6 @@ Remaining reconciliation work:
 | Split the TileSet lesson in two at the collision boundary | The first draft carried two outcomes in one lesson: tiles that are solid, and tiles that connect automatically. Lesson 4.1 now ends when the Player stands on tiles the learner painted, and Lesson 4.2 adds the terrain and draws the level. Both halves keep an observable result, so neither becomes the kind of payoff-deferred lesson that moved the movement-state lesson to Module 5. The terrain half also carries the repetition risk of sixteen tiles, so it earns its own Codex review and its own checklist. Former Lessons 4.2-4.7 shift to 4.3-4.8. |
 | Supply the tile artwork with the course | The project contained no art but `icon.svg`, and Module 5.4 is the first lesson that teaches import settings. A course-supplied atlas keeps Lessons 4.1 and 4.2 on the tiles themselves, works with Godot import defaults, and leaves character-art importing to 5.4. The first draft used a generated 16-tile placeholder of 64-pixel tiles; it was replaced by `terrain.png`, a hand-drawn 47-tile blob atlas of 128-pixel tiles authored in `terrain-template.af`, and the placeholder and its generator were deleted. The atlas was verified in Godot 4.7.2: 12 by 4 cells with one transparent cell at `(10, 1)`, which is a hole in a drawn shape rather than a spare slot, giving 47 tiles for `Match Corners and Sides`. Its exposed-edge silhouette insets the artwork about 10 pixels from the tile boundary on open vertical edges, so tile collision is still the full square. |
 | Replace both temporary bodies in Lesson 4.2 rather than across Module 4 | Leaving the grey `Floor` or `CoyoteTestPlatform` beside painted tiles would show two kinds of ground at once. The painted level reproduces both roles: a full-width ground with its surface at `y = 896` and a raised terrace at `y = 704`. The step becomes 192 pixels instead of 200, against a measured jump rise of 261 pixels, leaving 69 pixels of clearance, so coyote time, jump buffering, and variable jump height all stay testable. |
+| Teach movement as built-in first, then extract it into components in Module 6 | Modules 2 and 3 build movement directly inside `player.gd`, and new Lesson 6.1 refactors it into an input component, a movement component, and an orchestrator. Extracting earlier would repeat the mistake this log already recorded twice: the standalone target-based movement bridge was removed and the movement-state lesson moved to Module 5, both because the lesson arrived before anything consumed it. No second actor exists until Module 6, which is also where the architecture already requires a component to be shown on two actor types. Refactoring is additive, so Lessons 2.8-3.5 keep their validated text and only their result changes. It also teaches the component contract on code the learner wrote and already understands. |
+| Separate input from movement with an intent boundary | An input component turns devices into intent and a movement component consumes intent, so neither knows about the other. A movement component that read `Input` directly could never drive an NPC or an enemy, which is the whole reason for extracting it. Lesson 6.2 proves the boundary immediately by driving a second actor with the same movement component from a different intent source, and Lesson 6.4 adds a destructible box that takes health with no movement or input at all. |
+| Keep Actor as a shallow scene base rather than removing inheritance | The composition material that prompted this change treats inheritance as a trap, but `Actor` carries shared scene structure and attachment points, not behavior. Behavior already lives in components after Lesson 6.1. Replacing the scene base with duplicated structure in every actor would cost reuse and gain nothing, so the shallow base stays. |
