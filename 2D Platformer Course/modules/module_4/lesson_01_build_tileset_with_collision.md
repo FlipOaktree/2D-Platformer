@@ -1,6 +1,6 @@
 # Module 4, Lesson 1: Build a TileSet with Collision
 
-**Status:** Implemented
+**Status:** Validated
 
 ## By the end
 
@@ -107,13 +107,23 @@ tiles you painted yourself.
 2. Open the **TileSet** tab.
 3. Drag `terrain.png` from **FileSystem** onto the TileSet panel.
 4. Godot asks whether to create tiles automatically. Answer **Yes**.
-5. Confirm that the panel shows a 12-by-4 grid, and that the square in column
-   10, row 1 is the only one left without a tile.
+5. Confirm that the panel shows a 12-by-4 grid with a tile in every square.
+6. Right-click the tile at atlas coordinates `(10, 1)` and delete it.
+   Coordinates count from `(0, 0)` in the top-left corner, so that is the
+   eleventh column from the left and the second row from the top: the
+   transparent square left by the hole in the fourth shape.
+7. Confirm that 47 tiles remain and that `(10, 1)` is now the only square
+   without one.
 
-> 💡 Godot creates a tile only where the artwork has something to show: parts
-> of a tilesheet that are fully transparent get no tile. That is why the grid
-> has 48 squares but 47 tiles, and it is why Part 2 set the tile size first.
-> Automatic creation reads the image through the grid it is given.
+> 💡 Automatic creation fills the grid it is given. It makes a tile in all 48
+> squares, including the transparent one, so that square has to be removed by
+> hand. Leaving it would put an invisible solid block in the palette, easy to
+> paint by accident and hard to find afterwards.
+
+> 💡 Remove it now rather than later. The next part selects every tile at once
+> to give them collision, and a tile deleted beforehand simply is not in that
+> selection. Delete it afterwards instead and you have already spent a step
+> giving a collision shape to something that should not exist.
 
 > 💡 Each tile is identified by its column and row inside the atlas, counting
 > from `(0, 0)` in the top-left corner. Those atlas coordinates are how the
@@ -124,8 +134,8 @@ tiles you painted yourself.
 > - If a single large tile appears instead of a grid, the tile size was still
 >   `(16, 16)` when you added the image. Remove the source, correct **Tile
 >   Size**, and drag the image in again.
-> - If a tile was also created at column 10, row 1, delete that one tile. It
->   has no artwork, and painting it would place an invisible solid square.
+> - If `(10, 1)` still holds a tile after step 6, it was not removed. Every
+>   later check in this lesson counts 47 tiles, not 48.
 > - If you answered **No** to the prompt, remove the source and drag the image
 >   in a second time rather than adding 47 tiles by hand.
 
@@ -134,11 +144,22 @@ tiles you painted yourself.
 1. Select the TileSet resource in the Inspector.
 2. Expand **Physics Layers** and add one element. Leave its collision layer and
    mask at their defaults.
-3. Return to the **TileSet** tab and select every tile by clicking the
-   top-left tile and `Shift`-clicking the bottom-right tile.
-4. With them all selected, add a collision polygon on the new physics layer and
-   reset it to the full tile square.
-5. Confirm that every tile now shows a square outline covering its whole area.
+3. Return to the **TileSet** tab at the bottom of the editor. In **Tile
+   Sources** on the left, select `terrain.png`.
+4. Above the atlas, switch from **Setup** to **Select**. Setup is for cutting
+   the image into tiles, which Part 3 already did; **Select** is where a tile's
+   own properties are edited.
+5. Select every tile: hold `Shift`, press the mouse button on the top-left
+   tile, drag across the whole grid, and release on the bottom-right tile. The
+   hint under the atlas confirms this, reading **Hold Shift to select multiple
+   regions**.
+6. With every tile selected, find the **Tiles** panel to the left of the atlas
+   and expand **Physics**, then open the physics layer you added in step 2.
+7. A tile starts with no collision polygon at all, so draw one. Choose the
+   **Add points** tool and click each of the four corners of the tile in turn,
+   which outlines the whole tile. Use the **Edit points** tool afterwards if a
+   corner needs nudging.
+8. Confirm that every tile now shows a square outline covering its whole area.
 
 > 💡 A physics layer is what turns painted artwork into something solid.
 > Tiles drawn without one are only a picture, and the Player falls straight
@@ -154,14 +175,14 @@ tiles you painted yourself.
 > most common mistake in this lesson is a single tile that was missed, which
 > produces one invisible gap somewhere in a finished level.
 
-6. Open the **TileMap** tab, choose any tile, and paint a short row of cells in
+9. Open the **TileMap** tab, choose any tile, and paint a short row of cells in
    the empty space above the `Floor` and to the left of the Player.
-7. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
-8. Run the current scene with `F6`.
-9. Move the Player onto the painted row and confirm that it stands on the tiles
-   instead of passing through them.
-10. Stop the scene with `F8`.
-11. Undo the painted cells with `Ctrl+Z` until the `Terrain` layer is empty
+10. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
+11. Run the current scene with `F6`.
+12. Move the Player onto the painted row and confirm that it stands on the
+    tiles instead of passing through them.
+13. Stop the scene with `F8`.
+14. Undo the painted cells with `Ctrl+Z` until the `Terrain` layer is empty
     again, and save `main.tscn` with `Ctrl+S`.
 
 The painted row was a test, not the level. Removing it now keeps the next
@@ -175,8 +196,12 @@ messages in Module 2 were removed once they had shown what they needed to show.
 >   required.
 > - If the Player falls through only in places, one tile was missed. Select
 >   them all again and check that each shows an outline.
-> - If the outline is smaller than the tile, the polygon was drawn by hand
->   rather than reset to the full square.
+> - If the outline is smaller than the tile, a corner was clicked short of the
+>   edge. Switch to **Edit points** and drag it out to the corner.
+> - If only one tile stays selected, `Shift` was not held for the whole drag.
+>   Holding `Shift` and clicking adds one tile at a time, which is useful for
+>   picking out scattered tiles; holding `Shift` and dragging takes everything
+>   the drag passes over, which is what this step needs.
 > - If the tiles appear but the Player passes through and no outlines are
 >   drawn, confirm that **Visible Collision Shapes** is enabled and that you
 >   restarted the scene afterward.

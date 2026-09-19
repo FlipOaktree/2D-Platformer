@@ -24,8 +24,9 @@ not infer progress from chat history or from learner verification checkboxes.
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; and Module 3,
-  Lessons 3.1-3.6, which completes Module 3. Lesson 1.2 was replay-verified
+  1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
+  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lesson 4.1.
+  Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
   block exactly, the Label survived, and a headless load and run produced no
@@ -80,18 +81,24 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Review the two Module 4 blueprints that open the module,
-  Lesson 4.1 **Build a TileSet with Collision** and Lesson 4.2 **Paint a Level
-  with Terrain Autotiling**, and decide whether to approve them for
-  implementation. Together they replace the temporary Floor and
-  `CoyoteTestPlatform` with a painted tiled level. Their combined procedure,
-  tile data, and resulting geometry were prototyped in a scratch copy of the
-  project and checked against Godot 4.7.2; nothing in the repository Godot
-  project has changed yet. Several editor labels in both lessons still need
-  confirming against the running editor during implementation, including the
-  FileSystem re-scan wording, whether the TileMap editor shows a hovered cell
-  coordinate, and the controls for adding a collision polygon and painting
-  peering bits. Both lessons now use `terrain.png`, which is a 2x redraw of the
+- **Exact next step:** Settle Lesson 4.2's peering-bit data, then implement it.
+  The lesson is a drafted blueprint and the only part still unproven is how
+  each tile's terrain marks should be set. The practical route is to configure
+  the terrain once in the editor against the configured example in Godot's
+  **Using TileSets** page, then read the marks back out of the saved
+  `terrain_tileset.tres` and turn them into a checkable reference for the
+  lesson. Lesson 4.1 is Validated: its procedure was walked in the editor, and
+  four steps were corrected in the process. Automatic tile creation was found
+  to fill the whole grid rather than skip the fully transparent square, which
+  the Godot page's wording had suggested it would, so the lesson now creates
+  48 tiles and deletes `(10, 1)` by right-clicking it. The square was confirmed
+  to be genuinely empty, with a maximum alpha of `0.0` across all 16384 pixels,
+  so the artwork is not the cause. The other corrections were holding `Shift`
+  while dragging to select every tile, switching the atlas from **Setup** to
+  **Select** before editing tile properties, and drawing each collision polygon
+  with the **Add points** tool by clicking the four corners, since a tile
+  starts with no polygon at all. Both lessons use `terrain.png`, which is a 2x
+  redraw of the
   terrain example tilesheet in Godot's own **Using TileSets** page: the same
   12-by-4 arrangement, the same four shapes, and the same hole at `(10, 1)`.
   Lesson 4.2 does not publish a per-tile peering-bit table. Two attempts to
@@ -300,7 +307,7 @@ elements around clear spawn and boundary contracts.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 128-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Implemented | Uncommitted working tree |
+| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 128-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
 | 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Blueprint drafted | Uncommitted working tree |
 | 4.3 | Build a Reusable Level Scene | Level scene boundary | Planned | Unassigned |
 | 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
