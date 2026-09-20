@@ -98,6 +98,12 @@ what changes is where the level lives and who owns it.
 > by hand, as the exercise does, is the manual version of what Module 13 later
 > does in code.
 
+> 💡 A level instance belongs at Position `(0, 0)`. Its cells were painted
+> against the world origin, so cell `(0, 0)` is the top-left corner of the
+> viewport frame. Move the instance and the whole level moves with it, off the
+> frame it was drawn to fit. Dropping a scene into the 2D viewport places it
+> wherever the mouse was, so it is worth checking after every swap.
+
 > 💡 The node is called `Level` while the file is called `level_1.tscn`, and
 > the difference matters. The file name says which level this is; the node
 > name says what it is. Every level scene uses the same root name, so
@@ -149,11 +155,13 @@ what changes is where the level lives and who owns it.
 3. In `main.tscn`, delete the `Level` instance and drag `level_2.tscn` into
    `Main` in its place.
 4. Confirm that the new instance is also called `Level`, because both files
-   share a root name.
+   share a root name, and that its Position is `(0, 0)`. Dropping a scene into
+   the 2D viewport places it where the mouse was, so set it back to `(0, 0)`
+   if it landed anywhere else.
 5. Run `main.tscn` and confirm that the other level loads, with no other
    change anywhere in the project.
 6. Restore the original by deleting the second instance and dragging
-   `level_1.tscn` back in.
+   `level_1.tscn` back in, again at Position `(0, 0)`.
 7. Explain why the Player is not part of the level scene, and what would have
    to change in step 3 if it were.
 8. Describe what you had to do by hand in step 3, and what a game would have
@@ -180,6 +188,8 @@ what changes is where the level lives and who owns it.
 - [ ] The learner made a second level by duplicating the file and swapped it in
       without editing anything else.
 - [ ] Both level scenes use `Level` as their root node name.
+- [ ] The `Level` instance in `main.tscn` sits at Position `(0, 0)`, including
+      after the exercise swaps it.
 - [ ] The learner can explain what belongs in a level scene and what belongs in
       `Main`.
 - [ ] The learner can explain why `Main` holds one level at a time rather than

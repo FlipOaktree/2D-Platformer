@@ -25,7 +25,7 @@ not infer progress from chat history or from learner verification checkboxes.
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
   1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
-  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.3.
+  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.4.
   Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
@@ -55,7 +55,12 @@ not infer progress from chat history or from learner verification checkboxes.
   `res://levels/level_1.tscn`, whose own root is a `Node2D` named `Level`
   holding the `Terrain` `TileMapLayer`. The temporary `Floor` and
   `CoyoteTestPlatform` were removed by Lesson 4.2, and Lesson 4.3 moved the
-  level out of `main.tscn`. The Input
+  level out of `main.tscn`. `Main` carries `res://scenes/main.gd`, which in
+  `_ready()` places the Player at the position the level reports. The level
+  holds a `PlayerSpawn` `Marker2D` at `(256, 896)` and carries
+  `res://levels/level.gd`, whose one method `get_spawn_position()` returns
+  that marker's `global_position`. `res://levels/level_2.tscn` has the same
+  script and its own marker at `(316, 679)`. The Input
   Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
@@ -97,11 +102,20 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Draft the Module 4, Lesson 4.4 blueprint, **Add Player
-  Spawn Points**, which gives the level a marker saying where the Player
-  starts and has `Main` place the Player there instead of leaving it at a
-  hand-typed position. Lessons 4.1 to 4.3 are Validated and walked in the
-  editor, with nothing left unconfirmed in them. Lesson 4.3 confirmed that
+- **Exact next step:** Draft the Module 4, Lesson 4.5 blueprint, **Add One-Way
+  Platforms**, which lets the Player jump up through a surface and land on it
+  from below. Lessons 4.1 to 4.4 are Validated and walked in the editor, with
+  nothing left unconfirmed in them. Lesson 4.4 introduced `Marker2D`,
+  `@onready`, node references, `global_position`, and the first scripts
+  outside the Player: `main.gd` on the orchestrator and `level.gd` on the
+  level. Its design was checked as well as its behaviour: `main.gd` never
+  names `PlayerSpawn`, so the level can rearrange its insides freely, and with
+  the level offset to `(0, -128)` the Player still arrives at the marker.
+  Swapping `global_position` for `position` was tried during drafting and puts
+  the Player 128 pixels low so it misses the ground, which is the evidence
+  behind that callout. Both level files carry the script and their own marker,
+  so a level brings its own spawn with no edit to `main.gd`.
+  Lesson 4.3 confirmed that
   reparenting `Terrain` under a node at the origin leaves its position
   untouched and its 70 cells intact, and the **Save Branch as Scene** menu
   wording was checked against the running editor. Its learner exercise was
@@ -337,7 +351,7 @@ elements around clear spawn and boundary contracts.
 | 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 64-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
 | 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | Uncommitted working tree; procedure walked in the editor |
 | 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level, and one Level root name shared by every level file | Validated | Uncommitted working tree; procedure walked in the editor |
-| 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
+| 4.4 | Add Player Spawn Points | `Marker2D`, `@onready`, node references, `global_position`, an orchestrator script on Main, and a level that answers one typed question | Validated | Uncommitted working tree; procedure walked in the editor |
 | 4.5 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
 | 4.6 | Add Moving Platforms | Reusable moving surface | Planned | Unassigned |
 | 4.7 | Add Level Bounds and Fall Detection | World bounds and fall signal | Planned | Unassigned |
@@ -579,6 +593,7 @@ practical use and later lessons can build on them without re-teaching them.
 | TileSets, TileMapLayer, and per-tile collision | 4.1 | Level scenes, spawn points, one-way and moving platforms, level bounds, and all later level content |
 | Terrain sets, Match Corners and Sides matching, and terrain painting | 4.2 | Every later level and platform element built from tiles |
 | Level scene boundary and Save Branch as Scene | 4.3 | Spawn points, level bounds, extra levels, and scene flow |
+| Node references with `@onready`, `global_position`, and an orchestrator script on Main | 4.4 | Every later script that reaches another node, and all cross-scene placement |
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
