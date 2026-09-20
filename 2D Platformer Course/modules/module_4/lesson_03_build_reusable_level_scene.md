@@ -1,6 +1,6 @@
 # Module 4, Lesson 3: Build a Reusable Level Scene
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
@@ -8,7 +8,7 @@ Move the painted level out of `main.tscn` and into a scene of its own, so a
 level becomes a thing you can make more of. Nothing about the game changes;
 what changes is where the level lives and who owns it.
 
-- `res://levels/level_1.tscn` holds the level: a `Level1` root with the
+- `res://levels/level_1.tscn` holds the level: a `Level` root with the
   `Terrain` layer inside it.
 - `main.tscn` holds the Player and one instance of `level_1.tscn`, and nothing
   else.
@@ -31,10 +31,10 @@ what changes is where the level lives and who owns it.
 
 1. Open `res://scenes/main.tscn`.
 2. Select the `Main` root and add a child node of type **Node2D**.
-3. Rename it `Level1` with `F2`.
-4. Confirm that `Level1` has Position `(0, 0)`.
-5. In the Scene dock, drag `Terrain` onto `Level1` so that it becomes a child
-   of `Level1` rather than of `Main`.
+3. Rename it `Level` with `F2`.
+4. Confirm that `Level` has Position `(0, 0)`.
+5. In the Scene dock, drag `Terrain` onto `Level` so that it becomes a child
+   of `Level` rather than of `Main`.
 6. Confirm that `Terrain` still has Position `(0, 0)` and that the level looks
    exactly as it did before the move.
 7. Save `main.tscn` with `Ctrl+S`.
@@ -47,10 +47,9 @@ what changes is where the level lives and who owns it.
 > 💡 The Player is deliberately left out. A level is the content of one
 > place: its ground, its platforms, and later its hazards and its spawn
 > point. The Player is not content. It carries on from one level to the next,
-> so it
-> belongs to `Main`. Putting a copy of the Player inside every level would
-> mean eight Players in eight levels, each needing the same fix whenever the
-> Player changes.
+> so it belongs to `Main`. Putting a copy of the Player inside every level
+> would mean eight Players in eight levels, each needing the same fix
+> whenever the Player changes.
 
 > 💡 Moving a node in the Scene dock keeps it where it is on screen. Godot
 > adjusts the node's local position so its place in the world does not change,
@@ -59,19 +58,19 @@ what changes is where the level lives and who owns it.
 
 > ⚠️ **If something differs**
 >
-> - If the level jumps when you drag `Terrain`, confirm that `Level1` is at
+> - If the level jumps when you drag `Terrain`, confirm that `Level` is at
 >   Position `(0, 0)` before dragging.
-> - If `Terrain` lands beside `Level1` instead of inside it, drop it directly
->   onto the `Level1` row rather than between rows.
+> - If `Terrain` lands beside `Level` instead of inside it, drop it directly
+>   onto the `Level` row rather than between rows.
 
 ### Part 2: Save the branch as its own scene
 
-1. Right-click `Level1` in the Scene dock and choose **Save Branch as Scene**.
+1. Right-click `Level` in the Scene dock and choose **Save Branch as Scene**.
 2. Save it as `res://levels/level_1.tscn`.
-3. Confirm that `Level1` now shows the icon Godot uses for an instanced scene,
+3. Confirm that `Level` now shows the icon Godot uses for an instanced scene,
    and that `Terrain` is no longer listed beneath it in `main.tscn`.
 4. Confirm that `level_1.tscn` appears in **FileSystem** under `res://levels/`.
-5. Open `level_1.tscn` and confirm that its root is a `Node2D` named `Level1`
+5. Open `level_1.tscn` and confirm that its root is a `Node2D` named `Level`
    with `Terrain` as its only child.
 6. Save both scenes with `Ctrl+S`.
 
@@ -86,13 +85,33 @@ what changes is where the level lives and who owns it.
 > level you open the level. That separation is what lets a second level exist
 > without `main.tscn` knowing anything about it.
 
+> 💡 One file per level is what makes a game with more than one level
+> possible. Each level is edited on its own, so work on one cannot disturb
+> another. Each is loaded only when it is played, so a game with forty levels
+> does not carry forty levels in memory. And because a level is a file, the
+> game can be told to load a different one while it runs, which is how moving
+> between levels will work in Module 13.
+
+> 💡 `Main` holds one level at a time, not all of them. It is not a shelf
+> with every level on it; it is the frame around whichever level is
+> currently being played, plus the Player who plays it. Swapping the instance
+> by hand, as the exercise does, is the manual version of what Module 13 later
+> does in code.
+
+> 💡 The node is called `Level` while the file is called `level_1.tscn`, and
+> the difference matters. The file name says which level this is; the node
+> name says what it is. Every level scene uses the same root name, so
+> `Main` always contains a node called `Level` no matter which file is loaded
+> into it. Later lessons rely on that: code that looks for the current level
+> should not have to know its number.
+
 > ⚠️ **If something differs**
 >
-> - If `Terrain` is still listed and editable under `Level1`, the branch was
+> - If `Terrain` is still listed and editable under `Level`, the branch was
 >   not converted. Undo with `Ctrl+Z` and repeat the step, right-clicking
->   `Level1` rather than `Terrain`.
-> - If the saved scene's root is `Terrain` rather than `Level1`, the wrong node
->   was right-clicked. Undo and start from `Level1`.
+>   `Level` rather than `Terrain`.
+> - If the saved scene's root is `Terrain` rather than `Level`, the wrong node
+>   was right-clicked. Undo and start from `Level`.
 > - If `levels/level_1.tscn` is missing, check where the save dialog was
 >   pointing. It opens in the last folder used, which may not be `levels`.
 
@@ -114,7 +133,7 @@ what changes is where the level lives and who owns it.
 
 > ⚠️ **If something differs**
 >
-> - If the level has vanished, confirm that `Main` still holds the `Level1`
+> - If the level has vanished, confirm that `Main` still holds the `Level`
 >   instance and that it sits at Position `(0, 0)`.
 > - If the level is drawn but nothing is solid, open `level_1.tscn` and confirm
 >   `Terrain` still uses `terrain_tileset.tres`.
@@ -127,20 +146,24 @@ what changes is where the level lives and who owns it.
    copy `level_2.tscn`.
 2. Open `level_2.tscn` and paint a different arrangement of ground and
    platforms with the `Ground` terrain.
-3. In `main.tscn`, delete the `Level1` instance and drag `level_2.tscn` into
+3. In `main.tscn`, delete the `Level` instance and drag `level_2.tscn` into
    `Main` in its place.
-4. Run `main.tscn` and confirm that the other level loads, with no other
+4. Confirm that the new instance is also called `Level`, because both files
+   share a root name.
+5. Run `main.tscn` and confirm that the other level loads, with no other
    change anywhere in the project.
-5. Restore the original by deleting the second instance and dragging
+6. Restore the original by deleting the second instance and dragging
    `level_1.tscn` back in.
-6. Explain why the Player is not part of the level scene, and what would have
+7. Explain why the Player is not part of the level scene, and what would have
    to change in step 3 if it were.
+8. Describe what you had to do by hand in step 3, and what a game would have
+   to do instead to change level while it is running.
 
 ## Verification checklist
 
-- [ ] `res://levels/level_1.tscn` exists, with a `Node2D` root named `Level1`
+- [ ] `res://levels/level_1.tscn` exists, with a `Node2D` root named `Level`
       at Position `(0, 0)`.
-- [ ] `Terrain` is a child of `Level1`, sits at Position `(0, 0)`, and still
+- [ ] `Terrain` is a child of `Level`, sits at Position `(0, 0)`, and still
       uses `res://levels/tiles/terrain_tileset.tres`.
 - [ ] `Terrain` still holds the 70 cells painted in Lesson 2, unchanged.
 - [ ] `main.tscn` contains exactly two children: the Player and one instance
@@ -156,8 +179,11 @@ what changes is where the level lives and who owns it.
       unexplained warnings.
 - [ ] The learner made a second level by duplicating the file and swapped it in
       without editing anything else.
+- [ ] Both level scenes use `Level` as their root node name.
 - [ ] The learner can explain what belongs in a level scene and what belongs in
       `Main`.
+- [ ] The learner can explain why `Main` holds one level at a time rather than
+      all of them.
 
 ## References
 

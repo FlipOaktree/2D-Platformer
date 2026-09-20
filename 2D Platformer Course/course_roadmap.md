@@ -25,7 +25,7 @@ not infer progress from chat history or from learner verification checkboxes.
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
   1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
-  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.2.
+  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.3.
   Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
@@ -51,8 +51,11 @@ not infer progress from chat history or from learner verification checkboxes.
   replay remains part of the full-course rebuild gate.
 - **Godot evidence:** The project draws a 1920-by-1080 viewport with stretch
   mode `canvas_items` and aspect `keep`. `Main` contains one inherited `Player`
-  instance at `(128, 128)` and a `Terrain` `TileMapLayer`. The temporary
-  `Floor` and `CoyoteTestPlatform` were removed by Lesson 4.2. The Input
+  instance at `(128, 128)` and one `Level` instance of
+  `res://levels/level_1.tscn`, whose own root is a `Node2D` named `Level`
+  holding the `Terrain` `TileMapLayer`. The temporary `Floor` and
+  `CoyoteTestPlatform` were removed by Lesson 4.2, and Lesson 4.3 moved the
+  level out of `main.tscn`. The Input
   Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
@@ -60,7 +63,7 @@ not infer progress from chat history or from learner verification checkboxes.
   `res://actors/player.tscn` inherits it with `res://actors/player.gd`
   attached, then overrides the collider with a 128-by-128 rectangle matching
   its temporary 128-by-128 `Sprite2D` marker beneath `Visuals`.
-  `Terrain` sits at `(0, 0)` and uses
+  `Terrain` sits at `(0, 0)` inside the level scene and uses
   `res://levels/tiles/terrain_tileset.tres`, a 47-tile TileSet of 64-pixel
   tiles built from `res://levels/tiles/terrain.png`. Every tile carries one
   full-square collision polygon on a single physics layer, and every tile
@@ -94,17 +97,21 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Review the Module 4, Lesson 4.3 blueprint, **Build a
-  Reusable Level Scene**, and decide whether to approve it. It moves the
-  painted level out of `main.tscn` into `res://levels/level_1.tscn` using
-  **Save Branch as Scene**, leaves the Player in `Main`, and proves the reuse
-  by having the learner duplicate the file into a second level and swap it in.
-  Two things in it are unverified and need confirming while it is walked: the
-  **Save Branch as Scene** menu wording, and whether reparenting `Terrain`
-  under a node at the origin leaves its position untouched as the lesson
-  claims. Lessons 4.1 and 4.2 are
-  both Validated, walked in the editor, and Module 4 now has real level
-  content in place of the two temporary bodies. Lesson 4.1 had four steps
+- **Exact next step:** Draft the Module 4, Lesson 4.4 blueprint, **Add Player
+  Spawn Points**, which gives the level a marker saying where the Player
+  starts and has `Main` place the Player there instead of leaving it at a
+  hand-typed position. Lessons 4.1 to 4.3 are Validated and walked in the
+  editor, with nothing left unconfirmed in them. Lesson 4.3 confirmed that
+  reparenting `Terrain` under a node at the origin leaves its position
+  untouched and its 70 cells intact, and the **Save Branch as Scene** menu
+  wording was checked against the running editor. Its learner exercise was
+  replayed: `res://levels/level_2.tscn` exists with the same `Level` root and
+  a different shape of 91 painted cells, which is what proves a level can be
+  duplicated and swapped without editing anything else.
+  Every level file uses `Level` as its root node name, so `Main` always holds
+  a node called `Level` whichever file is loaded, which is the name Module 13
+  will look for when it changes level in code. `Main` holds one level at a
+  time and is not a container for all of them. Lesson 4.1 had four steps
   corrected while it was walked. Automatic tile creation was found
   to fill the whole grid rather than skip the fully transparent square, which
   the Godot page's wording had suggested it would, so the lesson now creates
@@ -329,7 +336,7 @@ elements around clear spawn and boundary contracts.
 | --- | --- | --- | --- | --- |
 | 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 64-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
 | 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | Uncommitted working tree; procedure walked in the editor |
-| 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level | Blueprint drafted | Uncommitted working tree |
+| 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level, and one Level root name shared by every level file | Validated | Uncommitted working tree; procedure walked in the editor |
 | 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
 | 4.5 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
 | 4.6 | Add Moving Platforms | Reusable moving surface | Planned | Unassigned |
@@ -676,4 +683,4 @@ Remaining reconciliation work:
 | Keep Actor as a shallow scene base rather than removing inheritance | The composition material that prompted this change treats inheritance as a trap, but `Actor` carries shared scene structure and attachment points, not behavior. Behavior already lives in components after Lesson 6.1. Replacing the scene base with duplicated structure in every actor would cost reuse and gain nothing, so the shallow base stays. |
 | Move to 64-pixel tiles and raise the jump so the test platform can be passed under | The first tiled level used 128-pixel tiles and a terrace resting on the ground, which lost something the original grey `CoyoteTestPlatform` had: the Player could walk beneath it. Restoring that needs `step >= Player height + tile thickness + clearance`, so at least 224 pixels, while the jump has to reach it. At 128-pixel tiles no grid position satisfies both. At 64 pixels the 256-pixel step does, but only if the jump clears it by a usable margin: at `-1100` the Player is high enough for 9 frames, 0.15 seconds, which is frame-perfect rather than playable. `jump_velocity` therefore moved to `-1200`, giving a 310-pixel rise, a 54-pixel margin, and a 26-frame window. Airtime goes from 0.95 to 1.03 seconds and jump height from two to about two and a half Player heights. |
 | Place the temporary Floor and platform on the tile grid from the start | Modules 2 and 3 now put the Floor surface at `y = 960` and the platform at `y = 704` to `768`, which are the exact surfaces Module 4 paints tiles onto. The transition becomes painting over the placeholders and deleting them, with no geometry moving and no movement re-tuning. The earlier arrangement forced Lesson 4.2 to explain a step that changed size, and forced a second round of measurement. |
-| Keep the Player in `Main` rather than inside each level scene | Lesson 4.3 moves the painted level into `level_1.tscn` but leaves the Player where it is. A level holds the content of one place: ground, platforms, and later hazards and a spawn marker. The Player carries on between levels, so a copy inside every level would multiply the same node and the same future fix across every level file. This is also what Lesson 4.4 needs: the level declares where the Player starts and `Main` owns the Player that goes there. |
+| Keep the Player in `Main` rather than inside each level scene | Lesson 4.3 moves the painted level into `level_1.tscn` but leaves the Player where it is. A level holds the content of one place: ground, platforms, and later hazards and a spawn marker. The Player carries on between levels, so a copy inside every level would multiply the same node and the same future fix across every level file. This is also what Lesson 4.4 needs: the level declares where the Player starts and `Main` owns the Player that goes there. Every level file uses `Level` as its root node name, so `Main` always holds a node called `Level` whichever level is loaded, and `Main` holds exactly one at a time rather than a shelf of all of them. |
