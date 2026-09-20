@@ -1,6 +1,6 @@
 # Module 4, Lesson 2: Paint a Level with Terrain Autotiling
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 
@@ -11,14 +11,14 @@ stood in for a level since Module 2 finally come out.
 - A `Ground` terrain records where each tile's ground continues past its edge.
 - Painting with that terrain makes Godot choose the tile that fits its
   neighbours, including at every corner and edge.
-- `main.tscn` holds a full-width tiled ground and a raised terrace, and no
+- `main.tscn` holds a full-width tiled ground and a floating platform, and no
   longer contains `Floor` or `CoyoteTestPlatform`.
 - Every movement feature from Module 3 still works on the new level.
 
 ## Before you start
 
 - Module 4, Lesson 1 is complete and validated.
-- `res://levels/tiles/terrain_tileset.tres` holds 47 solid tiles of 128 by 128
+- `res://levels/tiles/terrain_tileset.tres` holds 47 solid tiles of 64 by 64
   pixels, each with a collision polygon covering the whole tile.
 - `main.tscn` contains the Player, an empty `Terrain` layer, the temporary
   `Floor`, and the raised `CoyoteTestPlatform`.
@@ -57,11 +57,21 @@ stood in for a level since Module 2 finally come out.
 
 ### Part 2: Describe the tiles you are about to use
 
-1. Return to the **TileSet** tab and switch to its terrain-painting mode.
-2. Select the `Ground` terrain.
-3. For each tile, mark the centre to say "this tile is ground", then mark each
-   side and corner where the ground continues past that edge.
-4. Read the answer off the artwork rather than memorising it:
+1. Return to the **TileSet** tab and select `terrain.png` in **Tile Sources**.
+2. Above the atlas, switch from **Select** to **Paint**. A **Paint
+   Properties** panel appears on the left.
+3. In **Paint Properties**, open the dropdown at the top and choose
+   **Terrains**. A **Painting** section appears below it.
+4. Set **Terrain Set** to `Terrain Set 0` first, then set **Terrain** to
+   `Ground`. The set has to be chosen before the terrain, because the terrain
+   list is filled from whichever set is selected.
+5. Click a tile, or drag across several, to select them. This first pass only
+   selects and paints nothing.
+6. Go over a selected tile again to paint it. Clicking its centre marks it as
+   ground and leaves a small green square there. Clicking a side or a corner
+   marks that peering bit, for each side and corner where the ground continues
+   past the tile's edge.
+7. Read the answer off the artwork rather than memorising it:
    - A green top means nothing sits above that tile, so its top is open.
    - Plain ground running all the way to an edge means the ground carries on
      in that direction, so that side is marked.
@@ -69,15 +79,29 @@ stood in for a level since Module 2 finally come out.
      itself. A corner may be marked even when a side beside it is not; that is
      how the tiles around an inside corner are drawn.
 
+> 💡 **Paint** still starts with a pass that selects, as **Select** mode did
+> in Lesson 1. What differs is the second pass: you pick one value and brush
+> it onto the selection, and where you click inside a tile decides which part
+> of it you are marking. Selecting is per tile, so a tile you have not gone
+> over twice has not been painted, however obvious its artwork looks.
+
+> 💡 Because selecting works by dragging, the centre mark does not have to be
+> done tile by tile. Every tile in this set is ground, so drag across the whole
+> atlas to select it, then drag across it again over the centres to mark them
+> all at once. That leaves only the sides and corners, which genuinely do
+> differ from tile to tile.
+
 > 💡 Do not assume a tile's neighbours in the atlas are its neighbours in a
 > level. The sheet is a set of shapes drawn for the artist's convenience, and
 > two tiles sitting side by side in the atlas are often not meant to sit side
 > by side in a level. Judge every tile on its own artwork.
 
-> 💡 This sheet follows the terrain example in Godot's own **Using TileSets**
-> page, listed in the References. That page shows the same sheet with its
-> terrain already configured, which makes it a useful second opinion whenever a
-> tile's marks are not obvious from the artwork alone.
+> 💡 `assets/terrain_peering_reference.png` shows the finished answer for
+> every tile: a large square in the centre where the tile is ground, a bar on
+> each marked side, and a small square in each marked corner. Use it to check
+> a tile you are unsure of, or to check your work at the end. Try reading the
+> artwork first, though. That is the skill that carries over to a tileset
+> nobody has published an answer for.
 
 > 💡 You do not have to describe all 47 tiles before you can paint. Describe
 > the ones a simple rectangular shape needs first: a flat top, a left and right
@@ -111,11 +135,12 @@ stood in for a level since Module 2 finally come out.
 1. Open the **TileMap** tab and select its **Terrains** tab.
 2. Choose the `Ground` terrain and the **Connect** painting mode.
 3. Choose the **Rectangle** tool.
-4. Drag a rectangle from cell `(0, 7)` to cell `(14, 8)`. This is the ground:
-   the full width of the viewport, two rows deep, with its surface at
-   `y = 896`.
-5. Drag a second rectangle from cell `(5, 6)` to cell `(9, 6)`. This is the
-   raised terrace, one row tall, with its surface at `y = 768`.
+4. Drag a rectangle from cell `(0, 15)` to cell `(29, 16)`. This is the
+   ground: the full width of the viewport, two rows deep, with its surface at
+   `y = 960`.
+5. Drag a second rectangle from cell `(10, 11)` to cell `(19, 11)`. This is
+   the platform, one row tall, with its surface at `y = 704`. It floats clear
+   of the ground rather than resting on it.
 6. Look for any cell that stayed empty. Each one names a combination that Part
    2 has not described yet. Describe those tiles, then paint the gap again.
 7. Now look at the result properly. Every top surface should be green, every
@@ -126,58 +151,67 @@ stood in for a level since Module 2 finally come out.
 10. Save `main.tscn` with `Ctrl+S`.
 
 > 💡 Cell `(0, 0)` is the top-left corner of the viewport frame, so cell
-> `(0, 7)` is seven rows below the top of the frame and cell `(14, 8)` is the
-> last column on the right. If you lose track while dragging, count rows down
-> from that corner; the **Rectangle** tool previews the area before you release
-> the button.
+> `(0, 15)` is fifteen rows below the top of the frame and cell `(29, 16)` is
+> the last column on the right. If you lose track while dragging, count rows
+> down from that corner; the **Rectangle** tool previews the area before you
+> release the button.
 
-> 💡 The terrace surface is 128 pixels above the ground surface, one tile up,
-> replacing the 200-pixel step the temporary platform provided. A jump with the
-> button held rises about 261 pixels, so the Player clears the terrace with
-> about 133 pixels to spare, and the terrace still gives you a ledge to walk
-> off when testing coyote time.
+> 💡 The painted level sits exactly where the temporary bodies did. The Floor
+> surface was already at `y = 960` and the platform already occupied
+> `y = 704` to `768`, so the tiles land on the same surfaces and nothing about
+> the jump changes. That is why those two bodies were placed on 64-pixel
+> boundaries back in Modules 2 and 3.
 
-> 💡 A second row would put the terrace 256 pixels up, and a 261-pixel jump
-> would clear it by only 5 pixels. A margin that thin is not a challenge, it is
-> a coin toss, so the terrace stays one tile high.
+> 💡 The platform surface is 256 pixels above the ground and the jump rises
+> about 310 pixels, so it can be reached with 54 pixels to spare. Its
+> underside sits at `y = 768` and the Player's head reaches `y = 832` when
+> grounded, leaving 64 pixels of clearance, so the Player can also run
+> underneath it.
+
+> 💡 Reaching it needs the jump started early. The Player is only high enough
+> to land on the platform for about 26 frames, a little under half a second,
+> which is roughly 195 pixels of running. Start the jump underneath the
+> platform and you hit its underside instead.
 
 > ⚠️ **If something differs**
 >
 > - If cells stay empty after describing the missing tiles, confirm you marked
 >   their centres as well as their peering bits.
-> - If a band of colour appears where the terrace meets the ground, those cells
->   were painted as two separate shapes. Repaint the join with the **Connect**
->   mode selected.
+> - If the platform is drawn as though it rests on the ground, it was painted
+>   in the wrong row. It should float, with two empty rows beneath it.
 > - If deleting `Floor` also removes painted cells, undo with `Ctrl+Z` and
 >   confirm that you selected `Floor` in the Scene dock rather than the
 >   `Terrain` layer.
-> - If the ground stops short of the right edge, the last column is 14, not 15.
->   The viewport is 1920 pixels wide, which is 15 tiles of 128.
+> - If the ground stops short of the right edge, the last column is 29, not
+>   30. The viewport is 1920 pixels wide, which is 30 tiles of 64.
 
 ### Part 4: Ask Codex to check the tile data
 
 1. Return to the Codex project associated with this Godot folder.
 2. Ask:
 
-   > Read `levels/tiles/terrain_tileset.tres` without changing it. List every
-   > tile that has terrain peering bits set but no terrain assigned to the tile
-   > itself, every tile assigned to the terrain with no peering bits at all,
-   > and any two tiles that are assigned the same terrain and the same set of
-   > peering bits. Report the atlas coordinates for each, and change nothing.
+   > Read `levels/tiles/terrain_tileset.tres` and change nothing. Answer three
+   > questions, giving atlas coordinates:
+   >
+   > 1. How many tiles does the file define?
+   > 2. Which tiles have no collision shape?
+   > 3. Which tiles are not part of the `Ground` terrain?
 
 3. Read the response and open the **TileSet** tab to inspect every tile it
    mentions.
-4. If Codex identifies a real mismatch, correct only that tile.
+4. If Codex reports a real problem, correct only that tile.
 
-The first two patterns are always mistakes, and neither is visible by looking
-at one tile, because a tile with the wrong marks still looks perfectly normal
-in the atlas. The third is not necessarily a mistake: two tiles may genuinely
-describe the same situation so that Godot can vary the artwork between them.
-It is worth listing anyway, because an accidental duplicate usually means one
-of the two was meant to describe something slightly different.
+The answers you want are 47, none, and none. Each question catches a mistake
+that is invisible in the atlas, because a tile with something missing looks
+exactly like a tile without.
 
-If Codex is unavailable, spot-check the tiles the level actually uses against
-the artwork before continuing.
+The count matters most. A stray click in **Paint** mode can recreate the empty
+tile at `(10, 1)` that Lesson 1 deleted, and the new one carries no artwork,
+no collision, and no terrain. It is easy to make and almost impossible to
+notice. If the count comes back as 48, delete `(10, 1)` again.
+
+If Codex is unavailable, count the tiles yourself and check that every one
+shows both a collision outline and a green terrain centre.
 
 > ⚠️ **If something differs**
 >
@@ -195,15 +229,18 @@ the artwork before continuing.
    collision outlines follow the painted shape.
 4. Run left and right and confirm that acceleration, deceleration, reversal,
    and maximum speed are unchanged.
-5. Run into the side of the terrace, hold the jump button, and keep moving
-   toward it. Confirm that the Player rises past the terrace surface and lands
-   on top.
+5. Run toward the platform, starting the jump before you are underneath it,
+   and keep moving forward. Confirm that the Player rises past the platform
+   surface and lands on top.
 6. From the ground, tap the jump button briefly. Confirm that the shortened
-   jump does not reach the terrace.
-7. Walk off the edge of the terrace and press jump immediately afterward.
+   jump does not reach the platform.
+7. Walk off the edge of the platform and press jump immediately afterward.
    Confirm that the Player still jumps during the grace period.
-8. Walk off the edge again, wait noticeably longer, and confirm that the Player
-   does not jump.
+8. Walk off the edge again, wait a moment, and confirm that the Player does
+   not jump. Press before it lands: the drop is only one tile and takes about
+   a third of a second, so waiting too long lets the Player touch the ground,
+   and the jump you get then is an ordinary grounded jump that looks exactly
+   like coyote time working.
 9. While falling toward the ground, press jump just before landing and confirm
    that the buffered jump fires on contact.
 10. Walk to the far left and far right edges and confirm that the ground
@@ -216,9 +253,10 @@ the artwork before continuing.
 >
 > - If the Player sinks into the ground or stands slightly above it, confirm
 >   that each collision polygon covers the full tile rather than part of it.
-> - If the Player cannot reach the terrace with the jump held, confirm that the
->   terrace surface is at `y = 768` and that `jump_velocity` still uses its
->   validated default of `-1100.0`.
+> - If the Player cannot reach the platform with the jump held, confirm that
+>   the platform surface is at `y = 704` and that `jump_velocity` still uses
+>   its
+>   validated default of `-1200.0`.
 > - If the Player catches on an invisible edge while running, one cell in the
 >   ground is empty. Look for a gap in the collision outlines.
 > - If a movement feature behaves differently, the cause is the level rather
@@ -227,7 +265,7 @@ the artwork before continuing.
 ## Learner exercise
 
 1. Using the **Rectangle** tool and the `Ground` terrain, add a second, smaller
-   terrace to the right of the first one.
+   platform to the right of the first one.
 2. Before painting it, predict which tiles Godot will choose at its two top
    corners.
 3. Paint it and compare the result with your prediction.
@@ -243,12 +281,15 @@ the artwork before continuing.
 
 - [ ] The TileSet has exactly one terrain set, its **Mode** is **Match Corners
       and Sides**, and it contains exactly one terrain named `Ground`.
-- [ ] Every tile used by the finished level is assigned to the `Ground` terrain
-      and has peering bits matching its artwork.
-- [ ] No tile has peering bits without also being assigned to the terrain.
-- [ ] The painted ground fills cells `(0, 7)` through `(14, 8)`.
-- [ ] The painted terrace fills cells `(5, 6)` through `(9, 6)` and joins the
-      ground without a seam.
+- [ ] The TileSet still defines exactly 47 tiles, and `(10, 1)` was not
+      recreated while painting.
+- [ ] Every tile is assigned to the `Ground` terrain and still has its
+      collision shape from Lesson 1.
+- [ ] Every tile's peering bits match its artwork, and match
+      `assets/terrain_peering_reference.png`.
+- [ ] The painted ground fills cells `(0, 15)` through `(29, 16)`.
+- [ ] The painted platform fills cells `(10, 11)` through `(19, 11)` and
+      floats clear of the ground.
 - [ ] No cell inside the painted level was left empty by a missing tile
       combination.
 - [ ] Every top surface of the finished level is green, every buried cell is
@@ -257,9 +298,10 @@ the artwork before continuing.
 - [ ] `main.tscn` contains no `Floor` node and no `CoyoteTestPlatform` node.
 - [ ] `main.tscn` still contains exactly one `TileMapLayer`, named `Terrain`,
       at Position `(0, 0)`.
-- [ ] The Player comes to rest with the bottom of its collider at `y = 896`.
-- [ ] The terrace surface is at `y = 768`, 128 pixels above the ground surface.
-- [ ] A jump with the button held carries the Player onto the terrace, and a
+- [ ] The Player comes to rest with the bottom of its collider at `y = 960`.
+- [ ] The platform surface is at `y = 704`, 256 pixels above the ground, with
+      64 pixels of clearance beneath it.
+- [ ] A jump with the button held carries the Player onto the platform, and a
       tapped jump does not.
 - [ ] Coyote time, jump buffering, and variable jump height still behave as
       they did at the end of Module 3.

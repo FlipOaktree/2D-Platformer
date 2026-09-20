@@ -10,7 +10,7 @@ one the tiles exist, they are solid, and you have watched the Player stand on
 tiles you painted yourself.
 
 - `res://levels/tiles/terrain_tileset.tres` is a reusable TileSet holding 47
-  tiles of 128 by 128 pixels.
+  tiles of 64 by 64 pixels.
 - Every tile carries a collision shape, so a painted tile is solid ground.
 - `main.tscn` contains a `Terrain` layer, ready to paint on and empty.
 - The temporary `Floor` and `CoyoteTestPlatform` are still in place. The next
@@ -37,11 +37,11 @@ tiles you painted yourself.
    folder into the project's `levels\tiles\` folder.
 5. Return to Godot. The file appears in **FileSystem** under
    `res://levels/tiles/` and is imported automatically.
-6. Double-click the image to preview it and confirm that it is 1536 by 512
+6. Double-click the image to preview it and confirm that it is 768 by 256
    pixels.
 
 > 💡 A tile atlas is a single image that holds many tiles arranged in a grid.
-> This one is 12 tiles across and 4 down, with each tile 128 by 128 pixels.
+> This one is 12 tiles across and 4 down, with each tile 64 by 64 pixels.
 
 > 💡 The artwork is not drawn as 48 separate squares. It is drawn as four
 > solid shapes of ground: a narrow one-tile pillar, a three-wide block, a
@@ -50,9 +50,10 @@ tiles you painted yourself.
 > edges, corners, and a hole, the squares between them cover every way ground
 > can meet empty space. The hole is why one square of the grid is left empty.
 
-> 💡 The tiles are 128 pixels square and the Player's collider is 128 by 128,
-> so the Player is exactly one tile wide and one tile tall. That makes level
-> distances easy to reason about: a gap two tiles wide is two Player widths.
+> 💡 The tiles are 64 pixels square and the Player's collider is 128 by 128,
+> so the Player is exactly two tiles wide and two tiles tall. That makes level
+> distances easy to reason about: a gap four tiles wide is two Player widths,
+> and a platform two tiles above the ground sits one Player height up.
 
 > ⚠️ **If something differs**
 >
@@ -71,7 +72,7 @@ tiles you painted yourself.
 5. With `Terrain` selected, find **Tile Set** in the Inspector, open the menu
    beside it, and choose **New TileSet**.
 6. Click the new TileSet to open its properties and set **Tile Size** to
-   `(128, 128)`.
+   `(64, 64)`.
 7. Open the menu beside **Tile Set** again and choose **Save As...**. Save the
    resource as `res://levels/tiles/terrain_tileset.tres`.
 8. Save `main.tscn` with `Ctrl+S`.
@@ -225,7 +226,7 @@ messages in Module 2 were removed once they had shown what they needed to show.
 - [ ] `res://levels/tiles/terrain.png` exists and imports without errors.
 - [ ] `res://levels/tiles/terrain_tileset.tres` exists as its own resource file
       rather than inside `main.tscn`.
-- [ ] The TileSet's **Tile Size** is `(128, 128)`.
+- [ ] The TileSet's **Tile Size** is `(64, 64)`.
 - [ ] The TileSet has exactly one atlas source, and it uses `terrain.png`.
 - [ ] The atlas defines exactly 47 tiles in a 12-by-4 grid.
 - [ ] No tile exists at atlas coordinates `(10, 1)`.

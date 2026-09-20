@@ -55,7 +55,7 @@ not a coyote jump.
 >   standing on the platform and that jump was not pressed again until the
 >   Player was close to the Floor.
 > - If the Player misses the Floor, confirm that the original Floor remains at
->   Position `(960, 920)` with its 1920-by-64 rectangle shape.
+>   Position `(960, 992)` with its 1920-by-64 rectangle shape.
 > - If the Player cannot use the raised platform, compare `main.tscn` and
 >   `player.gd` with the validated Lesson 3.3 result before continuing.
 
@@ -175,7 +175,7 @@ the same remembered press or the same coyote-time permission for another jump.
 
    ## Upward velocity applied when a grounded jump begins.
    @export_range(-1500.0, 0.0, 10.0)
-   var jump_velocity: float = -1100.0
+   var jump_velocity: float = -1200.0
 
    ## Seconds after leaving a ledge during which jumping remains allowed.
    @export_range(0.0, 0.5, 0.01)

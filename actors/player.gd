@@ -18,7 +18,7 @@ var gravity: float = 2400.0
 
 ## Upward velocity applied when a grounded jump begins.
 @export_range(-1500.0, 0.0, 10.0)
-var jump_velocity: float = -1100.0
+var jump_velocity: float = -1200.0
 
 ## Seconds after leaving a ledge during which jumping remains allowed.
 @export_range(0.0, 0.5, 0.01)

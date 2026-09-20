@@ -25,14 +25,22 @@ not infer progress from chat history or from learner verification checkboxes.
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
   1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
-  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lesson 4.1.
+  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.2.
   Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
   block exactly, the Label survived, and a headless load and run produced no
   errors or warnings. The
   lessons that state Floor, platform, or jump values were revised for the
-  1920-by-1080 viewport and the retuned movement defaults. The
+  1920-by-1080 viewport and the retuned movement defaults, then revised again
+  for 64-pixel tiles and the `-1200.0` jump. That second pass was re-validated
+  by rebuilding the Module 3 end state from Lessons 2.9 and 3.3 as written and
+  measuring it: the Floor surface lands at `y = 960`, the platform at `y = 704`
+  with 64 pixels of clearance beneath, a held jump rises 310 pixels against the
+  256-pixel step, coyote time is accepted after 3 frames and refused after 10
+  while still airborne, and a jump pressed before landing still buffers. The
+  Lesson 3.5 final listing matches `player.gd` exactly. Jump feel at `-1200.0`
+  was confirmed interactively. The
   coordinate-theory split, revised transform and composition procedures,
   dot-syntax bridge, horizontal movement, gravity/floor procedures,
   conditional floor-state procedure, jumping procedure, exported movement
@@ -43,11 +51,8 @@ not infer progress from chat history or from learner verification checkboxes.
   replay remains part of the full-course rebuild gate.
 - **Godot evidence:** The project draws a 1920-by-1080 viewport with stretch
   mode `canvas_items` and aspect `keep`. `Main` contains one inherited `Player`
-  instance at
-  `(128, 128)`, a `Floor` `StaticBody2D` at `(960, 920)` with a 1920-by-64
-  rectangle collision shape, and a centered `CoyoteTestPlatform` `StaticBody2D`
-  at `(960, 704)` with its own 512-by-32 rectangle collision shape, leaving a
-  200-pixel step between the Floor surface and the platform surface. The Input
+  instance at `(128, 128)` and a `Terrain` `TileMapLayer`. The temporary
+  `Floor` and `CoyoteTestPlatform` were removed by Lesson 4.2. The Input
   Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
@@ -55,12 +60,19 @@ not infer progress from chat history or from learner verification checkboxes.
   `res://actors/player.tscn` inherits it with `res://actors/player.gd`
   attached, then overrides the collider with a 128-by-128 rectangle matching
   its temporary 128-by-128 `Sprite2D` marker beneath `Visuals`.
-  `Main` also holds an empty `Terrain` `TileMapLayer` at `(0, 0)` using
-  `res://levels/tiles/terrain_tileset.tres`, a 47-tile TileSet of 128-pixel
-  tiles built from `res://levels/tiles/terrain.png`, every tile carrying one
-  full-square collision polygon on a single physics layer. That is the Lesson
-  4.1 result; the temporary `Floor` and `CoyoteTestPlatform` are still present
-  because Lesson 4.2 removes them.
+  `Terrain` sits at `(0, 0)` and uses
+  `res://levels/tiles/terrain_tileset.tres`, a 47-tile TileSet of 64-pixel
+  tiles built from `res://levels/tiles/terrain.png`. Every tile carries one
+  full-square collision polygon on a single physics layer, and every tile
+  belongs to the one `Ground` terrain in a single `Match Corners and Sides`
+  terrain set. `Terrain` holds 70 painted cells: a full-width ground across
+  columns 0-29 in rows 15 and 16, with its surface at `y = 960`, and a
+  floating platform across columns 10-19 in row 11, with its surface at
+  `y = 704` and its underside at `y = 768`. The Player rests with its collider
+  bottom at `y = 960` and its head at `y = 832`, so it can run underneath the
+  platform with 64 pixels of clearance. The step is 256 pixels against a
+  measured 310-pixel held jump, leaving 54 pixels of clearance, and a tapped
+  jump reaches 109 pixels so it cannot make the step.
 - **Code state:** `res://actors/player.gd` implements typed horizontal
   movement through `Input.get_axis()`, a target horizontal speed, and
   `move_toward()` with exported acceleration and deceleration rates. It uses a
@@ -70,9 +82,10 @@ not infer progress from chat history or from learner verification checkboxes.
   jump press until landing. It shortens a rising jump by multiplying
   `velocity.y` by `jump_release_multiplier` when the `jump` action is released,
   giving variable jump height. It retains `move_and_slide()`, gravity, and
-  grounded jumping. `jump_velocity` defaults to `-1100.0` against a `2400.0`
-  gravity, which lifts the 128-pixel Player 261 pixels, about twice its own
-  height, in a 0.97-second jump. Horizontal movement runs at `450.0` pixels per
+  grounded jumping. `jump_velocity` defaults to `-1200.0` against a `2400.0`
+  gravity, which lifts the 128-pixel Player 310 pixels, about two and a half
+  times its own height, in a 1.03-second jump. Horizontal movement runs at
+  `450.0` pixels per
   second and reaches that speed in about a quarter of a second. Modules 3.1-3.5
   are validated in the current project: the eight movement values use
   documented `@export_range()` annotations, and the jump, gravity, and
@@ -81,14 +94,12 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Settle Lesson 4.2's peering-bit data, then implement it.
-  The lesson is a drafted blueprint and the only part still unproven is how
-  each tile's terrain marks should be set. The practical route is to configure
-  the terrain once in the editor against the configured example in Godot's
-  **Using TileSets** page, then read the marks back out of the saved
-  `terrain_tileset.tres` and turn them into a checkable reference for the
-  lesson. Lesson 4.1 is Validated: its procedure was walked in the editor, and
-  four steps were corrected in the process. Automatic tile creation was found
+- **Exact next step:** Draft the Module 4, Lesson 4.3 blueprint, **Build a
+  Reusable Level Scene**, which moves the painted level out of `main.tscn`
+  into a level scene that later lessons can duplicate. Lessons 4.1 and 4.2 are
+  both Validated, walked in the editor, and Module 4 now has real level
+  content in place of the two temporary bodies. Lesson 4.1 had four steps
+  corrected while it was walked. Automatic tile creation was found
   to fill the whole grid rather than skip the fully transparent square, which
   the Godot page's wording had suggested it would, so the lesson now creates
   48 tiles and deletes `(10, 1)` by right-clicking it. The square was confirmed
@@ -97,26 +108,29 @@ not infer progress from chat history or from learner verification checkboxes.
   while dragging to select every tile, switching the atlas from **Setup** to
   **Select** before editing tile properties, and drawing each collision polygon
   with the **Add points** tool by clicking the four corners, since a tile
-  starts with no polygon at all. Both lessons use `terrain.png`, which is a 2x
-  redraw of the
-  terrain example tilesheet in Godot's own **Using TileSets** page: the same
-  12-by-4 arrangement, the same four shapes, and the same hole at `(10, 1)`.
-  Lesson 4.2 does not publish a per-tile peering-bit table. Two attempts to
-  derive one failed and were discarded: reading it from the artwork stalls
-  because an open bottom edge is drawn the same plain ground as a bottom that
-  continues, and assuming each drawn shape is a solid rectangle produces a
-  terrain that paints every cell while putting grass along the underside of
-  the level. The shapes carry notches that the rectangle model misses. The
-  lesson therefore teaches reading the marks from the artwork, points at the
-  configured example in the Godot page as a second opinion, and states plainly
-  that an absence of empty cells does not mean the terrain is right. Producing
-  a verified table belongs to implementing the lesson. The level geometry was
-  re-measured for 128-pixel tiles in a scratch copy: the ground surface stays
-  at `y = 896` and the Player still rests with its collider bottom there, the
-  terrace moves to `y = 768` for a one-tile step of 128 pixels, a held jump
-  rises 261 pixels leaving 133 pixels of clearance, and a tapped jump reaches
-  95 pixels so it still cannot make the step. A two-tile step of 256 pixels
-  would leave 5 pixels and must not be used.
+  starts with no polygon at all. Both lessons use `terrain.png`, a 768-by-256
+  redraw of the terrain example tilesheet in Godot's own **Using TileSets**
+  page, matching it in size as well as in layout: the same 12-by-4
+  arrangement, the same four shapes, and the same hole at `(10, 1)`.
+  Lesson 4.2's peering-bit data is settled and shipped as
+  `assets/terrain_peering_reference.png`, generated by
+  `assets/make_terrain_peering_reference.gd`. Two earlier attempts to derive it
+  failed and were discarded: reading it from the artwork stalls because an open
+  bottom edge is drawn the same plain ground as a bottom that continues, and
+  assuming each drawn shape is a solid rectangle produces a terrain that paints
+  every cell while putting grass along the underside of the level, because the
+  shapes carry notches the rectangle model misses. What worked was differencing
+  the two versions of the sheet that the Godot page publishes, one plain and
+  one with its terrain configured, across nine sample regions per tile. The
+  result was confirmed against a tileset configured by hand in the editor: all
+  47 tiles and all 376 peering bits matched. The lesson still teaches reading
+  the marks from the artwork and keeps the reference for checking, and it
+  states plainly that an absence of empty cells does not mean the terrain is
+  right. The level geometry was
+  re-measured after the move to 64-pixel tiles: the ground surface is at
+  `y = 960`, the platform floats with its surface at `y = 704`, a held jump
+  rises 310 pixels against the 256-pixel step leaving 54 pixels of clearance,
+  and a tapped jump reaches 109 pixels so it still cannot make the step.
   Module 1, Lesson 1.2, **Set Up the Game Window**, is now
   Validated: its procedure was replayed from Lesson 1.1's end state in a
   scratch copy and reproduced the live project's window settings exactly. The
@@ -307,8 +321,8 @@ elements around clear spawn and boundary contracts.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 128-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
-| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Blueprint drafted | Uncommitted working tree |
+| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 64-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
+| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | Uncommitted working tree; procedure walked in the editor |
 | 4.3 | Build a Reusable Level Scene | Level scene boundary | Planned | Unassigned |
 | 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
 | 4.5 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
@@ -653,3 +667,5 @@ Remaining reconciliation work:
 | Teach movement as built-in first, then extract it into components in Module 6 | Modules 2 and 3 build movement directly inside `player.gd`, and new Lesson 6.1 refactors it into an input component, a movement component, and an orchestrator. Extracting earlier would repeat the mistake this log already recorded twice: the standalone target-based movement bridge was removed and the movement-state lesson moved to Module 5, both because the lesson arrived before anything consumed it. No second actor exists until Module 6, which is also where the architecture already requires a component to be shown on two actor types. Refactoring is additive, so Lessons 2.8-3.5 keep their validated text and only their result changes. It also teaches the component contract on code the learner wrote and already understands. |
 | Separate input from movement with an intent boundary | An input component turns devices into intent and a movement component consumes intent, so neither knows about the other. A movement component that read `Input` directly could never drive an NPC or an enemy, which is the whole reason for extracting it. Lesson 6.2 proves the boundary immediately by driving a second actor with the same movement component from a different intent source, and Lesson 6.4 adds a destructible box that takes health with no movement or input at all. |
 | Keep Actor as a shallow scene base rather than removing inheritance | The composition material that prompted this change treats inheritance as a trap, but `Actor` carries shared scene structure and attachment points, not behavior. Behavior already lives in components after Lesson 6.1. Replacing the scene base with duplicated structure in every actor would cost reuse and gain nothing, so the shallow base stays. |
+| Move to 64-pixel tiles and raise the jump so the test platform can be passed under | The first tiled level used 128-pixel tiles and a terrace resting on the ground, which lost something the original grey `CoyoteTestPlatform` had: the Player could walk beneath it. Restoring that needs `step >= Player height + tile thickness + clearance`, so at least 224 pixels, while the jump has to reach it. At 128-pixel tiles no grid position satisfies both. At 64 pixels the 256-pixel step does, but only if the jump clears it by a usable margin: at `-1100` the Player is high enough for 9 frames, 0.15 seconds, which is frame-perfect rather than playable. `jump_velocity` therefore moved to `-1200`, giving a 310-pixel rise, a 54-pixel margin, and a 26-frame window. Airtime goes from 0.95 to 1.03 seconds and jump height from two to about two and a half Player heights. |
+| Place the temporary Floor and platform on the tile grid from the start | Modules 2 and 3 now put the Floor surface at `y = 960` and the platform at `y = 704` to `768`, which are the exact surfaces Module 4 paints tiles onto. The transition becomes painting over the placeholders and deleting them, with no geometry moving and no movement re-tuning. The earlier arrangement forced Lesson 4.2 to explain a step that changed size, and forced a second round of measurement. |

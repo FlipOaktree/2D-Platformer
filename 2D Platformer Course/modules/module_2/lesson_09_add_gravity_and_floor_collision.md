@@ -30,7 +30,7 @@ Lesson 2.11.
 2. In the **Scene** dock, select the `Main` root.
 3. Click **Add Child Node**, search for `StaticBody2D`, and create it.
 4. Rename the new node `Floor`.
-5. With `Floor` selected, set its Inspector **Position** to `(960, 920)`.
+5. With `Floor` selected, set its Inspector **Position** to `(960, 992)`.
 6. Add a `CollisionShape2D` as a child of `Floor`.
 7. Select the new `CollisionShape2D`. In the Inspector, choose **New
    RectangleShape2D** for its **Shape**.
@@ -162,7 +162,7 @@ the gravity calculation runs by using the floor state.
 
 ## Verification checklist
 
-- [ ] `main.tscn` contains a `Floor` `StaticBody2D` at Position `(960, 920)`.
+- [ ] `main.tscn` contains a `Floor` `StaticBody2D` at Position `(960, 992)`.
 - [ ] `Floor` has a `CollisionShape2D` using a `RectangleShape2D` with Size
       `(1920, 64)`.
 - [ ] Player's 128-by-128 collision-shape override matches its temporary
