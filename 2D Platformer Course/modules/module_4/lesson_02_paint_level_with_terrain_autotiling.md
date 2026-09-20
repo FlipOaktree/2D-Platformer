@@ -248,6 +248,15 @@ shows both a collision outline and a green terrain centre.
 11. If a compatible controller is connected, repeat the movement and jump
     checks with its configured inputs.
 12. Stop the scene with `F8`.
+13. In the editor's **Debug** menu, turn **Visible Collision Shapes** back
+    off.
+
+> 💡 The outlines have done their job. They were switched on in Module 2 to
+> show a single collider and were worth keeping while collision was the thing
+> being built; now that a whole level is painted they draw a box around every
+> tile, which hides the artwork you are about to judge levels by. Turning them
+> off is one menu click, and so is turning them on again the next time
+> something solid misbehaves.
 
 > ⚠️ **If something differs**
 >
@@ -255,8 +264,7 @@ shows both a collision outline and a green terrain centre.
 >   that each collision polygon covers the full tile rather than part of it.
 > - If the Player cannot reach the platform with the jump held, confirm that
 >   the platform surface is at `y = 704` and that `jump_velocity` still uses
->   its
->   validated default of `-1200.0`.
+>   its validated default of `-1200.0`.
 > - If the Player catches on an invisible edge while running, one cell in the
 >   ground is empty. Look for a gap in the collision outlines.
 > - If a movement feature behaves differently, the cause is the level rather
@@ -307,6 +315,8 @@ shows both a collision outline and a green terrain centre.
       they did at the end of Module 3.
 - [ ] Acceleration, deceleration, reversal, gravity, landing, and maximum speed
       remain unchanged.
+- [ ] **Visible Collision Shapes** is off in the **Debug** menu at the end of
+      the lesson.
 - [ ] `res://actors/player.gd` is unchanged by this lesson.
 - [ ] Keyboard behavior works, and configured controller behavior works when
       compatible hardware is available.

@@ -123,19 +123,17 @@ what changes is where the level lives and who owns it.
 
 ### Part 3: Test the result
 
-1. Confirm that **Visible Collision Shapes** is still enabled in the **Debug**
-   menu.
-2. Open `res://scenes/main.tscn` and run it with `F6`.
-3. Confirm that the Player falls and lands on the ground exactly as before.
-4. Run left and right, and confirm that acceleration, deceleration, reversal,
+1. Open `res://scenes/main.tscn` and run it with `F6`.
+2. Confirm that the Player falls and lands on the ground exactly as before.
+3. Run left and right, and confirm that acceleration, deceleration, reversal,
    and maximum speed are unchanged.
-5. Jump onto the platform, and run underneath it.
-6. Walk off the platform edge and jump immediately, then repeat while waiting
+4. Jump onto the platform, and run underneath it.
+5. Walk off the platform edge and jump immediately, then repeat while waiting
    longer, and confirm coyote time behaves as it did in Lesson 2.
-7. Press jump just before landing and confirm the buffered jump still fires.
-8. If a compatible controller is connected, repeat the movement and jump
+6. Press jump just before landing and confirm the buffered jump still fires.
+7. If a compatible controller is connected, repeat the movement and jump
    checks with its configured inputs.
-9. Stop the scene with `F8`.
+8. Stop the scene with `F8`.
 
 > ⚠️ **If something differs**
 >

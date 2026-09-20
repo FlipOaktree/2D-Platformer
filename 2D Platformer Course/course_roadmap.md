@@ -25,7 +25,7 @@ not infer progress from chat history or from learner verification checkboxes.
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
   1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
-  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.4.
+  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.5.
   Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
@@ -102,9 +102,50 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Draft the Module 4, Lesson 4.5 blueprint, **Add One-Way
-  Platforms**, which lets the Player jump up through a surface and land on it
-  from below. Lessons 4.1 to 4.4 are Validated and walked in the editor, with
+- **Exact next step:** Draft the Module 4, Lesson 4.6 blueprint, **Moving
+  Platforms**. Lesson 4.5, **Add One-Way Platforms**, is now Validated: the
+  tiles at `(1, 3)`, `(2, 3)` and `(3, 3)` each got an alternative with a
+  one-way collision polygon and a pale blue `Modulate`, those three joined a
+  second terrain named `Platform` alongside `Ground` in the same terrain set,
+  and a five-cell strip of them was painted on a new `Platforms` layer at row
+  11 with its surface at `y = 704`. The second terrain was added after review
+  asked whether peering bits would make drawing platforms faster. They do,
+  and measurement showed the two terrains cannot contaminate each other:
+  painting `Platform` across five cells produced the correct end, middle and
+  end pieces with no empty cells, the `Ground` brush chose a one-way
+  alternative zero times in 400 cells, and ground and platform painted side
+  by side on one layer stayed solid and one-way respectively. An earlier
+  draft had the variants placed by hand and deliberately kept out of any
+  terrain; that instruction was wrong and was replaced. A second draft copied
+  the alternatives from row 0 instead of row 3, which looks identical from
+  the front but is the top of a taller block: its bottom peering bit reads
+  as continuing ground rather than a finished edge, so the painted strip came
+  out with a scalloped, dirt-textured underside instead of matching the solid
+  platform. The project was corrected to row 3, which the `Ground` terrain
+  already used for the solid platform, and the lesson and its callouts were
+  rewritten to explain why row 3 is the correct source. Testing also fixed
+  the Player's draw order, wrong since Lesson 4.3 and invisible until this
+  lesson gave the Player something to pass in front of: `Main` listed
+  `Player` before `Level`, so the level was drawn over the Player. The fix
+  is folded into the testing part rather than a part of its own, and lands
+  in Lesson 4.5 rather than 4.3 so the learner sees the problem before the
+  fix. The full project was re-audited afterward against the tileset,
+  scenes, and draw order and confirmed correct.
+  A first draft used a second tile set instead and was discarded after review:
+  both were prototyped and behave identically, but alternatives keep one tile
+  set as the single home for the artwork, avoid defining the atlas source
+  twice, and carry a per-tile `Modulate` so a pass-through platform does not
+  look identical to solid ground. One-way must be a separate tile either way,
+  because it is a property of a tile's collision polygon, so a tile is
+  one-way everywhere it is painted or nowhere. Measured in both prototypes:
+  from the ground the Player passes up through the strip and lands on top at
+  `y = 704`, walking off the end returns it to `y = 960`, the ground and the
+  solid platform stay solid, and the same jump under the solid platform rises
+  only 64 pixels against its underside rather than the full 310, which is the
+  contrast the lesson is built around. Godot's documentation confirms that an
+  alternative inherits none of the base tile's properties, which matches the
+  prototype and is why the lesson draws the collision polygon again.
+  Lessons 4.1 to 4.4 are Validated and walked in the editor, with
   nothing left unconfirmed in them. Lesson 4.4 introduced `Marker2D`,
   `@onready`, node references, `global_position`, and the first scripts
   outside the Player: `main.gd` on the orchestrator and `level.gd` on the
@@ -349,10 +390,10 @@ elements around clear spawn and boundary contracts.
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
 | 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 64-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
-| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | Uncommitted working tree; procedure walked in the editor |
-| 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level, and one Level root name shared by every level file | Validated | Uncommitted working tree; procedure walked in the editor |
+| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | Uncommitted working tree; procedure walked in the editor; Part 3 now ends by turning Visible Collision Shapes back off |
+| 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level, and one Level root name shared by every level file | Validated | Uncommitted working tree; procedure walked in the editor; the Visible Collision Shapes check was dropped from Part 3, which 4.2 now turns off |
 | 4.4 | Add Player Spawn Points | `Marker2D`, `@onready`, node references, `global_position`, an orchestrator script on Main, and a level that answers one typed question | Validated | Uncommitted working tree; procedure walked in the editor |
-| 4.5 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
+| 4.5 | Add One-Way Platforms | Alternative tiles, one-way collision on a tile's polygon, per-tile `Modulate`, a second terrain in the same terrain set, a second level layer, and sibling draw order | Validated | Uncommitted working tree; procedure walked in the editor, terrain 1 renamed 'Platform', variants corrected from row 0 to row 3, terrain and draw order re-audited |
 | 4.6 | Add Moving Platforms | Reusable moving surface | Planned | Unassigned |
 | 4.7 | Add Level Bounds and Fall Detection | World bounds and fall signal | Planned | Unassigned |
 | 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
@@ -594,6 +635,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Terrain sets, Match Corners and Sides matching, and terrain painting | 4.2 | Every later level and platform element built from tiles |
 | Level scene boundary and Save Branch as Scene | 4.3 | Spawn points, level bounds, extra levels, and scene flow |
 | Node references with `@onready`, `global_position`, and an orchestrator script on Main | 4.4 | Every later script that reaches another node, and all cross-scene placement |
+| Alternative tiles, one-way collision, per-tile `Modulate`, and a second terrain beside `Ground` | 4.5 | Moving platforms, and any later tile that shares artwork but not behaviour |
+| Sibling draw order in the Scene dock | 4.5 | Anything later that has to appear in front of or behind something else |
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
@@ -699,3 +742,5 @@ Remaining reconciliation work:
 | Move to 64-pixel tiles and raise the jump so the test platform can be passed under | The first tiled level used 128-pixel tiles and a terrace resting on the ground, which lost something the original grey `CoyoteTestPlatform` had: the Player could walk beneath it. Restoring that needs `step >= Player height + tile thickness + clearance`, so at least 224 pixels, while the jump has to reach it. At 128-pixel tiles no grid position satisfies both. At 64 pixels the 256-pixel step does, but only if the jump clears it by a usable margin: at `-1100` the Player is high enough for 9 frames, 0.15 seconds, which is frame-perfect rather than playable. `jump_velocity` therefore moved to `-1200`, giving a 310-pixel rise, a 54-pixel margin, and a 26-frame window. Airtime goes from 0.95 to 1.03 seconds and jump height from two to about two and a half Player heights. |
 | Place the temporary Floor and platform on the tile grid from the start | Modules 2 and 3 now put the Floor surface at `y = 960` and the platform at `y = 704` to `768`, which are the exact surfaces Module 4 paints tiles onto. The transition becomes painting over the placeholders and deleting them, with no geometry moving and no movement re-tuning. The earlier arrangement forced Lesson 4.2 to explain a step that changed size, and forced a second round of measurement. |
 | Keep the Player in `Main` rather than inside each level scene | Lesson 4.3 moves the painted level into `level_1.tscn` but leaves the Player where it is. A level holds the content of one place: ground, platforms, and later hazards and a spawn marker. The Player carries on between levels, so a copy inside every level would multiply the same node and the same future fix across every level file. This is also what Lesson 4.4 needs: the level declares where the Player starts and `Main` owns the Player that goes there. Every level file uses `Level` as its root node name, so `Main` always holds a node called `Level` whichever level is loaded, and `Main` holds exactly one at a time rather than a shelf of all of them. |
+| Fix the Player's draw order in Lesson 4.5, where it first becomes visible, not in Lesson 4.3, where it is created | `Main` lists `Player` before `Level`, so the level is drawn over the Player. Nothing shows it until Lesson 4.5 adds a surface the Player passes through, because standing on ground never overlaps anything. Correcting the order back in 4.3 would be an instruction with no observable result, which is the pattern this log already rejected for the movement-state lesson and the target-based movement bridge. Lesson 4.5 instead has the learner see the Player disappear behind the platform, explains that siblings are drawn in listed order, and fixes it with one drag. It is folded into the testing part rather than given a part of its own, and it is a build step rather than an exercise so the corrected order is kept. |
+| Turn Visible Collision Shapes off at the end of Lesson 4.2 | The option is switched on in Lesson 2.3, when a single collider is the thing being built, and nothing in the course ever switched it off. From a painted level onward it draws a box around every tile, hiding the artwork the learner is now meant to judge levels by, and Lessons 4.3 to 4.5 only ever asked the learner to confirm it was still enabled without reading anything from it. Lesson 4.2 Part 3 uses the outlines one last time to confirm the painted ground is solid, then turns them off; Lesson 4.3 drops its confirm-still-enabled step, and Lesson 4.5 tells the learner to turn them back on if a platform misbehaves. |
