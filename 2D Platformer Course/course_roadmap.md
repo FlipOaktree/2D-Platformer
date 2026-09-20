@@ -94,9 +94,15 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Draft the Module 4, Lesson 4.3 blueprint, **Build a
-  Reusable Level Scene**, which moves the painted level out of `main.tscn`
-  into a level scene that later lessons can duplicate. Lessons 4.1 and 4.2 are
+- **Exact next step:** Review the Module 4, Lesson 4.3 blueprint, **Build a
+  Reusable Level Scene**, and decide whether to approve it. It moves the
+  painted level out of `main.tscn` into `res://levels/level_1.tscn` using
+  **Save Branch as Scene**, leaves the Player in `Main`, and proves the reuse
+  by having the learner duplicate the file into a second level and swap it in.
+  Two things in it are unverified and need confirming while it is walked: the
+  **Save Branch as Scene** menu wording, and whether reparenting `Terrain`
+  under a node at the origin leaves its position untouched as the lesson
+  claims. Lessons 4.1 and 4.2 are
   both Validated, walked in the editor, and Module 4 now has real level
   content in place of the two temporary bodies. Lesson 4.1 had four steps
   corrected while it was walked. Automatic tile creation was found
@@ -323,7 +329,7 @@ elements around clear spawn and boundary contracts.
 | --- | --- | --- | --- | --- |
 | 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 64-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
 | 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | Uncommitted working tree; procedure walked in the editor |
-| 4.3 | Build a Reusable Level Scene | Level scene boundary | Planned | Unassigned |
+| 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level | Blueprint drafted | Uncommitted working tree |
 | 4.4 | Add Player Spawn Points | Spawn marker contract | Planned | Unassigned |
 | 4.5 | Add One-Way Platforms | One-way collision | Planned | Unassigned |
 | 4.6 | Add Moving Platforms | Reusable moving surface | Planned | Unassigned |
@@ -565,6 +571,7 @@ practical use and later lessons can build on them without re-teaching them.
 | Exported configuration | 3.1 | Reusable systems and content |
 | TileSets, TileMapLayer, and per-tile collision | 4.1 | Level scenes, spawn points, one-way and moving platforms, level bounds, and all later level content |
 | Terrain sets, Match Corners and Sides matching, and terrain painting | 4.2 | Every later level and platform element built from tiles |
+| Level scene boundary and Save Branch as Scene | 4.3 | Spawn points, level bounds, extra levels, and scene flow |
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
@@ -669,3 +676,4 @@ Remaining reconciliation work:
 | Keep Actor as a shallow scene base rather than removing inheritance | The composition material that prompted this change treats inheritance as a trap, but `Actor` carries shared scene structure and attachment points, not behavior. Behavior already lives in components after Lesson 6.1. Replacing the scene base with duplicated structure in every actor would cost reuse and gain nothing, so the shallow base stays. |
 | Move to 64-pixel tiles and raise the jump so the test platform can be passed under | The first tiled level used 128-pixel tiles and a terrace resting on the ground, which lost something the original grey `CoyoteTestPlatform` had: the Player could walk beneath it. Restoring that needs `step >= Player height + tile thickness + clearance`, so at least 224 pixels, while the jump has to reach it. At 128-pixel tiles no grid position satisfies both. At 64 pixels the 256-pixel step does, but only if the jump clears it by a usable margin: at `-1100` the Player is high enough for 9 frames, 0.15 seconds, which is frame-perfect rather than playable. `jump_velocity` therefore moved to `-1200`, giving a 310-pixel rise, a 54-pixel margin, and a 26-frame window. Airtime goes from 0.95 to 1.03 seconds and jump height from two to about two and a half Player heights. |
 | Place the temporary Floor and platform on the tile grid from the start | Modules 2 and 3 now put the Floor surface at `y = 960` and the platform at `y = 704` to `768`, which are the exact surfaces Module 4 paints tiles onto. The transition becomes painting over the placeholders and deleting them, with no geometry moving and no movement re-tuning. The earlier arrangement forced Lesson 4.2 to explain a step that changed size, and forced a second round of measurement. |
+| Keep the Player in `Main` rather than inside each level scene | Lesson 4.3 moves the painted level into `level_1.tscn` but leaves the Player where it is. A level holds the content of one place: ground, platforms, and later hazards and a spawn marker. The Player carries on between levels, so a copy inside every level would multiply the same node and the same future fix across every level file. This is also what Lesson 4.4 needs: the level declares where the Player starts and `Main` owns the Player that goes there. |
