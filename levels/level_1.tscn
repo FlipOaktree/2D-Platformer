@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bj2o24sxgm0x5" path="res://levels/tiles/terrain_tileset.tres" id="1_014kd"]
 [ext_resource type="Script" uid="uid://rdp1gixobksu" path="res://levels/level.gd" id="1_jirdo"]
+[ext_resource type="PackedScene" uid="uid://clxh04gl1ka7v" path="res://levels/moving_platform.tscn" id="3_bt44k"]
 
 [node name="Level" type="Node2D" unique_id=894240066]
 script = ExtResource("1_jirdo")
@@ -16,3 +17,6 @@ tile_set = ExtResource("1_014kd")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=878383500]
 position = Vector2(256, 896)
+
+[node name="MovingPlatform" parent="." unique_id=1420163013 instance=ExtResource("3_bt44k")]
+position = Vector2(1504, 736)

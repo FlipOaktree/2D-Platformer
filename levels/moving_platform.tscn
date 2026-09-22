@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://clxh04gl1ka7v"]
+
+[ext_resource type="Script" uid="uid://ypu1tpvcnbm2" path="res://levels/moving_platform.gd" id="1_6vpaq"]
+[ext_resource type="TileSet" uid="uid://bj2o24sxgm0x5" path="res://levels/tiles/terrain_tileset.tres" id="1_uu147"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xp84"]
+size = Vector2(192, 64)
+
+[node name="MovingPlatform" type="AnimatableBody2D" unique_id=1420163013]
+script = ExtResource("1_6vpaq")
+
+[node name="Deck" type="TileMapLayer" parent="." unique_id=1193952290]
+modulate = Color(1, 0.8, 0.6, 1)
+position = Vector2(-96, -32)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0)
+tile_set = ExtResource("1_uu147")
+collision_enabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=682003363]
+shape = SubResource("RectangleShape2D_2xp84")
