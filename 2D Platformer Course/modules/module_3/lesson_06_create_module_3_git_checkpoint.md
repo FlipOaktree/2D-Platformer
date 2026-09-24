@@ -82,10 +82,10 @@ ones you meant to keep.
 1. In the Codex task for this project, send this prompt:
 
    > Review the uncommitted changes from Module 3. Summarize the movement
-   > settings and jump behavior they add, confirm that the exported defaults
-   > match the values described in the lessons, flag anything that does not
-   > belong in this checkpoint, and propose one concise commit message
-   > beginning with `Build Module 3`. Do not edit, stage, or commit anything.
+   > settings and jump behavior they add, list every exported setting you find
+   > with its default value, flag anything that does not belong in this
+   > checkpoint, and propose one concise commit message beginning with `Build
+   > Module 3`. Do not edit, stage, or commit anything.
 
 2. Read Codex's summary, then open the controls menu at the top right of the
    task and select **Changes**. Codex opens the changed-file diff in a
@@ -111,6 +111,14 @@ ones you meant to keep.
    > files. A read-only summary is useful here for a different reason than in
    > Module 2: it can describe what the finished movement code does, which is
    > easier to compare against your intent than a long line-by-line diff.
+
+   > 💡 Codex is asked to list the defaults, not to approve them, and the
+   > difference matters. It was connected to the folder holding
+   > `project.godot` in Lesson 0.4, so it can read your code but has never
+   > seen a lesson and has no idea what the course said a value should be.
+   > Asked to confirm a match it cannot check, it would very likely confirm
+   > one anyway. Compare its list against the table you checked in Part 1.
+   > That comparison is yours to make, and it is the whole reason for asking.
 
 > ⚠️ **If something differs**
 >
@@ -145,9 +153,18 @@ ones you meant to keep.
 If the AI review is unavailable but the Codex Git controls still work, inspect
 the Review tab yourself, use a concise commit message beginning with `Build
 Module 3`, and run the same verification commands. If the Codex app is
-unavailable, stage and commit from the terminal with the `git add` and
-`git commit -m` commands introduced in Lesson 0.4, checking `git status`
-before committing, then run the same verification commands.
+unavailable altogether, do the same work in any terminal opened in the project
+folder, using the commands from Lesson 0.4:
+
+```powershell
+git status
+git add <each file you reviewed>
+git status
+git commit -m "Build Module 3 ..."
+```
+
+Check `git status` before committing, as the second line above does, then run
+the same verification commands from step 5.
 
 ## Learner exercise
 
@@ -171,7 +188,10 @@ Without creating another commit:
       left at an exercise setting.
 - [ ] Configured controller behavior works when compatible hardware is
       available.
-- [ ] Codex's request only reviewed and summarized the proposed checkpoint.
+- [ ] Codex's request only reviewed and described the proposed checkpoint, and
+      asked it nothing it could not know.
+- [ ] Codex's list of exported defaults was compared against the Part 1 table
+      by the learner, not taken on trust.
 - [ ] The Review tab was checked before staging and committing.
 - [ ] The checkpoint contains only understood Module 3 project changes.
 - [ ] Any change to `actors/player.tscn` was inspected and contains no altered
