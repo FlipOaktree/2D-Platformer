@@ -146,6 +146,28 @@ Format contextual lesson notes consistently:
   **If something differs** without a colon. Keep it unindented and place it at
   the end of the corresponding lesson part.
 
+Keep explanation proportionate to what the learner needs at that moment:
+
+- Give a callout only to something the learner will use: a concept met for
+  the first time, a reason they will act on, or a mistake they are about to
+  make. Why the course chose one design over another, and the measurements
+  that proved it, belong in the roadmap's Decision Log, not in the lesson.
+  Keep a reason in the lesson only when it teaches something the learner will
+  reuse, such as "a pit has to be wider than what falls into it".
+- Let explanation fade as the course goes on. Guidance that helps a beginner
+  becomes extra load once they know the idea, so point back to an earlier
+  concept in a few words rather than explaining it again.
+- Keep an explanation beside the step it explains. A callout that has to begin
+  "Step 8 is..." is in the wrong place; move it to follow step 8.
+- Before the first run of new code or a new node setup, ask the learner to
+  predict what will happen, then run it and compare. One line in the build
+  steps, not a separate exercise.
+- Treat these as signals to re-read a lesson, not as limits: more than about
+  six callouts, callout text longer than the build steps it sits among, or a
+  checklist that repeats the build steps item by item. Modules 0 to 3 average
+  about three callouts, with roughly one word of explanation for every two
+  words of instruction.
+
 Write each verification checklist item in the voice that matches what it
 verifies:
 
