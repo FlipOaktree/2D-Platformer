@@ -139,5 +139,13 @@ learner-facing content.
   Concept Sequencing Ledger and the Decision Log, and propose moving it when
   its first practical use comes later. A roadmap row records an earlier
   intention, not a verified decision.
+- Keep validation evidence out of lesson text. Measurements taken to prove a
+  lesson works belong in the roadmap, where they justify its status. A lesson
+  keeps only what the learner will act on or reuse, so a measured number goes
+  into a callout only when the learner needs that number to do the step.
+- Validate under the learner's conditions, not this repository's. The course
+  files sit beside `project.godot` here and never in a learner's project, so
+  replay checkpoints in a scratch clone and never assume a learner, or their
+  copy of Codex, can see a file the course did not give them.
 
 

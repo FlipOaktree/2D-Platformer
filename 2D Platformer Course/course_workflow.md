@@ -119,9 +119,10 @@ Draft these planning considerations:
 The blueprint can change during validation.
 
 Before drafting, confirm the lesson's roadmap outcome, prerequisites, expected
-artifacts, and concepts introduced for the first time. If the proposed lesson
-changes the curriculum or architecture, update the roadmap only after that
-change is approved.
+artifacts, and concepts introduced for the first time. Check whether an earlier
+lesson already explains, tests, or audits what this one is about to; point to
+it rather than repeating it. If the proposed lesson changes the curriculum or
+architecture, update the roadmap only after that change is approved.
 
 These are planning considerations, not required learner-facing sections. Place
 concepts, reasons, AI guidance, practical tips, and recovery help inside the
@@ -133,8 +134,12 @@ Use this learner-facing lesson structure:
    context.
 2. **Before you start** - include only real prerequisites.
 3. **Build steps** - teach concepts and reasoning beside the relevant actions.
-4. **Learner exercise**.
-5. **Verification checklist**.
+4. **Learner exercise** - a small change to what was just built: predict what
+   it will do, try it, and explain the result. Experiment on a copy or a second
+   instance where possible, so nothing is left to put back. When an exercise
+   must change the project itself, end it with the exact value to restore.
+5. **Verification checklist** - the end state the lesson produces and the
+   understanding it builds, not a restatement of each build step.
 6. **References**.
 
 Format contextual lesson notes consistently:
@@ -154,19 +159,17 @@ Keep explanation proportionate to what the learner needs at that moment:
   that proved it, belong in the roadmap's Decision Log, not in the lesson.
   Keep a reason in the lesson only when it teaches something the learner will
   reuse, such as "a pit has to be wider than what falls into it".
-- Let explanation fade as the course goes on. Guidance that helps a beginner
-  becomes extra load once they know the idea, so point back to an earlier
-  concept in a few words rather than explaining it again.
-- Keep an explanation beside the step it explains. A callout that has to begin
-  "Step 8 is..." is in the wrong place; move it to follow step 8.
+- Show one way to do each thing. An alternative the learner will not use is a
+  detour; mention one only when they will meet it later and need to recognise
+  it.
 - Before the first run of new code or a new node setup, ask the learner to
   predict what will happen, then run it and compare. One line in the build
   steps, not a separate exercise.
 - Treat these as signals to re-read a lesson, not as limits: more than about
-  six callouts, callout text longer than the build steps it sits among, or a
-  checklist that repeats the build steps item by item. Modules 0 to 3 average
-  about three callouts, with roughly one word of explanation for every two
-  words of instruction.
+  six callouts, callout text longer than the build steps it sits among, a
+  callout that has to begin "Step 8 is...", or a checklist that repeats the
+  build steps item by item. Modules 0 to 3 average about three callouts, with
+  roughly one word of explanation for every two words of instruction.
 
 Write each verification checklist item in the voice that matches what it
 verifies:
@@ -193,14 +196,20 @@ across every lesson.
   separate tool tutorial.
 - Introduce each concept beside its first practical use, immediately before or
   after the action when that produces the clearest learner flow. Use only the
-  detail needed for the current outcome.
+  detail needed for the current outcome. A callout that has to begin "Step 8
+  is..." has drifted from its step; move it to follow step 8.
 - Define a concept fully only at its first relevant use. Before drafting or
   revising a lesson, check the concept sequencing ledger and earlier lessons.
   Later lessons may briefly connect the concept to its new use, but must not
-  repeat its general definition, analogy, or rationale.
+  repeat its general definition, analogy, or rationale. This matters more as
+  the course goes on, because guidance that helps a beginner becomes extra load
+  once they know the idea. Hand over repeated patterns the same way: once a
+  technique has been shown in full, a later lesson can state the goal and let
+  the learner attempt it before showing the answer.
 - Use a single integrated lesson flow when Codex is involved; do not create
   repeated AI and non-AI versions of the same instructions.
-- Run the project regularly.
+- Run the project regularly. End each lesson part with something the learner
+  can see or run, so every stretch of steps produces a result they can check.
 - Record any undocumented step, unclear explanation, or mismatch between the
   blueprint and actual behavior.
 - Perform a roadmap impact check when the implementation changes an earlier
