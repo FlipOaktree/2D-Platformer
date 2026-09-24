@@ -25,7 +25,7 @@ not infer progress from chat history or from learner verification checkboxes.
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
   1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
-  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.6.
+  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.7.
   Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
@@ -102,76 +102,70 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Draft the Module 4, Lesson 4.7 blueprint, **Add Level
-  Bounds and Fall Detection**. Lesson 4.6, **Add Moving Platforms**, is now
-  Validated, built in the editor and measured against the running project: the
-  platform travels exactly 256.0 pixels and returns to its start with no drift
-  over 600 frames, a Player standing still with no input is carried for all 590
-  sampled frames with 0.000 pixels of bounce and 5.00 pixels of slip, and a
-  jump from the ground beneath it stops the Player's head at y = 768, the
-  deck's underside. The scene is an `AnimatableBody2D` holding a `Deck`
-  `TileMapLayer` with **Collision Enabled** off, three cells of the `Ground`
-  terrain, a `Modulate` of `FFCC99`, and a `RectangleShape2D` of `(192, 64)`,
-  driven by `moving_platform.gd` with an exported `travel` of `(256, 0)` and an
-  exported `speed` of `150.0`. `sync_to_physics` is at its default of `true`.
-  One instance sits in `level_1.tscn` at `(1504, 736)`, deck at `y = 704` with
-  a 128-pixel gap to the solid platform.
+- **Exact next step:** Draft the Module 4, Lesson 4.8 blueprint, **Create a
+  Module 4 Git Checkpoint**, which closes the module. Lesson 4.7, **Add Level
+  Bounds and Fall Detection**, is Validated, built in the editor and measured
+  against the running project. `level_1.tscn` now has a three-tile pit where
+  the six ground cells at `(7, 15)` to `(9, 16)` were, leaving 64 painted
+  cells, with `LeftWall` and `RightWall` `StaticBody2D` nodes at `(-32, 544)`
+  and `(1952, 544)` and a `FallLimit` `Marker2D` at `(960, 1216)`. `level.gd`
+  answers `get_fall_limit()` beside `get_spawn_position()`, `player.gd` gained
+  `respawn_at()`, its first method that is not a callback, and `main.gd`
+  compares the Player's depth against the limit in `_physics_process()`.
+  Signals are not introduced until Lesson 6.1, so the check polls, which
+  extends rather than fights the orchestrator pattern from Lesson 4.4: Main
+  asks the level a question, gives the Player an instruction, and still names
+  nothing inside the level. Measured on the finished project: erasing with a
+  terrain selected repaired the lips, `(6, 15)` becoming a right end at atlas
+  `(11, 0)` and `(10, 15)` a left end at `(8, 0)`; the walls stop the Player
+  with its collider flush against the frame at `x = 64` and `x = 1856`; and
+  three consecutive falls were identical frame for frame, losing the ground on
+  frame 41, passing below the viewport on frame 64 and returning to the spawn
+  point on frame 73, which is `0.53` seconds, with the velocity cleared to
+  zero. The pit is three tiles rather than two because the Player is 128 pixels
+  wide: measured on a two-tile pit it always keeps a corner on solid ground and
+  walks straight across without falling, so a pit has to be wider than what
+  falls into it. The jump was measured as a take-off window rather than a
+  landing margin, which is the honest figure: a full-speed run clears the
+  192-pixel pit from anywhere in the last 192 pixels before the lip, about
+  `0.43` seconds, against `136` pixels or `0.30` seconds for a four-tile pit.
+  An earlier reading of "18.5 pixels of clearance" was the overhang when
+  jumping at the last possible instant, not the difficulty. Two discrepancies
+  were found during validation and resolved. The `Platforms` `TileMapLayer` had
+  been renamed `Platform` in the project while the terrain was being renamed,
+  which collided with the terrain's own name and contradicted nine references
+  across Lessons 4.5, 4.6 and 4.7; the layer was renamed back to `Platforms` so
+  the terrain stays `Platform` and the layer stays plural. The walls were built
+  by duplicating the first, which shares one `RectangleShape2D` between them,
+  so Lesson 4.7 now says to duplicate and carries a callout explaining that the
+  sharing Lesson 4.6 treats as a trap is here the behaviour you want, because
+  two walls holding a level in should be the same size.
+  Lesson 4.6, **Add Moving Platforms**, is Validated, built in the editor and
+  measured against the running project: the platform travels exactly 256.0
+  pixels and returns to its start with no drift over 600 frames, a Player
+  standing still with no input is carried for all 590 sampled frames with 0.000
+  pixels of bounce and 5.00 pixels of slip, and a jump from the ground beneath
+  it stops the Player's head at y = 768, the deck's underside. The scene is an
+  `AnimatableBody2D` holding a `Deck` `TileMapLayer` with **Collision Enabled**
+  off, three cells of the `Ground` terrain, a `Modulate` of `FFCC99`, and a
+  `RectangleShape2D` of `(192, 64)`, driven by `moving_platform.gd` with an
+  exported `travel` of `(256, 0)` and an exported `speed` of `150.0`.
+  `sync_to_physics` is at its default of `true`, and
   `CharacterBody2D.platform_floor_layers` defaults to all layers, so no extra
-  setting was needed to make the Player ride. The design was prototyped
-  headlessly before drafting, and the prototype agreed with the finished build.
-  The vertical variant used by the learner exercise was measured too: a lift
-  travelling `(0, -192)` kept the Player on the floor for all 495 frames,
-  including the descent, with its feet within 2.50 pixels of the deck, which is
-  one frame of travel rather than drift. The 128-pixel gap is a measured
-  decision, not a stylistic one. An earlier layout started the platform flush
-  against the solid platform, and riding back left the Player perched on a
-  3.3-pixel sliver of the fixed platform's corner, standing on what looks like
-  nothing. A gap the Player cannot walk across removes that case and makes
-  boarding a timed jump. The platform is still reachable from the ground: a
-  held jump rises 310 pixels against the 256-pixel step, leaving the same 54
-  pixels of clearance as the solid platform. `Vector2.move_toward()` was
-  confirmed to snap exactly to its target on overshoot, which is what makes the
-  turnaround test reliable rather than approximate. The lesson was restructured
-  after review pointed out that it presented the whole script in one block,
-  where earlier lessons add code a piece at a time. The platform is now placed
-  in the level before it has a script, so a solid platform with no behaviour
-  proves the scene is right; then the settings are added and checked in the
-  Inspector, then the working variables, then `_ready()`, then a
-  `_physics_process()` that travels one way and parks, which is run and ridden
-  before the turnaround is added last. Review then asked whether a `Sprite2D`
-  cropped to a fixed region locks the scene to one width, which it does, and
-  the escape hatch is worse than it looks: a `RectangleShape2D` is a resource
-  shared by every instance of the scene, so resizing one platform in a level
-  resizes all of them. The deck is now a `TileMapLayer` painted with the
-  `Ground` terrain instead, with its **Collision Enabled** turned off so the
-  body's own `CollisionShape2D` remains the only collider. Measured on a
-  five-tile deck: 0 frames off the floor of 390, 0.000 pixels of bounce and
-  5.00 pixels of slip, identical to the sprite version. Leaving the layer's
-  collision on was measured too and fails specifically: the tiles win the floor
-  contact and report no motion, so the platform travelled to x = 1216 while the
-  Player stayed at x = 960 and fell. A different width is now a copy of the
-  scene with more cells painted and a matching Size, which the learner exercise
-  builds. The deck is painted with `Ground` rather than `Platform` despite
-  being a platform: in this project `Platform` means the pass-through strip
-  from Lesson 4.5, so its artwork would promise a behaviour this solid platform
-  does not have, and its `BFE6FF` tile tint would multiply with the deck's
-  `FFCC99` node tint into a drab `BFB899`. The tiles' own collision is
-  irrelevant either way once the layer's collision is off. That the platform
-  really is solid from below was measured: from the ground beneath it a jump
-  rises 64.0 pixels and the Player's head stops at y = 768, the deck's
-  underside, which is the same contrast Lesson 4.5 draws against the one-way
-  strip. Review also asked why the three path variables are assigned in
-  `_ready()` rather than where they are declared, which the draft stated
-  without explaining. The order was measured: for a platform the level places
-  at `(1504, 736)` with **Travel** set to `(0, -192)`, a script-level `var
-  start_position: Vector2 = position` reads `(0, 0)` and `travel` reads the
-  script default `(256, 0)`, because those lines run before Godot applies
-  anything the scene file or the level stored. Both `@onready` and `_ready()`
-  read `(1504, 736)` and `(0, -192)`. The export result is the sharper half: a
-  top-level initializer would make the exercise's lift travel sideways at the
-  default rather than upward. The lesson now explains the timing, notes that
-  `@onready` would work and why a function is used instead, and carries a
-  recovery bullet for the symptom.
+  setting was needed to make the Player ride. One instance sits in
+  `level_1.tscn` at `(1504, 736)`, deck at `y = 704` with a 128-pixel gap to
+  the solid platform. Leaving the deck layer's own collision enabled was
+  measured to break the carry silently: the tiles win the floor contact and
+  report no motion, so the platform reached x = 1216 while the Player stayed at
+  x = 960 and fell. The deck is painted with `Ground` rather than `Platform`
+  because `Platform` means the pass-through strip from Lesson 4.5, and its
+  `BFE6FF` tile tint would multiply with the deck's `FFCC99` node tint into a
+  drab `BFB899`. A `RectangleShape2D` is a resource shared by every instance of
+  a scene, so width is a copy of the scene rather than a per-instance setting.
+  The three path variables are assigned in `_ready()` because a script-level
+  initializer runs before Godot applies what the scene and level stored,
+  reading a position of `(0, 0)` and the script's own default `travel` rather
+  than the level's override.
   Lesson 4.5, **Add One-Way Platforms**, is Validated: the
   tiles at `(1, 3)`, `(2, 3)` and `(3, 3)` each got an alternative with a
   one-way collision polygon and a pale blue `Modulate`, those three joined a
@@ -464,7 +458,7 @@ elements around clear spawn and boundary contracts.
 | 4.4 | Add Player Spawn Points | `Marker2D`, `@onready`, node references, `global_position`, an orchestrator script on Main, and a level that answers one typed question | Validated | Uncommitted working tree; procedure walked in the editor |
 | 4.5 | Add One-Way Platforms | Alternative tiles, one-way collision on a tile's polygon, per-tile `Modulate`, a second terrain in the same terrain set, a second level layer, and sibling draw order | Validated | Uncommitted working tree; procedure walked in the editor, terrain 1 renamed 'Platform', variants corrected from row 0 to row 3, terrain and draw order re-audited |
 | 4.6 | Add Moving Platforms | `AnimatableBody2D`, `sync_to_physics`, a reusable moving-surface scene, a `TileMapLayer` used as artwork with its collision disabled, `Vector2.move_toward()`, and an exported `Vector2` offset | Validated | Uncommitted working tree; built in the editor and validated against the running project |
-| 4.7 | Add Level Bounds and Fall Detection | World bounds and fall signal | Planned | Unassigned |
+| 4.7 | Add Level Bounds and Fall Detection | A pit in the terrain, `StaticBody2D` walls, a fall-limit marker, a second question the level answers, the Player's first non-callback method, and a per-frame check in the orchestrator | Validated | Uncommitted working tree; built in the editor and validated against the running project |
 | 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
 
 ### Module 5: Camera and Character Presentation
@@ -707,6 +701,7 @@ practical use and later lessons can build on them without re-teaching them.
 | Alternative tiles, one-way collision, per-tile `Modulate`, and a second terrain beside `Ground` | 4.5 | Moving platforms, and any later tile that shares artwork but not behaviour |
 | Sibling draw order in the Scene dock | 4.5 | Anything later that has to appear in front of or behind something else |
 | `AnimatableBody2D`, a surface that moves and carries its riders, a `TileMapLayer` used as artwork only, and an exported `Vector2` offset | 4.6 | Lifts, hazards, and any later object that moves under its own configuration |
+| Level bounds, a fall limit, and putting an actor back after it leaves the world | 4.7 | Hazards, checkpoints, death and respawn, and level transitions |
 | Target-based value changes and `move_toward()` | 3.2 | Responsive movement, cameras, and reusable behaviors |
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |

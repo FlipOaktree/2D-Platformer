@@ -75,3 +75,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
 	move_and_slide()
+
+
+## Put the Player at a point and clear any motion it had.
+func respawn_at(point: Vector2) -> void:
+	global_position = point
+	velocity = Vector2.ZERO
