@@ -12,3 +12,6 @@ tile_set = ExtResource("1_mi4ay")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=878383500]
 position = Vector2(316, 679)
+
+[node name="FallLimit" type="Marker2D" parent="." unique_id=557642876]
+position = Vector2(960, 1216)

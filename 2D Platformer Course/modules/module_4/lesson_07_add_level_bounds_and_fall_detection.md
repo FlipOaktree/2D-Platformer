@@ -17,6 +17,8 @@ through it.
 - `player.gd` gains its first method that is not a callback: put yourself
   here, and stop moving.
 - `main.gd` watches for the fall and puts the Player back at the spawn point.
+- Every level file carries its own `FallLimit`, because the shared `level.gd`
+  now requires one.
 
 ## Before you start
 
@@ -270,7 +272,55 @@ through it.
 > - If Godot reports that `respawn_at` is not found, `player.gd` was not saved
 >   after Part 4.
 
-### Part 6: Test the whole boundary
+### Part 6: Give the second level a fall limit too
+
+1. Open `res://levels/level_2.tscn`, the level you made in the Lesson 3
+   exercise.
+2. Select its `Level` root and confirm that `level.gd` is attached, and that
+   it has a `PlayerSpawn` marker but no `FallLimit`.
+3. Add a child node of type **Marker2D**, rename it `FallLimit`, and set its
+   Position to `(960, 1216)`.
+4. Save `level_2.tscn` with `Ctrl+S`.
+5. In `main.tscn`, delete the `Level` instance and drag `level_2.tscn` into
+   `Main` in its place, checking its Position is `(0, 0)`.
+6. Run the scene. Confirm the Player spawns and that the **Output** panel
+   stays quiet, with no errors.
+7. Walk to a place where your second level's ground runs out and step off the
+   end of it. Confirm the Player falls and is put back at its spawn point.
+8. Put `level_1.tscn` back in `main.tscn`, again at Position `(0, 0)`, and
+   save.
+
+> 💡 One script, attached to every level, means one promise every level file
+> has to keep. `level.gd` now looks for a node called `FallLimit` the moment a
+> level becomes ready. `level_1` has one because you added it in Part 2, and
+> until a moment ago `level_2` did not. This is the cost of sharing a script
+> between scenes, and it is worth paying: the alternative is a separate script
+> per level, and then every fix has to be made twice.
+
+> 💡 A missing marker is not caught when you save. Godot has no way of knowing
+> that `$FallLimit` will fail until the scene actually runs, so a level built
+> without one looks perfectly fine in the editor and then fills the **Output**
+> panel the moment it is played. It reports `Invalid access to property or key
+> 'global_position' on a base object of type 'null instance'`, once per
+> physics frame, which is 60 times a second.
+
+> 💡 Walls are a different matter, and `level_2` does not need them. Nothing
+> in any script asks a level whether it has walls, so a level without them is
+> not broken, only open at the sides. That is now survivable rather than
+> fatal: run off the end and the fall limit puts you back. A marker the script
+> requires and a wall the designer chooses are two different kinds of thing,
+> and only one of them is a promise.
+
+> ⚠️ **If something differs**
+>
+> - If the **Output** panel fills with `null instance` errors, the marker is
+>   missing or misspelled. It has to be called `FallLimit` exactly.
+> - If the Player never comes back after running off the side, the marker is
+>   above the level rather than below it.
+> - If `level_2` has no `level.gd` attached, add it as the Lesson 4 exercise
+>   described, then repeat this part.
+
+### Part 7: Test the whole boundary
 
 1. Open `res://scenes/main.tscn` and run it with `F6`.
 2. Confirm the Player starts at the spawn marker as it did in Lesson 4.4.
@@ -318,9 +368,9 @@ through it.
 2. Put `FallLimit` back at `(960, 1216)` and save.
 3. Widen the pit to four tiles by erasing `(10, 15)` and `(10, 16)` as well.
    Run and confirm the jump is noticeably harder, then undo with `Ctrl+Z`.
-4. Open `level_2.tscn`, give it its own `FallLimit` marker and a pit of its
-   own, and swap it into `main.tscn`. Confirm falling works there with no
-   change to `main.gd` or `player.gd`.
+4. Open `level_2.tscn` and give it a pit of its own, then swap it into
+   `main.tscn` and confirm falling into it works with no change to `main.gd`
+   or `player.gd`.
 5. Restore `level_1.tscn` in `main.tscn` at Position `(0, 0)`.
 6. Explain why the fall check lives in `main.gd` rather than in `player.gd`,
    and what would have to be true for the Player to check for itself.
@@ -362,8 +412,10 @@ through it.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors,
       or unexplained warnings.
 - [ ] The learner saw what a badly placed fall limit does, and can say why.
-- [ ] The learner gave a second level its own pit and fall limit without
-      editing `main.gd` or `player.gd`.
+- [ ] `level_2.tscn` has its own `FallLimit` marker, and swapping it into
+      `main.tscn` produces no `null instance` errors in **Output**.
+- [ ] The learner gave a second level a pit of its own without editing
+      `main.gd` or `player.gd`.
 - [ ] The learner can explain why the check lives in `Main`.
 
 ## References
