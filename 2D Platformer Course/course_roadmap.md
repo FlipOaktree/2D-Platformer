@@ -102,44 +102,76 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Draft the Module 4, Lesson 4.8 blueprint, **Create a
-  Module 4 Git Checkpoint**, which closes the module. Lesson 4.7, **Add Level
-  Bounds and Fall Detection**, is Validated, built in the editor and measured
-  against the running project. `level_1.tscn` now has a three-tile pit where
-  the six ground cells at `(7, 15)` to `(9, 16)` were, leaving 64 painted
-  cells, with `LeftWall` and `RightWall` `StaticBody2D` nodes at `(-32, 544)`
-  and `(1952, 544)` and a `FallLimit` `Marker2D` at `(960, 1216)`. `level.gd`
-  answers `get_fall_limit()` beside `get_spawn_position()`, `player.gd` gained
-  `respawn_at()`, its first method that is not a callback, and `main.gd`
-  compares the Player's depth against the limit in `_physics_process()`.
-  Signals are not introduced until Lesson 6.1, so the check polls, which
-  extends rather than fights the orchestrator pattern from Lesson 4.4: Main
-  asks the level a question, gives the Player an instruction, and still names
-  nothing inside the level. Measured on the finished project: erasing with a
-  terrain selected repaired the lips, `(6, 15)` becoming a right end at atlas
-  `(11, 0)` and `(10, 15)` a left end at `(8, 0)`; the walls stop the Player
-  with its collider flush against the frame at `x = 64` and `x = 1856`; and
-  three consecutive falls were identical frame for frame, losing the ground on
-  frame 41, passing below the viewport on frame 64 and returning to the spawn
-  point on frame 73, which is `0.53` seconds, with the velocity cleared to
-  zero. The pit is three tiles rather than two because the Player is 128 pixels
-  wide: measured on a two-tile pit it always keeps a corner on solid ground and
-  walks straight across without falling, so a pit has to be wider than what
-  falls into it. The jump was measured as a take-off window rather than a
-  landing margin, which is the honest figure: a full-speed run clears the
-  192-pixel pit from anywhere in the last 192 pixels before the lip, about
-  `0.43` seconds, against `136` pixels or `0.30` seconds for a four-tile pit.
-  An earlier reading of "18.5 pixels of clearance" was the overhang when
-  jumping at the last possible instant, not the difficulty. Two discrepancies
-  were found during validation and resolved. The `Platforms` `TileMapLayer` had
-  been renamed `Platform` in the project while the terrain was being renamed,
-  which collided with the terrain's own name and contradicted nine references
-  across Lessons 4.5, 4.6 and 4.7; the layer was renamed back to `Platforms` so
-  the terrain stays `Platform` and the layer stays plural. The walls were built
-  by duplicating the first, which shares one `RectangleShape2D` between them,
-  so Lesson 4.7 now says to duplicate and carries a callout explaining that the
-  sharing Lesson 4.6 treats as a trap is here the behaviour you want, because
-  two walls holding a level in should be the same size.
+- **Exact next step:** Review the Module 4, Lesson 4.8 blueprint, **Create a
+  Module 4 Git Checkpoint**, and decide whether to approve it. It closes Module
+  4 and follows the shape the Module 1, 2 and 3 checkpoints already use:
+  confirm the tested state, have Codex review the diff read-only, then commit
+  locally through the Codex Git controls and verify with `git status`, `git
+  log` and `git show --stat`. Two things make this checkpoint different from
+  the earlier ones. Module 4 produced twelve new files and changed two, more
+  than any module before it, so Part 2 lists them all and says plainly that
+  `actors/player.gd` should show a single added function and nothing else. And
+  every Module 4 lesson ended with an exercise that changed something and asked
+  for it to be restored, across seven lessons, so Part 1 audits the values most
+  likely to have been left behind. Part 1 was cut back twice after review
+  called it overkill, and both times the review was right. Its first draft
+  re-ran the whole level feature by feature and swapped `level_2` in,
+  duplicating Lesson 4.7 Part 7 almost step for step and Lesson 4.7 Part 6
+  entirely, leaving only the value table as new work. The second draft still
+  tabled nine values. Checking the exercises showed that only four are ever at
+  risk: `PlayerSpawn` and `FallLimit` are moved and restored, the pit is
+  widened and undone, and the `Level` instance is swapped and put back, while
+  the moving platform settings, the walls and the one-way strip are never
+  touched, because Lesson 4.6 does its experimenting on a second instance it
+  then deletes and Lesson 4.5 has no restore steps at all. Part 1 is now five
+  steps and four rows, and says plainly that it is a last look rather than a
+  second test; the `level_2` check survives as a checklist line pointing at
+  Lesson 4.7, Part 6. The expected file list was taken from the repository
+  rather than from memory: the new files are the tile artwork and its
+  `.import`, the tile set, the two level scenes, `level.gd`, the moving
+  platform scene and script, `main.gd`, and a `.uid` beside each new script;
+  the changed files are `scenes/main.tscn` and `actors/player.gd`. The `.uid`
+  files are explained rather than ignored, because Module 4 is the first module
+  to add scripts since the course began tracking them and a learner will see
+  three appear; that they hold the identifier scenes use was confirmed against
+  the repository, where `levels/level.gd.uid` contains `uid://rdp1gixobksu` and
+  `level_1.tscn` references the script by that same uid alongside its path.
+  `project.godot` is deliberately listed as a file that should not appear,
+  since no Module 4 lesson touches it. Drafting the checkpoint first exposed a
+  defect in Lesson 4.7 that it would otherwise have certified as tested, which
+  was repaired before this blueprint was written.
+  Lesson 4.7, **Add Level Bounds and Fall Detection**, is Validated, built in
+  the editor and measured against the running project. `level_1.tscn` has a
+  three-tile pit where the six ground cells at `(7, 15)` to `(9, 16)` were,
+  leaving 64 painted cells, with `LeftWall` and `RightWall` `StaticBody2D`
+  nodes at `(-32, 544)` and `(1952, 544)` and a `FallLimit` `Marker2D` at
+  `(960, 1216)`. `level.gd` answers `get_fall_limit()` beside
+  `get_spawn_position()`, `player.gd` gained `respawn_at()`, its first method
+  that is not a callback, and `main.gd` compares the Player's depth against the
+  limit in `_physics_process()`. Signals arrive in Lesson 6.1, so the check
+  polls, which extends rather than fights the orchestrator pattern from Lesson
+  4.4: Main asks the level a question, gives the Player an instruction, and
+  names nothing inside the level. Measured: erasing with a terrain selected
+  repaired the lips, `(6, 15)` becoming a right end at atlas `(11, 0)` and
+  `(10, 15)` a left end at `(8, 0)`; the walls stop the Player flush with the
+  frame at `x = 64` and `x = 1856`; and three consecutive falls were identical
+  frame for frame, losing the ground on frame 41, passing below the viewport on
+  frame 64 and returning to the spawn point on frame 73, which is `0.53`
+  seconds, with the velocity cleared. The pit is three tiles rather than two
+  because the Player is 128 pixels wide: measured on a two-tile pit it always
+  keeps a corner on solid ground and walks straight across, so a pit has to be
+  wider than what falls into it. The jump was recorded as a take-off window
+  rather than a landing margin, which is the honest figure: a full-speed run
+  clears the 192-pixel pit from anywhere in the last 192 pixels before the lip,
+  about `0.43` seconds, against `136` pixels for a four-tile pit. A seventh
+  part was added afterward, when drafting Lesson 4.8 exposed that
+  `get_fall_limit()` makes a `FallLimit` marker mandatory in every level file
+  while only the exercise said so; `level_2.tscn` had none, and swapping it in
+  raised a `null instance` error once per physics frame. The marker was added
+  and the requirement moved into a build step. The `Platforms` `TileMapLayer`
+  had also been renamed `Platform` in the project, colliding with the terrain's
+  own name and contradicting nine references across Lessons 4.5, 4.6 and 4.7;
+  it was renamed back.
   Lesson 4.6, **Add Moving Platforms**, is Validated, built in the editor and
   measured against the running project: the platform travels exactly 256.0
   pixels and returns to its start with no drift over 600 frames, a Player
@@ -459,7 +491,7 @@ elements around clear spawn and boundary contracts.
 | 4.5 | Add One-Way Platforms | Alternative tiles, one-way collision on a tile's polygon, per-tile `Modulate`, a second terrain in the same terrain set, a second level layer, and sibling draw order | Validated | Uncommitted working tree; procedure walked in the editor, terrain 1 renamed 'Platform', variants corrected from row 0 to row 3, terrain and draw order re-audited |
 | 4.6 | Add Moving Platforms | `AnimatableBody2D`, `sync_to_physics`, a reusable moving-surface scene, a `TileMapLayer` used as artwork with its collision disabled, `Vector2.move_toward()`, and an exported `Vector2` offset | Validated | Uncommitted working tree; built in the editor and validated against the running project |
 | 4.7 | Add Level Bounds and Fall Detection | A pit in the terrain, `StaticBody2D` walls, a fall-limit marker, a second question the level answers, the Player's first non-callback method, and a per-frame check in the orchestrator | Validated | Uncommitted working tree; built in the editor and validated against the running project; a seventh part was added so every level file carries its own fall limit |
-| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, a saved-value audit after seven exercises, both level files run, reviewed local commit, and verification | Blueprint drafted | Uncommitted working tree |
 
 ### Module 5: Camera and Character Presentation
 
@@ -811,3 +843,5 @@ Remaining reconciliation work:
 | Turn Visible Collision Shapes off at the end of Lesson 4.2 | The option is switched on in Lesson 2.3, when a single collider is the thing being built, and nothing in the course ever switched it off. From a painted level onward it draws a box around every tile, hiding the artwork the learner is now meant to judge levels by, and Lessons 4.3 to 4.5 only ever asked the learner to confirm it was still enabled without reading anything from it. Lesson 4.2 Part 3 uses the outlines one last time to confirm the painted ground is solid, then turns them off; Lesson 4.3 drops its confirm-still-enabled step, and Lesson 4.5 tells the learner to turn them back on if a platform misbehaves. |
 | Tint the moving platform with a node `Modulate` rather than a third terrain | Review asked whether the tile set should gain a `MovingPlatform` terrain beside `Ground` and `Platform`, with its own tinted alternatives. It should not. A terrain exists to choose a tile from its neighbours, and the moving platform's deck is alone inside its own scene with no neighbours to resolve, so a terrain would buy nothing that `Ground` does not already give: the same three tiles, the same autotiling for a wider deck, one extra colour. It would cost roughly Lesson 4.5's Part 1 and Part 2 over again, three alternative tiles with collision, tint, terrain assignment and peering bits each, and would shift a lesson about movement back into tile configuration. It would also be actively worse in one way: a terrain can be painted anywhere, so moving-platform artwork could be painted into a level's static `Terrain` layer and sit there motionless, which is the same "artwork promises a behaviour it does not have" error that ruled out painting the deck with `Platform`. A node `Modulate` cannot be misapplied that way, because it belongs to the platform that moves, and it is still defined once in `moving_platform.tscn` for every instance and every width variant. This would only be reconsidered if moving platforms gained genuinely different artwork rather than a different colour. |
 | Require a `FallLimit` in every level file rather than tolerating a missing one | Lesson 4.7 attaches `get_fall_limit()` to the shared `level.gd`, so every level scene must contain a `FallLimit` marker. The first draft said so only in the learner exercise, and `level_2.tscn` was left without one; swapping it into `main.tscn` then raised `Invalid access to property or key 'global_position' on a base object of type 'null instance'` from `get_fall_limit()` once per physics frame, because `main.gd` calls it from `_physics_process()`. The alternative considered was making `level.gd` tolerate a missing marker by returning a value nothing can fall past. That was rejected: it would hide a level built wrong behind behaviour that looks correct, and it contradicts the lesson's own framing that a level must be able to answer the question. Instead the requirement moved out of the exercise into build Part 6, which adds the marker to `level_2` and runs it, and the lesson now states that a missing marker is invisible until the scene is played. Walls stay optional by contrast, because no script asks a level whether it has any, which gives the lesson a clean distinction between a promise a script requires and a choice a designer makes. |
+| Treat the learner as having the project but not the course files | The authoring repository keeps `2D Platformer Course/` inside the folder that holds `project.godot`, so Codex pointed at this repository can read every lesson. A learner's folder holds only the Godot project, and a learner may be reading the course as a web page or a video rather than as files at all. The two setups are not the same, and validating a Codex prompt here does not reproduce the learner's condition: a prompt asking Codex to check the code against the lessons would appear to work in this repository and fail silently for everyone else. That divergence is how the flawed clause in Lessons 3.6 and 4.8 came to be written. Two rules follow. A prompt may only ask Codex about files the learner's project actually contains. And anything a learner must know while working through a lesson belongs in that lesson, not behind a reference to another one; Lesson 4.8 now spells out the terminal fallback commands rather than pointing at Lesson 0.4 for them, because a fallback is used precisely when the convenient path is gone. |
+| Ask Codex only what it can see, and leave the comparing to the learner | Review asked whether Codex would know what a lesson describes. It would not. Lesson 0.4 connects Codex to the folder containing `project.godot`, which holds the Godot project and never the course files, and Lesson 0.1 sets the sandbox so Codex cannot reach files elsewhere on the computer. A prompt asking it to confirm that code matches the lessons therefore asks for a judgement it has no basis for, and an agent asked to confirm will usually confirm, which is the false assurance the course tells learners to guard against. Lesson 4.8 now asks Codex to describe each new script function by function and leaves the comparison to the learner, with a callout saying why and an exercise step asking them to name something Codex could not have checked. This also matches the project rule that learners inspect, explain, correct and test AI output before accepting it. Lesson 3.6 carries the same flawed clause, `confirm that the exported defaults match the values described in the lessons`, and is Validated; Modules 1 and 2 are already clean. Repairing 3.6 is pending a decision rather than done silently. |
