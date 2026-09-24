@@ -106,9 +106,18 @@ help spot an unexpected file or mismatch before you commit through the Git UI.
 If the AI review is unavailable but the Codex Git controls still work, inspect
 the Review tab yourself, use a concise commit message beginning with `Build
 Module 2`, and run the same verification commands. If the Codex app is
-unavailable, stage and commit from the terminal with the `git add` and
-`git commit -m` commands introduced in Lesson 0.4, checking `git status`
-before committing, then run the same verification commands.
+unavailable altogether, do the same work in any terminal opened in the project
+folder, using the commands from Lesson 0.4:
+
+```powershell
+git status
+git add <each file you reviewed>
+git status
+git commit -m "Build Module 2 ..."
+```
+
+Check `git status` before committing, as the second line above does, then run
+the same verification commands from step 5.
 
 ## Learner exercise
 
