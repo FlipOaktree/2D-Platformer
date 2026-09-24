@@ -1,6 +1,6 @@
 # Module 4, Lesson 8: Create a Module 4 Git Checkpoint
 
-**Status:** Blueprint drafted
+**Status:** Validated
 
 ## By the end
 

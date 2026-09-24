@@ -25,7 +25,8 @@ not infer progress from chat history or from learner verification checkboxes.
   learners will use.
 - **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
   1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
-  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.7.
+  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.8,
+  which completes Module 4.
   Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
@@ -102,44 +103,27 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
-- **Exact next step:** Review the Module 4, Lesson 4.8 blueprint, **Create a
-  Module 4 Git Checkpoint**, and decide whether to approve it. It closes Module
-  4 and follows the shape the Module 1, 2 and 3 checkpoints already use:
-  confirm the tested state, have Codex review the diff read-only, then commit
-  locally through the Codex Git controls and verify with `git status`, `git
-  log` and `git show --stat`. Two things make this checkpoint different from
-  the earlier ones. Module 4 produced twelve new files and changed two, more
-  than any module before it, so Part 2 lists them all and says plainly that
-  `actors/player.gd` should show a single added function and nothing else. And
-  every Module 4 lesson ended with an exercise that changed something and asked
-  for it to be restored, across seven lessons, so Part 1 audits the values most
-  likely to have been left behind. Part 1 was cut back twice after review
-  called it overkill, and both times the review was right. Its first draft
-  re-ran the whole level feature by feature and swapped `level_2` in,
-  duplicating Lesson 4.7 Part 7 almost step for step and Lesson 4.7 Part 6
-  entirely, leaving only the value table as new work. The second draft still
-  tabled nine values. Checking the exercises showed that only four are ever at
-  risk: `PlayerSpawn` and `FallLimit` are moved and restored, the pit is
-  widened and undone, and the `Level` instance is swapped and put back, while
-  the moving platform settings, the walls and the one-way strip are never
-  touched, because Lesson 4.6 does its experimenting on a second instance it
-  then deletes and Lesson 4.5 has no restore steps at all. Part 1 is now five
-  steps and four rows, and says plainly that it is a last look rather than a
-  second test; the `level_2` check survives as a checklist line pointing at
-  Lesson 4.7, Part 6. The expected file list was taken from the repository
-  rather than from memory: the new files are the tile artwork and its
-  `.import`, the tile set, the two level scenes, `level.gd`, the moving
-  platform scene and script, `main.gd`, and a `.uid` beside each new script;
-  the changed files are `scenes/main.tscn` and `actors/player.gd`. The `.uid`
-  files are explained rather than ignored, because Module 4 is the first module
-  to add scripts since the course began tracking them and a learner will see
-  three appear; that they hold the identifier scenes use was confirmed against
-  the repository, where `levels/level.gd.uid` contains `uid://rdp1gixobksu` and
-  `level_1.tscn` references the script by that same uid alongside its path.
-  `project.godot` is deliberately listed as a file that should not appear,
-  since no Module 4 lesson touches it. Drafting the checkpoint first exposed a
-  defect in Lesson 4.7 that it would otherwise have certified as tested, which
-  was repaired before this blueprint was written.
+- **Exact next step:** Draft the Module 5, Lesson 5.1 blueprint, **Add a
+  Following Camera**, which opens Module 5. Module 4 is complete: Lesson 4.8,
+  **Create a Module 4 Git Checkpoint**, is Validated, and with it Lessons 4.1
+  to 4.8. It was validated the way Lesson 3.6 was, by replaying it in a scratch
+  clone rather than in the working repository. The clone was reset to the state
+  a learner reaches at the end of Module 3, and the resulting change set was
+  compared against the lesson's expected file list by extracting the paths the
+  lesson names and diffing them against `git status`: every named path was
+  present, and the only files in the diff that the lesson does not name
+  individually are the three `.uid` files, which it covers with a catch-all
+  line. Staging those fourteen files, committing with a `Build Module 4`
+  message, and running the three verification commands all behaved as the
+  lesson describes, with `git show --stat --oneline -1` listing exactly the
+  fourteen files. The Codex UI path is deferred to the full-course rebuild, as
+  it is in the earlier checkpoints. The replay also demonstrated the authoring
+  divergence recorded in `course_workflow.md`: in this repository the
+  checkpoint's `git status` is noisy with course files and with a
+  `project.godot` change that no lesson produces, because the main scene was
+  repacked by script earlier in development. A learner sees neither, and the
+  lesson's own guidance catches the second by telling them to open
+  `project.godot` if it appears, since no Module 4 lesson touches it.
   Lesson 4.7, **Add Level Bounds and Fall Detection**, is Validated, built in
   the editor and measured against the running project. `level_1.tscn` has a
   three-tile pit where the six ground cells at `(7, 15)` to `(9, 16)` were,
@@ -491,7 +475,7 @@ elements around clear spawn and boundary contracts.
 | 4.5 | Add One-Way Platforms | Alternative tiles, one-way collision on a tile's polygon, per-tile `Modulate`, a second terrain in the same terrain set, a second level layer, and sibling draw order | Validated | Uncommitted working tree; procedure walked in the editor, terrain 1 renamed 'Platform', variants corrected from row 0 to row 3, terrain and draw order re-audited |
 | 4.6 | Add Moving Platforms | `AnimatableBody2D`, `sync_to_physics`, a reusable moving-surface scene, a `TileMapLayer` used as artwork with its collision disabled, `Vector2.move_toward()`, and an exported `Vector2` offset | Validated | Uncommitted working tree; built in the editor and validated against the running project |
 | 4.7 | Add Level Bounds and Fall Detection | A pit in the terrain, `StaticBody2D` walls, a fall-limit marker, a second question the level answers, the Player's first non-callback method, and a per-frame check in the orchestrator | Validated | Uncommitted working tree; built in the editor and validated against the running project; a seventh part was added so every level file carries its own fall limit |
-| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, a saved-value audit after seven exercises, both level files run, reviewed local commit, and verification | Blueprint drafted | Uncommitted working tree |
+| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, a saved-value audit after seven exercises, both level files run, reviewed local commit, and verification | Validated | Uncommitted working tree; expected file list, staging, commit, and verification commands replayed in a scratch clone; Codex UI path deferred to the full-course rebuild |
 
 ### Module 5: Camera and Character Presentation
 
