@@ -271,7 +271,8 @@ prompt directly with the completed script in Part 3, then continue.
 
 ### Part 5: Test the grace window and its limits
 
-1. Open `res://scenes/main.tscn` and run the current scene with `F6`.
+1. Predict what will happen if you press jump just after walking off the
+   platform, then open `res://scenes/main.tscn` and run it with `F6`.
 2. From either side of the platform, jump onto it and confirm that grounded
    jumping still works.
 3. Walk off either edge and press jump immediately afterward. Confirm that

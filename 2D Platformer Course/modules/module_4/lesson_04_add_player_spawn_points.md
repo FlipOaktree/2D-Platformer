@@ -42,14 +42,12 @@ Player's.
 > editor so you can see and move it, and draws nothing at all when the game
 > runs. It exists to answer "where?", which is exactly what a spawn point is.
 
-> 💡 `(256, 896)` is where the Player's centre goes, not where its feet go.
-> The Player's collider is 128 tall, so a centre at `896` puts its feet on the
-> ground surface at `y = 960`. Marking the centre keeps the level from having
-> to know how tall the Player is.
+> 💡 `(256, 896)` is where the Player's centre goes, not its feet. The
+> Player's collider is 128 tall, so a centre at `896` puts its feet on the
+> ground at `y = 960`.
 
-> 💡 The spawn point belongs to the level, not to `Main`. The level is the
-> only thing that knows where its own ground is. `Main` has no idea which
-> level it is holding or what shape it has, and it should not need to.
+> 💡 The spawn point belongs to the level, because the level is the only thing
+> that knows where its own ground is.
 
 > ⚠️ **If something differs**
 >
@@ -77,25 +75,19 @@ Player's.
 
 3. Save the script with `Ctrl+S`, then save the scene.
 
-> 💡 `$PlayerSpawn` finds a child node by its name. It is shorthand, and the
-> name has to match the node in the Scene dock exactly.
+> 💡 `$PlayerSpawn` finds a child node by name, so it must match the Scene
+> dock exactly. `@onready` waits until the node is ready, the first moment its
+> children exist; without it the script would look for `PlayerSpawn` too
+> early and find nothing.
 
-> 💡 `@onready` delays a variable until the node is ready, which is the first
-> moment its children exist. Without it the script would look for
-> `PlayerSpawn` while the scene is still being built and find nothing.
+> 💡 `global_position` is where the marker is in the world; `position` is where
+> it sits relative to `Level`. They match only while `Level` is at the origin.
+> The exercise moves the level to show why `global_position` is the safe
+> choice.
 
-> 💡 `global_position` is where the marker actually is in the world.
-> `position` would be where it sits relative to `Level`. They are the same
-> number today only because `Level` sits at the origin, so either would appear
-> to work. Move the level 128 pixels up, as the exercise does, and `position`
-> still reports the old number: the Player arrives 128 pixels below the
-> marker, misses the ground, and falls. `global_position` is the one that
-> stays correct wherever the level is placed.
-
-> 💡 The level offers a method rather than letting anyone reach in and grab
-> the marker. `get_spawn_position()` is a promise about what the level can
-> answer, not about how it is built inside. The level can rename or move
-> `PlayerSpawn` later and nothing outside it breaks.
+> 💡 The level offers a method rather than letting others reach in for the
+> marker, so it can rename or move `PlayerSpawn` later without breaking
+> anything outside it.
 
 > ⚠️ **If something differs**
 >
@@ -124,10 +116,9 @@ Player's.
 
 4. Save the script and the scene with `Ctrl+S`.
 
-> 💡 This is the orchestrator's job. `Main` owns the Player and the level,
-> and its work is to introduce them. It asks the level one question and acts
-> on the answer. It does not know the level's shape, its tiles, or where its
-> marker sits.
+> 💡 This is the orchestrator's job: `Main` owns the Player and the level and
+> introduces them. It asks the level one question and acts on the answer,
+> without knowing anything about the level's shape.
 
 > 💡 `_ready()` runs once when the scene is set up. That is the right moment
 > to place the Player: after both the Player and the level exist, and before
@@ -143,7 +134,7 @@ Player's.
 
 ### Part 4: Test that the level decides
 
-1. Run `main.tscn` with `F6`.
+1. Predict where the Player will appear, then run `main.tscn` with `F6`.
 2. Confirm that the Player appears at the marker and settles on the ground
    there, rather than falling from the old position.
 3. Stop with `F8`.
@@ -154,14 +145,14 @@ Player's.
 6. Return `PlayerSpawn` to `(256, 896)` and save.
 7. Select the `Player` in `main.tscn`, change its Position to anything, and
    run again. Confirm the Player still starts at the marker.
+
+> 💡 This is the real test. The Player's own position in `main.tscn` no longer
+> decides anything: the level decides, and the Player is put there.
+
 8. Confirm that running, jumping, coyote time, jump buffering, and variable
    jump height all behave as they did in Lesson 3.
 9. If a compatible controller is connected, repeat the movement checks.
 10. Stop with `F8`.
-
-> 💡 Step 7 is the real test. The Player's own position in `main.tscn` no
-> longer decides anything, which is the point: the level decides, and the
-> Player is simply put there.
 
 > ⚠️ **If something differs**
 >

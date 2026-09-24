@@ -38,14 +38,33 @@ through it.
    `Ground` terrain, as in Lesson 2.
 3. Turn on the eraser, and erase the six ground cells `(7, 15)`, `(8, 15)`,
    `(9, 15)`, `(7, 16)`, `(8, 16)` and `(9, 16)`.
+
+> 💡 Three tiles, not two. The Player is two tiles wide, so over a two-tile
+> hole one corner always rests on solid ground and it walks straight across.
+> A pit has to be wider than what falls into it.
+
 4. Confirm that a three-tile hole now runs all the way through the ground,
    and that the cells either side of it have redrawn themselves as ends
    rather than middles.
+
+> 💡 Erasing with a terrain selected repairs the edges: the cells either side
+> of the hole switch from middle tiles to end tiles on their own.
+
 5. Select the `Level` root and add a child node of type **StaticBody2D**.
+
+> 💡 A wall never moves, so the plain `StaticBody2D` from Lesson 2.9 is the
+> right body here. The walls sit just outside the frame, so you never see
+> them, and they are too tall to jump over.
+
 6. Rename it `LeftWall` and set its Position to `(-32, 544)`.
 7. Add a **CollisionShape2D** to `LeftWall`, give it a **New
    RectangleShape2D**, and set the shape's **Size** to `(64, 2048)`.
 8. Right-click `LeftWall` in the Scene dock and choose **Duplicate**.
+
+> 💡 Duplicating a node shares its shape, so both walls use one
+> `RectangleShape2D`. Here that is what you want, since the two walls should
+> always be the same size. Lesson 4.6 showed the case where sharing is a trap.
+
 9. Rename the copy `RightWall` and set its Position to `(1952, 544)`.
 10. Save `level_1.tscn` with `Ctrl+S`.
 11. Open `main.tscn` and run it with `F6`.
@@ -54,50 +73,6 @@ through it.
 13. Run at the pit and jump it. Then walk into it on purpose and watch the
     Player drop out of the bottom of the screen and never come back.
 14. Stop the scene with `F8`.
-
-> 💡 A hole is the point of this lesson. Every surface built so far catches
-> the Player: the ground is continuous, the platforms are above it, and the
-> walls you just added close the sides. Without somewhere to fall, there is
-> nothing for fall detection to detect. The pit is what makes the rest of the
-> lesson mean something.
-
-> 💡 Three tiles, not two, and the reason is the Player's own size. The Player
-> is 128 pixels wide, which is exactly two tiles. Over a two-tile hole it
-> always has at least one corner resting on solid ground, so it walks across
-> as though the hole were not there. A pit has to be wider than the thing
-> falling into it. Three tiles leaves a 64-pixel stretch where nothing is
-> under the Player at all.
-
-> 💡 The pit is 192 pixels across, and jumping it is fair rather than fussy.
-> A run-up at full speed clears it from anywhere in the last 192 pixels before
-> the lip, which is a window of about `0.43` seconds. That is the same kind of
-> number as the coyote time from Lesson 3.3: what matters is not the single
-> perfect moment but how much room there is around it.
-
-> 💡 Erasing with a terrain selected repairs the edges for you. The cells at
-> `(6, 15)` and `(10, 15)` were middles of a long run of ground a moment ago;
-> now they are the ends either side of a hole, and Godot has swapped their
-> tiles to match. This is the autotiling from Lesson 2 working in reverse, and
-> it is why the pit has proper lips rather than a sliced-through look.
-
-> 💡 The walls are `StaticBody2D`, the body type from Lesson 2.9, and here the
-> oldest one is exactly right. Lesson 4.6 needed `AnimatableBody2D` because a
-> moving platform moves. A wall never moves, never carries anybody, and has
-> nothing to say to the physics engine beyond being in the way.
-
-> 💡 Duplicating the first wall copies its `CollisionShape2D` and shares the
-> shape itself, so both walls use one `RectangleShape2D` between them. Lesson
-> 4.6 treated that sharing as a trap, and here it is the opposite: two walls
-> holding the level in should be the same size, so one shape resized once is
-> the behaviour you want. The rule is not that sharing is bad, but that it is
-> worth knowing about. It is a problem when copies need to differ and a
-> convenience when they must not.
-
-> 💡 The walls sit just outside the frame, from `x = -64` to `0` and from
-> `x = 1920` to `1984`, so you never see them. The Player stops with its own
-> edge against the edge of the view: its centre comes to rest at `x = 64` on
-> the left and `x = 1856` on the right. They are 2048 pixels tall so there is
-> no jumping over them.
 
 > ⚠️ **If something differs**
 >
@@ -120,20 +95,9 @@ through it.
 4. Confirm the cross sits below the ground and below the blue frame.
 5. Save `level_1.tscn` with `Ctrl+S`.
 
-> 💡 This is the same `Marker2D` as the spawn point in Lesson 4.4, used for
-> the same reason: the level is the only thing that knows its own shape, so
-> the level is where the answer belongs. A level with a deeper pit would put
-> its marker lower.
-
-> 💡 Only the marker's `y` matters. A fall limit is a depth, not a place, so
-> the `x` of `960` is there purely to put the cross in the middle of the
-> level where it is easy to find. Dragging it left or right changes nothing.
-
-> 💡 `1216` is below the frame on purpose, not merely below the ground. The
-> ground's underside is at `y = 1088` and the visible frame ends at `1080`,
-> so a Player falling through the pit is out of sight for about `0.13`
-> seconds before it is caught. Putting the limit where it can still be seen
-> would mean watching the Player stop in mid-air and vanish.
+> 💡 Only the marker's `y` matters: a fall limit is a depth, not a place. It
+> sits below the bottom of the frame so the Player is out of sight before it
+> is caught.
 
 > ⚠️ **If something differs**
 >
@@ -162,20 +126,8 @@ through it.
 
 4. Save the script with `Ctrl+S`.
 
-> 💡 The level can now answer two questions instead of one, and they are the
-> same shape of promise. `get_spawn_position()` says where the Player starts;
-> `get_fall_limit()` says how far down it may go. Neither tells anybody how
-> the level is built inside, so the markers can be renamed or moved without a
-> line changing anywhere else.
-
 > 💡 It returns a `float`, not a `Vector2`, because a depth is one number. The
-> marker has an `x` and the method deliberately throws it away. Returning the
-> whole position would invite somebody to use the `x` for something, and then
-> moving the cross sideways would start to matter.
-
-> 💡 `global_position` again, for the reason Lesson 4.4 gave. The number
-> leaves the level and is compared against the Player's own world position, so
-> both sides have to be measuring from the same origin.
+> marker's `x` is deliberately ignored.
 
 > ⚠️ **If something differs**
 >
@@ -199,24 +151,13 @@ through it.
 
 3. Save the script with `Ctrl+S`.
 
-> 💡 This is the Player's first method that is not a callback. Everything in
-> `player.gd` so far has been Godot calling the Player: `_physics_process()`
-> runs because the engine runs it. `respawn_at()` is different. It is there
-> for somebody else to call, and it is the Player's answer to being told to
-> start again.
+> 💡 This is the Player's first method that is not a callback. Godot calls
+> `_physics_process()` itself; `respawn_at()` is there for another node to
+> call.
 
-> 💡 It pairs with `get_spawn_position()`, and the pair is the shape of the
-> whole design. The level is asked a question. The Player is given an
-> instruction. `Main` does neither job itself; it carries the answer from one
-> to the other.
-
-> 💡 Clearing the velocity is the half that is easy to leave out. A Player
-> caught at the fall limit is moving at about `1240` pixels per second
-> downward and `90` sideways, and without this line it arrives at the spawn
-> point still carrying all of it. At this level's marker, which sits on the
-> ground, the difference is under a pixel, because the floor stops it on the
-> first frame. Move the marker into the air, as the Lesson 4.4 exercise does,
-> and the Player drops from it as though it had never stopped falling.
+> 💡 Clearing the velocity matters. A Player caught at the fall limit is still
+> falling fast, and without this line it would arrive at the spawn point still
+> carrying that speed.
 
 > ⚠️ **If something differs**
 >
@@ -237,30 +178,16 @@ through it.
            player.respawn_at(level.get_spawn_position())
    ```
 
-3. Save the script with `Ctrl+S`.
-
-> 💡 `Main` still knows nothing about the level. It has never heard of the
-> pit, the walls, or either marker. It asks how far down is too far, compares
-> that with where the Player is, and if the answer is bad it asks where the
-> Player should start and tells the Player to go there. Every fact about the
-> level stays inside the level.
-
-> 💡 It has to be `_physics_process()`, not `_process()`. The position being
-> read is the one physics moved, so the check belongs on the same clock. In
-> `_process()` it would sometimes test a position from the previous physics
-> frame and sometimes the current one, which is the kind of bug that happens
-> only occasionally and is miserable to find.
+3. Save the script with `Ctrl+S`. Before running anything, predict what
+   will now happen when the Player walks into the pit.
 
 > 💡 The parameter is called `_delta` rather than `delta` because this
 > function never uses it. Godot requires the parameter to be there, and the
 > leading underscore is how GDScript says "I know, and I meant it", which
 > keeps the editor from warning about an unused value.
 
-> 💡 `>` is the right comparison, not `==`. The Player passes the limit at
-> whatever speed it happens to be falling, covering about 20 pixels in a
-> single frame at the speeds involved here, so it would almost never land on
-> the exact value. The question is not "is the Player at the limit" but "is
-> the Player past it".
+> 💡 Use `>`, not `==`. The Player falls many pixels per frame, so it almost
+> never lands on the limit exactly; the question is whether it has gone past.
 
 > ⚠️ **If something differs**
 >
@@ -290,26 +217,10 @@ through it.
 8. Put `level_1.tscn` back in `main.tscn`, again at Position `(0, 0)`, and
    save.
 
-> 💡 One script, attached to every level, means one promise every level file
-> has to keep. `level.gd` now looks for a node called `FallLimit` the moment a
-> level becomes ready. `level_1` has one because you added it in Part 2, and
-> until a moment ago `level_2` did not. This is the cost of sharing a script
-> between scenes, and it is worth paying: the alternative is a separate script
-> per level, and then every fix has to be made twice.
-
-> 💡 A missing marker is not caught when you save. Godot has no way of knowing
-> that `$FallLimit` will fail until the scene actually runs, so a level built
-> without one looks perfectly fine in the editor and then fills the **Output**
-> panel the moment it is played. It reports `Invalid access to property or key
-> 'global_position' on a base object of type 'null instance'`, once per
-> physics frame, which is 60 times a second.
-
-> 💡 Walls are a different matter, and `level_2` does not need them. Nothing
-> in any script asks a level whether it has walls, so a level without them is
-> not broken, only open at the sides. That is now survivable rather than
-> fatal: run off the end and the fall limit puts you back. A marker the script
-> requires and a wall the designer chooses are two different kinds of thing,
-> and only one of them is a promise.
+> 💡 One script shared by every level is one promise every level file has to
+> keep: `level.gd` expects a `FallLimit` in each. Walls are different. No
+> script asks for them, so a level without walls is not broken, only open at
+> the sides.
 
 > ⚠️ **If something differs**
 >
@@ -336,21 +247,15 @@ through it.
 8. Jump against each wall and confirm it cannot be climbed or cleared.
 9. Ride the moving platform and step off the far end. Confirm the Player
    lands on the ground rather than being caught by the fall limit.
+
+> 💡 A fall limit set too high would catch the Player here, snatching it off a
+> landing it had made. This level's lowest safe surface is the ground at
+> `y = 960`, well above the limit at `1216`.
+
 10. Confirm the one-way strip, the solid platform, and the moving platform
     all behave as they did in Lesson 4.6.
 11. If a compatible controller is connected, repeat the checks with it.
 12. Stop the scene with `F8`.
-
-> 💡 Step 9 is the check that the limit is in the right place. A fall limit
-> set too high catches the Player during ordinary play, which feels like the
-> game snatching you off a jump you had made. Everything in this level that
-> is meant to be survivable ends on the ground at `y = 960`, far above the
-> limit at `1216`.
-
-> 💡 Falling is now a setback rather than an ending, and that is a design
-> choice rather than a technical one. The Player loses its position and
-> nothing else. Later modules add things worth losing, and this is the line
-> of code they will hook into.
 
 > ⚠️ **If something differs**
 >
@@ -381,8 +286,6 @@ through it.
 
 - [ ] `level_1.tscn`'s `Terrain` layer has 64 painted cells, six fewer than
       the 70 it had at the end of Lesson 6.
-- [ ] The pit is three tiles wide, spanning `x = 448` to `x = 640`, and goes
-      through both ground rows.
 - [ ] The ground cells either side of the pit show end pieces, not middles.
 - [ ] `level_1.tscn` contains `LeftWall` and `RightWall`, both
       `StaticBody2D`, at Positions `(-32, 544)` and `(1952, 544)`, each with a
@@ -401,8 +304,6 @@ through it.
       nor the walls.
 - [ ] Walking into the pit puts the Player back at the spawn point, standing
       still, about half a second later.
-- [ ] Repeated falls are handled the same way every time.
-- [ ] A full-speed run and jump clears the pit from well before the lip.
 - [ ] Stepping off the moving platform lands on the ground and does not
       trigger a respawn.
 - [ ] Running, jumping, coyote time, jump buffering, and variable jump height

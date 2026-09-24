@@ -202,7 +202,8 @@ an update is slightly shorter or longer.
 
 5. Confirm that the existing defaults, comments, vertical calculations, input
    action names, and `move_and_slide()` call remain unchanged.
-6. Save the script and run `main.tscn`.
+6. Save the script, predict how starting and stopping will feel now, then
+   run `main.tscn`.
 7. Hold a horizontal direction and confirm that the Player takes a short time
    to reach full speed.
 8. Release the input and confirm that the Player travels a short additional

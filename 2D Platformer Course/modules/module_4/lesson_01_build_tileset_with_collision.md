@@ -43,17 +43,12 @@ tiles you painted yourself.
 > 💡 A tile atlas is a single image that holds many tiles arranged in a grid.
 > This one is 12 tiles across and 4 down, with each tile 64 by 64 pixels.
 
-> 💡 The artwork is not drawn as 48 separate squares. It is drawn as four
-> solid shapes of ground: a narrow one-tile pillar, a three-wide block, a
-> four-wide block, and a four-wide block with a single hole punched in it.
-> Every square of those shapes becomes one tile, and because the shapes have
-> edges, corners, and a hole, the squares between them cover every way ground
-> can meet empty space. The hole is why one square of the grid is left empty.
+> 💡 The artwork is drawn as four solid shapes of ground, one of them with a
+> hole punched in it. Every square of those shapes becomes one tile, and the
+> hole is why one square of the grid is empty.
 
-> 💡 The tiles are 64 pixels square and the Player's collider is 128 by 128,
-> so the Player is exactly two tiles wide and two tiles tall. That makes level
-> distances easy to reason about: a gap four tiles wide is two Player widths,
-> and a platform two tiles above the ground sits one Player height up.
+> 💡 The Player's collider is 128 by 128, exactly two tiles each way, which
+> makes level distances easy to reason about in Player sizes.
 
 > ⚠️ **If something differs**
 >
@@ -69,28 +64,26 @@ tiles you painted yourself.
 2. Select the `Main` root and add a child node of type **TileMapLayer**.
 3. Rename the new node `Terrain` with `F2`.
 4. Confirm that `Terrain` has Position `(0, 0)`.
+
+> 💡 With `Terrain` at `(0, 0)`, cell `(0, 0)` is the top-left corner of the
+> blue viewport frame from Lesson 1.2, a corner you can count cells from.
+
 5. With `Terrain` selected, find **Tile Set** in the Inspector, open the menu
    beside it, and choose **New TileSet**.
 6. Click the new TileSet to open its properties and set **Tile Size** to
    `(64, 64)`.
-7. Open the menu beside **Tile Set** again and choose **Save As...**. Save the
-   resource as `res://levels/tiles/terrain_tileset.tres`.
-8. Save `main.tscn` with `Ctrl+S`.
-
-> 💡 A `TileMapLayer` is a node: it lives in one scene and remembers which
-> tile was painted in each cell of its grid. A `TileSet` is a resource: it
-> describes the tiles themselves, including their size, their artwork, their
-> collision, and how they connect. Saving the TileSet to its own file means
-> the levels you build in the rest of this module can share the same tiles
-> instead of each rebuilding them.
 
 > 💡 Set **Tile Size** before adding the artwork. It decides how the image is
 > cut up, so changing it afterwards means cutting the tiles again.
 
-> 💡 `Terrain` stays at Position `(0, 0)`, so cell `(0, 0)` starts at the
-> world origin. That is the top-left corner of the blue viewport frame you set
-> in Lesson 1.2, which makes it possible to count cells from a corner you can
-> see.
+7. Open the menu beside **Tile Set** again and choose **Save As...**. Save the
+   resource as `res://levels/tiles/terrain_tileset.tres`.
+8. Save `main.tscn` with `Ctrl+S`.
+
+> 💡 A `TileMapLayer` is a node: it lives in one scene and remembers which tile
+> is painted in each cell. A `TileSet` is a resource: it describes the tiles
+> themselves, their artwork, collision, and how they connect. Saving the
+> TileSet to its own file lets every level share it.
 
 > ⚠️ **If something differs**
 >
@@ -113,22 +106,14 @@ tiles you painted yourself.
    Coordinates count from `(0, 0)` in the top-left corner, so that is the
    eleventh column from the left and the second row from the top: the
    transparent square left by the hole in the fourth shape.
+
+> 💡 Automatic creation fills every square it is given, including the
+> transparent one, which would otherwise become an invisible solid block.
+> Remove it now: the next part selects every tile to give them collision, and
+> a tile deleted first is simply not in that selection.
+
 7. Confirm that 47 tiles remain and that `(10, 1)` is now the only square
    without one.
-
-> 💡 Automatic creation fills the grid it is given. It makes a tile in all 48
-> squares, including the transparent one, so that square has to be removed by
-> hand. Leaving it would put an invisible solid block in the palette, easy to
-> paint by accident and hard to find afterwards.
-
-> 💡 Remove it now rather than later. The next part selects every tile at once
-> to give them collision, and a tile deleted beforehand simply is not in that
-> selection. Delete it afterwards instead and you have already spent a step
-> giving a collision shape to something that should not exist.
-
-> 💡 Each tile is identified by its column and row inside the atlas, counting
-> from `(0, 0)` in the top-left corner. Those atlas coordinates are how the
-> next lesson refers to individual tiles.
 
 > ⚠️ **If something differs**
 >
@@ -162,24 +147,19 @@ tiles you painted yourself.
    corner needs nudging.
 8. Confirm that every tile now shows a square outline covering its whole area.
 
-> 💡 A physics layer is what turns painted artwork into something solid.
-> Tiles drawn without one are only a picture, and the Player falls straight
-> through them. The polygon is stored per tile, so a later lesson can give one
-> tile a shape that is not a full square without changing the others.
+> 💡 A physics layer is what turns painted artwork into something solid;
+> without one, the Player falls straight through. The polygon is stored per
+> tile, so one tile can later have a different shape.
 
-> 💡 Give every tile the full square even where the painted ground stops a
-> few pixels short of the tile edge, as it does on the outer sides of the
-> pillar. Ground that is solid slightly beyond where it looks solid feels fair
-> to play. Ground that stops short of where it looks solid does not.
-
-> 💡 Editing every tile in one selection is not only faster, it is safer. The
-> most common mistake in this lesson is a single tile that was missed, which
-> produces one invisible gap somewhere in a finished level.
+> 💡 Give every tile the full square, even where the painted ground stops a
+> few pixels short of the edge. Ground slightly more solid than it looks feels
+> fair; ground less solid than it looks does not.
 
 9. Open the **TileMap** tab, choose any tile, and paint a short row of cells in
    the empty space above the `Floor` and to the left of the Player.
 10. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
-11. Run the current scene with `F6`.
+11. Predict whether the Player will stand on the painted row or fall through
+    it, then run the current scene with `F6`.
 12. Move the Player onto the painted row and confirm that it stands on the
     tiles instead of passing through them.
 13. Stop the scene with `F8`.

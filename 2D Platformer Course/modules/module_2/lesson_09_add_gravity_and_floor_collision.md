@@ -125,7 +125,8 @@ the gravity calculation runs by using the floor state.
 
 3. Open `res://scenes/main.tscn`.
 4. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
-5. Run the current scene with `F6`.
+5. Predict what the Player will do now, then run the current scene with
+   `F6`.
 6. Confirm that the Player falls and stops on top of the floor.
 7. Confirm that the bottoms of the Player marker and its collision outline
    meet the top edge of the Floor collision shape.

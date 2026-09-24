@@ -41,11 +41,9 @@ stood in for a level since Module 2 finally come out.
 > described this way, you paint with the material and Godot picks the tile that
 > fits its neighbours.
 
-> 💡 **Match Corners and Sides** compares all eight neighbours of a cell: the
-> four sides and the four corners. That is what the artwork was drawn for. It
-> is why the atlas needs 47 tiles rather than the 16 that comparing sides alone
-> would need, and it is what lets the ground turn a corner cleanly instead of
-> leaving a squared-off notch.
+> 💡 **Match Corners and Sides** compares all eight neighbours of a cell, the
+> four sides and the four corners. That is what lets the ground turn a corner
+> cleanly, and why the atlas needs 47 tiles rather than 16.
 
 > ⚠️ **If something differs**
 >
@@ -71,6 +69,12 @@ stood in for a level since Module 2 finally come out.
    ground and leaves a small green square there. Clicking a side or a corner
    marks that peering bit, for each side and corner where the ground continues
    past the tile's edge.
+
+> 💡 Selecting is per tile, so a tile you have not gone over twice has not been
+> painted. The centre marks can be done all at once: drag across the whole
+> atlas to select it, then drag across the centres to mark them. Only the
+> sides and corners differ from tile to tile.
+
 7. Read the answer off the artwork rather than memorising it:
    - A green top means nothing sits above that tile, so its top is open.
    - Plain ground running all the way to an edge means the ground carries on
@@ -79,45 +83,19 @@ stood in for a level since Module 2 finally come out.
      itself. A corner may be marked even when a side beside it is not; that is
      how the tiles around an inside corner are drawn.
 
-> 💡 **Paint** still starts with a pass that selects, as **Select** mode did
-> in Lesson 1. What differs is the second pass: you pick one value and brush
-> it onto the selection, and where you click inside a tile decides which part
-> of it you are marking. Selecting is per tile, so a tile you have not gone
-> over twice has not been painted, however obvious its artwork looks.
+> 💡 Judge every tile on its own artwork: two tiles side by side in the atlas
+> are often not neighbours in a level. `assets/terrain_peering_reference.png`
+> shows the finished answer for every tile; try the artwork first, then use
+> it to check.
 
-> 💡 Because selecting works by dragging, the centre mark does not have to be
-> done tile by tile. Every tile in this set is ground, so drag across the whole
-> atlas to select it, then drag across it again over the centres to mark them
-> all at once. That leaves only the sides and corners, which genuinely do
-> differ from tile to tile.
+> 💡 When no tile matches a cell's neighbours, Godot leaves that cell empty
+> rather than guessing. An empty cell is the TileSet telling you which
+> combination is not described yet, so you need not describe all 47 tiles
+> before painting: start with the pieces a simple rectangle needs.
 
-> 💡 Do not assume a tile's neighbours in the atlas are its neighbours in a
-> level. The sheet is a set of shapes drawn for the artist's convenience, and
-> two tiles sitting side by side in the atlas are often not meant to sit side
-> by side in a level. Judge every tile on its own artwork.
-
-> 💡 `assets/terrain_peering_reference.png` shows the finished answer for
-> every tile: a large square in the centre where the tile is ground, a bar on
-> each marked side, and a small square in each marked corner. Use it to check
-> a tile you are unsure of, or to check your work at the end. Try reading the
-> artwork first, though. That is the skill that carries over to a tileset
-> nobody has published an answer for.
-
-> 💡 You do not have to describe all 47 tiles before you can paint. Describe
-> the ones a simple rectangular shape needs first: a flat top, a left and right
-> end, a solid middle, and the pieces that sit under them. Part 3 paints the
-> level, and anything still missing announces itself there.
-
-> 💡 When Godot cannot find a tile matching a cell's neighbours, it leaves
-> that cell empty rather than guessing. An empty cell in the middle of a shape
-> you just painted is not a mistake in the painting. It is the TileSet telling
-> you exactly which combination has not been described yet.
-
-> 💡 That signal only catches marks that are missing, never marks that are
-> wrong. A tile described incorrectly still matches something, so the level
-> paints completely and looks finished while grass runs along its underside.
-> A level with no empty cells is not yet a correct level; the check that
-> matters is the one you do with your eyes in Part 3.
+> 💡 That signal only catches missing marks, never wrong ones. A wrongly
+> described tile still matches something, so a level can look finished while
+> grass runs along its underside. Check the result with your eyes in Part 3.
 
 > ⚠️ **If something differs**
 >
@@ -138,6 +116,11 @@ stood in for a level since Module 2 finally come out.
 4. Drag a rectangle from cell `(0, 15)` to cell `(29, 16)`. This is the
    ground: the full width of the viewport, two rows deep, with its surface at
    `y = 960`.
+
+> 💡 Cell `(0, 0)` is the top-left corner of the viewport frame, so count rows
+> down from there. The **Rectangle** tool previews the area before you release
+> the button.
+
 5. Drag a second rectangle from cell `(10, 11)` to cell `(19, 11)`. This is
    the platform, one row tall, with its surface at `y = 704`. It floats clear
    of the ground rather than resting on it.
@@ -149,29 +132,6 @@ stood in for a level since Module 2 finally come out.
 8. Select `Floor` in the Scene dock and delete it.
 9. Select `CoyoteTestPlatform` and delete it.
 10. Save `main.tscn` with `Ctrl+S`.
-
-> 💡 Cell `(0, 0)` is the top-left corner of the viewport frame, so cell
-> `(0, 15)` is fifteen rows below the top of the frame and cell `(29, 16)` is
-> the last column on the right. If you lose track while dragging, count rows
-> down from that corner; the **Rectangle** tool previews the area before you
-> release the button.
-
-> 💡 The painted level sits exactly where the temporary bodies did. The Floor
-> surface was already at `y = 960` and the platform already occupied
-> `y = 704` to `768`, so the tiles land on the same surfaces and nothing about
-> the jump changes. That is why those two bodies were placed on 64-pixel
-> boundaries back in Modules 2 and 3.
-
-> 💡 The platform surface is 256 pixels above the ground and the jump rises
-> about 310 pixels, so it can be reached with 54 pixels to spare. Its
-> underside sits at `y = 768` and the Player's head reaches `y = 832` when
-> grounded, leaving 64 pixels of clearance, so the Player can also run
-> underneath it.
-
-> 💡 Reaching it needs the jump started early. The Player is only high enough
-> to land on the platform for about 26 frames, a little under half a second,
-> which is roughly 195 pixels of running. Start the jump underneath the
-> platform and you hit its underside instead.
 
 > ⚠️ **If something differs**
 >
@@ -224,7 +184,8 @@ shows both a collision outline and a green terrain centre.
 
 1. Confirm that **Visible Collision Shapes** is still enabled in the **Debug**
    menu.
-2. Run the current scene with `F6`.
+2. Predict whether the Player will land where it did on the old Floor, then
+   run the current scene with `F6`.
 3. Confirm that the Player falls and lands on the tiled ground, and that the
    collision outlines follow the painted shape.
 4. Run left and right and confirm that acceleration, deceleration, reversal,
@@ -251,12 +212,9 @@ shows both a collision outline and a green terrain centre.
 13. In the editor's **Debug** menu, turn **Visible Collision Shapes** back
     off.
 
-> 💡 The outlines have done their job. They were switched on in Module 2 to
-> show a single collider and were worth keeping while collision was the thing
-> being built; now that a whole level is painted they draw a box around every
-> tile, which hides the artwork you are about to judge levels by. Turning them
-> off is one menu click, and so is turning them on again the next time
-> something solid misbehaves.
+> 💡 The outlines have done their job; with a whole level painted they would
+> only hide the artwork. Turn them back on whenever something solid
+> misbehaves.
 
 > ⚠️ **If something differs**
 >
@@ -307,14 +265,10 @@ shows both a collision outline and a green terrain centre.
 - [ ] `main.tscn` still contains exactly one `TileMapLayer`, named `Terrain`,
       at Position `(0, 0)`.
 - [ ] The Player comes to rest with the bottom of its collider at `y = 960`.
-- [ ] The platform surface is at `y = 704`, 256 pixels above the ground, with
-      64 pixels of clearance beneath it.
 - [ ] A jump with the button held carries the Player onto the platform, and a
       tapped jump does not.
-- [ ] Coyote time, jump buffering, and variable jump height still behave as
-      they did at the end of Module 3.
-- [ ] Acceleration, deceleration, reversal, gravity, landing, and maximum speed
-      remain unchanged.
+- [ ] Movement, gravity, landing, coyote time, jump buffering, and variable
+      jump height behave as they did at the end of Module 3.
 - [ ] **Visible Collision Shapes** is off in the **Debug** menu at the end of
       the lesson.
 - [ ] `res://actors/player.gd` is unchanged by this lesson.

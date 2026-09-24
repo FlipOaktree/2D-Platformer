@@ -252,7 +252,8 @@ with the completed script in Part 3, then continue.
 
 ### Part 5: Test tapped and held jumps
 
-1. Open `res://scenes/main.tscn` and run the current scene with `F6`.
+1. Predict how a tapped jump will differ from a held one, then open
+   `res://scenes/main.tscn` and run it with `F6`.
 2. Stand on the original Floor beside the raised platform. Press the jump
    button and release it immediately. Confirm that the Player rises much less
    than before and does not reach the top of the platform.

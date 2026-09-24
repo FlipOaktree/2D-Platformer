@@ -31,30 +31,25 @@ what changes is where the level lives and who owns it.
 
 1. Open `res://scenes/main.tscn`.
 2. Select the `Main` root and add a child node of type **Node2D**.
+
+> 💡 A plain `Node2D` is enough: the level needs no behaviour yet, only a
+> position so it can later move as one piece.
+
 3. Rename it `Level` with `F2`.
 4. Confirm that `Level` has Position `(0, 0)`.
 5. In the Scene dock, drag `Terrain` onto `Level` so that it becomes a child
    of `Level` rather than of `Main`.
+
+> 💡 Moving a node in the Scene dock keeps it where it is on screen, so nothing
+> should jump when `Terrain` becomes a child of `Level`.
+
 6. Confirm that `Terrain` still has Position `(0, 0)` and that the level looks
    exactly as it did before the move.
 7. Save `main.tscn` with `Ctrl+S`.
 
-> 💡 A plain `Node2D` is enough. The level needs no behaviour of its own yet,
-> only somewhere for its parts to gather. `Node2D` gives it a position, which
-> means the whole level can later be moved as one piece instead of node by
-> node.
-
-> 💡 The Player is deliberately left out. A level is the content of one
-> place: its ground, its platforms, and later its hazards and its spawn
-> point. The Player is not content. It carries on from one level to the next,
-> so it belongs to `Main`. Putting a copy of the Player inside every level
-> would mean eight Players in eight levels, each needing the same fix
-> whenever the Player changes.
-
-> 💡 Moving a node in the Scene dock keeps it where it is on screen. Godot
-> adjusts the node's local position so its place in the world does not change,
-> which is why nothing moves when `Terrain` becomes a child of a node sitting
-> at the origin.
+> 💡 The Player is deliberately left out. A level is the content of one place,
+> and the Player carries on from one level to the next, so it belongs to
+> `Main`.
 
 > ⚠️ **If something differs**
 >
@@ -66,50 +61,36 @@ what changes is where the level lives and who owns it.
 ### Part 2: Save the branch as its own scene
 
 1. Right-click `Level` in the Scene dock and choose **Save Branch as Scene**.
+
+> 💡 **Save Branch as Scene** does two things at once: it writes the branch to
+> a new scene file, and it replaces the branch here with an instance of that
+> file.
+
 2. Save it as `res://levels/level_1.tscn`.
 3. Confirm that `Level` now shows the icon Godot uses for an instanced scene,
    and that `Terrain` is no longer listed beneath it in `main.tscn`.
+
+> 💡 `Terrain` disappearing from `main.tscn` is the point, not a problem. The
+> level now lives in its own file; to change it, you open the level.
+
 4. Confirm that `level_1.tscn` appears in **FileSystem** under `res://levels/`.
 5. Open `level_1.tscn` and confirm that its root is a `Node2D` named `Level`
    with `Terrain` as its only child.
+
+> 💡 The node is called `Level` while the file is `level_1.tscn`: the file name
+> says which level, the node name says what it is. Every level uses the same
+> root name, so later code can find the current level without knowing its
+> number.
+
 6. Save both scenes with `Ctrl+S`.
 
-> 💡 **Save Branch as Scene** does two things in one step: it writes the
-> branch out to a new scene file, and it replaces the branch in this scene
-> with an instance of that file. This is the composition from Lesson 1.5
-> approached from the other end. There you built a small scene and placed it
-> inside a bigger one; here you carve a scene out of one you already have.
+> 💡 `Main` holds one level at a time, not all of them: it is the frame around
+> whichever level is being played. Swapping the instance by hand, as the
+> exercise does, is the manual version of what Module 13 does in code.
 
-> 💡 `Terrain` disappearing from `main.tscn` is the point, not a problem.
-> `main.tscn` no longer owns those nodes; `level_1.tscn` does. To change the
-> level you open the level. That separation is what lets a second level exist
-> without `main.tscn` knowing anything about it.
-
-> 💡 One file per level is what makes a game with more than one level
-> possible. Each level is edited on its own, so work on one cannot disturb
-> another. Each is loaded only when it is played, so a game with forty levels
-> does not carry forty levels in memory. And because a level is a file, the
-> game can be told to load a different one while it runs, which is how moving
-> between levels will work in Module 13.
-
-> 💡 `Main` holds one level at a time, not all of them. It is not a shelf
-> with every level on it; it is the frame around whichever level is
-> currently being played, plus the Player who plays it. Swapping the instance
-> by hand, as the exercise does, is the manual version of what Module 13 later
-> does in code.
-
-> 💡 A level instance belongs at Position `(0, 0)`. Its cells were painted
-> against the world origin, so cell `(0, 0)` is the top-left corner of the
-> viewport frame. Move the instance and the whole level moves with it, off the
-> frame it was drawn to fit. Dropping a scene into the 2D viewport places it
-> wherever the mouse was, so it is worth checking after every swap.
-
-> 💡 The node is called `Level` while the file is called `level_1.tscn`, and
-> the difference matters. The file name says which level this is; the node
-> name says what it is. Every level scene uses the same root name, so
-> `Main` always contains a node called `Level` no matter which file is loaded
-> into it. Later lessons rely on that: code that looks for the current level
-> should not have to know its number.
+> 💡 A level instance belongs at Position `(0, 0)`, because its cells were
+> painted against the world origin. Dropping a scene into the 2D viewport
+> places it where the mouse was, so check the Position after every swap.
 
 > ⚠️ **If something differs**
 >
@@ -123,7 +104,8 @@ what changes is where the level lives and who owns it.
 
 ### Part 3: Test the result
 
-1. Open `res://scenes/main.tscn` and run it with `F6`.
+1. Predict whether anything will look or play differently, then open
+   `res://scenes/main.tscn` and run it with `F6`.
 2. Confirm that the Player falls and lands on the ground exactly as before.
 3. Run left and right, and confirm that acceleration, deceleration, reversal,
    and maximum speed are unchanged.

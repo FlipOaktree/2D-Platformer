@@ -120,7 +120,8 @@ located under the main viewport. `print()` is often used only for testing.
 4. Open `res://scenes/main.tscn`.
 5. In the **Output** panel, select **Clear** if it contains messages from an
    earlier run.
-6. Run the current scene with `F6`.
+6. Predict what will appear in the **Output** panel, then run the current
+   scene with `F6`.
 7. Find `Player is ready` in the **Output** panel at the bottom of the editor.
 8. Stop the running scene with `F8`.
 

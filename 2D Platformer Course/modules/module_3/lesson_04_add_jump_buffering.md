@@ -270,7 +270,8 @@ with the completed script in Part 3, then continue.
 
 ### Part 5: Test the buffered jump and its limits
 
-1. Open `res://scenes/main.tscn` and run the current scene with `F6`.
+1. Predict what will happen if you press jump just before landing, then open
+   `res://scenes/main.tscn` and run it with `F6`.
 2. Jump normally from the Floor and from the raised platform. Confirm that
    ordinary jumping still works.
 3. Jump from the raised platform while moving toward either edge.

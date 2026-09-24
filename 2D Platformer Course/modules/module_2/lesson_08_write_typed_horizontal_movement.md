@@ -174,7 +174,8 @@ update. That is why the Player starts, stops, and changes direction instantly.
 3. Select `Label` and delete it.
 4. Save `main.tscn` with `Ctrl+S`.
 5. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
-6. Run the current scene with `F6`.
+6. Predict what the Player will do when you hold a direction key, then run
+   the current scene with `F6`.
 7. Confirm that the Player's collision outline matches the edges of the
    temporary marker.
 8. Hold `A` or Left Arrow and confirm that the temporary Player marker moves

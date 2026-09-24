@@ -60,7 +60,8 @@ gravity, floor detection, and jumping.
 > starts being pressed, then returns `false` while the button remains held.
 > This makes it useful for a one-time action, such as starting a jump.
 
-2. Save the script and run `main.tscn` with `F6`.
+2. Save the script, predict what one press of Space will do, then run
+   `main.tscn` with `F6`.
 3. Press Space once. Confirm that the Player jumps upward, then falls and
    lands on the floor.
 4. While the Player is airborne, press Space again. Confirm that the Player
