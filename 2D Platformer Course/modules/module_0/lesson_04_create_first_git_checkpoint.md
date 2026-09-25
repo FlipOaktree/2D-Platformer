@@ -41,7 +41,7 @@ The **Godot project** already exists because you created it in Lesson 0.2. Addin
    /android/
    ```
 
-   An ignored file is intentionally left out of Git history. A repository should hold what you wrote, not what a tool can rebuild: generated caches, settings that only make sense on your computer, and anything holding a password or key. `.godot/` is Godot's editor cache, rebuilt whenever the project opens, so recording it would fill the history with churn that means nothing to anyone else and could not be reviewed.
+   An ignored file is intentionally left out of Git history. Not everything in the project folder is part of the project. Some of it is yours: scenes, scripts, images, and Git follows those. The rest is what the editor creates for its own use, and it comes back by itself if deleted, so tracking it would only bury the changes that matter.
 7. Close the text editor and Godot.
 
 > ⚠️ **If something differs**
