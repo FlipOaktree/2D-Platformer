@@ -105,9 +105,9 @@ not a coyote jump.
    ```gdscript
    var jump_requested: bool = Input.is_action_just_pressed("jump")
    if jump_requested:
-       jump_buffer_timer = jump_buffer_time
+   	jump_buffer_timer = jump_buffer_time
    else:
-       jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
+   	jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
    ```
 
 `jump_requested` is true only on the physics update when the button is first
@@ -135,8 +135,8 @@ no time stored in the countdown.
    ```gdscript
    # Allow one jump from the floor or during the grace period.
    if Input.is_action_just_pressed("jump") and can_jump:
-       velocity.y = jump_velocity
-       coyote_timer = 0.0
+   	velocity.y = jump_velocity
+   	coyote_timer = 0.0
    ```
 
    with:
@@ -144,9 +144,9 @@ no time stored in the countdown.
    ```gdscript
    # Start a jump when a request and permission overlap.
    if has_jump_request and can_jump:
-       velocity.y = jump_velocity
-       coyote_timer = 0.0
-       jump_buffer_timer = 0.0
+   	velocity.y = jump_velocity
+   	coyote_timer = 0.0
+   	jump_buffer_timer = 0.0
    ```
 
 Clearing both countdowns consumes the accepted jump. The Player cannot reuse
@@ -189,39 +189,39 @@ the same remembered press or the same coyote-time permission for another jump.
    var jump_buffer_timer: float = 0.0
 
    func _physics_process(delta: float) -> void:
-       if is_on_floor():
-           coyote_timer = coyote_time
-       else:
-           coyote_timer = move_toward(coyote_timer, 0.0, delta)
+   	if is_on_floor():
+   		coyote_timer = coyote_time
+   	else:
+   		coyote_timer = move_toward(coyote_timer, 0.0, delta)
 
-       var jump_requested: bool = Input.is_action_just_pressed("jump")
-       if jump_requested:
-           jump_buffer_timer = jump_buffer_time
-       else:
-           jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
+   	var jump_requested: bool = Input.is_action_just_pressed("jump")
+   	if jump_requested:
+   		jump_buffer_timer = jump_buffer_time
+   	else:
+   		jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
 
-       var can_jump: bool = is_on_floor() or coyote_timer > 0.0
-       var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
+   	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
+   	var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
 
-       # Skip gravity while the Player is grounded.
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	# Skip gravity while the Player is grounded.
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       # Start a jump when a request and permission overlap.
-       if has_jump_request and can_jump:
-           velocity.y = jump_velocity
-           coyote_timer = 0.0
-           jump_buffer_timer = 0.0
+   	# Start a jump when a request and permission overlap.
+   	if has_jump_request and can_jump:
+   		velocity.y = jump_velocity
+   		coyote_timer = 0.0
+   		jump_buffer_timer = 0.0
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       var target_speed: float = direction * speed
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	var target_speed: float = direction * speed
 
-       if direction != 0.0:
-           velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
-       else:
-           velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+   	if direction != 0.0:
+   		velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
+   	else:
+   		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
-       move_and_slide()
+   	move_and_slide()
    ```
 
 5. Confirm that the coyote-time, gravity, and horizontal-movement calculations

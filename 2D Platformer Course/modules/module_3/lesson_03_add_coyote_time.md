@@ -115,9 +115,9 @@ press will feel more forgiving.
 
    ```gdscript
    if is_on_floor():
-       coyote_timer = coyote_time
+   	coyote_timer = coyote_time
    else:
-       coyote_timer = move_toward(coyote_timer, 0.0, delta)
+   	coyote_timer = move_toward(coyote_timer, 0.0, delta)
 
    var can_jump: bool = is_on_floor() or coyote_timer > 0.0
    ```
@@ -138,7 +138,7 @@ pattern from Lesson 3.2 without allowing the value to pass below zero.
    ```gdscript
    # Skip gravity while the Player is grounded.
    if not is_on_floor():
-       velocity.y += gravity * delta
+   	velocity.y += gravity * delta
    ```
 
 Gravity is calculated before the jump so a jump accepted during coyote time
@@ -150,7 +150,7 @@ Grounded and grace-period jumps therefore begin with the same upward velocity.
    ```gdscript
    # Prevent another jump from starting while the Player is airborne.
    if Input.is_action_just_pressed("jump") and is_on_floor():
-       velocity.y = jump_velocity
+   	velocity.y = jump_velocity
    ```
 
    with:
@@ -158,8 +158,8 @@ Grounded and grace-period jumps therefore begin with the same upward velocity.
    ```gdscript
    # Allow one jump from the floor or during the grace period.
    if Input.is_action_just_pressed("jump") and can_jump:
-       velocity.y = jump_velocity
-       coyote_timer = 0.0
+   	velocity.y = jump_velocity
+   	coyote_timer = 0.0
    ```
 
 Setting `coyote_timer` to `0.0` consumes the grace period as soon as a jump
@@ -197,31 +197,31 @@ starts. Pressing jump again while airborne therefore cannot start another jump.
    var coyote_timer: float = 0.0
 
    func _physics_process(delta: float) -> void:
-       if is_on_floor():
-           coyote_timer = coyote_time
-       else:
-           coyote_timer = move_toward(coyote_timer, 0.0, delta)
+   	if is_on_floor():
+   		coyote_timer = coyote_time
+   	else:
+   		coyote_timer = move_toward(coyote_timer, 0.0, delta)
 
-       var can_jump: bool = is_on_floor() or coyote_timer > 0.0
+   	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
 
-       # Skip gravity while the Player is grounded.
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	# Skip gravity while the Player is grounded.
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       # Allow one jump from the floor or during the grace period.
-       if Input.is_action_just_pressed("jump") and can_jump:
-           velocity.y = jump_velocity
-           coyote_timer = 0.0
+   	# Allow one jump from the floor or during the grace period.
+   	if Input.is_action_just_pressed("jump") and can_jump:
+   		velocity.y = jump_velocity
+   		coyote_timer = 0.0
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       var target_speed: float = direction * speed
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	var target_speed: float = direction * speed
 
-       if direction != 0.0:
-           velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
-       else:
-           velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+   	if direction != 0.0:
+   		velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
+   	else:
+   		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
-       move_and_slide()
+   	move_and_slide()
    ```
 
 5. Confirm that the gravity calculation and horizontal-movement section remain

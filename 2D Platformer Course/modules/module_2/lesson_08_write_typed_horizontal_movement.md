@@ -89,7 +89,7 @@ own visuals without inheriting the Player's size.
 
    ```gdscript
    func _physics_process(_delta: float) -> void:
-       pass
+   	pass
    ```
 
 `_physics_process()` is a callback Godot runs repeatedly at a steady rate. Each run is part of a physics update: a regular moment for handling movement, collisions, and other physics-related code for nodes such as the Player. Add code here when it needs to run continuously.
@@ -155,9 +155,9 @@ update. That is why the Player starts, stops, and changes direction instantly.
    var speed: float = 450.0
 
    func _physics_process(_delta: float) -> void:
-       var direction: float = Input.get_axis("move_left", "move_right")
-       velocity.x = direction * speed
-       move_and_slide()
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	velocity.x = direction * speed
+   	move_and_slide()
    ```
 
 4. Save the script with `Ctrl+S`.

@@ -102,7 +102,7 @@ be remembered afterward.
    ```gdscript
    # Shorten the jump when the action is released while the Player is rising.
    if Input.is_action_just_released("jump") and velocity.y < 0.0:
-       velocity.y *= jump_release_multiplier
+   	velocity.y *= jump_release_multiplier
    ```
 
 > 💡 `Input.is_action_just_released("jump")` is the counterpart to
@@ -164,43 +164,43 @@ happen: a jump starts, and then an early release shortens it.
    var jump_buffer_timer: float = 0.0
 
    func _physics_process(delta: float) -> void:
-       if is_on_floor():
-           coyote_timer = coyote_time
-       else:
-           coyote_timer = move_toward(coyote_timer, 0.0, delta)
+   	if is_on_floor():
+   		coyote_timer = coyote_time
+   	else:
+   		coyote_timer = move_toward(coyote_timer, 0.0, delta)
 
-       var jump_requested: bool = Input.is_action_just_pressed("jump")
-       if jump_requested:
-           jump_buffer_timer = jump_buffer_time
-       else:
-           jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
+   	var jump_requested: bool = Input.is_action_just_pressed("jump")
+   	if jump_requested:
+   		jump_buffer_timer = jump_buffer_time
+   	else:
+   		jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
 
-       var can_jump: bool = is_on_floor() or coyote_timer > 0.0
-       var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
+   	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
+   	var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
 
-       # Skip gravity while the Player is grounded.
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	# Skip gravity while the Player is grounded.
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       # Start a jump when a request and permission overlap.
-       if has_jump_request and can_jump:
-           velocity.y = jump_velocity
-           coyote_timer = 0.0
-           jump_buffer_timer = 0.0
+   	# Start a jump when a request and permission overlap.
+   	if has_jump_request and can_jump:
+   		velocity.y = jump_velocity
+   		coyote_timer = 0.0
+   		jump_buffer_timer = 0.0
 
-       # Shorten the jump when the action is released while the Player is rising.
-       if Input.is_action_just_released("jump") and velocity.y < 0.0:
-           velocity.y *= jump_release_multiplier
+   	# Shorten the jump when the action is released while the Player is rising.
+   	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+   		velocity.y *= jump_release_multiplier
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       var target_speed: float = direction * speed
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	var target_speed: float = direction * speed
 
-       if direction != 0.0:
-           velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
-       else:
-           velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+   	if direction != 0.0:
+   		velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
+   	else:
+   		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
-       move_and_slide()
+   	move_and_slide()
    ```
 
 3. Confirm that the coyote-time, jump-buffer, gravity, jump, and

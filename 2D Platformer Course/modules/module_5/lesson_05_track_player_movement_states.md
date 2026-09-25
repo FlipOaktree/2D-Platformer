@@ -111,15 +111,15 @@ variables below it can use.
    ```gdscript
    # Describe the movement that this update produced.
    if is_on_floor():
-       if velocity.x != 0.0:
-           movement_state = MovementState.RUN
-       else:
-           movement_state = MovementState.IDLE
+   	if velocity.x != 0.0:
+   		movement_state = MovementState.RUN
+   	else:
+   		movement_state = MovementState.IDLE
    else:
-       if velocity.y < 0.0:
-           movement_state = MovementState.RISE
-       else:
-           movement_state = MovementState.FALL
+   	if velocity.y < 0.0:
+   		movement_state = MovementState.RISE
+   	else:
+   		movement_state = MovementState.FALL
    ```
 
 This block sits after `move_and_slide()` on purpose. That call moves the Player
@@ -245,55 +245,55 @@ with the completed script in Part 5, then continue.
    var movement_state: MovementState = MovementState.IDLE
 
    func _physics_process(delta: float) -> void:
-       if is_on_floor():
-           coyote_timer = coyote_time
-       else:
-           coyote_timer = move_toward(coyote_timer, 0.0, delta)
+   	if is_on_floor():
+   		coyote_timer = coyote_time
+   	else:
+   		coyote_timer = move_toward(coyote_timer, 0.0, delta)
 
-       var jump_requested: bool = Input.is_action_just_pressed("jump")
-       if jump_requested:
-           jump_buffer_timer = jump_buffer_time
-       else:
-           jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
+   	var jump_requested: bool = Input.is_action_just_pressed("jump")
+   	if jump_requested:
+   		jump_buffer_timer = jump_buffer_time
+   	else:
+   		jump_buffer_timer = move_toward(jump_buffer_timer, 0.0, delta)
 
-       var can_jump: bool = is_on_floor() or coyote_timer > 0.0
-       var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
+   	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
+   	var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
 
-       # Skip gravity while the Player is grounded.
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	# Skip gravity while the Player is grounded.
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       # Start a jump when a request and permission overlap.
-       if has_jump_request and can_jump:
-           velocity.y = jump_velocity
-           coyote_timer = 0.0
-           jump_buffer_timer = 0.0
+   	# Start a jump when a request and permission overlap.
+   	if has_jump_request and can_jump:
+   		velocity.y = jump_velocity
+   		coyote_timer = 0.0
+   		jump_buffer_timer = 0.0
 
-       # Shorten the jump when the action is released while the Player is rising.
-       if Input.is_action_just_released("jump") and velocity.y < 0.0:
-           velocity.y *= jump_release_multiplier
+   	# Shorten the jump when the action is released while the Player is rising.
+   	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+   		velocity.y *= jump_release_multiplier
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       var target_speed: float = direction * speed
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	var target_speed: float = direction * speed
 
-       if direction != 0.0:
-           velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
-       else:
-           velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+   	if direction != 0.0:
+   		velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
+   	else:
+   		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
-       move_and_slide()
+   	move_and_slide()
 
-       # Describe the movement that this update produced.
-       if is_on_floor():
-           if velocity.x != 0.0:
-               movement_state = MovementState.RUN
-           else:
-               movement_state = MovementState.IDLE
-       else:
-           if velocity.y < 0.0:
-               movement_state = MovementState.RISE
-           else:
-               movement_state = MovementState.FALL
+   	# Describe the movement that this update produced.
+   	if is_on_floor():
+   		if velocity.x != 0.0:
+   			movement_state = MovementState.RUN
+   		else:
+   			movement_state = MovementState.IDLE
+   	else:
+   		if velocity.y < 0.0:
+   			movement_state = MovementState.RISE
+   		else:
+   			movement_state = MovementState.FALL
    ```
 
 3. Save `player.gd` with `Ctrl+S`.

@@ -52,7 +52,7 @@ gravity, floor detection, and jumping.
 
    ```gdscript
    if Input.is_action_just_pressed("jump"):
-       velocity.y = jump_velocity
+   	velocity.y = jump_velocity
    ```
 
 > 💡 `Input.is_action_just_pressed("jump")` is an `Input` method that checks
@@ -84,7 +84,7 @@ gravity, floor detection, and jumping.
 
    ```gdscript
    if Input.is_action_just_pressed("jump") and is_on_floor():
-       velocity.y = jump_velocity
+   	velocity.y = jump_velocity
    ```
 
 > 💡 `and` combines two conditions. The indented instruction runs only when
@@ -107,15 +107,15 @@ lands again.
    var jump_velocity: float = -1200.0
 
    func _physics_process(delta: float) -> void:
-       if Input.is_action_just_pressed("jump") and is_on_floor():
-           velocity.y = jump_velocity
+   	if Input.is_action_just_pressed("jump") and is_on_floor():
+   		velocity.y = jump_velocity
 
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       velocity.x = direction * speed
-       move_and_slide()
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	velocity.x = direction * speed
+   	move_and_slide()
    ```
 
 3. Save the script and run `main.tscn` again.

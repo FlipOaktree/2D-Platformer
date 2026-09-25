@@ -150,6 +150,12 @@ Format contextual lesson notes consistently:
 - Put recovery guidance in a gray callout with a warning icon and the heading
   **If something differs** without a colon. Keep it unindented and place it at
   the end of the corresponding lesson part.
+- Indent GDScript in a fenced block with tabs, as Godot does. A lesson adds
+  code to a file the learner already typed into, so a block indented with
+  spaces makes Godot refuse the whole file: "Used space character for
+  indentation instead of tab as used before in the file." The spaces that
+  place the fence inside a numbered step stay spaces; only the indentation
+  within the code becomes tabs.
 
 Keep explanation proportionate to what the learner needs at that moment:
 

@@ -137,9 +137,9 @@ Before adding that gradual change, meet the function that will calculate it:
 
    ```gdscript
    if direction != 0.0:
-       velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
+   	velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
    else:
-       velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+   	velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
    ```
 
 Read each call from left to right: current velocity, target velocity, and the
@@ -181,23 +181,23 @@ an update is slightly shorter or longer.
    var jump_velocity: float = -1200.0
 
    func _physics_process(delta: float) -> void:
-       # Prevent another jump from starting while the Player is airborne.
-       if Input.is_action_just_pressed("jump") and is_on_floor():
-           velocity.y = jump_velocity
+   	# Prevent another jump from starting while the Player is airborne.
+   	if Input.is_action_just_pressed("jump") and is_on_floor():
+   		velocity.y = jump_velocity
 
-       # Skip gravity while the Player is grounded.
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	# Skip gravity while the Player is grounded.
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       var target_speed: float = direction * speed
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	var target_speed: float = direction * speed
 
-       if direction != 0.0:
-           velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
-       else:
-           velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+   	if direction != 0.0:
+   		velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
+   	else:
+   		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
-       move_and_slide()
+   	move_and_slide()
    ```
 
 5. Confirm that the existing defaults, comments, vertical calculations, input

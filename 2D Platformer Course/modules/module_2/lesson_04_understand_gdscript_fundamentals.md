@@ -32,8 +32,8 @@ Look at this short script:
 
    ```gdscript
    func greet() -> void:
-       var greeting: String = "Hello!"
-       print(greeting)
+   	var greeting: String = "Hello!"
+   	print(greeting)
    ```
 
 For now, focus on the indentation. Both `var greeting: String = "Hello!"` and

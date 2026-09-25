@@ -54,7 +54,7 @@ provided by `CharacterBody2D`.
 
    ```gdscript
    func _ready() -> void:
-       pass
+   	pass
    ```
 
 The script now reads:
@@ -63,7 +63,7 @@ The script now reads:
 extends CharacterBody2D
 
 func _ready() -> void:
-    pass
+	pass
 ```
 
 `func` starts a **function**. A function is simply a named group of instructions.
@@ -101,8 +101,8 @@ The complete temporary script is:
 extends CharacterBody2D
 
 func _ready() -> void:
-    var message: String = "Player is ready"
-    print(message)
+	var message: String = "Player is ready"
+	print(message)
 ```
 
 3. Save the script with `Ctrl+S`.
@@ -138,7 +138,7 @@ located under the main viewport. `print()` is often used only for testing.
 
    ```gdscript
    func show_message() -> void:
-       print(message)
+   	print(message)
    ```
 
 The complete temporary script is:
@@ -147,11 +147,11 @@ The complete temporary script is:
 extends CharacterBody2D
 
 func _ready() -> void:
-    var message: String = "Player is ready"
-    print(message)
+	var message: String = "Player is ready"
+	print(message)
 
 func show_message() -> void:
-    print(message)
+	print(message)
 ```
 
 > 💡 `show_message()` is a **custom function**: you give it a name and choose
@@ -177,10 +177,10 @@ can be used only there.
    var message: String = "Player is ready"
 
    func _ready() -> void:
-       print(message)
+   	print(message)
 
    func show_message() -> void:
-       print(message)
+   	print(message)
    ```
 
 4. Save the script with `Ctrl+S`. The scope error disappears.
@@ -205,11 +205,11 @@ can be used only there.
    var message: String = "Player is ready"
 
    func _ready() -> void:
-       print(message)
-       show_message()
+   	print(message)
+   	show_message()
 
    func show_message() -> void:
-       print(message)
+   	print(message)
    ```
 
 10. Save the script with `Ctrl+S`. In the **Output** panel, select **Clear**,
@@ -226,11 +226,11 @@ can be used only there.
     var message: String = "Hello World!"
 
     func _ready() -> void:
-        print(message)
-        show_message()
+    	print(message)
+    	show_message()
 
     func show_message() -> void:
-        print(message)
+    	print(message)
     ```
 
 14. Save the script with `Ctrl+S`. In the **Output** panel, select **Clear**,

@@ -29,7 +29,7 @@ script is ready for movement.
 
    ```gdscript
    func _ready() -> void:
-       pass
+   	pass
    ```
 
 3. Save the script with `Ctrl+S`.
@@ -40,7 +40,7 @@ The temporary script is:
 extends CharacterBody2D
 
 func _ready() -> void:
-    pass
+	pass
 ```
 
 > ⚠️ **If something differs**
@@ -97,9 +97,9 @@ The callback now reads:
 
 ```gdscript
 func _ready() -> void:
-    var player_name: String = "Player"
-    print(position.x)
-    print(player_name.begins_with("Play"))
+	var player_name: String = "Player"
+	print(position.x)
+	print(player_name.begins_with("Play"))
 ```
 
 A **method** is a function that belongs to something, such as a node or a value. For example, `add_coins()` from the previous lessons is a method, as it belongs to the Player script. `print()` on the other hand, is a globally available function: it does not belong to a particular node or value, so it is not a method.

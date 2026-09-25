@@ -70,7 +70,7 @@ Player's.
 
    ## Where the Player should be placed when this level starts.
    func get_spawn_position() -> Vector2:
-       return player_spawn.global_position
+   	return player_spawn.global_position
    ```
 
 3. Save the script with `Ctrl+S`, then save the scene.
@@ -111,7 +111,7 @@ Player's.
 
 
    func _ready() -> void:
-       player.global_position = level.get_spawn_position()
+   	player.global_position = level.get_spawn_position()
    ```
 
 4. Save the script and the scene with `Ctrl+S`.

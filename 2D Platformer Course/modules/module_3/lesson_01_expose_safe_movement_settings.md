@@ -64,17 +64,17 @@ movement calculations that use them.
 
    ```gdscript
    func _physics_process(delta: float) -> void:
-       # Prevent another jump from starting while the Player is airborne.
-       if Input.is_action_just_pressed("jump") and is_on_floor():
-           velocity.y = jump_velocity
+   	# Prevent another jump from starting while the Player is airborne.
+   	if Input.is_action_just_pressed("jump") and is_on_floor():
+   		velocity.y = jump_velocity
 
-       # Skip gravity while the Player is grounded.
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	# Skip gravity while the Player is grounded.
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       velocity.x = direction * speed
-       move_and_slide()
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	velocity.x = direction * speed
+   	move_and_slide()
    ```
 
 Regular comments were introduced in Lesson 2.4. Godot ignores them when the

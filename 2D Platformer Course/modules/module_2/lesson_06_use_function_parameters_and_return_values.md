@@ -25,7 +25,7 @@ remove the temporary code so the Player script is ready for movement.
 
    ```gdscript
    func _ready() -> void:
-       pass
+   	pass
    ```
 
 The temporary script is:
@@ -34,7 +34,7 @@ The temporary script is:
 extends CharacterBody2D
 
 func _ready() -> void:
-    pass
+	pass
 ```
 
 3. Save the script with `Ctrl+S`.
@@ -53,7 +53,7 @@ replace `pass` with the calculation after creating the custom function.
 
    ```gdscript
    func add_coins(current_coins: int, collected_coins: int) -> int:
-       return current_coins + collected_coins
+   	return current_coins + collected_coins
    ```
 
 The script now reads:
@@ -62,10 +62,10 @@ The script now reads:
 extends CharacterBody2D
 
 func _ready() -> void:
-    pass
+	pass
 
 func add_coins(current_coins: int, collected_coins: int) -> int:
-    return current_coins + collected_coins
+	return current_coins + collected_coins
 ```
 
 2. Save the script with `Ctrl+S`.
@@ -106,11 +106,11 @@ The complete temporary script is:
 extends CharacterBody2D
 
 func _ready() -> void:
-    var total_coins: int = add_coins(2, 3)
-    print(total_coins)
+	var total_coins: int = add_coins(2, 3)
+	print(total_coins)
 
 func add_coins(current_coins: int, collected_coins: int) -> int:
-    return current_coins + collected_coins
+	return current_coins + collected_coins
 ```
 
 3. Save the script with `Ctrl+S`.

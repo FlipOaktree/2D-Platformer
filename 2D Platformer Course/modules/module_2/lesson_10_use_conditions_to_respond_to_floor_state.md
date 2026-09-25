@@ -35,9 +35,9 @@ state to decide when the Player can jump.
    calculation:
    ```gdscript
    if is_on_floor():
-       print("Player is on the floor.")
+   	print("Player is on the floor.")
    else:
-       print("Player is airborne.")
+   	print("Player is airborne.")
    ```
 > 💡 An `if` statement lets code choose which instructions to run based on a
 > condition. The condition must produce `true` or `false`. When it is `true`,
@@ -74,9 +74,9 @@ state to decide when the Player can jump.
 
    ```gdscript
    if not is_on_floor():
-       print("Player is airborne.")
+   	print("Player is airborne.")
    else:
-       print("Player is on the floor.")
+   	print("Player is on the floor.")
    ```
 
 2. Save the script and run `main.tscn` again.
@@ -108,12 +108,12 @@ state to decide when the Player can jump.
    var gravity: float = 2400.0
 
    func _physics_process(delta: float) -> void:
-       if not is_on_floor():
-           velocity.y += gravity * delta
+   	if not is_on_floor():
+   		velocity.y += gravity * delta
 
-       var direction: float = Input.get_axis("move_left", "move_right")
-       velocity.x = direction * speed
-       move_and_slide()
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	velocity.x = direction * speed
+   	move_and_slide()
    ```
 
 5. Save the script with `Ctrl+S`.

@@ -121,7 +121,7 @@ through it.
    ```gdscript
    ## How far down the Player may go before it counts as having left.
    func get_fall_limit() -> float:
-       return fall_limit.global_position.y
+   	return fall_limit.global_position.y
    ```
 
 4. Save the script with `Ctrl+S`.
@@ -145,8 +145,8 @@ through it.
    ```gdscript
    ## Put the Player at a point and clear any motion it had.
    func respawn_at(point: Vector2) -> void:
-       global_position = point
-       velocity = Vector2.ZERO
+   	global_position = point
+   	velocity = Vector2.ZERO
    ```
 
 3. Save the script with `Ctrl+S`.
@@ -174,8 +174,8 @@ through it.
 
    ```gdscript
    func _physics_process(_delta: float) -> void:
-       if player.global_position.y > level.get_fall_limit():
-           player.respawn_at(level.get_spawn_position())
+   	if player.global_position.y > level.get_fall_limit():
+   		player.respawn_at(level.get_spawn_position())
    ```
 
 3. Save the script with `Ctrl+S`. Before running anything, predict what

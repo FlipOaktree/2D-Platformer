@@ -111,10 +111,10 @@ After about one second of falling, it reaches about 2400 pixels per second.
    var gravity: float = 2400.0
 
    func _physics_process(delta: float) -> void:
-       velocity.y += gravity * delta
-       var direction: float = Input.get_axis("move_left", "move_right")
-       velocity.x = direction * speed
-       move_and_slide()
+   	velocity.y += gravity * delta
+   	var direction: float = Input.get_axis("move_left", "move_right")
+   	velocity.x = direction * speed
+   	move_and_slide()
    ```
 
 2. Save the script with `Ctrl+S`.

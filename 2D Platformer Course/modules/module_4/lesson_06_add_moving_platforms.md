@@ -188,9 +188,9 @@ Player's feet, and the Player goes along for the ride.
 
    ```gdscript
    func _ready() -> void:
-       start_position = position
-       end_position = start_position + travel
-       target = end_position
+   	start_position = position
+   	end_position = start_position + travel
+   	target = end_position
    ```
 
 10. Save the script with `Ctrl+S`.
@@ -203,7 +203,7 @@ Player's feet, and the Player goes along for the ride.
 
     ```gdscript
     func _physics_process(delta: float) -> void:
-        position = position.move_toward(target, speed * delta)
+    	position = position.move_toward(target, speed * delta)
     ```
 
 12. Save the script and open `main.tscn`. Predict what the platform will do,
@@ -236,12 +236,12 @@ Player's feet, and the Player goes along for the ride.
     added in step 11:
 
     ```gdscript
-        # Turn around on arrival.
-        if position.is_equal_approx(target):
-            if target == end_position:
-                target = start_position
-            else:
-                target = end_position
+    	# Turn around on arrival.
+    	if position.is_equal_approx(target):
+    		if target == end_position:
+    			target = start_position
+    		else:
+    			target = end_position
     ```
 
 16. Save the script and the scene with `Ctrl+S`.
