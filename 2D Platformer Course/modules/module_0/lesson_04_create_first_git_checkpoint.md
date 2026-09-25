@@ -4,10 +4,7 @@
 
 ## By the end
 
-Connect Codex to the Godot project folder created in Lesson 0.2, then make
-that existing project's first clean local Git checkpoint on `main`. This starts
-the review cycle used throughout the course; it does not create another Godot
-project.
+Connect Codex to the Godot project folder created in Lesson 0.2, then make that existing project's first clean local Git checkpoint on `main`. This sets up Codex to be used as a development support tool; it does not create another Godot project.
 
 - Codex opens the folder containing `project.godot`.
 - The folder is a local Git repository on `main`.
@@ -23,15 +20,12 @@ project.
 - Codex opens with the Windows-native agent and **Ask for approval** selected.
 - Git has the intended author identity and `main` default branch.
 - The `2D Platformer` project opens without errors.
-- The project folder is not already inside another Git repository.
 
 ## Build steps
 
-> 💡 The **Godot project** already exists because you created it in Lesson
-> 0.2. Adding a **local project** to Codex only associates Codex with that
-> existing folder. It does not create, duplicate, or move the Godot project.
-
 ### Part 1: Prepare the project for Git
+
+The **Godot project** already exists because you created it in Lesson 0.2. Adding a **local project** to Codex only associates Codex with that existing folder. It does not create, duplicate, or move the Godot project.
 
 1. Open the `2D Platformer` project in Godot.
 2. Open **Project → Version Control → Create/Override Version Control
@@ -47,9 +41,7 @@ project.
    /android/
    ```
 
-   > 💡 An **ignored file** is intentionally left out of Git history. `.godot/`
-   > is Godot's generated editor cache, so Git should not record it.
-
+   An ignored file is intentionally left out of Git history. A repository should hold what you wrote, not what a tool can rebuild: generated caches, settings that only make sense on your computer, and anything holding a password or key. `.godot/` is Godot's editor cache, rebuilt whenever the project opens, so recording it would fill the history with churn that means nothing to anyone else and could not be reviewed.
 7. Close the text editor and Godot.
 
 > ⚠️ **If something differs**
