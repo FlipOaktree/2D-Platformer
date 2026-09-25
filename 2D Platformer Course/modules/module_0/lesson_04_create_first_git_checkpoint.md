@@ -20,6 +20,7 @@ Connect Codex to the Godot project folder created in Lesson 0.2, then make that 
 - Codex opens with the Windows-native agent and **Ask for approval** selected.
 - Git has the intended author identity and `main` default branch.
 - The `2D Platformer` project opens without errors.
+- The project folder is not already inside another Git repository.
 
 ## Build steps
 
@@ -57,11 +58,7 @@ The **Godot project** already exists because you created it in Lesson 0.2. Addin
 2. In the sidebar's project area, add an existing local project.
 3. Select the `2D Platformer` folder that contains `project.godot`.
 4. Confirm that Codex shows `2D Platformer` as the current project, then start
-   a local task for it.
-
-   > 💡 A Codex **project** gives Codex the intended folder as working context.
-   > Check for `project.godot` whenever you need to confirm that it is the same
-   > Godot project you created in Lesson 0.2.
+   a local task for it. A Codex project gives Codex the intended folder as working context.
 
 > ⚠️ **If something differs**
 >
@@ -84,10 +81,7 @@ The **Godot project** already exists because you created it in Lesson 0.2. Addin
    git status
    ```
 
-   > 💡 A **repository** is a project folder whose history Git manages. The
-   > **working tree** is its current files. At this point, the project files
-   > are **untracked**: Git can see them, but has not been asked to save them
-   > in a checkpoint yet.
+> 💡 A **repository** is a project folder whose history Git manages. The **working tree** is its current files. At this point, the project files are **untracked**: Git can see them, but has not been asked to save them in a checkpoint yet.
 
 5. Confirm that Git reports `main`, lists the expected project files as
    untracked, and does not list `.godot/`.
@@ -101,20 +95,18 @@ The **Godot project** already exists because you created it in Lesson 0.2. Addin
 
 1. Send Codex this prompt:
 
-   > Inspect the Git status of this project and explain which files belong in
-   > the first checkpoint and which generated files should remain ignored. Do
-   > not change any files, stage anything, or create a commit.
+> `Inspect the Git status of this project and explain which files belong in`
+> `the first checkpoint and which generated files should remain ignored. Do`
+> `not change any files, stage anything, or create a commit.`
 
-   > 💡 A **read-only request** asks Codex to inspect or explain without making
-   > changes. Stating what Codex must not do keeps the first task small and
-   > easy to review.
+> 💡 Stating what Codex must not do keeps the first task small and easy to review.
 
 2. At the top right of the task, open the controls menu (the sliders icon) and
    select **Changes**. Codex opens the changed-file diff in a **Review** tab.
 
-   > 💡 A **diff** is a line-by-line comparison that shows exactly what changed
-   > between two versions of a file. Added lines and removed lines are marked
-   > so you can review a change without reading the whole file.
+> 💡 A **diff** is a line-by-line comparison that shows exactly what changed
+> between two versions of a file. Added lines and removed lines are marked
+> so you can review a change without reading the whole file.
 
 3. Compare Codex's explanation with `.gitignore` and the Review tab.
 4. Confirm that the project files, `.gitignore`, and `.gitattributes` should be
@@ -128,13 +120,12 @@ The **Godot project** already exists because you created it in Lesson 0.2. Addin
    git add .
    ```
 
-   > 💡 The **staging area** is the reviewed set of changes prepared for the
-   > next snapshot. A **commit** is the named snapshot Git records from that
-   > set. Staging does not upload or commit anything yet.
+> 💡 The **staging area** is the reviewed set of changes prepared for the
+> next snapshot. A **commit** is the named snapshot Git records from that
+> set. Staging does not upload or commit anything yet.
 
    `git add .` stages every change that `.gitignore` does not exclude, which is
    why the generated `.godot/` files stay out.
-
 7. Confirm what you are about to commit:
 
    ```powershell
@@ -156,11 +147,10 @@ The **Godot project** already exists because you created it in Lesson 0.2. Addin
    repository. This course has not connected a remote repository yet, so there
    is nothing to push and no `git push` command to run.
 
-   > 💡 Codex also offers **Changes** and **Commit or push** controls that
-   > perform these same actions as buttons. This course uses the commands
-   > because they behave the same in every editor, keep working if the Codex
-   > app is unavailable, and are the ones you will find in any Git
-   > documentation.
+   Codex also offers **Changes** and **Commit or push** controls that
+   perform these same actions as buttons. This course uses the commands
+   because they behave the same in every editor, keep working if the Codex
+   app is unavailable, and are the ones you will find in any Git documentation.
 
 10. Verify the result:
 
@@ -207,7 +197,6 @@ Without repeating the build steps:
 - [ ] The learner staged with `git add .`, read the `git status` output, and
       created the commit with `git commit -m`.
 - [ ] The learner read the **Changes to be committed** list before committing.
-- [ ] No `git push` was run, and the checkpoint exists only in this folder.
 - [ ] The latest commit message is `Checkpoint empty Godot project`.
 - [ ] `git status` reports a clean working tree.
 - [ ] The learner can explain repository, staging area, commit, tracked,

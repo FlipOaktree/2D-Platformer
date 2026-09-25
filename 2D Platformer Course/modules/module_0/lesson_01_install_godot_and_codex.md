@@ -67,15 +67,7 @@ later help inspect, edit, and check project files.
    agent or environment selector near the message box and select the option
    labeled **Windows-native**. Do not select a WSL or Linux environment.
 7. Beneath the message box, select **Ask for approval** so sandbox protections
-   are active.
-
-> 💡 **Ask for approval** keeps Codex inside the project sandbox. A
-> **sandbox** is a restricted area an application is allowed to work in, so
-> Codex cannot reach files elsewhere on your computer. This limits where it
-> can work and lets you review broader actions first. Once a project is
-> connected, Codex can inspect its files, but you still need to review and
-> test its suggestions.
-   
+   are active. A sandbox is a restricted area an application is allowed to work in, so Codex cannot reach files elsewhere on your computer. This limits where it can work and lets you review broader actions first. Once a project is connected, Codex can inspect its files, but you still need to review and test its suggestions.
 8. Do not add a local project to Codex yet. Lesson 0.2 first creates the Godot
    project folder; Lesson 0.4 then connects that existing folder to Codex.
 
@@ -103,6 +95,7 @@ Without reading the steps again:
 - [ ] The learner can sign in and access Codex.
 - [ ] The Windows-native agent is selected.
 - [ ] **Ask for approval** is selected.
+- [ ] No local project has been added to Codex yet.
 - [ ] The learner can explain the different roles of Godot and Codex.
 
 ## References

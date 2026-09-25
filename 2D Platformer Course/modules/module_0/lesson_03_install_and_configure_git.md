@@ -16,6 +16,7 @@ next lesson; GitHub and online publishing come later.
 ## Before you start
 
 - Module 0, Lessons 1 and 2 are complete.
+- The computer has internet access and permission to install applications.
 
 ## Build steps
 
@@ -62,11 +63,7 @@ next lesson; GitHub and online publishing come later.
 
 ### Part 2: Configure the commit identity
 
-> 💡 A **commit identity** is the author name and email stored in each Git
-> snapshot. Git will not make a commit without one: it stops with `Author
-> identity unknown` and asks who you are. Setting it once with `--global`
-> answers that for every project on this computer, and it is what lets the
-> history of a shared project say who made each change.
+> 💡 A **commit identity** is the author name and email stored in each Git snapshot. Git will not make a commit without one. Setting it once with `--global` answers that for every project on this computer, and it is what lets the history of a shared project say who made each change.
 
 1. Check whether an identity is already configured:
 
@@ -136,8 +133,7 @@ Without reading the commands again:
 - [ ] The configured author email is intentional.
 - [ ] `init.defaultBranch` is `main`.
 - [ ] The learner can explain Git, terminal, command, commit identity, and
-    branch in simple language.
-- [ ] No Godot project files or Git repositories were changed.
+      branch in simple language.
 
 ## References
 

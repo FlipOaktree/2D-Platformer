@@ -35,7 +35,7 @@ creates the Godot project and its files.
 > Different renderers support different visual effects. We use **Forward+**
 > so we can add polished effects later. Changing the renderer after effects
 > are already in use can require adjustments.
-   
+
 6. Create and open the project.
 7. Point out only what is needed today:
    - Scene dock.
@@ -83,7 +83,6 @@ Without reading the steps again:
 - [ ] `project.godot` is present in that folder.
 - [ ] The complete project-folder path is recorded for Lesson 0.4.
 - [ ] The rendering method is **Forward+**.
-- [ ] Closing and reopening the project succeeds.
 - [ ] The learner can explain the purpose of `project.godot`.
 
 ## References
