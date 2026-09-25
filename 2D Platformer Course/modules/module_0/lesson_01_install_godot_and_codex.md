@@ -6,16 +6,12 @@
 
 Install, open, and verify Godot and Codex, the two core applications used
 throughout the course. Godot is where the game is built and run; Codex will
-later help inspect, edit, and check project files after the existing Godot
-project folder is connected in Lesson 0.4.
+later help inspect, edit, and check project files.
 
-- Godot 4.7.2 opens to the Project Manager.
+- Godot opens to the Project Manager.
 - The ChatGPT desktop app opens and the learner can access Codex.
-- Both applications can be closed and reopened from Windows.
 - Godot is stored in a stable location outside the Downloads folder.
 - The learner can explain the different role of each tool.
-- No Godot project has been created and no local project has been added to
-  Codex yet.
 
 ## Before you start
 
@@ -29,8 +25,7 @@ project folder is connected in Lesson 0.4.
 
 ### Part 1: Install and verify Godot
 
-> 💡 Godot is the **game engine** used in this course. A game engine is a
-> collection of tools that builds and runs the game.
+> 💡 A **game engine** is a software power tool that gives you pre-built building blocks—like physics, graphics, and audio—so you don't have to code a video game entirely from scratch.
 
 1. Open the official [Godot download page for Windows](https://godotengine.org/download/windows/).
 2. Download the standard **Godot Engine 4.7.2** 64-bit Windows version.
@@ -46,10 +41,7 @@ project folder is connected in Lesson 0.4.
 5. Open the extracted Godot executable.
 6. If Windows displays a security prompt, confirm that the publisher and
    download source are expected before continuing.
-7. Confirm that the Godot Project Manager opens and shows version **4.7.2**.
-8. Pin Godot to the taskbar or create a shortcut if that makes it easier to
-   reopen. This is optional.
-9. Close Godot, then reopen it from the stable location or shortcut.
+7. Confirm that the Godot Project Manager opens and shows version **4.7.2**. Pin Godot to the taskbar or create a shortcut if that makes it easier to reopen.
 
 > ⚠️ **If something differs**
 >
@@ -63,13 +55,11 @@ project folder is connected in Lesson 0.4.
 
 > 💡 An **agent** like Codex is an AI that can do more than answer questions:
 > it can work toward a goal by planning steps, using available tools, editing
-> files, and running commands. The learner still reviews and tests its work.
+> files, and running commands.
 
 1. Open the official [ChatGPT desktop app for Windows page](https://learn.chatgpt.com/docs/windows/windows-app).
 2. Follow its Microsoft Store download link and install the application.
-3. If you do not have an OpenAI account, create one using the official
-[ChatGPT sign-up page](https://chatgpt.com/auth/login) and complete any required
-verification.
+3. If you do not have an OpenAI account, create one using the official [ChatGPT sign-up page](https://chatgpt.com/auth/login) and complete any required verification.
 4. Open the ChatGPT desktop app and sign in to the OpenAI account that has
    Codex access.
 5. Open Codex in the app.
@@ -79,16 +69,15 @@ verification.
 7. Beneath the message box, select **Ask for approval** so sandbox protections
    are active.
 
-   > 💡 **Ask for approval** keeps Codex inside the project sandbox. A
-   > **sandbox** is a restricted area an application is allowed to work in, so
-   > Codex cannot reach files elsewhere on your computer. This limits where it
-   > can work and lets you review broader actions first. Once a project is
-   > connected, Codex can inspect its files, but you still need to review and
-   > test its suggestions.
+> 💡 **Ask for approval** keeps Codex inside the project sandbox. A
+> **sandbox** is a restricted area an application is allowed to work in, so
+> Codex cannot reach files elsewhere on your computer. This limits where it
+> can work and lets you review broader actions first. Once a project is
+> connected, Codex can inspect its files, but you still need to review and
+> test its suggestions.
+   
 8. Do not add a local project to Codex yet. Lesson 0.2 first creates the Godot
    project folder; Lesson 0.4 then connects that existing folder to Codex.
-9. Close the application, then reopen it and confirm that Codex is still
-   available.
 
 > ⚠️ **If something differs**
 >
@@ -102,25 +91,18 @@ verification.
 
 Without reading the steps again:
 
-1. Close both applications.
-2. Reopen Godot and identify the Project Manager.
-3. Reopen the ChatGPT desktop app and access Codex.
-4. Explain in one sentence what Godot does.
-5. Explain in one sentence how Codex will support the project.
-6. Explain why no project folder is connected to Codex yet.
+1. Explain in one sentence what Godot does.
+2. Explain in one sentence how Codex will support the project.
 
 ## Verification checklist
 
 - [ ] The standard Godot 4.7.2 Windows build is extracted.
 - [ ] Godot is stored outside the Downloads folder.
 - [ ] The Godot Project Manager opens and shows version 4.7.2.
-- [ ] Godot closes and reopens successfully.
 - [ ] The ChatGPT desktop app is installed from the official source.
 - [ ] The learner can sign in and access Codex.
 - [ ] The Windows-native agent is selected.
 - [ ] **Ask for approval** is selected.
-- [ ] No local project has been added to Codex yet.
-- [ ] The ChatGPT desktop app closes and reopens successfully.
 - [ ] The learner can explain the different roles of Godot and Codex.
 
 ## References

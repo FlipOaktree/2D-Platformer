@@ -14,8 +14,6 @@ creates the Godot project and its files.
 - The learner can locate the complete project folder in Windows.
 - The learner records the folder's full Windows path for Lesson 0.4.
 - The learner understands what `project.godot` does.
-- No gameplay scenes or scripts have been added yet.
-- The folder is not connected to Codex and is not a Git repository yet.
 
 ## Before you start
 
@@ -31,15 +29,14 @@ creates the Godot project and its files.
 2. Select **Create**.
 3. Enter `2D Platformer` as the project name.
 4. Use **Browse** to select a new, empty project folder.
-
 5. Select the **Forward+** renderer.
 
-   > 💡 A **renderer** processes the game's graphics and draws them on screen.
-   > Different renderers support different visual effects. We use **Forward+**
-   > so we can add polished effects later. Changing the renderer after effects
-   > are already in use can require adjustments.
+> 💡 A **renderer** processes the game's graphics and draws them on screen.
+> Different renderers support different visual effects. We use **Forward+**
+> so we can add polished effects later. Changing the renderer after effects
+> are already in use can require adjustments.
+   
 6. Create and open the project.
-
 7. Point out only what is needed today:
    - Scene dock.
    - FileSystem dock.
@@ -49,14 +46,11 @@ creates the Godot project and its files.
 9. Select **Open in File Explorer**.
 10. In Windows File Explorer, confirm that `project.godot` is present.
 
-    > 💡 The **`project.godot`** file stores the project name and settings. Its
-    > location defines the project root. Godot's FileSystem dock may not display
-    > it, so use **Open in File Explorer** to view the complete project folder.
+> 💡 The **`project.godot`** file stores the project name and settings. Its
+> location defines the project root. Godot's FileSystem dock may not display
+> it, so use **Open in File Explorer** to view the complete project folder.
 
-11. Select the File Explorer address bar and record the complete folder path.
-    You will select this exact folder when connecting the existing project to
-    Codex in Lesson 0.4.
-12. Return to Godot.
+11. Select the File Explorer address bar and record the complete folder path. You will select this exact folder when connecting the existing project to Codex in Lesson 0.4.
 
 > 💡 A **Godot project** is the folder whose `project.godot` file stores the
 > engine settings. Lesson 0.4 will add this existing folder to Codex; it will
@@ -77,12 +71,9 @@ creates the Godot project and its files.
 
 Without reading the steps again:
 
-1. Close the project.
-2. Reopen it from the Godot Project Manager.
-3. Open the project folder from the `res://` root.
-4. Locate `project.godot`.
-5. Identify the complete Windows path to its folder.
-6. Explain in one short sentence what `project.godot` does.
+1. Open the project folder from the `res://` root.
+2. Locate `project.godot`.
+3. Explain in one short sentence what `project.godot` does.
 
 ## Verification checklist
 
@@ -94,8 +85,6 @@ Without reading the steps again:
 - [ ] The rendering method is **Forward+**.
 - [ ] Closing and reopening the project succeeds.
 - [ ] The learner can explain the purpose of `project.godot`.
-- [ ] The folder has not been connected to Codex or initialized as a Git
-      repository yet.
 
 ## References
 

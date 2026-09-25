@@ -12,13 +12,10 @@ next lesson; GitHub and online publishing come later.
 - Git has a deliberate author name and author email.
 - New repositories use `main` as their default branch.
 - Git remains available after PowerShell is closed and reopened.
-- The Godot project has not been turned into a Git repository yet.
 
 ## Before you start
 
 - Module 0, Lessons 1 and 2 are complete.
-- A Windows PC with internet access is available.
-- The learner can install applications on that computer.
 
 ## Build steps
 
@@ -29,16 +26,18 @@ next lesson; GitHub and online publishing come later.
 
 1. Open **Windows PowerShell** from the Start menu.
 
-   > 💡 A **terminal** is an application used to give the computer text-based
-   > **commands**. PowerShell is the terminal used in this course.
+> 💡 A **terminal** is an application used to give the computer text-based
+> commands. PowerShell is the terminal used in this course.
+
 2. Enter:
 
    ```powershell
    git --version
    ```
 
+   `git --version` only reports Git's installed version; it does not change the
+   computer or project.
 3. Press **Enter** and read the result.
-
 4. If a Git version appears, continue to Part 2.
 5. If Windows says that `git` is not recognized, enter:
 
@@ -46,18 +45,13 @@ next lesson; GitHub and online publishing come later.
    winget install --id Git.Git -e --source winget
    ```
 
-> 💡 `winget` is Windows' package manager. This command installs the
-> maintained Git for Windows package without a long installer tour.
-
+   This command installs the maintained Git for Windows package without a long installer tour.
 6. Read the installation and approval prompts before accepting them.
 7. Close PowerShell after installation and reopen it. A terminal that was
    already open may not detect the newly installed command.
 8. Run `git --version` again.
 9. Confirm that a Git version appears. The exact patch number can be newer
    than the one shown during course production.
-
-`git --version` only reports Git's installed version; it does not change the
-computer or project.
 
 > ⚠️ **If something differs**
 >
@@ -69,8 +63,10 @@ computer or project.
 ### Part 2: Configure the commit identity
 
 > 💡 A **commit identity** is the author name and email stored in each Git
-> snapshot. A **branch** is a line of project history. This course uses
-> `main` as the clear default branch for new repositories.
+> snapshot. Git will not make a commit without one: it stops with `Author
+> identity unknown` and asks who you are. Setting it once with `--global`
+> answers that for every project on this computer, and it is what lets the
+> history of a shared project say who made each change.
 
 1. Check whether an identity is already configured:
 
@@ -93,6 +89,8 @@ computer or project.
    ```powershell
    git config --global init.defaultBranch main
    ```
+
+> 💡 A **branch** is a line of project history. A project can have multiple branches to test different development versions. This course uses `main` as the clear default branch for new repositories.
 
 6. Verify all three values:
 
@@ -138,7 +136,7 @@ Without reading the commands again:
 - [ ] The configured author email is intentional.
 - [ ] `init.defaultBranch` is `main`.
 - [ ] The learner can explain Git, terminal, command, commit identity, and
-      branch in simple language.
+    branch in simple language.
 - [ ] No Godot project files or Git repositories were changed.
 
 ## References
