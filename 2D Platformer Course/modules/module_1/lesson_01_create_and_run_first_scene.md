@@ -29,9 +29,10 @@ content in the 2D viewport without moving it.
 
 > 💡 The **Scene** dock lists the nodes in the scene you are editing, arranged as a tree. It is where you add, rename, select, and rearrange them, and selecting a node here is what decides which node the Inspector and the toolbar act on.
 
-> 💡 Think of a node as a LEGO brick. Godot provides many kinds of nodes, each with a particular role, such as displaying text, showing an image, or playing an animation. Combining nodes creates a scene, much like combining bricks creates a model. A scene can also be placed inside another scene, just as a large LEGO model can be assembled from smaller models. Every scene begins with one root node at the top, with its other nodes arranged beneath it.
+3. In the Scene dock, rename the `Node2D` root node to `Main`.
 
-3. In the Scene dock, rename the `Node2D` root node to `Main`. This root stays small so later features can be added as child scenes instead of placing all gameplay behavior directly here.
+> 💡 Think of a node as a LEGO brick. Godot provides many kinds of nodes, each with a particular role, such as displaying text, showing an image, or playing an animation. Combining nodes creates a scene, much like combining bricks creates a model. Every scene begins with one root node at the top, with its other nodes nested inside it. A node nested directly in another is called a child node, and the node it is nested in is called its parent node.
+
 4. Select `Main`, then select the **Add Child Node** button.
 5. Search for `Label`, select it, then select **Create**. `Label` is now a child of `Main`, so the tree shows that this text display is part of the main scene.
 6. Select `Label` in the Scene dock.
