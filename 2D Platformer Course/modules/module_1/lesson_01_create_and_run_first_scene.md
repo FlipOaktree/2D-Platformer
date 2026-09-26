@@ -27,20 +27,13 @@ content in the 2D viewport without moving it.
 1. Open the `2D Platformer` project.
 2. In the empty **Scene** dock, select **2D Scene**.
 
-   > 💡 Think of a node as a LEGO brick. Godot provides many kinds of nodes, each with a particular role, such as displaying text, showing an image, or playing an animation. Combining nodes creates a scene, much like combining bricks creates a model. A scene can also be placed inside another scene, just as a large LEGO model can be assembled from smaller models. Every scene begins with one root node at the top, with its other nodes arranged beneath it.
+> 💡 The **Scene** dock lists the nodes in the scene you are editing, arranged as a tree. It is where you add, rename, select, and rearrange them, and selecting a node here is what decides which node the Inspector and the toolbar act on.
 
-3. In the Scene dock, rename the `Node2D` root node to `Main`.
+> 💡 Think of a node as a LEGO brick. Godot provides many kinds of nodes, each with a particular role, such as displaying text, showing an image, or playing an animation. Combining nodes creates a scene, much like combining bricks creates a model. A scene can also be placed inside another scene, just as a large LEGO model can be assembled from smaller models. Every scene begins with one root node at the top, with its other nodes arranged beneath it.
 
-   This root stays small so later features can be added as child scenes instead
-   of placing all gameplay behavior directly here.
-
+3. In the Scene dock, rename the `Node2D` root node to `Main`. This root stays small so later features can be added as child scenes instead of placing all gameplay behavior directly here.
 4. Select `Main`, then select the **Add Child Node** button.
-5. Search for `Label`, select it, then select **Create**.
-
-   > 💡 A **child node** belongs under another node in the Scene dock. `Label`
-   > is now a child of `Main`, so the tree shows that this text display is part
-   > of the main scene.
-
+5. Search for `Label`, select it, then select **Create**. `Label` is now a child of `Main`, so the tree shows that this text display is part of the main scene.
 6. Select `Label` in the Scene dock.
 7. In the Inspector, find **Text** and enter:
 
@@ -48,15 +41,15 @@ content in the 2D viewport without moving it.
    Project ready
    ```
 
-   > 💡 The **Inspector** shows settings for the selected node. Changing this
-   > Label's Text property changes what it displays without writing code.
+> 💡 The **Inspector** shows settings for the selected node. Changing this
+> Label's Text property changes what it displays without writing code.
 
 8. Double-click `Label`'s icon in the Scene dock to center it in the 2D
    viewport.
 
-   > 💡 The **2D viewport** is the large central area where you see and arrange
-   > your scene. Moving your view in the viewport changes only what you are
-   > looking at; it does not move the nodes themselves.
+> 💡 The **2D viewport** is the large central area where you see and arrange
+> your scene. Moving your view in the viewport changes only what you are
+> looking at; it does not move the nodes themselves.
 
 9. Use the zoom controls above the top-left of the viewport to zoom in and out.
 10. Select **Pan Mode** in the toolbar above the viewport, then drag with the
@@ -75,7 +68,7 @@ content in the 2D viewport without moving it.
 14. In the save dialog, create a folder named `scenes`.
 15. Open `scenes`, enter `main.tscn` as the file name, and select **Save**.
 
-    > 💡 A `.tscn` file stores a Godot scene.
+    💡 A `.tscn` file stores a Godot scene.
 
 > ⚠️ **If something differs**
 >
