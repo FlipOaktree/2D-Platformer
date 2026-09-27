@@ -5,8 +5,9 @@
 ## By the end
 
 Turn `ProjectIcon` into a reusable scene and keep one instance in `Main`. You
-will see how source-scene changes reach every linked instance and how a
-property customized on one instance becomes an override.
+will see how source-scene changes reach every linked instance, how a property
+customized on one instance becomes an override, and how an independent copy
+stops following the source at all.
 
 - `res://scenes/project_icon.tscn` contains a `Sprite2D` root named
   `ProjectIcon`.
@@ -66,9 +67,8 @@ property customized on one instance becomes an override.
 7. Save `project_icon.tscn`, then return to `main.tscn`.
 8. Confirm that both icons are rotated by `20°`.
 
-> 💡 An **instance** is not an independent copy. It stays linked to the source
-> scene it came from. A saved source-scene change flows to all its instances.
-> An independent copy has no source link, so later source changes do not reach it.
+> 💡 An **instance** stays linked to the source scene it came from. A saved
+> source-scene change flows to all its instances.
 
 9. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
 10. Return to `main.tscn` and confirm that both icons are upright again.
@@ -106,26 +106,48 @@ property customized on one instance becomes an override.
 > - If the final icon is missing, instantiate `project_icon.tscn` beneath
 >   `Main`, set its Position to `(256, 240)`, and save `main.tscn`.
 
+### Part 4: Compare an instance with an independent copy
+
+1. In **FileSystem**, right-click `project_icon.tscn`, duplicate it, and name
+   the copy `project_icon_copy.tscn`.
+2. Select `Main`, then select **Instantiate Child Scene**.
+3. Choose `res://scenes/project_icon_copy.tscn` and select **Open**.
+4. Set the new instance's **Transform → Position** to `(448, 240)`.
+5. Open `project_icon.tscn`, set its root **Transform → Rotation** to `20°`,
+   and save.
+6. Return to `main.tscn`. Confirm that the first icon rotates and the copy's
+   icon stays upright.
+
+> 💡 The copy is a separate scene file, so it has no link to
+> `project_icon.tscn`. An **independent copy** does not receive later source
+> changes, which is what makes it different from an instance.
+
+7. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
+8. In `main.tscn`, delete the copy's instance and save.
+9. In **FileSystem**, delete `project_icon_copy.tscn`.
+10. Confirm that `Main` contains one `ProjectIcon` instance at Position
+    `(256, 240)`, Rotation `0°`, and Scale `(0.125, 0.125)`.
+
+> ⚠️ **If something differs**
+>
+> - If both icons rotate, the second icon is another instance of
+>   `project_icon.tscn` rather than of the copy. Delete it and repeat from
+>   step 2.
+> - If neither icon rotates, confirm that you edited and saved the root of
+>   `project_icon.tscn`, not an instance inside `main.tscn`.
+> - If Godot reports that `project_icon_copy.tscn` is still in use, confirm
+>   that its instance was deleted from `main.tscn` first.
+
 ## Learner exercise
 
 Without repeating the build steps:
 
 1. Identify which scene stores the icon's texture and Scale.
 2. Identify which scene stores the remaining instance's Position.
-3. In **FileSystem**, right-click `project_icon.tscn`, duplicate it, and name
-   the copy `project_icon_copy.tscn`.
-4. Instantiate `project_icon_copy.tscn` under `Main` and set its Position to
-   `(640, 240)`.
-5. Open `project_icon.tscn`, set its root Rotation to `20°`, and save.
-6. Confirm that the remaining instance rotates and the copy's instance does
-   not: the copy has no source link, so the change never reaches it.
-7. Restore `project_icon.tscn`'s Rotation to `0°` and save.
-8. Delete the copy's instance and `project_icon_copy.tscn`, then confirm
-   `Main` again contains exactly one `ProjectIcon` instance.
-9. Explain how a source-scene property, an instance override, and an
+3. Explain how a source-scene property, an instance override, and an
    independent copy differ.
-10. Temporarily set the remaining instance's Rotation to `10°`, observe the
-    result, then restore it to `0°`.
+4. Temporarily set the remaining instance's Rotation to `10°`, observe the
+   result, then restore it to `0°`.
 
 ## Verification checklist
 
@@ -135,6 +157,7 @@ Without repeating the build steps:
       `(0.125, 0.125)`.
 - [ ] `Main` contains one instance of `project_icon.tscn` at Position
       `(256, 240)`.
+- [ ] `res://scenes/project_icon_copy.tscn` no longer exists.
 - [ ] `Main` still contains a `Label` displaying `Project ready` at Position
       `(0, 0)`.
 - [ ] Running the current scene displays the text and one upright icon without
