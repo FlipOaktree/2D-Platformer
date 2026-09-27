@@ -38,16 +38,15 @@ project is using Godot's default size, which no one chose for this game.
 4. Open **Project > Project Settings**.
 5. Select the **General** tab.
 6. In the left list, open **Display > Window**.
-7. Under **Size**, set **Viewport Width** to `1920`.
-8. Set **Viewport Height** to `1080`.
+7. Under **Size**, set **Viewport Width** to `1920` and set Viewport Height to 1080.
 
 > 💡 `1920` by `1080` is the most common screen shape in use, often called
 > 1080p. Choosing it now means the world you build has the same proportions as
 > the screens most players use. Every position and size in the rest of this
 > course assumes this viewport.
 
-9. Run the scene with `F6` and confirm that the label still appears.
-10. Stop the scene with `F8`.
+8. Run the scene with `F6` and confirm that the label still appears.
+9. Stop the scene with `F8`.
 
 The window is now larger, but the game still draws at a fixed size. If you
 resize the window, the view does not follow.
@@ -64,19 +63,20 @@ resize the window, the view does not follow.
 1. Return to **Project Settings > Display > Window**.
 2. Under **Stretch**, set **Mode** to `canvas_items`.
 3. Set **Aspect** to `keep`.
+
+> 💡 **Mode** `canvas_items` scales the drawn world to fill the window, so the
+> game looks right on any monitor while your positions stay in the same
+> 1920-by-1080 space. **Aspect** `keep` refuses to distort the picture: rather
+> than squashing the world to match an odd window shape, Godot keeps the
+> proportions and fills the leftover space with empty bars. Keeping the aspect also
+> guarantees that the visible area is always exactly the world you designed.
+
 4. Run the scene with `F6`.
 5. Drag a corner of the game window to resize it. Confirm that the label grows
    and shrinks with the window instead of staying one size.
 6. Make the window very wide and very short. Confirm that the picture keeps its
    shape and adds empty bars rather than stretching.
 7. Stop the scene with `F8`.
-
-> 💡 **Mode** `canvas_items` scales the drawn world to fill the window, so the
-> game looks right on any monitor while your positions stay in the same
-> 1920-by-1080 space. **Aspect** `keep` refuses to distort the picture: rather
-> than squashing the world to match an odd window shape, Godot keeps the
-> proportions and fills the leftover space with bars. Keeping the aspect also
-> guarantees that the visible area is always exactly the world you designed.
 
 > ⚠️ **If something differs**
 >
@@ -89,28 +89,16 @@ resize the window, the view does not follow.
 
 1. Return to **Project Settings > Display > Window**.
 2. Under **Size**, find **Window Width Override** and **Window Height
-   Override**.
-3. Choose the values that fit your monitor:
-
-   | Your monitor | Window Width Override | Window Height Override |
-   | --- | --- | --- |
-   | 1920 by 1080 | `1280` | `720` |
-   | 2560 by 1440 or larger | `0` | `0` |
-
-4. Run the scene with `F6` and confirm that the window is large enough to see
+   Override**. Choose the values that fit your monitor: 
+	- 1920 by 1080 monitor = `1280` x `720` override
+	- 2560 by 1440 or larger monitor =  `0` x `0` override
+   An override of `0` means "use the viewport size", so a large monitor opens the
+   window at the full 1920 by 1080. On a 1080p monitor that would cover the whole
+   screen, so the override shrinks the window without changing the world inside it.
+3. Run the scene with `F6` and confirm that the window is large enough to see
    comfortably while still leaving the editor visible.
-5. Stop the scene with `F8`.
-6. Save the project with `Ctrl+S`.
-
-An override of `0` means "use the viewport size", so a large monitor opens the
-window at the full 1920 by 1080. On a 1080p monitor that would cover the whole
-screen, so the override shrinks the window without changing the world inside
-it.
-
-> 💡 If the game window opens on the wrong monitor, open **Editor > Editor
-> Settings**, then **Run > Window Placement**, and choose the screen you want.
-> That is an editor preference, so it affects only your machine and is not
-> stored in the project.
+4. Stop the scene with `F8`.
+5. Save the project with `Ctrl+S`.
 
 > 💡 Everything you set in this lesson is saved into `project.godot`, the file
 > Lesson 0.2 introduced. These settings belong to the project rather than to
@@ -122,6 +110,9 @@ it.
 >   were entered and that the project was saved.
 > - If the window is tiny, confirm that you set the overrides and not the
 >   viewport size.
+> - If the window opens on the wrong monitor, open **Editor > Editor
+>   Settings**, then **Run > Window Placement**, and choose the screen you
+>   want.
 
 ## Learner exercise
 
