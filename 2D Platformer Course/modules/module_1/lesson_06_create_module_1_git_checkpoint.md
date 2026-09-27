@@ -8,8 +8,6 @@ Create a tested Git checkpoint for the completed Module 1 scene foundations.
 Codex will prepare a read-only review first; you will inspect the proposed
 changes, then use Codex's Git controls to create the local commit.
 
-- The project still runs `main.tscn` and displays `Project ready` with one
-  upright project icon.
 - The Module 1 scene changes are recorded in one new local commit on `main`.
 - The working tree is clean after the checkpoint.
 
@@ -46,15 +44,15 @@ changes, then use Codex's Git controls to create the local commit.
 
 1. In the Codex task for this project, send this prompt:
 
-   > Review the uncommitted changes from Module 1. Summarize what they add,
-   > flag anything that does not belong in this checkpoint, and propose one
-   > concise commit message beginning with `Build Module 1`. Do not edit,
-   > stage, or commit anything.
+   `Review the uncommitted changes from Module 1. Summarize what they add,`
+   `flag anything that does not belong in this checkpoint, and propose one`
+   `concise commit message beginning with Build Module 1. Do not edit,`
+   `stage, or commit anything.`
 
-   > 💡 You already used a **read-only request** in Lesson 0.4. Here it lets
-   > Codex prepare the checkpoint while you keep control of what is saved.
-   > A useful commit message describes the completed result, not every click
-   > that produced it.
+> 💡 You already used a **read-only request** in Lesson 0.4. Here it lets
+> Codex prepare the checkpoint while you keep control of what is saved.
+> A useful commit message describes the completed result, not every click
+> that produced it.
 
 2. Read Codex's summary before acting on it.
 3. At the top right of the task, open the controls menu (the sliders icon) and
@@ -63,17 +61,15 @@ changes, then use Codex's Git controls to create the local commit.
 5. Confirm that the Module 1 project changes are limited to the expected
    files:
 
-   - `project.godot`, which records `main.tscn` as the project's main scene
-     through a `uid://` reference, and the `[display]` section holding the
-     viewport size and stretch settings from Lesson 1.2.
+   - `project.godot`, which records `main.tscn` as the project's main scene through a `uid://` reference, and the `[display]` section holding the viewport size and stretch settings from Lesson 1.2.
    - `scenes/main.tscn`, which stores `Main`, its Label, and the icon instance.
    - `scenes/project_icon.tscn`, which stores the reusable icon scene.
 
-   > 💡 A **UID** is a stable identifier Godot assigns to each file. It looks
-   > like `uid://` followed by a short code, and it is unique to your project.
-   > Godot records the main scene by its UID instead of its file path, so the
-   > reference keeps working if the file is later renamed or moved. That is why
-   > the diff shows a `uid://` value rather than `main.tscn`.
+> 💡 A **UID** is a stable identifier Godot assigns to each file. It looks
+> like `uid://` followed by a short code, and it is unique to your project.
+> Godot records the main scene by its UID instead of its file path, so the
+> reference keeps working if the file is later renamed or moved. That is why
+> the diff shows a `uid://` value rather than `main.tscn`.
 
    Course notes, generated `.godot/` files, credentials, or any change you
    cannot explain do not belong in this checkpoint.
@@ -91,12 +87,11 @@ changes, then use Codex's Git controls to create the local commit.
    expected Module 1 project files in the Review tab.
 2. At the top right of the task, open the controls menu (the sliders icon) and
    select **Commit or push**.
-3. Enter Codex's proposed message, confirm that it begins with `Build Module
-   1`, then create a **local commit**. Do not push.
+3. Enter Codex's proposed message, confirm that it begins with `Build Module 1`, then create a **local commit**. Do not push.
 
-   > 💡 Codex is useful here because its read-only review can reveal an
-   > unexpected file or mismatch. Staging and committing are routine visible
-   > actions, so use the Git controls directly after you understand the diff.
+> 💡 Codex is useful here because its read-only review can reveal an
+> unexpected file or mismatch. Staging and committing are routine visible
+> actions, so use the Git controls directly after you understand the diff.
 
 4. Open the Review tab again and confirm that no uncommitted Module 1 project
    changes remain.
@@ -113,8 +108,8 @@ changes, then use Codex's Git controls to create the local commit.
    you approved.
 
 If the AI review is unavailable but the Codex Git controls still work, inspect
-the Review tab yourself, use a concise commit message beginning with `Build
-Module 1`, and run the same three verification commands. If the Codex app is
+the Review tab yourself, use a concise commit message beginning with `Build`
+`Module 1`, and run the same three verification commands. If the Codex app is
 unavailable altogether, do the same work in any terminal opened in the project
 folder, using the commands from Lesson 0.4:
 
@@ -142,17 +137,14 @@ Without creating another commit:
 ## Verification checklist
 
 - [ ] Running the project before the checkpoint displays `Project ready` and
-      one upright project icon without related errors or warnings.
-- [ ] Codex's first request only reviewed and summarized the proposed
-      checkpoint.
+    one upright project icon without related errors or warnings.
+- [ ] Codex's first request only reviewed and summarized the proposed checkpoint.
 - [ ] The Review tab was checked before the local commit was created.
 - [ ] The checkpoint contains only understood Module 1 project changes.
-- [ ] The learner used **Commit or push** to create the local commit and did
-      not push.
+- [ ] The learner used **Commit or push** to create the local commit and did not push.
 - [ ] The latest commit message begins with `Build Module 1`.
 - [ ] `git status` reports a clean working tree afterward.
-- [ ] The learner can explain why each reviewed module ends with one tested
-      checkpoint.
+- [ ] The learner can explain why each reviewed module ends with one tested checkpoint.
 
 ## References
 

@@ -129,17 +129,17 @@ resize the window, the view does not follow.
 - [ ] **Stretch Mode** is `canvas_items`.
 - [ ] **Stretch Aspect** is `keep`.
 - [ ] Resizing the running window scales the label instead of leaving it a
-      fixed size.
+    fixed size.
 - [ ] An unusual window shape adds bars instead of distorting the picture.
 - [ ] The window override values suit the learner's monitor, and the running
-      window is comfortable to look at.
+    window is comfortable to look at.
 - [ ] The learner knows these settings are stored in `project.godot` and travel
-      with the project.
+    with the project.
 - [ ] Running `main.tscn` still shows the Lesson 1.1 label and reports no
-      related errors or warnings.
+    related errors or warnings.
 - [ ] The exercise ends with **Aspect** restored to `keep`.
 - [ ] The learner can explain the difference between the viewport size and the
-      window size.
+    window size.
 
 ## References
 

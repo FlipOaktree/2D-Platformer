@@ -123,25 +123,21 @@ affects its children.
 
 1. Select `Main` in the Scene dock.
 2. Select **Move Mode** or press `W`, then drag `Main` to the right and down.
-
-> 💡 `Main` and `ProjectIcon` are `Node2D`-based nodes, so **Transform** appears
-> directly in the Inspector. `Label` is a `Control` node, so its **Transform**
-> subsection appears under **Layout**.
-
 3. Confirm that both `Label` and `ProjectIcon` move with `Main`.
 4. Select `Label` and confirm its **Layout → Transform → Position** remains
    `(0, 0)`.
 5. Select `ProjectIcon` and confirm its Position remains `(256, 240)`, its
-   Rotation remains `0°`, and its Scale remains `(0.125, 0.125)`.
-
-   Moving `Main` changes where the whole branch appears without changing either child's own local
-   transform.
-
-6. Select `Main` and restore its Position to `(0, 0)`.
-7. Save the scene with `Ctrl+S`.
-8. Run the current scene with `F6`.
-9. Confirm that `Project ready` and the project icon are visible.
-10. Stop the scene with `F8`.
+   Rotation remains `0°`, and its Scale remains `(0.125, 0.125)`. Moving Main changes where the whole branch appears without changing either child's own local transform.
+   
+> 💡 `Main` and `ProjectIcon` are `Node2D`-based nodes, so **Transform** appears
+> directly in the Inspector. `Label` is a `Control` node, so its **Transform**
+> subsection appears under **Layout**.   
+   
+1. Select `Main` and restore its Position to `(0, 0)`.
+2. Save the scene with `Ctrl+S`.
+3. Run the current scene with `F6`.
+4. Confirm that `Project ready` and the project icon are visible.
+5. Stop the scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -169,16 +165,16 @@ Without repeating the build steps:
 - [ ] `Label` displays `Project ready`.
 - [ ] `ProjectIcon` is a `Sprite2D` displaying `icon.svg`.
 - [ ] `ProjectIcon` has Position `(256, 240)`, Rotation `0°`, and Scale
-      `(0.125, 0.125)`.
+    `(0.125, 0.125)`.
 - [ ] Running the current scene shows the text and icon without related errors
-      or warnings.
+    or warnings.
 - [ ] The learner can use Move, Rotate, and Scale in toolbar order and match
-      them to their Inspector properties.
+    them to their Inspector properties.
 - [ ] The learner can explain why equal Scale values preserve proportions and
-      why enlarging a raster image can reduce its apparent quality.
+    why enlarging a raster image can reduce its apparent quality.
 - [ ] The learner can apply the local-position rule when a parent moves.
 - [ ] The learner can find **Transform** directly on `Node2D`-based nodes and
-      under **Layout** on a `Control` node.
+    under **Layout** on a `Control` node.
 
 ## References
 

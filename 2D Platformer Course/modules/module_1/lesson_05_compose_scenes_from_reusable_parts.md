@@ -147,8 +147,7 @@ Without repeating the build steps:
 
 1. Identify which scene stores the icon's texture and Scale.
 2. Identify which scene stores the remaining instance's Position.
-3. Explain how a source-scene property, an instance override, and an
-   independent copy differ.
+3. Explain how an scene instance and an independent copy of a scene differ.
 4. Temporarily set the remaining instance's Rotation to `10°`, observe the
    result, then restore it to `0°`.
 
@@ -157,20 +156,17 @@ Without repeating the build steps:
 - [ ] `res://scenes/project_icon.tscn` exists.
 - [ ] Its root is a `Sprite2D` named `ProjectIcon` displaying `icon.svg`.
 - [ ] The source root has Position `(0, 0)`, Rotation `0°`, and Scale
-      `(0.125, 0.125)`.
+    `(0.125, 0.125)`.
 - [ ] `Main` contains one instance of `project_icon.tscn` at Position
-      `(256, 240)`.
+    `(256, 240)`.
 - [ ] `res://scenes/project_icon_copy.tscn` no longer exists.
-- [ ] `Main` still contains a `Label` displaying `Project ready` at Position
-      `(0, 0)`.
+- [ ] `Main` still contains a `Label` displaying `Project ready` at Position `(0, 0)`.
 - [ ] Running the current scene displays the text and one upright icon without
-      related errors or warnings.
-- [ ] The learner can explain branch, reusable scene, and instance in simple
-      language.
+    related errors or warnings.
+- [ ] The learner can explain branch, reusable scene, and instance in simple language.
 - [ ] The learner can distinguish a source-scene property, a per-instance
-      override, and an independent copy.
-- [ ] The learner can recognize PascalCase node names and snake_case file
-      names.
+    override, and an independent copy.
+- [ ] The learner can recognize PascalCase node names and snake_case file names.
 
 ## References
 

@@ -31,7 +31,7 @@ content in the 2D viewport without moving it.
 
 3. In the Scene dock, rename the `Node2D` root node to `Main`.
 
-> 💡 Think of a node as a LEGO brick. Godot provides many kinds of nodes, each with a particular role, such as displaying text, showing an image, or playing an animation. Combining nodes creates a scene, much like combining bricks creates a model. Every scene begins with one root node at the top, with its other nodes nested inside it. A node nested directly in another is called a child node, and the node it is nested in is called its parent node.
+> 💡 Think of a **node** as a LEGO brick. Godot provides many kinds of nodes, each with a particular role. Combining nodes creates a scene, much like combining bricks creates a model. Every scene begins with one root node at the top, with its other nodes nested inside it. A node nested directly in another is called a **child** node, and the node it is nested in is called its **parent** node.
 
 4. Select `Main`, then select the **Add Child Node** button.
 5. Search for `Label`, select it, then select **Create**. `Label` is now a child of `Main`, so the tree shows that this text display is part of the main scene.
@@ -42,34 +42,26 @@ content in the 2D viewport without moving it.
    Project ready
    ```
 
-> 💡 The **Inspector** shows settings for the selected node. Changing this
+> 💡 The **Inspector** dock shows settings for the selected node. Changing this
 > Label's Text property changes what it displays without writing code.
 
 8. Double-click `Label`'s icon in the Scene dock to center it in the 2D
    viewport.
 
 > 💡 The **2D viewport** is the large central area where you see and arrange
-> your scene. Moving your view in the viewport changes only what you are
-> looking at; it does not move the nodes themselves.
+> your scene.
 
 9. Use the zoom controls above the top-left of the viewport to zoom in and out.
-10. Select **Pan Mode** in the toolbar above the viewport, then drag with the
-    left mouse button to move your view.
+10. Select **Pan Mode** in the toolbar above the viewport, then drag with the left mouse button to move your view.
 11. Try either shortcut for panning without selecting Pan Mode:
-
     - Hold the middle mouse button and drag.
     - Hold `Space` while dragging with the left mouse button.
-
-12. Double-click `Label`'s icon again to return to it.
-
-    Panning and zooming change only your view inside the editor. They do not
-    move the Label or change what appears when the game runs.
-
+12. Double-click `Label`'s icon again to return to it. Panning and zooming change only your view inside the editor. They do not move the Label or change what appears when the game runs.
 13. Save the scene with **Scene → Save Scene** or `Ctrl+S`.
 14. In the save dialog, create a folder named `scenes`.
 15. Open `scenes`, enter `main.tscn` as the file name, and select **Save**.
 
-    💡 A `.tscn` file stores a Godot scene.
+> 💡 A `.tscn` file stores a Godot scene.
 
 > ⚠️ **If something differs**
 >
@@ -83,17 +75,12 @@ content in the 2D viewport without moving it.
 1. Select **Run Current Scene** or press `F6`.
 2. Confirm that a game window opens and displays `Project ready`.
 3. Stop the running scene with `F8` or the **Stop** button.
-
-   Use **Run Current Scene** while working on one scene. It is a quick way to
-   check the scene before testing how the whole project starts.
-
 4. Select **Run Project** or press `F5`.
-
 5. When Godot asks to choose a main scene, select the current `main.tscn`
    scene.
 
-   > 💡 The **main scene** is the scene Godot opens when you run the whole
-   > project. Choosing `main.tscn` sets this project's starting point.
+> 💡 Use **Run Current Scene** while working on one scene. It is a quick way to
+   check the scene before testing the whole project. The **main scene** is the project's starting point when you run the whole project, and using **Run Project** will always run that scene.
 
 6. Confirm that the game window again displays `Project ready`.
 7. Stop the project.
@@ -117,7 +104,7 @@ Without following the steps again:
 1. Change the Label text to `My framework is running`.
 2. Run the current scene and confirm that the new message appears.
 3. Change the text back to `Project ready` and save the scene.
-4. Explain the difference between a node and a scene in one sentence each.
+4. Explain the difference between a node and a scene.
 5. Pan and zoom away from the Label, then center it again without moving it.
 
 ## Verification checklist
@@ -130,10 +117,10 @@ Without following the steps again:
 - [ ] Running the project opens `main.tscn` and shows the same message.
 - [ ] Closing and reopening the scene preserves its nodes and text.
 - [ ] The learner can explain node, scene, root node, child node, Inspector,
-      and main scene in simple language.
+    and main scene in simple language.
 - [ ] The learner can change the Label text through the Inspector.
 - [ ] The learner can pan, zoom, and center a node without changing its
-      position.
+    position.
 
 ## References
 

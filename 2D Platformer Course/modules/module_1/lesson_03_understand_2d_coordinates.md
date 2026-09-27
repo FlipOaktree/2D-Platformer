@@ -25,10 +25,7 @@ A position in 2D uses two coordinates written as `(x, y)`:
 - `x` describes the horizontal position.
 - `y` describes the vertical position.
 
-The starting point `(0, 0)` is called the **origin**. A positive `x` value is
-to the right of the origin, while a negative `x` value is to its left.
-
-Read these examples:
+The starting point `(0, 0)` is called the **origin**. A positive `x` value is to the right of the origin, while a negative `x` value is to its left. Read these examples:
 
 | Position | Meaning |
 | --- | --- |
@@ -63,12 +60,12 @@ its parent rather than directly from the screen's origin. This is called a
 **local position**.
 
 For example, suppose a parent is at `(100, 50)` and its child is at the local
-Position `(20, 30)`. When only their positions are involved, the child appears
-at `(120, 80)` because it is 20 pixels to the right and 30 pixels below its
+Position `(20, 10)`. When only their positions are involved, the child appears
+at `(120, 60)` because it is 20 pixels to the right and 10 pixels below its
 parent.
 
 Moving the parent also moves the child on screen, but the child's stored local
-Position remains `(20, 30)`. This lets a whole scene branch move together
+Position remains `(20, 10)`. This lets a whole scene branch move together
 without rearranging every child separately.
 
 ## Learner exercise
@@ -77,22 +74,21 @@ Without opening Godot, answer these questions:
 
 1. From `(0, 0)`, which directions lead to `(200, 80)`?
 2. From `(0, 0)`, which directions lead to `(-40, 120)`?
-3. If only `x` increases, does an object move horizontally or vertically?
-4. A parent is at `(100, 50)` and its child has local Position `(20, 30)`.
+3. In `(60, 130)`, which number is the `x` and which is the `y`?
+4. If only `x` increases, does an object move horizontally or vertically?
+5. A parent is at `(40, 70)` and its child has local Position `(40, 30)`.
    When only positions are involved, where does the child appear?
-5. If that parent moves, does the child's stored local Position change?
-6. Why does positive `y` point down in Godot's 2D screen coordinates?
+6. If that parent moves, does the child's stored local Position change?
+7. Why does positive `y` point down in Godot's 2D screen coordinates?
 
 ## Verification checklist
 
 - [ ] The learner can identify `x` and `y` in a coordinate pair.
 - [ ] The learner can locate the origin at `(0, 0)`.
-- [ ] The learner knows that positive `x` points right and negative `x` points
-      left.
+- [ ] The learner knows that positive `x` points right and negative `x` points left.
 - [ ] The learner knows that positive `y` points down and negative `y` points
-      up in Godot's 2D screen coordinates.
-- [ ] The learner can explain why screen coordinates commonly begin at the
-      top-left.
+    up in Godot's 2D screen coordinates.
+- [ ] The learner can explain why screen coordinates commonly begin at the top-left.
 - [ ] The learner can explain that a child's Position is local to its parent.
 - [ ] The learner can predict how moving a parent affects its children.
 
