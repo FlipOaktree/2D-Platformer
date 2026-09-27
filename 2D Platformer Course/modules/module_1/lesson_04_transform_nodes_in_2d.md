@@ -54,18 +54,14 @@ affects its children.
 1. With `ProjectIcon` selected, select **Move Mode** in the toolbar above the
    2D viewport or press `W`.
 2. Drag the icon to the right and down.
+
+> 💡 **Move** drags the selected node to another position in the scene. As established previously, a node's position is expressed as coordinates in pixels; moving the icon right increases `x` and moving the icon down increases `y`.
+
 3. In the Inspector, expand **Transform** and watch the Position values change.
-
-   As established previously, increasing `x` moves the icon right and
-   increasing `y` moves it down.
-
 4. Under **Transform → Position**, set `x` to `256` and `y` to `240`.
-
    Dragging is useful for arranging a scene visually. Exact Inspector values
    make a position repeatable. Because `ProjectIcon` is a child, this Position
    is local to `Main`.
-
-5. Confirm that Position is `(256, 240)`.
 
 > ⚠️ **If something differs**
 >
@@ -98,22 +94,24 @@ affects its children.
 1. Select **Scale Mode** in the toolbar or press `S`.
 2. Drag one of the handles around the icon and watch **Transform → Scale**
    change.
-3. Press `Ctrl+Z` to undo the scale change.
-4. Under **Transform → Scale**, set both `x` and `y` to `0.125`.
 
 > 💡 **Scale** changes how large a node appears compared with its imported
 > size. A Scale of `(1, 1)` means 100%. Values below `1` make it smaller, while
 > values above `1` make it larger. Equal `x` and `y` values preserve the
 > image's proportions; different values stretch it.
->
-> Enlarging an image above 100% can make it look blurry, because an image
+
+3. Press `Ctrl+Z` to undo the scale change.
+4. Under **Transform → Scale**, set both `x` and `y` to `0.125`.
+
+> 💡 Enlarging an image above 100% can make it look blurry, because an image
 > contains a fixed number of pixels. `icon.svg` is a vector file, which stores
 > shapes instead of pixels, but Godot converts it into a fixed-size image when
 > it imports it. The advantage of keeping the vector source is that it can be
 > re-imported at any size without losing quality: select `icon.svg`, open the
 > **Import** dock, change **Svg > Scale**, and click **Reimport**.
 
-5. Confirm that the icon becomes smaller without looking stretched.
+5. Confirm that **Transform → Scale** shows `x` and `y` both as `0.125`, and
+   that the icon is smaller without looking stretched.
 
    The toolbar tools and Inspector properties control the same transform:
    Move Mode (`W`) changes Position, Rotate Mode (`E`) changes Rotation, and
