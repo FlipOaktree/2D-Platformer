@@ -29,11 +29,9 @@ property customized on one instance becomes an override.
 2. Select `ProjectIcon` in the Scene dock.
 3. Under **Transform → Position**, set both `x` and `y` to `0`.
 
-   Whatever Position a node has at the moment you save it as a scene becomes
-   that scene's own default. Saving now, at `(256, 240)`, would make every
-   future instance of the icon start there instead of at the origin. Zeroing
-   it first keeps the source scene's own default at the origin; `Main` will
-   store where this instance belongs.
+   Whatever Position a node has when saved as a scene becomes that scene's
+   default for every future instance. Zeroing it first keeps the source at
+   the origin; `Main` will store where this instance belongs.
 
 4. Right-click `ProjectIcon` and select **Save Branch as Scene**.
 5. Save the branch in `res://scenes/` as `project_icon.tscn`.
