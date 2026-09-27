@@ -131,7 +131,10 @@ stops following the source at all.
 > ⚠️ **If something differs**
 >
 > - If both icons rotate, the second icon is another instance of
->   `project_icon.tscn` rather than of the copy. Delete it and repeat from
+>   `project_icon.tscn` rather than of the copy. This happens if `ProjectIcon`
+>   was duplicated in the Scene dock instead of `project_icon.tscn` being
+>   duplicated in FileSystem: duplicating the node creates another instance of
+>   the same source, not an independent copy. Delete it and repeat from
 >   step 2.
 > - If neither icon rotates, confirm that you edited and saved the root of
 >   `project_icon.tscn`, not an instance inside `main.tscn`.
