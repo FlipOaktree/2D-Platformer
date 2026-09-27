@@ -29,21 +29,23 @@ property customized on one instance becomes an override.
 2. Select `ProjectIcon` in the Scene dock.
 3. Under **Transform → Position**, set both `x` and `y` to `0`.
 
-   The icon temporarily moves to the origin. Its reusable source scene will
-   begin at its own origin, while `Main` will store where the instance belongs.
+   Whatever Position a node has at the moment you save it as a scene becomes
+   that scene's own default. Saving now, at `(256, 240)`, would make every
+   future instance of the icon start there instead of at the origin. Zeroing
+   it first keeps the source scene's own default at the origin; `Main` will
+   store where this instance belongs.
 
-4. Confirm that Rotation is `0°` and Scale is `(0.125, 0.125)`.
-5. Right-click `ProjectIcon` and select **Save Branch as Scene**.
-6. Save the branch in `res://scenes/` as `project_icon.tscn`.
+4. Right-click `ProjectIcon` and select **Save Branch as Scene**.
+5. Save the branch in `res://scenes/` as `project_icon.tscn`.
 
 > 💡 A **branch** is a node together with any nodes arranged beneath it. Saving
 > a branch as a scene turns that part of the current scene into a separately
 > saved, reusable scene. This branch contains only its `Sprite2D` root for now.
 
-7. Confirm that `ProjectIcon` remains beneath `Main` and now has an **Open in
+6. Confirm that `ProjectIcon` remains beneath `Main` and now has an **Open in
    Editor** button beside it.
-8. With the instance selected, set **Transform → Position** to `(256, 240)`.
-9. Save `main.tscn` with `Ctrl+S`.
+7. With the instance selected, set **Transform → Position** to `(256, 240)`.
+8. Save `main.tscn` with `Ctrl+S`.
 
 > 💡 In this project, node names use **PascalCase**: each word begins with a
 > capital letter, with no spaces. File names use **snake_case**: lowercase
