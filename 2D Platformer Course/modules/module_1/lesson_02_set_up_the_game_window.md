@@ -12,7 +12,6 @@ window; this lesson replaces that default with a deliberate choice.
 - The running game scales to fit its window instead of staying a fixed size.
 - The window keeps its shape when resized, so the view never stretches.
 - On a large monitor the window opens at a comfortable size.
-- Running `main.tscn` still shows the Lesson 1.1 `Label`.
 
 ## Before you start
 
@@ -22,7 +21,7 @@ window; this lesson replaces that default with a deliberate choice.
 
 ## Build steps
 
-### Part 1: See the current window
+### Part 1: See the current window, then set the viewport size
 
 1. Open `res://scenes/main.tscn` and run the current scene with `F6`.
 2. Look at the size of the game window compared with your screen.
@@ -37,21 +36,19 @@ project is using Godot's default size, which no one chose for this game.
 > **window size** is how large that picture appears on your desktop. Changing
 > the window does not move anything in your game.
 
-### Part 2: Set the viewport size
-
-1. Open **Project > Project Settings**.
-2. Select the **General** tab.
-3. In the left list, open **Display > Window**.
-4. Under **Size**, set **Viewport Width** to `1920`.
-5. Set **Viewport Height** to `1080`.
+4. Open **Project > Project Settings**.
+5. Select the **General** tab.
+6. In the left list, open **Display > Window**.
+7. Under **Size**, set **Viewport Width** to `1920`.
+8. Set **Viewport Height** to `1080`.
 
 > 💡 `1920` by `1080` is the most common screen shape in use, often called
 > 1080p. Choosing it now means the world you build has the same proportions as
 > the screens most players use. Every position and size in the rest of this
 > course assumes this viewport.
 
-6. Run the scene with `F6` and confirm that the label still appears.
-7. Stop the scene with `F8`.
+9. Run the scene with `F6` and confirm that the label still appears.
+10. Stop the scene with `F8`.
 
 The window is now larger, but the game still draws at a fixed size. If you
 resize the window, the view does not follow.
@@ -63,7 +60,7 @@ resize the window, the view does not follow.
 > - If **Viewport Width** does not accept the value, click into the field, clear
 >   it, type `1920`, and press `Enter`.
 
-### Part 3: Make the view scale with the window
+### Part 2: Make the view scale with the window
 
 1. Return to **Project Settings > Display > Window**.
 2. Under **Stretch**, set **Mode** to `canvas_items`.
@@ -89,7 +86,7 @@ resize the window, the view does not follow.
 > - If resizing does nothing, confirm that **Mode** is `canvas_items` and not
 >   `disabled`.
 
-### Part 4: Choose a comfortable window size
+### Part 3: Choose a comfortable window size
 
 1. Return to **Project Settings > Display > Window**.
 2. Under **Size**, find **Window Width Override** and **Window Height
