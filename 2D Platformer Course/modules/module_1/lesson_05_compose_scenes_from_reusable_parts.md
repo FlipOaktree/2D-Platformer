@@ -27,12 +27,7 @@ property customized on one instance becomes an override.
 
 1. Open `res://scenes/main.tscn`.
 2. Select `ProjectIcon` in the Scene dock.
-3. Under **Transform → Position**, set both `x` and `y` to `0`.
-
-   Whatever Position a node has when saved as a scene becomes that scene's
-   default for every future instance. Zeroing it first keeps the source at
-   the origin; `Main` will store where this instance belongs.
-
+3. Under **Transform → Position**, set both `x` and `y` to `0`. Whatever Position a node has when saved as a scene becomes that scene's default for every future instance. Zeroing it first keeps the source at the origin; Main will store where this instance belongs.
 4. Right-click `ProjectIcon` and select **Save Branch as Scene**.
 5. Save the branch in `res://scenes/` as `project_icon.tscn`.
 
@@ -47,8 +42,8 @@ property customized on one instance becomes an override.
 
 > 💡 In this project, node names use **PascalCase**: each word begins with a
 > capital letter, with no spaces. File names use **snake_case**: lowercase
-> words joined with underscores. The multiword names `ProjectIcon` and
-> `project_icon.tscn` make both patterns visible.
+> words joined with underscores. `ProjectIcon` and `project_icon.tscn` 
+> make both patterns visible.
 
 > ⚠️ **If something differs**
 >
@@ -73,8 +68,7 @@ property customized on one instance becomes an override.
 
 > 💡 An **instance** is not an independent copy. It stays linked to the source
 > scene it came from. A saved source-scene change flows to all its instances.
-> An independent copy has no source link, so later source changes do not reach
-> it.
+> An independent copy has no source link, so later source changes do not reach it.
 
 9. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
 10. Return to `main.tscn` and confirm that both icons are upright again.
@@ -95,21 +89,13 @@ property customized on one instance becomes an override.
 3. Confirm that only the second icon rotates; the first remains at `0°`.
 
 > 💡 A property changed on a particular instance becomes an **override** for
-> that instance. Both icons still get their texture and Scale from
-> `project_icon.tscn`, but the second instance now stores its own Rotation in
-> `main.tscn`. An override changes only that property; it does not break the
+> that instance. An override changes only that property; it does not break the
 > instance's source link.
 
 4. Select the second instance and press `Delete`.
 5. Confirm the deletion if Godot asks, then save `main.tscn`.
 6. Select the remaining instance and confirm Position `(256, 240)`, Rotation
    `0°`, and Scale `(0.125, 0.125)`.
-7. Run the current scene with `F6`.
-8. Confirm that `Project ready` and one upright project icon appear.
-9. Stop the scene with `F8`.
-
-   The temporary second instance demonstrated reuse and overrides without
-   leaving duplicate content in the finished project.
 
 > ⚠️ **If something differs**
 >
@@ -126,11 +112,20 @@ Without repeating the build steps:
 
 1. Identify which scene stores the icon's texture and Scale.
 2. Identify which scene stores the remaining instance's Position.
-3. Explain how a source-scene property, an instance override, and an
+3. In **FileSystem**, right-click `project_icon.tscn`, duplicate it, and name
+   the copy `project_icon_copy.tscn`.
+4. Instantiate `project_icon_copy.tscn` under `Main` and set its Position to
+   `(640, 240)`.
+5. Open `project_icon.tscn`, set its root Rotation to `20°`, and save.
+6. Confirm that the remaining instance rotates and the copy's instance does
+   not: the copy has no source link, so the change never reaches it.
+7. Restore `project_icon.tscn`'s Rotation to `0°` and save.
+8. Delete the copy's instance and `project_icon_copy.tscn`, then confirm
+   `Main` again contains exactly one `ProjectIcon` instance.
+9. Explain how a source-scene property, an instance override, and an
    independent copy differ.
-4. Temporarily set the remaining instance's Rotation to `10°`, observe the
-   result, then restore it to `0°`.
-5. Confirm that `Main` contains only one `ProjectIcon` instance and save.
+10. Temporarily set the remaining instance's Rotation to `10°`, observe the
+    result, then restore it to `0°`.
 
 ## Verification checklist
 
