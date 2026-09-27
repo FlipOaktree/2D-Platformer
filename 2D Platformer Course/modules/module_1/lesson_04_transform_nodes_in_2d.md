@@ -103,15 +103,11 @@ affects its children.
 3. Press `Ctrl+Z` to undo the scale change.
 4. Under **Transform → Scale**, set both `x` and `y` to `0.125`.
 
-> 💡 Enlarging an image above 100% can make it look blurry, because an image
-> contains a fixed number of pixels. `icon.svg` is a vector file, which stores
-> shapes instead of pixels, but Godot converts it into a fixed-size image when
-> it imports it. The advantage of keeping the vector source is that it can be
-> re-imported at any size without losing quality: select `icon.svg`, open the
-> **Import** dock, change **Svg > Scale**, and click **Reimport**.
+> 💡 Be careful scaling an image above `1`. An image contains a fixed number
+> of pixels, so drawing it larger than its native pixel size makes it look
+> blurred.
 
-5. Confirm that **Transform → Scale** shows `x` and `y` both as `0.125`, and
-   that the icon is smaller without looking stretched.
+5. Confirm that **Transform → Scale** shows `x` and `y` both as `0.125`.
 
    The toolbar tools and Inspector properties control the same transform:
    Move Mode (`W`) changes Position, Rotate Mode (`E`) changes Rotation, and
