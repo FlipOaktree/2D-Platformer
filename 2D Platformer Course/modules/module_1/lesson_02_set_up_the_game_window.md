@@ -30,11 +30,10 @@ window; this lesson replaces that default with a deliberate choice.
 On most monitors the window is small, and on a 4K screen it is very small. The
 project is using Godot's default size, which no one chose for this game.
 
-> 💡 Two different sizes are involved, and mixing them up causes confusion
-> later. The **viewport size** is how many pixels of game world are drawn: it
-> decides what `(0, 0)` and `(1920, 1080)` mean to every node you place. The
-> **window size** is how large that picture appears on your desktop. Changing
-> the window does not move anything in your game.
+> 💡 Two different sizes are involved. The **viewport size** is how many
+> pixels of game world are drawn — it decides how far every node's position
+> can reach. The **window size** is how large that picture appears on your
+> desktop. Changing the window doesn't move anything in your game.
 
 4. Open **Project > Project Settings**.
 5. Select the **General** tab.
