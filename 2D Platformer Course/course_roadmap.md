@@ -405,7 +405,7 @@ its folder to Codex, and place it under version control.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 0.1 | Install Godot and Codex | Tool installation, Windows-native Codex, approval setting; no project association | Validated | `2452c6e` |
+| 0.1 | Install Godot, Codex, and GitHub Desktop | Tool installation, Windows-native Codex, approval setting, GitHub account, GitHub Desktop sign-in; no project association | Implemented | `2452c6e`; the GitHub Desktop part awaits a real install and sign-in |
 | 0.2 | Create an Empty Godot Project | Project Manager, renderer, `project.godot`, exact existing folder path | Validated | `2452c6e` |
 | 0.3 | Install and Configure Git | Git installation, global commit identity, and default branch; no repository yet | Validated | `2452c6e` |
 | 0.4 | Connect the Existing Project to Codex and Create the First Git Checkpoint | Existing-folder association, repository, read-only AI review, staging, diff, commit, Godot metadata | Validated | `2452c6e`; clean-project replay deferred to the full-course rebuild |

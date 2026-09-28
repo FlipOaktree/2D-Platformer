@@ -1,15 +1,17 @@
-# Module 0, Lesson 1: Install Godot and Codex on Windows
+# Module 0, Lesson 1: Install Godot, Codex, and GitHub Desktop on Windows
 
-**Status:** Validated
+**Status:** Implemented
 
 ## By the end
 
-Install, open, and verify Godot and Codex, the two core applications used
-throughout the course. Godot is where the game is built and run; Codex will
-later help inspect, edit, and check project files.
+Install, open, and verify the three applications used throughout the course.
+Godot is where the game is built and run; Codex will later help inspect,
+edit, and check project files; GitHub Desktop will save tested versions of the
+project and back them up online.
 
 - Godot opens to the Project Manager.
 - The ChatGPT desktop app opens and the learner can access Codex.
+- GitHub Desktop opens with a signed-in GitHub account.
 - Godot is stored in a stable location outside the Downloads folder.
 - The learner can explain the different role of each tool.
 
@@ -20,6 +22,7 @@ later help inspect, edit, and check project files.
 - The learner can download and run applications on that computer.
 - An OpenAI account with Codex access is available. Any required AI plan is a
   separate cost from the course's free core production tools.
+- An email address is available for creating a free GitHub account.
 
 ## Build steps
 
@@ -79,12 +82,39 @@ later help inspect, edit, and check project files.
 >   Do not install extra tools yet; later lessons introduce each one when it
 >   has a clear use.
 
+### Part 3: Create a GitHub account and install GitHub Desktop
+
+> 💡 **GitHub** is a website that stores copies of projects online. **GitHub
+> Desktop** is a free application that saves versions of a project and sends
+> them to GitHub without typing any commands. Later lessons use it at the end
+> of each module to record a tested version of the game.
+
+1. Open the official [GitHub sign-up page](https://github.com/signup) and
+   create a free account, completing any required verification.
+2. Download the Windows version from the official
+   [GitHub Desktop page](https://github.com/apps/desktop).
+3. Run the downloaded installer.
+4. Open GitHub Desktop and choose the option to sign in to GitHub.com.
+5. Complete the sign-in in the browser window that opens, then return to
+   GitHub Desktop.
+6. Confirm that GitHub Desktop shows the account as signed in.
+7. Do not create or clone a repository yet. Lesson 0.2 first creates the Godot
+   project folder; Lesson 0.4 then turns that folder into a repository.
+
+> ⚠️ **If something differs**
+>
+> - If GitHub Desktop does not show the account, open the application's
+>   options and sign in from its accounts section.
+> - If the browser sign-in does not return to the app, leave GitHub Desktop
+>   open and start the sign-in again.
+
 ## Learner exercise
 
 Without reading the steps again:
 
 1. Explain in one sentence what Godot does.
 2. Explain in one sentence how Codex will support the project.
+3. Explain in one sentence what GitHub Desktop will be used for.
 
 ## Verification checklist
 
@@ -96,10 +126,16 @@ Without reading the steps again:
 - [ ] The Windows-native agent is selected.
 - [ ] **Ask for approval** is selected.
 - [ ] No local project has been added to Codex yet.
-- [ ] The learner can explain the different roles of Godot and Codex.
+- [ ] GitHub Desktop is installed from the official source.
+- [ ] GitHub Desktop is signed in to a GitHub account.
+- [ ] No repository has been created or cloned yet.
+- [ ] The learner can explain the different roles of Godot, Codex, and GitHub
+      Desktop.
 
 ## References
 
 - [Godot download for Windows](https://godotengine.org/download/windows/)
 - [Godot installation and stable-location guidance](https://docs.godotengine.org/en/4.7/about/faq.html#how-do-i-install-the-godot-editor-on-my-system-for-desktop-integration)
 - [ChatGPT desktop app for Windows](https://learn.chatgpt.com/docs/windows/windows-app)
+- [GitHub Desktop](https://github.com/apps/desktop)
+- [GitHub Desktop documentation](https://docs.github.com/en/desktop)
