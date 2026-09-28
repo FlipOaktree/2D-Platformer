@@ -72,7 +72,7 @@ project and back them up online.
 7. Beneath the message box, select **Ask for approval** so sandbox protections
    are active. A sandbox is a restricted area an application is allowed to work in, so Codex cannot reach files elsewhere on your computer. This limits where it can work and lets you review broader actions first. Once a project is connected, Codex can inspect its files, but you still need to review and test its suggestions.
 8. Do not add a local project to Codex yet. Lesson 0.2 first creates the Godot
-   project folder; Lesson 0.4 then connects that existing folder to Codex.
+   project folder; Lesson 0.3 then connects that existing folder to Codex.
 
 > ⚠️ **If something differs**
 >

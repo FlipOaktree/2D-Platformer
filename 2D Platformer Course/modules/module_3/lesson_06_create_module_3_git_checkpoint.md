@@ -114,7 +114,7 @@ ones you meant to keep.
 
    > 💡 Codex is asked to list the defaults, not to approve them, and the
    > difference matters. It was connected to the folder holding
-   > `project.godot` in Lesson 0.4, so it can read your code but has never
+   > `project.godot` in Lesson 0.3, so it can read your code but has never
    > seen a lesson and has no idea what the course said a value should be.
    > Asked to confirm a match it cannot check, it would very likely confirm
    > one anyway. Compare its list against the table you checked in Part 1.

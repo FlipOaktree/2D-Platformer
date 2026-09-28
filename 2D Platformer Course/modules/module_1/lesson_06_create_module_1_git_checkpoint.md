@@ -49,7 +49,7 @@ changes, then use Codex's Git controls to create the local commit.
    `concise commit message beginning with Build Module 1. Do not edit,`
    `stage, or commit anything.`
 
-> 💡 You already used a **read-only request** in Lesson 0.4. Here it lets
+> 💡 You already used a **read-only request** in Lesson 0.3. Here it lets
 > Codex prepare the checkpoint while you keep control of what is saved.
 > A useful commit message describes the completed result, not every click
 > that produced it.

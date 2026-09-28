@@ -12,7 +12,7 @@ creates the Godot project and its files.
 - The `2D Platformer` project opens without errors.
 - The project uses the **Forward+** renderer.
 - The learner can locate the complete project folder in Windows.
-- The learner records the folder's full Windows path for Lesson 0.4.
+- The learner records the folder's full Windows path for Lesson 0.3.
 - The learner understands what `project.godot` does.
 
 ## Before you start
@@ -50,10 +50,10 @@ creates the Godot project and its files.
 > location defines the project root. Godot's FileSystem dock may not display
 > it, so use **Open in File Explorer** to view the complete project folder.
 
-11. Select the File Explorer address bar and record the complete folder path. You will select this exact folder when connecting the existing project to Codex in Lesson 0.4.
+11. Select the File Explorer address bar and record the complete folder path. You will select this exact folder when connecting the existing project to Codex in Lesson 0.3.
 
 > 💡 A **Godot project** is the folder whose `project.godot` file stores the
-> engine settings. Lesson 0.4 will add this existing folder to Codex; it will
+> engine settings. Lesson 0.3 will add this existing folder to Codex; it will
 > not create a second Godot project or copy these files.
 
 > ⚠️ **If something differs**
@@ -81,7 +81,7 @@ Without reading the steps again:
 - [ ] The project name is `2D Platformer`.
 - [ ] **Open in File Explorer** opens the correct project folder.
 - [ ] `project.godot` is present in that folder.
-- [ ] The complete project-folder path is recorded for Lesson 0.4.
+- [ ] The complete project-folder path is recorded for Lesson 0.3.
 - [ ] The rendering method is **Forward+**.
 - [ ] The learner can explain the purpose of `project.godot`.
 

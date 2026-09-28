@@ -97,7 +97,7 @@ about whether everything really was put back.
    cannot explain do not belong in the checkpoint.
 
    > 💡 Codex is describing, not checking. It was connected to the folder
-   > holding `project.godot` in Lesson 0.4, so it can read your code but has
+   > holding `project.godot` in Lesson 0.3, so it can read your code but has
    > never seen a lesson. Asking it whether the code matches the course would
    > invite an answer it has no way to arrive at. Comparing its description
    > with what you built is your job, and it is the reason the description is
