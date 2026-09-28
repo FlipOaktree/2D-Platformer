@@ -425,7 +425,7 @@ a reviewed Git checkpoint.
 | 1.3 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
 | 1.4 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
 | 1.5 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed; exact commit pending reconciliation |
-| 1.6 | Create a Module 1 Git Checkpoint | Tested module boundary, Codex-assisted read-only review, local commit, and post-commit verification | Validated | `2452c6e`; terminal fallback now spells out its commands |
+| 1.6 | Create a Module 1 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay |
 
 ### Module 2: Actor and Player Foundations
 
