@@ -74,6 +74,22 @@ course path. Keep one lesson sequence and one learner outcome.
   AI and non-AI modules.
 - Do not force AI into a lesson when it adds no meaningful learning or
   efficiency.
+- Keep the tools to their own jobs. Codex reviews files and, where a lesson
+  offers it, completes a repetition the learner has already performed by hand.
+  GitHub Desktop owns version control: the diff, staging, the commit, the
+  remote, and the push. No lesson asks Codex to stage or commit, and no
+  checkpoint depends on having Codex.
+- Supply the commit message in the lesson. GitHub Desktop asks for a Summary
+  and an optional Description, and the learner types them by hand, so give a
+  short suggested Summary that names the finished result rather than the steps
+  that produced it, and add a Description only when the checkpoint needs one.
+- Offer an agentic step as an optional Part, after the learner has done the
+  same work manually. The lesson fixes how many repetitions come first; the
+  learner decides whether to take the optional Part or continue by hand. Only
+  use this where both paths end at the same checkable state, so the
+  verification checklist stays true either way and later lessons can rely on
+  the result. A learner who skips it needs one line telling them to continue
+  the same way, not a second version of the lesson.
 - Assume the learner may be reading the course as a page or a video rather
   than as files. Anything they need while working through a lesson belongs in
   that lesson; a reference to another lesson is a pointer, not a dependency.
