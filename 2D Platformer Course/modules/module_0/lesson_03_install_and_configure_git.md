@@ -5,8 +5,9 @@
 ## By the end
 
 Git for Windows will be installed, with an intentional author name, email, and
-default `main` branch. This prepares the local safety checkpoints used in the
-next lesson; GitHub and online publishing come later.
+default `main` branch. This prepares the checkpoints created in the next
+lesson. GitHub Desktop, installed in Lesson 0.1, reads the same settings, so
+every commit it makes carries the identity you set here.
 
 - `git --version` reports an installed Git for Windows version.
 - Git has a deliberate author name and author email.
@@ -99,16 +100,20 @@ next lesson; GitHub and online publishing come later.
 
 7. Confirm that the intended name, email, and `main` appear.
 
+GitHub Desktop detects these global values and uses them, so you set the
+identity once and both tools agree.
+
 Git stores the configured email in every new commit. Choose an address you are
-comfortable associating with shared project history. A hosting provider such as
-GitHub may offer a no-reply address that links commits to the intended account
-without exposing a personal email. For example,
+comfortable associating with shared project history. The GitHub account you
+created in Lesson 0.1 offers a no-reply address that links commits to that
+account without exposing a personal email. For example,
 `123456+username@users.noreply.github.com` is a normal GitHub no-reply address.
 
 These commands configure Git on the computer, but they do not initialize the
-Godot project as a repository. In Lesson 0.4, you will connect the existing
-Godot folder to Codex, manually initialize its repository, and use Codex to
-review the first checkpoint before you approve it.
+Godot project as a repository. In Lesson 0.4, you will turn the existing Godot
+folder into a repository in GitHub Desktop, review and commit its first
+checkpoint there, back it up to a private GitHub repository, and connect the
+same folder to Codex.
 
 > ⚠️ **If something differs**
 >

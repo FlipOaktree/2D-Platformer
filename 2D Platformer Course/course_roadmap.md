@@ -400,15 +400,16 @@ small extensible cores over feature-heavy implementations.
 
 ### Module 0: Project Setup
 
-**Outcome:** Install the learner toolchain, create the empty project, connect
-its folder to Codex, and place it under version control.
+**Outcome:** Install the learner toolchain, create the empty project, place it
+under version control with a private GitHub backup, and connect its folder to
+Codex.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
 | 0.1 | Install Godot, Codex, and GitHub Desktop | Tool installation, Windows-native Codex, approval setting, GitHub account, GitHub Desktop sign-in; no project association | Implemented | `2452c6e`; the GitHub Desktop part awaits a real install and sign-in |
 | 0.2 | Create an Empty Godot Project | Project Manager, renderer, `project.godot`, exact existing folder path | Validated | `2452c6e` |
-| 0.3 | Install and Configure Git | Git installation, global commit identity, and default branch; no repository yet | Validated | `2452c6e` |
-| 0.4 | Connect the Existing Project to Codex and Create the First Git Checkpoint | Existing-folder association, repository, read-only AI review, staging, diff, commit, Godot metadata | Validated | `2452c6e`; clean-project replay deferred to the full-course rebuild |
+| 0.3 | Install and Configure Git | Git installation, global commit identity shared with GitHub Desktop, and default branch; no repository yet | Validated | `2452c6e` |
+| 0.4 | Create the First Git Checkpoint and Connect Codex | Godot version-control metadata, repository in GitHub Desktop, changed-file list, diff, commit summary, private GitHub remote, Codex folder association and read-only file review | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay; clean-project replay deferred to the full-course rebuild |
 
 ### Module 1: Godot Scene Foundations
 
