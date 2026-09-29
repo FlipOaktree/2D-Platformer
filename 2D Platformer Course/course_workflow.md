@@ -85,8 +85,9 @@ course path. Keep one lesson sequence and one learner outcome.
 - Set an optional tool up inside an optional Part of the lesson where it is
   first needed, not as a lesson of its own. An optional Part is skipped with a
   single line, while an optional lesson leaves a gap in the numbering and a
-  prerequisite every later lesson has to qualify. Label the Part "(optional)"
-  in its heading and say at its start how to continue without it.
+  prerequisite every later lesson has to qualify. Put the Part after the
+  required ones, so skipping it means stopping. Label it "(optional)" in its
+  heading and say at its start how to continue without it.
 - Offer an agentic step as an optional Part, after the learner has done the
   same work manually. The lesson fixes how many repetitions come first; the
   learner decides whether to take the optional Part or continue by hand. Only
