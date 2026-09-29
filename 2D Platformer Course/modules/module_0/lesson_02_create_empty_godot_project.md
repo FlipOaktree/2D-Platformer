@@ -64,7 +64,7 @@ Codex.
 > - If the editor feels overwhelming, focus only on the four areas introduced
 >   in step 7.
 
-### Part 2: Connect the project to Codex (optional)
+### `Optional` Part 2: Connect the project to Codex
 
 Do this Part only if you installed Codex in Lesson 0.1. If you did not,
 continue to Lesson 0.3: nothing later depends on it except the optional Codex
@@ -77,13 +77,13 @@ created. It does not create, duplicate, or move the Godot project.
 2. In the sidebar's project area, add an existing local project.
 3. Select the `2D Platformer` folder that contains `project.godot`.
 4. Confirm that Codex shows `2D Platformer` as the current project.
-5. Start a local task for it.
 
 > 💡 In this course, Codex works from the files in the connected folder. It has
 > never read the lessons, and it cannot judge how the game looks or feels when
 > you play it. So its answers describe the files in front of it, and it is your
 > job to check them against everything it could not see.
 
+5. Start a local task for it.
 6. Send Codex this prompt:
 
    `List the files in this project and describe what each one is for. Do not`
@@ -130,9 +130,9 @@ Without reading the steps again:
 - [ ] The rendering method is **Forward+**.
 - [ ] The learner can explain the purpose of `project.godot`.
 - [ ] If Codex was connected, it shows `2D Platformer` as the current project
-      and the connected folder contains `project.godot`.
+    and the connected folder contains `project.godot`.
 - [ ] If Codex was connected, its first task only listed and described files,
-      and no project file was changed.
+    and no project file was changed.
 - [ ] If Codex was connected, the learner can name something it cannot see.
 
 ## References

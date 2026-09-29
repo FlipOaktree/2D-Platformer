@@ -69,7 +69,7 @@ the review is the part that deserves your time.
 > - If `.godot/` files appear, add `.godot/` to `.gitignore` in the project
 >   folder before committing.
 
-### Part 3: Ask Codex to summarize the Player foundation (optional)
+### `Optional` Part 3: Ask Codex to summarize the Player foundation
 
 If you do not use Codex, continue at Part 4. Nothing later in the course
 depends on this part.

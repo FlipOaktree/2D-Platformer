@@ -77,7 +77,7 @@ inspect, edit, and check project files.
 > - If the browser sign-in does not return to the app, leave GitHub Desktop
 >   open and start the sign-in again.
 
-### Part 3: Install and verify Codex (optional)
+### `Optional` Part 3: Install and verify Codex
 
 Codex is an optional AI assistant. Skip this Part if you do not want to use it:
 every lesson can be completed without it.
@@ -125,9 +125,9 @@ Without reading the steps again:
 - [ ] GitHub Desktop is signed in to a GitHub account.
 - [ ] No repository has been created or cloned yet.
 - [ ] If you installed Codex, the ChatGPT desktop app came from the official
-      source and you can sign in and open Codex.
+    source and you can sign in and open Codex.
 - [ ] If you installed Codex, the Windows-native agent and **Ask for approval**
-      are selected, and no local project has been added to it yet.
+    are selected, and no local project has been added to it yet.
 - [ ] The learner can explain the different roles of Godot, GitHub Desktop, and Codex.
 
 ## References

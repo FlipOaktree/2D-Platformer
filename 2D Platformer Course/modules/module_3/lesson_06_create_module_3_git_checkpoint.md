@@ -104,7 +104,7 @@ settings and the interacting jump timers are the ones you meant to keep.
 > - If an expected file is missing, or an unexplained file appears, inspect it
 >   before continuing. Never add a file merely to empty the change list.
 
-### Part 3: Ask Codex to list the exported settings (optional)
+### `Optional` Part 3: Ask Codex to list the exported settings
 
 If you do not use Codex, continue at Part 4. Nothing later in the course
 depends on this part.

@@ -71,7 +71,7 @@ send it to your private GitHub repository.
 > - If `.godot/` files appear, add `.godot/` to `.gitignore` in the project
 >   folder before committing.
 
-### Part 3: Ask Codex to describe the new scenes (optional)
+### `Optional` Part 3: Ask Codex to describe the new scenes
 
 If you do not use Codex, continue at Part 4. Nothing later in the course
 depends on this part.

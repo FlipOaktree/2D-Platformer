@@ -101,7 +101,7 @@ back.
 > - If `project.godot` appears, open it. No Module 4 lesson changes it, so
 >   something else did.
 
-### Part 3: Ask Codex to describe the new scripts (optional)
+### `Optional` Part 3: Ask Codex to describe the new scripts
 
 If you do not use Codex, continue at Part 4. Nothing later in the course
 depends on this part.

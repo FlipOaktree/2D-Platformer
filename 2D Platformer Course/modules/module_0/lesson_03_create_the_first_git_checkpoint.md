@@ -39,11 +39,11 @@ checkpoint up to a private GitHub repository.
 5. Reopen **File → Options → Git** and confirm that both values are as
    intended.
 
-Git stores this email in every new commit. Choose an address you are
-comfortable associating with shared project history. The GitHub account you
-created in Lesson 0.1 offers a no-reply address that links commits to that
-account without exposing a personal email. For example,
-`123456+username@users.noreply.github.com` is a normal GitHub no-reply address.
+   Git stores this email in every new commit. Choose an address you are
+   comfortable associating with shared project history. The GitHub account you
+   created in Lesson 0.1 offers a no-reply address that links commits to that
+   account without exposing a personal email. For example,
+   `123456+username@users.noreply.github.com` is a normal GitHub no-reply address.
 
 ### Part 2: Prepare the project for Git
 
