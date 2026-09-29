@@ -82,12 +82,7 @@ project and back them up online.
 
 ### Part 3: Create a GitHub account and install GitHub Desktop
 
-> 💡 **Git** is the tool that saves versions of your files, so you can compare
-> changes or return to an earlier one. **GitHub** is a website that stores
-> copies of projects online. **GitHub Desktop** is a free application that
-> uses Git to save those versions and sends them to GitHub, without typing any
-> commands. Later lessons use it at the end of each module to record a tested
-> version of the game.
+> 💡**Git** is a version-control tool. It saves versions of your files, so you can compare changes or return to an earlier one. **GitHub** is a website that stores your project online along with all of its saved versions. **GitHub Desktop** is a free application that includes its own copy of Git, so there is nothing separate to install. It uses Git to save those versions on your computer and sends them to GitHub, so you get version control and an online backup of your project without typing any commands. Later lessons use it at the end of each module to record a tested version of the game.
 
 1. Open the official [GitHub sign-up page](https://github.com/signup) and create a free account, completing any required verification.
 2. Download the Windows version from the official [GitHub Desktop page](https://github.com/apps/desktop).
