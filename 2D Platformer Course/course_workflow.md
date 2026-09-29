@@ -145,8 +145,14 @@ build steps where learners need them.
 
 Use this learner-facing lesson structure:
 
-1. **By the end** - combine the outcome, visible result, and one sentence of
-   context.
+1. **By the end** - a short paragraph giving the goal and any scope the
+   learner needs, then bullets naming what the lesson sets out to achieve.
+   Write each bullet as a goal rather than as a value a box could tick: "a
+   `FallLimit` marker says how far down is too far", not "`FallLimit` sits at
+   `(960, 1216)`". Anything checkable belongs in the verification checklist
+   instead. Keep the paragraph: it carries scope a bullet list has nowhere to
+   put, such as Lesson 2.9's note that jumping arrives two lessons later.
+   Lesson 4.7 is the model to copy.
 2. **Before you start** - include only real prerequisites.
 3. **Build steps** - teach concepts and reasoning beside the relevant actions.
 4. **Learner exercise** - a small change to what was just built: predict what
@@ -154,7 +160,9 @@ Use this learner-facing lesson structure:
    instance where possible, so nothing is left to put back. When an exercise
    must change the project itself, end it with the exact value to restore.
 5. **Verification checklist** - the end state the lesson produces and the
-   understanding it builds, not a restatement of each build step.
+   understanding it builds, not a restatement of each build step. This section
+   owns the checkable end state, so **By the end** states the goal and leaves
+   the values here.
 6. **References**.
 
 Format contextual lesson notes consistently:
