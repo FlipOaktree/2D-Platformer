@@ -8,16 +8,16 @@ Build a platform that travels back and forth and carries the Player with it.
 Everything solid so far has stayed where it was put. This one moves under the
 Player's feet, and the Player goes along for the ride.
 
-- `res://levels/moving_platform.tscn` is a reusable scene: one moving surface
-  you can drop into any level, with a deck painted from the tiles you already
-  have rather than drawn as a fixed picture.
-- `moving_platform.gd` walks it between two points and turns it around.
-- Two exported values, `travel` and `speed`, decide where a copy goes and how
-  fast, so a second copy can be a lift without touching the script.
-- `level_1.tscn` holds one instance, reachable by a jump from the solid
-  platform.
-- Standing still on it carries the Player along, with every movement feature
-  from Module 3 left untouched.
+- Building `res://levels/moving_platform.tscn`, a reusable moving surface you
+  can drop into any level, with a deck painted from the tiles you already have
+  rather than drawn as a fixed picture
+- Walking it between two points and turning it around with `moving_platform.gd`
+- Exposing two values, `travel` and `speed`, that decide where a copy goes and
+  how fast, so a second copy can be a lift without touching the script
+- Placing one instance in `level_1.tscn`, reachable by a jump from the solid
+  platform
+- Carrying the Player along while it stands still on the platform, with every
+  movement feature from Module 3 left untouched
 
 ## Before you start
 

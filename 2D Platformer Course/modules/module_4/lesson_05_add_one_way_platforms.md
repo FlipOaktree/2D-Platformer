@@ -8,15 +8,14 @@ Add a platform the Player can jump up through from below and then stand on.
 The level already has a solid platform that stops a jump dead; this adds one
 that lets the jump pass and catches the Player on the way down.
 
-- Three tiles gain a pass-through variant, made as alternative tiles in the
-  tile set you already have.
-- The variants are tinted, so a platform you can pass through does not look
-  identical to ground you cannot.
-- `level_1.tscn` gains a `Platforms` layer holding a one-way strip.
-- Jumping from the ground beneath the strip carries the Player through it and
-  lands them on top.
-- The ground and the solid platform behave exactly as they did.
-- The Player is drawn in front of the level rather than behind it.
+- Adding a pass-through variant of three tiles, as alternative tiles in the
+  tile set you already have
+- Tinting the variants, so a platform you can pass through does not look
+  identical to ground you cannot
+- Adding a `Platforms` layer to `level_1.tscn` holding a one-way strip
+- Jumping up through the strip from the ground beneath it and landing on top
+- Keeping the ground and the solid platform behaving exactly as they did
+- Drawing the Player in front of the level rather than behind it
 
 ## Before you start
 

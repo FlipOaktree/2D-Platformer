@@ -9,12 +9,12 @@ is the material; drawing a level with it is the next lesson. By the end of this
 one the tiles exist, they are solid, and you have watched the Player stand on
 tiles you painted yourself.
 
-- A reusable TileSet at `res://levels/tiles/terrain_tileset.tres`, holding
-  every tile the levels in this module are made from.
-- Every tile carries a collision shape, so a painted tile is solid ground.
-- `main.tscn` contains a `Terrain` layer, ready to paint on and empty.
-- The temporary `Floor` and `CoyoteTestPlatform` are still in place. The next
-  lesson replaces them with a painted level.
+- Building a reusable TileSet at `res://levels/tiles/terrain_tileset.tres`,
+  holding every tile the levels in this module are made from
+- Giving every tile a collision shape, so a painted tile is solid ground
+- Adding an empty `Terrain` layer to `main.tscn`, ready to paint on
+- Leaving the temporary `Floor` and `CoyoteTestPlatform` in place until the
+  next lesson replaces them with a painted level
 
 ## Before you start
 

@@ -8,10 +8,10 @@ Remember a jump press made shortly before the Player lands, then start the jump
 as soon as landing makes jumping possible. This makes slightly early input feel
 more responsive without adding an air jump.
 
-- A jump pressed just before landing remembered, then started on landing.
-- A second countdown, kept separate from the coyote one.
-- The jump condition split in two: was a jump asked for, and is one allowed.
-- Still no air jump, because the permission half never changes.
+- Remembering a jump pressed just before landing, then starting it on landing
+- Adding a second countdown, kept separate from the coyote one
+- Splitting the jump condition in two: was a jump asked for, and is one allowed
+- Keeping air jumps impossible, because the permission half never changes
 
 ## Before you start
 

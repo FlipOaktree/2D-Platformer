@@ -9,10 +9,10 @@ send it to your private GitHub repository. Module 3 changed a single script
 heavily rather than adding many files, so the review focuses on whether the
 settings and the interacting jump timers are the ones you meant to keep.
 
-- A tested controller: it accelerates, decelerates, and jumps three ways.
-- The eight settings checked against their tuned defaults before anything is
-  saved, since every Module 3 exercise changed one and put it back.
-- One commit holding Module 3's work, and a copy of it on GitHub.
+- Testing the controller: it accelerates, decelerates, and jumps three ways
+- Checking the eight settings against their tuned defaults before anything is
+  saved, since every Module 3 exercise changed one and put it back
+- Recording Module 3's work in one commit and copying it to GitHub
 
 ## Before you start
 

@@ -8,10 +8,10 @@ Create one tested Git checkpoint for the completed Player foundation and send
 it to your private GitHub repository. More files changed than in Module 1, so
 the review is the part that deserves your time.
 
-- A tested Player: it runs, falls, lands, and jumps only from the floor.
-- One commit holding Module 2's work and nothing else.
-- A copy of it on GitHub.
-- Practice reading a change list that is too big to skim.
+- Testing the Player: it runs, falls, lands, and jumps only from the floor
+- Recording Module 2's work in one commit and nothing else
+- Copying that commit to GitHub
+- Practising how to read a change list that is too big to skim
 
 ## Before you start
 

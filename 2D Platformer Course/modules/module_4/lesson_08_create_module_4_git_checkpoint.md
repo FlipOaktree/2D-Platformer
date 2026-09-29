@@ -10,11 +10,11 @@ before it, and every lesson ended with an exercise that changed something and
 then put it back. The review is mostly about whether everything really was put
 back.
 
-- The level still plays as Lesson 7 left it, and every saved value is the one
-  you meant to keep rather than one an exercise left behind.
-- The tile set, the two levels, the moving platform, and the two new scripts
-  are all present and understood.
-- One commit holding Module 4's work, and a copy of it on GitHub.
+- Confirming the level still plays as Lesson 7 left it, and that every saved
+  value is the one you meant to keep rather than one an exercise left behind
+- Checking that the tile set, the two levels, the moving platform, and the two
+  new scripts are all present and understood
+- Recording Module 4's work in one commit and copying it to GitHub
 
 ## Before you start
 

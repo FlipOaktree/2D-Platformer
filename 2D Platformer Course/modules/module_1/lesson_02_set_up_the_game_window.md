@@ -8,10 +8,11 @@ Choose the size of the world the game draws, and make the running game
 comfortable to look at on your monitor. Lesson 1.1 ran the project in a small
 window; this lesson replaces that default with a deliberate choice.
 
-- The game draws a world **1920 by 1080** pixels.
-- The running game scales to fit its window instead of staying a fixed size.
-- The window keeps its shape when resized, so the view never stretches.
-- On a large monitor the window opens at a comfortable size.
+- Choosing a world size of **1920 by 1080** pixels for the game to draw
+- Letting the running game scale to fit its window instead of staying a fixed
+  size
+- Keeping the window's shape when it is resized, so the view never stretches
+- Setting a comfortable window size on a large monitor
 
 ## Before you start
 

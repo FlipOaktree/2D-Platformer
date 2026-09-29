@@ -8,15 +8,15 @@ Give the Player one named answer to the question "what is it doing right now?"
 The script already contains the facts needed to answer it, but they are spread
 across separate conditions and nothing stores the result.
 
-- A `MovementState` list names the four states: `IDLE`, `RUN`, `RISE`, and
-  `FALL`.
-- `movement_state` holds the current state and updates every physics update.
-- The state is decided after `move_and_slide()`, so it describes movement that
-  has already been resolved.
-- `movement_state` is runtime state, so it is not exported.
-- The Player moves exactly as it did before. This lesson adds a description of
-  the movement, not a change to it, and the next lesson uses that description
-  to choose an animation.
+- Naming the four states in a `MovementState` list: `IDLE`, `RUN`, `RISE`, and
+  `FALL`
+- Holding the current state in `movement_state`, updated every physics update
+- Deciding the state after `move_and_slide()`, so it describes movement that
+  has already been resolved
+- Keeping `movement_state` as runtime state, so it is not exported
+- Leaving the Player's movement exactly as it was: this lesson adds a
+  description of the movement, not a change to it, and the next lesson uses
+  that description to choose an animation
 
 ## Before you start
 

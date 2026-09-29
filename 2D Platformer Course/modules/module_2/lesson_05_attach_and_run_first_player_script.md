@@ -9,9 +9,10 @@ panel, and compare local and script-level variables. You will build the script
 one part at a time, then remove the temporary diagnostic code so the following
 programming bridges can build toward movement in Lesson 2.8.
 
-- A script running on `Player`, with something you can see that proves it.
-- The Output panel, and what it is for.
-- Where a variable lives, and what that decides about who can read it.
+- Running a script on `Player`, with something you can see that proves it
+- Learning what the Output panel is for
+- Understanding where a variable lives, and what that decides about who can
+  read it
 
 ## Before you start
 

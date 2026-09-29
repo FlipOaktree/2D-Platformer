@@ -9,9 +9,11 @@ Understand how Godot describes a position in 2D using `x` and `y` coordinates.
 This is a theory lesson. You will not change the Godot project yet. Its purpose
 is to make the transform tools in the next lesson easier to understand.
 
-- Where the origin sits and which way each axis points.
-- Why screen coordinates start at the top-left, so positive `y` points down.
-- Why a child's Position is measured from its parent rather than the screen.
+- Learning where the origin sits and which way each axis points
+- Understanding why screen coordinates start at the top-left, so positive `y`
+  points down
+- Understanding why a child's Position is measured from its parent rather than
+  the screen
 
 ## Before you start
 

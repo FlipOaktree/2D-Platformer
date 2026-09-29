@@ -11,9 +11,9 @@ will not start another jump while airborne.
 This completes the first basic Player movement set: horizontal movement,
 gravity, floor detection, and jumping.
 
-- A Player that jumps when the `jump` action is pressed.
-- A jump that can only start from the floor, never in mid-air.
-- The floor state from Lesson 2.10 reused as the permission to jump.
+- Making the Player jump when the `jump` action is pressed
+- Allowing a jump to start only from the floor, never in mid-air
+- Reusing the floor state from Lesson 2.10 as the permission to jump
 
 ## Before you start
 

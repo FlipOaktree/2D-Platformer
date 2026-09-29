@@ -9,10 +9,10 @@ will see how source-scene changes reach every linked instance, how a property
 customized on one instance becomes an override, and how an independent copy
 stops following the source at all.
 
-- The icon saved as a scene of its own, so it can be used more than once.
-- One instance of that scene in `Main`, still linked to its source.
-- Proof that editing the source reaches every instance.
-- Proof that an independent copy stops listening to the source.
+- Saving the icon as a scene of its own, so it can be used more than once
+- Placing one instance of that scene in `Main`, still linked to its source
+- Seeing that editing the source reaches every instance
+- Seeing that an independent copy stops listening to the source
 
 ## Before you start
 

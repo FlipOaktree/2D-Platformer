@@ -8,13 +8,13 @@ Move the painted level out of `main.tscn` and into a scene of its own, so a
 level becomes a thing you can make more of. Nothing about the game changes;
 what changes is where the level lives and who owns it.
 
-- `res://levels/level_1.tscn` holds the level: a `Level` root with the
-  `Terrain` layer inside it.
-- `main.tscn` holds the Player and one instance of `level_1.tscn`, and nothing
-  else.
-- A second level can be made by duplicating the file, without editing
-  `main.tscn` at all.
-- The game plays exactly as it did at the end of Lesson 2.
+- Moving the level into `res://levels/level_1.tscn`: a `Level` root with the
+  `Terrain` layer inside it
+- Leaving `main.tscn` with the Player and one instance of `level_1.tscn`, and
+  nothing else
+- Making a second level by duplicating the file, without editing `main.tscn` at
+  all
+- Keeping the game playing exactly as it did at the end of Lesson 2
 
 ## Before you start
 

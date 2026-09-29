@@ -9,10 +9,10 @@ Godot is where the game is built and run; Codex will later help inspect,
 edit, and check project files; GitHub Desktop will save tested versions of the
 project and back them up online.
 
-- Godot is installed and kept somewhere it will not be lost.
-- Codex is installed and restricted, so it asks before it acts.
-- GitHub Desktop is installed and signed in to a free GitHub account.
-- You can say what each of the three tools is for.
+- Installing Godot and keeping it somewhere it will not be lost
+- Installing Codex and setting it to ask before it acts
+- Installing GitHub Desktop and signing in to a free GitHub account
+- Understanding what each of the three tools is for
 
 ## Before you start
 

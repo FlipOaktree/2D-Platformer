@@ -9,10 +9,10 @@ tuned without editing the movement code. Each setting will keep the validated
 default from Module 2, use a range that prevents values which reverse its
 intended direction, and provide a short tooltip explaining what it controls.
 
-- The movement values moved out of the code and into the Inspector.
-- A range on each one, so a tuning experiment cannot reverse its direction.
-- A tooltip on each one, so its meaning survives being read months later.
-- The same feel as Module 2 whenever the defaults are left alone.
+- Moving the movement values out of the code and into the Inspector
+- Giving each one a range, so a tuning experiment cannot reverse its direction
+- Giving each one a tooltip, so its meaning survives being read months later
+- Keeping the same feel as Module 2 whenever the defaults are left alone
 
 ## Before you start
 

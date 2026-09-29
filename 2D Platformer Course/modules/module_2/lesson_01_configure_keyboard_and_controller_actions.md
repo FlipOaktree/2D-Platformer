@@ -7,11 +7,11 @@
 Create three named input actions that later player code can use without caring
 whether the player uses a keyboard or a controller.
 
-- `move_left` and `move_right`, each answering to a letter key, an arrow, the
-  D-pad, and the left stick.
-- `jump`, answering to Space and the controller's bottom face button.
-- Player code that asks for an action by name and never asks which device
-  produced it.
+- Creating `move_left` and `move_right`, each answering to a letter key, an
+  arrow, the D-pad, and the left stick
+- Creating `jump`, answering to Space and the controller's bottom face button
+- Writing player code that asks for an action by name and never asks which
+  device produced it
 
 ## Before you start
 

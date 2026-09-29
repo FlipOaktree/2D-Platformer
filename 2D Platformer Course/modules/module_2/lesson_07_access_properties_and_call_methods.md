@@ -12,9 +12,9 @@ a method call.
 The examples are temporary. You will remove them at the end so the Player
 script is ready for movement.
 
-- Reading a property from an object.
-- Calling a method on an object, and passing it an argument.
-- Telling the two apart on sight, since both are written with a period.
+- Reading a property from an object
+- Calling a method on an object, and passing it an argument
+- Telling the two apart on sight, since both are written with a period
 
 ## Before you start
 

@@ -12,9 +12,10 @@ This lesson adds falling and floor collision only. Lesson 2.10 will use the
 floor state to introduce conditional logic, and jumping will be added in
 Lesson 2.11.
 
-- Something solid for the Player to land on.
-- Gravity that pulls the Player down a little more every frame.
-- The horizontal movement from Lesson 2.8 still working while it falls.
+- Giving the Player something solid to land on
+- Adding gravity that pulls the Player down a little more every frame
+- Keeping the horizontal movement from Lesson 2.8 working while the Player
+  falls
 
 ## Before you start
 

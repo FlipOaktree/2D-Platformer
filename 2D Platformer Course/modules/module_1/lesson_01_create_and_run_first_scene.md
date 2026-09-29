@@ -9,10 +9,10 @@ first visible result introduces the scene structure that later gameplay
 features will build on. You will also learn how to find and inspect small
 content in the 2D viewport without moving it.
 
-- A saved `Main` scene that every later scene will hang off.
-- A `Label` inside it, so the project has something visible to run.
-- The project knows which scene to open when it starts.
-- You can move around the 2D viewport without moving what you are looking at.
+- Creating and saving a `Main` scene that every later scene will hang off
+- Adding a `Label` to it, so the project has something visible to run
+- Telling the project which scene to open when it starts
+- Moving around the 2D viewport without moving what you are looking at
 
 ## Before you start
 

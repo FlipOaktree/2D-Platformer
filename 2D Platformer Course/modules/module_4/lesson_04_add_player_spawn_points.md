@@ -9,13 +9,15 @@ position somebody typed into `main.tscn`. This is the first time two nodes
 talk to each other in this course, and the first script that is not the
 Player's.
 
-- `level_1.tscn` contains a `PlayerSpawn` marker showing where the Player
-  begins.
-- `level.gd` lets the level answer one question: where is your spawn point?
-- `main.gd` asks that question when the game starts and puts the Player there.
-- Moving the marker moves where the Player starts, with no other change.
-- A different level brings its own spawn point, and `main.tscn` needs no edit
-  to use it.
+- Adding a `PlayerSpawn` marker to `level_1.tscn` that shows where the Player
+  begins
+- Letting `level.gd` answer one question for the level: where is your spawn
+  point?
+- Having `main.gd` ask that question when the game starts and put the Player
+  there
+- Moving the marker to move where the Player starts, with no other change
+- Letting a different level bring its own spawn point, with no edit to
+  `main.tscn`
 
 ## Before you start
 

@@ -8,10 +8,11 @@ Create a reusable `Player` scene that inherits the shared structure from
 `Actor`, then add one `Player` instance to `Main`. The Player will not move or
 display artwork yet.
 
-- A `Player` scene inherited from `Actor` rather than copied from it, so a
-  later change to `Actor` still reaches it.
-- The shared children arriving for free, with nothing rebuilt by hand.
-- One Player in `Main`, visible as a collision box until artwork arrives.
+- Inheriting `Player` from `Actor` rather than copying it, so a later change to
+  `Actor` still reaches it
+- Receiving the shared children for free, with nothing rebuilt by hand
+- Placing one Player in `Main`, visible as a collision box until artwork
+  arrives
 
 ## Before you start
 

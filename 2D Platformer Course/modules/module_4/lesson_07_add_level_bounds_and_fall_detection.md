@@ -9,16 +9,17 @@ below it. Until now every surface has caught the Player. This lesson opens a
 hole that does not, then decides what should happen when the Player goes
 through it.
 
-- `level_1.tscn` has a three-tile pit in the ground, wide enough to fall into
-  and fair to jump.
-- Walls at the far left and right keep the Player inside the level.
-- A `FallLimit` marker says how far down is too far.
-- `level.gd` answers a second question: how far down may the Player go?
-- `player.gd` gains its first method that is not a callback: put yourself
-  here, and stop moving.
-- `main.gd` watches for the fall and puts the Player back at the spawn point.
-- Every level file carries its own `FallLimit`, because the shared `level.gd`
-  now requires one.
+- Digging a three-tile pit in the ground of `level_1.tscn`, wide enough to fall
+  into and fair to jump
+- Adding walls at the far left and right that keep the Player inside the level
+- Adding a `FallLimit` marker that says how far down is too far
+- Letting `level.gd` answer a second question: how far down may the Player go?
+- Giving `player.gd` its first method that is not a callback: put yourself
+  here, and stop moving
+- Having `main.gd` watch for the fall and put the Player back at the spawn
+  point
+- Giving every level file its own `FallLimit`, because the shared `level.gd`
+  now requires one
 
 ## Before you start
 

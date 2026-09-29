@@ -9,10 +9,10 @@ toolbar tools in order: Move, Rotate, and Scale. You will connect each visual
 tool to its matching Inspector property and observe how a parent's transform
 affects its children.
 
-- An icon in the scene that you can move, turn, and resize.
-- Each toolbar tool connected to the Inspector property it changes.
-- Proof that moving a parent moves its children without changing their own
-  numbers.
+- Adding an icon to the scene and moving, turning, and resizing it
+- Connecting each toolbar tool to the Inspector property it changes
+- Seeing that moving a parent moves its children without changing their own
+  numbers
 
 ## Before you start
 

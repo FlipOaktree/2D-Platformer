@@ -9,10 +9,12 @@ small shared structure without giving every actor the same gameplay features.
 It will not contain a script, movement, health, combat, or other optional
 behavior yet.
 
-- A `CharacterBody2D` root, so every actor is already a physics body.
-- `Visuals`, a place for sprites and anything else that is only seen.
-- A placeholder collision shape, so the body has a size to start from.
-- `Components`, an empty place for the optional features later modules add.
+- Starting the actor from a `CharacterBody2D` root, so every actor is already a
+  physics body
+- Adding `Visuals`, a place for sprites and anything else that is only seen
+- Adding a placeholder collision shape, so the body has a size to start from
+- Adding `Components`, an empty place for the optional features later modules
+  add
 
 ## Before you start
 

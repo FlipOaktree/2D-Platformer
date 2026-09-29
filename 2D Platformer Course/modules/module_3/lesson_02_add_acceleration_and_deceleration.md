@@ -9,10 +9,11 @@ acceleration and deceleration. Maximum speed will remain unchanged, while the
 Player will take a short, visible amount of time to reach that speed and stop
 after input is released.
 
-- A Player that takes a moment to reach full speed instead of snapping to it.
-- The same moment in reverse once you let go.
-- Two Inspector settings deciding how long each of those takes.
-- Maximum speed, gravity, floor collision, and jumping all left alone.
+- Letting the Player take a moment to reach full speed instead of snapping to
+  it
+- Applying the same moment in reverse once you let go
+- Exposing two Inspector settings that decide how long each of those takes
+- Leaving maximum speed, gravity, floor collision, and jumping alone
 
 ## Before you start
 

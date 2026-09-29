@@ -8,11 +8,12 @@ Let the length of the jump press control the height of the jump. A quick tap
 produces a low hop, while holding the button produces the full jump the Player
 already has.
 
-- A tap that gives a low hop and a hold that gives the full jump.
-- One Inspector setting deciding how much of the rise a release keeps.
-- A release while falling left alone, because there is no rise left to cut.
-- Grounded jumping, coyote time, and jump buffering still working alongside
-  it.
+- Giving a tap a low hop and a hold the full jump
+- Exposing one Inspector setting that decides how much of the rise a release
+  keeps
+- Leaving a release while falling alone, because there is no rise left to cut
+- Keeping grounded jumping, coyote time, and jump buffering working alongside
+  it
 
 ## Before you start
 

@@ -8,12 +8,13 @@ Teach the tiles how they fit together, then draw the level by painting a shape
 instead of choosing tiles one at a time. The two grey test rectangles that have
 stood in for a level since Module 2 finally come out.
 
-- A `Ground` terrain records where each tile's ground continues past its edge.
-- Painting with that terrain makes Godot choose the tile that fits its
-  neighbours, including at every corner and edge.
-- `main.tscn` holds a full-width tiled ground and a floating platform, and no
-  longer contains `Floor` or `CoyoteTestPlatform`.
-- Every movement feature from Module 3 still works on the new level.
+- Recording in a `Ground` terrain where each tile's ground continues past its
+  edge
+- Painting with that terrain, so Godot chooses the tile that fits its
+  neighbours, including at every corner and edge
+- Replacing `Floor` and `CoyoteTestPlatform` with a full-width tiled ground and
+  a floating platform
+- Keeping every movement feature from Module 3 working on the new level
 
 ## Before you start
 

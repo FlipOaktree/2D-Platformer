@@ -8,10 +8,12 @@ Give the Player a short grace period for jumping after walking off a ledge.
 The Player will still jump normally from the floor, but a slightly late button
 press will feel more forgiving.
 
-- A short grace period after walking off a ledge, so a late press still jumps.
-- A countdown in the script that measures how much grace is left.
-- An Inspector setting deciding how forgiving that grace period is.
-- A raised platform to walk off repeatedly, with the Floor below to land on.
+- Allowing a short grace period after walking off a ledge, so a late press
+  still jumps
+- Measuring how much grace is left with a countdown in the script
+- Exposing an Inspector setting that decides how forgiving that grace period is
+- Building a raised platform to walk off repeatedly, with the Floor below to
+  land on
 
 ## Before you start
 
