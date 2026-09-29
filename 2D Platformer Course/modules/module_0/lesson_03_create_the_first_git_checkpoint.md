@@ -26,9 +26,10 @@ checkpoint up to a private GitHub repository.
 
 ### Part 1: Set the commit identity
 
-> 💡 A **commit identity** is the author name and email stored in every
-> snapshot Git saves. Git will not record a snapshot without one. It is what
-> lets the history of a shared project say who made each change.
+> 💡 A **commit** is one saved version of your project files. Every commit
+> records who made it, and that record is your **commit identity**: an author
+> name and email. Git will not make a commit without one, and it is what lets
+> the history of a shared project say who made each change.
 
 1. In GitHub Desktop, open **File → Options**, then select **Git**.
 2. In the **Name** field, enter the name you want attached to your commits.
@@ -120,6 +121,10 @@ account without exposing a personal email. For example,
 7. Confirm that the **Changes** tab is now empty and that the commit appears
    under **History** with the author name you set in Part 1.
 
+   This first commit is a **checkpoint**: in this course, a commit you make
+   after testing and reviewing the project, so you can return to it if a later
+   change goes wrong.
+
 > ⚠️ **If something differs**
 >
 > - If `.godot/` files appear in the list, stop and correct `.gitignore` as in
@@ -175,7 +180,7 @@ Without repeating the build steps:
 - [ ] The **Changes** tab is empty after the commit.
 - [ ] A GitHub repository holds the checkpoint and is private.
 - [ ] The learner can explain commit identity, repository, diff, commit,
-      remote, untracked, and ignored files.
+    remote, untracked, and ignored files.
 - [ ] The learner can explain the difference between a commit and a push.
 
 ## References
