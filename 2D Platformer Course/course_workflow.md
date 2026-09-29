@@ -82,6 +82,11 @@ course path. Keep one lesson sequence and one learner outcome.
   and an optional Description, and the learner types them by hand, so give a
   short suggested Summary that names the finished result rather than the steps
   that produced it, and add a Description only when the checkpoint needs one.
+- Set an optional tool up inside an optional Part of the lesson where it is
+  first needed, not as a lesson of its own. An optional Part is skipped with a
+  single line, while an optional lesson leaves a gap in the numbering and a
+  prerequisite every later lesson has to qualify. Label the Part "(optional)"
+  in its heading and say at its start how to continue without it.
 - Offer an agentic step as an optional Part, after the learner has done the
   same work manually. The lesson fixes how many repetitions come first; the
   learner decides whether to take the optional Part or continue by hand. Only
@@ -201,9 +206,11 @@ Keep explanation proportionate to what the learner needs at that moment:
   build steps item by item. Count only the blue explanation callouts. A gray
   **If something differs** block is recovery guidance rather than explanation
   and is never counted, so a lesson with four blue callouts and four gray ones
-  is inside the signal, not at twice it. Measured across the 28 lessons in
-  Modules 0 to 3: 3.18 blue callouts per lesson, the highest being 6, with
-  roughly one word of explanation for every two words of instruction.
+  is inside the signal, not at twice it. Exceed the count on purpose when
+  trimming would make a lesson less clear, such as after merging two lessons.
+  Measured across the 27 lessons in Modules 0 to 3: 3.26 blue callouts per
+  lesson, the highest being 6, with roughly one word of explanation for every
+  two words of instruction.
 
 Write each verification checklist item in the voice that matches what it
 verifies:

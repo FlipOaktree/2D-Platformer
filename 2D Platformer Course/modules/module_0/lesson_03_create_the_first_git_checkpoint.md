@@ -1,4 +1,4 @@
-# Module 0, Lesson 4: Create the First Git Checkpoint
+# Module 0, Lesson 3: Create the First Git Checkpoint
 
 **Status:** Implemented
 
@@ -17,7 +17,7 @@ checkpoint up to a private GitHub repository.
 
 ## Before you start
 
-- Module 0, Lessons 1 through 3 are complete.
+- Module 0, Lessons 1 and 2 are complete.
 - GitHub Desktop is installed and signed in to a GitHub account.
 - The `2D Platformer` project opens without errors.
 - The project folder is not already inside another Git repository.

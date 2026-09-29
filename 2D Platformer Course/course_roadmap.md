@@ -25,9 +25,9 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** 29 lessons are Validated: 0.2, 1.1-1.5,
-  2.1-2.11, 3.1-3.5, and 4.1-4.7. Seven are Implemented and awaiting a replay
-  against a real GitHub Desktop: 0.1, 0.3, 0.4, 1.6, 2.12, 3.6, and 4.8. Every
+- **Validated curriculum:** 28 lessons are Validated: 1.1-1.5, 2.1-2.11,
+  3.1-3.5, and 4.1-4.7. Seven are Implemented and awaiting a replay against a
+  real GitHub Desktop: 0.1, 0.2, 0.3, 1.6, 2.12, 3.6, and 4.8. Every
   module is built and tested through Module 4; what is outstanding is the
   version-control procedure each module ends with, not the project work. The
   per-lesson rows under Curriculum and Progress are the authority for this and
@@ -98,7 +98,7 @@ not infer progress from chat history or from learner verification checkboxes.
   Following Camera**, which opens Module 5. Module 4 is built and tested:
   Lessons 4.1 to 4.7 are Validated. Lesson 4.8, **Create a Module 4 Git
   Checkpoint**, was Validated and has since been rewritten for GitHub Desktop,
-  so it is Implemented and awaits a replay, as Lessons 0.1, 0.3, 0.4, 1.6, 2.12
+  so it is Implemented and awaits a replay, as Lessons 0.1, 0.2, 0.3, 1.6, 2.12
   and 3.6 do. The **Track Player Movement States** blueprint stays drafted at
   Lesson 5.5 until
   Module 5 is reached, and must be re-checked against the Module 4 result
@@ -197,16 +197,15 @@ small extensible cores over feature-heavy implementations.
 
 ### Module 0: Project Setup
 
-**Outcome:** Install the learner toolchain, create the empty project, connect
-its folder to Codex, and place it under version control with a private GitHub
-backup.
+**Outcome:** Install the learner toolchain, create the empty project,
+optionally connect its folder to Codex, and place it under version control with
+a private GitHub backup.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
 | 0.1 | Install Godot, Codex, and GitHub Desktop | Tool installation, Windows-native Codex, approval setting, GitHub account, GitHub Desktop sign-in; no project association | Implemented | `2452c6e`; the GitHub Desktop part awaits a real install and sign-in |
-| 0.2 | Create an Empty Godot Project | Project Manager, renderer, `project.godot`, exact existing folder path | Validated | `2452c6e` |
-| 0.3 | Connect the Project to Codex | Existing-folder association, read-only first task, and the boundary of what Codex can see | Implemented | `2452c6e`; extracted from the former 0.4 and awaiting a replay |
-| 0.4 | Create the First Git Checkpoint | Commit identity in GitHub Desktop, Godot version-control metadata, repository, changed-file list, diff, commit summary, private GitHub remote | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay; clean-project replay deferred to the full-course rebuild |
+| 0.2 | Create an Empty Godot Project | Project Manager, renderer, `project.godot`; optional Part: existing-folder association with Codex, a read-only first task, and the boundary of what Codex can see | Implemented | `2452c6e`; gained the optional Codex Part from the former 0.3 and awaits a replay |
+| 0.3 | Create the First Git Checkpoint | Commit identity in GitHub Desktop, Godot version-control metadata, repository, changed-file list, diff, commit summary, private GitHub remote | Implemented | `2452c6e`; renumbered from 0.4, rewritten for GitHub Desktop and awaiting a replay; clean-project replay deferred to the full-course rebuild |
 
 ### Module 1: Godot Scene Foundations
 
@@ -497,8 +496,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Coordinate pairs, screen axes, and local positions | 1.3 | Transforms, levels, actors, cameras, combat, enemies, feedback, UI |
 | Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | 1.4 | Levels, actors, cameras, combat, enemies, feedback, UI |
 | Scene composition, instantiation, source propagation, and instance overrides | 1.5 | Actors, components, levels, attacks, enemies, items |
-| Codex project context, read-only requests, and the boundary of what Codex can see | 0.3 | AI-assisted review, debugging, testing, and documentation |
-| Commit identity, repository, diff, commit, and a private remote in GitHub Desktop | 0.4 | End-of-module recovery points, off-machine backup, and reviewed course milestones |
+| Codex project context, read-only requests, and the boundary of what Codex can see | 0.2 | AI-assisted review, debugging, testing, and documentation |
+| Commit identity, repository, diff, commit, and a private remote in GitHub Desktop | 0.3 | End-of-module recovery points, off-machine backup, and reviewed course milestones |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
 | Actor boundary and specialization | 2.2-2.3 | Player, NPCs, enemies |
 | Physics bodies and collision shapes | 2.2 | Movement, levels, platforms, combat, and enemies |
@@ -582,7 +581,7 @@ Remaining reconciliation work:
 - Reconcile the exact Git associations still marked pending for Lessons 1.3,
   1.4, and 2.6. Modules 0, 2, and 3 are reconciled, and Lesson 1.2 now names
   its commits.
-- Replay Lesson 0.4's `Checkpoint empty Godot project` commit and private
+- Replay Lesson 0.3's `Checkpoint empty Godot project` commit and private
   publish in GitHub Desktop during the full-course empty-project rebuild. The
   production repository's earliest historical message differs and must not be
   rewritten merely to imitate the learner procedure.
@@ -813,16 +812,16 @@ dot-syntax bridge, horizontal movement, gravity/floor procedures,
 conditional floor-state procedure, jumping procedure, exported movement
 settings, target-based horizontal acceleration and deceleration, coyote
 time, jump buffering, and variable jump height remain validated. Lesson 0.4
-was validated from Codex project, Git metadata, and Changes-to-Review UI
-evidence; that evidence lapsed when the lesson was rewritten around GitHub
-Desktop, so it is Implemented until replayed, and an empty-project replay
-remains part of the full-course rebuild gate.
+(now Lesson 0.3) was validated from Codex project, Git metadata, and
+Changes-to-Review UI evidence; that evidence lapsed when the lesson was
+rewritten around GitHub Desktop, so it is Implemented until replayed, and an
+empty-project replay remains part of the full-course rebuild gate.
 
 ### Checkpoint commits
 
 Commit `8e07139` contains the validated curriculum through
 Module 2, validated Module 3 Lessons 3.1-3.5, the movement-state blueprint
-relocated to Lesson 5.5, and the Lesson 0.4 revision that creates the first
+relocated to Lesson 5.5, and the Lesson 0.4 (now 0.3) revision that creates the first
 checkpoint with Git commands. Commit `c1874a8` then validated Lesson 3.6 and
 closed Module 3. Commits `3abdd88`, `5ca7c9d`, and `b9ccbd2` set the
 1920-by-1080 world, retuned movement, and recorded the interactive
@@ -900,3 +899,4 @@ confirmed by interactive play.
 | Keep "validated" out of lesson text | Lesson prerequisites read "is complete and validated", and 25 further uses described files, values and scripts as "validated". Validation is a production status, recorded in each lesson's Status line and in the roadmap, and a learner cannot check it, so it does not belong in instructions. The uses were removed by the sense they carried rather than mechanically. Ten were a bare status label on a file or behaviour and lost the word. Five meant a known-good reference to compare against, such as "the validated Lesson 3.3 result", and now name the lesson's result. Ten meant the value the course settled on, such as "its validated default of `-1200.0`", and now say "default" or, in Lesson 3.6, "tuned default". Fourteen "complete and validated" prerequisites were reduced to "complete". A search afterwards finds "validated" in lesson text only in the 29 Status lines, and a word-level comparison against the previous commit shows the only changes are the removed word and the "default values" wording that replaced it. |
 | Define Git in Lesson 0.1, beside GitHub and GitHub Desktop | Git was never defined after the Module 0 restructure. The definition lived in the deleted Lesson 0.3, and nothing replaced it, so Lesson 0.4 used "Git repository", "the snapshot Git saves" and the **Git** options tab with no explanation. It now sits in Lesson 0.1's existing GitHub callout, extended by one sentence rather than given a callout of its own, because that is where a learner first meets three easily confused names: Git, the tool that saves versions; GitHub, the website that stores copies; and GitHub Desktop, the application that uses Git and talks to GitHub. The learner never installs Git, since GitHub Desktop bundles its own, but they use it in every checkpoint. Lesson 0.4's repository callout builds on this definition and does not repeat it. A search confirms that the first use of the word Git in Module 0 is the definition itself. The callout also says GitHub keeps every saved version rather than one copy, that GitHub Desktop saves them on the learner's computer before sending them to GitHub, and that the app includes its own copy of Git. That last claim comes from the user's research, not from a check made in this repository, and stays unverified until the Lesson 0.4 replay runs on a machine with no separate Git installed. |
 | Describe Codex's limits only for what the course asks of it | Lesson 0.3's callout said Codex "cannot see the game running" and reads "nothing else". Both are untrue of Codex as a product: the ChatGPT desktop app has a Computer use setting, with an Any App toggle that lets it see and control other applications and an Excel add-in for deeper control, and full-access mode lifts the folder limit. That was confirmed from a screenshot of the user's own settings page and from PCWorld and OpenAI coverage, while Windows support has open bug reports and whether it controls Godot reliably is unverified. The callout was reduced to what these lessons rely on: Codex works from the files in the connected folder, has never read the lessons, and cannot judge how the game looks or feels, so the learner checks its answers. It does not describe Computer use, because no lesson uses it and a capability the course never exercises is a detour. Revisit if a lesson ever has Codex play-test a level, which would need the feature verified on Windows first. Open question, not decided: whether Lesson 0.1 should tell learners to turn Any App off, which depends on whether a fresh install has it on. |
+| Merge the Codex connection into Lesson 0.2 as an optional Part | Codex is optional everywhere else: every later use is an optional Part with a manual fallback, and the public promise is that learners can complete the framework without AI. Module 0 alone broke that, because Lesson 0.1 required an OpenAI account, and Lesson 0.3 was a whole lesson about connecting Codex. A free plan does not remove the problem: it lowers the cost but has limited usage, so a learner who runs out partway through must still be able to continue. Making the lesson optional would have left a gap in the numbering and a prerequisite that every later lesson has to qualify, so the connection became the last Part of Lesson 0.2, where the project it connects first exists, and can be skipped with one line. That also removed a handoff: Lesson 0.2 used to make the learner record the folder path only so the next lesson could ask for it, and that step, its goal and its checklist item are gone. Codex install stays in Lesson 0.1, marked optional along with its prerequisite and checklist items. The old Lesson 0.4 became Lesson 0.3, so Module 0 is three lessons: install, create the project, and the first checkpoint. Numbers in older rows below use the previous numbering, where 0.3 is the Codex connection and 0.4 the first checkpoint; read them as 0.2 Part 2 and 0.3. The merge added three references to check, in 0.1, the checkpoint lesson's prerequisite and the roadmap, where an earlier estimate of many more had counted mentions of Codex rather than references to a lesson number. Merged Lesson 0.2 has 4 blue callouts and Modules 0 to 3 now average 3.26 across 27 lessons, so the callout budget needed no exception; the workflow now says the count may be exceeded on purpose when trimming would make a lesson less clear. Lesson 0.2 was Validated and is now Implemented, because its new Part has not been replayed. Later Codex Parts in Lessons 3.3, 3.4, 3.5, 4.2 and 5.5 carry a manual fallback but are not yet labelled "(optional)" in their headings, unlike the checkpoint lessons, and remain to be aligned. |
