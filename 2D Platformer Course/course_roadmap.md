@@ -30,30 +30,6 @@ not infer progress from chat history or from learner verification checkboxes.
   version-control procedure each module ends with, not the project work. The
   per-lesson rows under Curriculum and Progress are the authority for this and
   agree with each lesson file's own status line.
-  Lesson 1.2 was replay-verified
-  against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
-  Part 2-4 settings, applied there, reproduced the live project's `[display]`
-  block exactly, the Label survived, and a headless load and run produced no
-  errors or warnings. The
-  lessons that state Floor, platform, or jump values were revised for the
-  1920-by-1080 viewport and the retuned movement defaults, then revised again
-  for 64-pixel tiles and the `-1200.0` jump. That second pass was re-validated
-  by rebuilding the Module 3 end state from Lessons 2.9 and 3.3 as written and
-  measuring it: the Floor surface lands at `y = 960`, the platform at `y = 704`
-  with 64 pixels of clearance beneath, a held jump rises 310 pixels against the
-  256-pixel step, coyote time is accepted after 3 frames and refused after 10
-  while still airborne, and a jump pressed before landing still buffers. The
-  Lesson 3.5 final listing matches `player.gd` exactly. Jump feel at `-1200.0`
-  was confirmed interactively. The
-  coordinate-theory split, revised transform and composition procedures,
-  dot-syntax bridge, horizontal movement, gravity/floor procedures,
-  conditional floor-state procedure, jumping procedure, exported movement
-  settings, target-based horizontal acceleration and deceleration, coyote
-  time, jump buffering, and variable jump height remain validated. Lesson 0.4
-  was validated from Codex project, Git metadata, and Changes-to-Review UI
-  evidence; that evidence lapsed when the lesson was rewritten around GitHub
-  Desktop, so it is Implemented until replayed, and an empty-project replay
-  remains part of the full-course rebuild gate.
 - **Godot evidence:** The project draws a 1920-by-1080 viewport with stretch
   mode `canvas_items` and aspect `keep`. `Main` contains one inherited `Player`
   instance at `(128, 128)` and one `Level` instance of
@@ -110,8 +86,9 @@ not infer progress from chat history or from learner verification checkboxes.
   second and reaches that speed in about a quarter of a second. Modules 3.1-3.5
   are validated in the current project: the eight movement values use
   documented `@export_range()` annotations, and the jump, gravity, and
-  jump-shortening conditions have regular implementation comments. Other
-  gameplay systems remain absent.
+  jump-shortening conditions have regular implementation comments. Lesson 4.7
+  added `respawn_at()`, the script's first method that is not a callback.
+  Other gameplay systems remain absent.
 - **Observed Git head:** `2444041` (`Remove a GitHub Desktop fallback that
   named a Mac-only menu`), with a clean working tree and `main` level with
   `origin/main`.
@@ -120,212 +97,13 @@ not infer progress from chat history or from learner verification checkboxes.
   Lessons 4.1 to 4.7 are Validated. Lesson 4.8, **Create a Module 4 Git
   Checkpoint**, was Validated and has since been rewritten for GitHub Desktop,
   so it is Implemented and awaits a replay, as Lessons 0.1, 0.3, 0.4, 1.6, 2.12
-  and 3.6 do. The evidence below applies to the superseded version of 4.8: the
-  tested project state it preserves is unchanged, but the staging, commit and
-  verification commands it describes are no longer in the lesson. It was
-  validated the way Lesson 3.6 was, by replaying it in a scratch clone rather
-  than in the working repository. The clone was reset to the state
-  a learner reaches at the end of Module 3, and the resulting change set was
-  compared against the lesson's expected file list by extracting the paths the
-  lesson names and diffing them against `git status`: every named path was
-  present, and the only files in the diff that the lesson does not name
-  individually are the three `.uid` files, which it covers with a catch-all
-  line. Staging those fourteen files, committing with a `Build Module 4`
-  message, and running the three verification commands all behaved as the
-  lesson describes, with `git show --stat --oneline -1` listing exactly the
-  fourteen files. The Codex UI path is deferred to the full-course rebuild, as
-  it is in the earlier checkpoints. The replay also demonstrated the authoring
-  divergence recorded in `course_workflow.md`: in this repository the
-  checkpoint's `git status` is noisy with course files and with a
-  `project.godot` change that no lesson produces, because the main scene was
-  repacked by script earlier in development. A learner sees neither, and the
-  lesson's own guidance catches the second by telling them to open
-  `project.godot` if it appears, since no Module 4 lesson touches it.
-  Lesson 4.7, **Add Level Bounds and Fall Detection**, is Validated, built in
-  the editor and measured against the running project. `level_1.tscn` has a
-  three-tile pit where the six ground cells at `(7, 15)` to `(9, 16)` were,
-  leaving 64 painted cells, with `LeftWall` and `RightWall` `StaticBody2D`
-  nodes at `(-32, 544)` and `(1952, 544)` and a `FallLimit` `Marker2D` at
-  `(960, 1216)`. `level.gd` answers `get_fall_limit()` beside
-  `get_spawn_position()`, `player.gd` gained `respawn_at()`, its first method
-  that is not a callback, and `main.gd` compares the Player's depth against the
-  limit in `_physics_process()`. Signals arrive in Lesson 6.1, so the check
-  polls, which extends rather than fights the orchestrator pattern from Lesson
-  4.4: Main asks the level a question, gives the Player an instruction, and
-  names nothing inside the level. Measured: erasing with a terrain selected
-  repaired the lips, `(6, 15)` becoming a right end at atlas `(11, 0)` and
-  `(10, 15)` a left end at `(8, 0)`; the walls stop the Player flush with the
-  frame at `x = 64` and `x = 1856`; and three consecutive falls were identical
-  frame for frame, losing the ground on frame 41, passing below the viewport on
-  frame 64 and returning to the spawn point on frame 73, which is `0.53`
-  seconds, with the velocity cleared. The pit is three tiles rather than two
-  because the Player is 128 pixels wide: measured on a two-tile pit it always
-  keeps a corner on solid ground and walks straight across, so a pit has to be
-  wider than what falls into it. The jump was recorded as a take-off window
-  rather than a landing margin, which is the honest figure: a full-speed run
-  clears the 192-pixel pit from anywhere in the last 192 pixels before the lip,
-  about `0.43` seconds, against `136` pixels for a four-tile pit. A seventh
-  part was added afterward, when drafting Lesson 4.8 exposed that
-  `get_fall_limit()` makes a `FallLimit` marker mandatory in every level file
-  while only the exercise said so; `level_2.tscn` had none, and swapping it in
-  raised a `null instance` error once per physics frame. The marker was added
-  and the requirement moved into a build step. The `Platforms` `TileMapLayer`
-  had also been renamed `Platform` in the project, colliding with the terrain's
-  own name and contradicting nine references across Lessons 4.5, 4.6 and 4.7;
-  it was renamed back.
-  Lesson 4.6, **Add Moving Platforms**, is Validated, built in the editor and
-  measured against the running project: the platform travels exactly 256.0
-  pixels and returns to its start with no drift over 600 frames, a Player
-  standing still with no input is carried for all 590 sampled frames with 0.000
-  pixels of bounce and 5.00 pixels of slip, and a jump from the ground beneath
-  it stops the Player's head at y = 768, the deck's underside. The scene is an
-  `AnimatableBody2D` holding a `Deck` `TileMapLayer` with **Collision Enabled**
-  off, three cells of the `Ground` terrain, a `Modulate` of `FFCC99`, and a
-  `RectangleShape2D` of `(192, 64)`, driven by `moving_platform.gd` with an
-  exported `travel` of `(256, 0)` and an exported `speed` of `150.0`.
-  `sync_to_physics` is at its default of `true`, and
-  `CharacterBody2D.platform_floor_layers` defaults to all layers, so no extra
-  setting was needed to make the Player ride. One instance sits in
-  `level_1.tscn` at `(1504, 736)`, deck at `y = 704` with a 128-pixel gap to
-  the solid platform. Leaving the deck layer's own collision enabled was
-  measured to break the carry silently: the tiles win the floor contact and
-  report no motion, so the platform reached x = 1216 while the Player stayed at
-  x = 960 and fell. The deck is painted with `Ground` rather than `Platform`
-  because `Platform` means the pass-through strip from Lesson 4.5, and its
-  `BFE6FF` tile tint would multiply with the deck's `FFCC99` node tint into a
-  drab `BFB899`. A `RectangleShape2D` is a resource shared by every instance of
-  a scene, so width is a copy of the scene rather than a per-instance setting.
-  The three path variables are assigned in `_ready()` because a script-level
-  initializer runs before Godot applies what the scene and level stored,
-  reading a position of `(0, 0)` and the script's own default `travel` rather
-  than the level's override.
-  Lesson 4.5, **Add One-Way Platforms**, is Validated: the
-  tiles at `(1, 3)`, `(2, 3)` and `(3, 3)` each got an alternative with a
-  one-way collision polygon and a pale blue `Modulate`, those three joined a
-  second terrain named `Platform` alongside `Ground` in the same terrain set,
-  and a five-cell strip of them was painted on a new `Platforms` layer at row
-  11 with its surface at `y = 704`. The second terrain was added after review
-  asked whether peering bits would make drawing platforms faster. They do,
-  and measurement showed the two terrains cannot contaminate each other:
-  painting `Platform` across five cells produced the correct end, middle and
-  end pieces with no empty cells, the `Ground` brush chose a one-way
-  alternative zero times in 400 cells, and ground and platform painted side
-  by side on one layer stayed solid and one-way respectively. An earlier
-  draft had the variants placed by hand and deliberately kept out of any
-  terrain; that instruction was wrong and was replaced. A second draft copied
-  the alternatives from row 0 instead of row 3, which looks identical from
-  the front but is the top of a taller block: its bottom peering bit reads
-  as continuing ground rather than a finished edge, so the painted strip came
-  out with a scalloped, dirt-textured underside instead of matching the solid
-  platform. The project was corrected to row 3, which the `Ground` terrain
-  already used for the solid platform, and the lesson and its callouts were
-  rewritten to explain why row 3 is the correct source. Testing also fixed
-  the Player's draw order, wrong since Lesson 4.3 and invisible until this
-  lesson gave the Player something to pass in front of: `Main` listed
-  `Player` before `Level`, so the level was drawn over the Player. The fix
-  is folded into the testing part rather than a part of its own, and lands
-  in Lesson 4.5 rather than 4.3 so the learner sees the problem before the
-  fix. The full project was re-audited afterward against the tileset,
-  scenes, and draw order and confirmed correct.
-  A first draft used a second tile set instead and was discarded after review:
-  both were prototyped and behave identically, but alternatives keep one tile
-  set as the single home for the artwork, avoid defining the atlas source
-  twice, and carry a per-tile `Modulate` so a pass-through platform does not
-  look identical to solid ground. One-way must be a separate tile either way,
-  because it is a property of a tile's collision polygon, so a tile is
-  one-way everywhere it is painted or nowhere. Measured in both prototypes:
-  from the ground the Player passes up through the strip and lands on top at
-  `y = 704`, walking off the end returns it to `y = 960`, the ground and the
-  solid platform stay solid, and the same jump under the solid platform rises
-  only 64 pixels against its underside rather than the full 310, which is the
-  contrast the lesson is built around. Godot's documentation confirms that an
-  alternative inherits none of the base tile's properties, which matches the
-  prototype and is why the lesson draws the collision polygon again.
-  Lessons 4.1 to 4.4 are Validated and walked in the editor, with
-  nothing left unconfirmed in them. Lesson 4.4 introduced `Marker2D`,
-  `@onready`, node references, `global_position`, and the first scripts
-  outside the Player: `main.gd` on the orchestrator and `level.gd` on the
-  level. Its design was checked as well as its behaviour: `main.gd` never
-  names `PlayerSpawn`, so the level can rearrange its insides freely, and with
-  the level offset to `(0, -128)` the Player still arrives at the marker.
-  Swapping `global_position` for `position` was tried during drafting and puts
-  the Player 128 pixels low so it misses the ground, which is the evidence
-  behind that callout. Both level files carry the script and their own marker,
-  so a level brings its own spawn with no edit to `main.gd`.
-  Lesson 4.3 confirmed that
-  reparenting `Terrain` under a node at the origin leaves its position
-  untouched and its 70 cells intact, and the **Save Branch as Scene** menu
-  wording was checked against the running editor. Its learner exercise was
-  replayed: `res://levels/level_2.tscn` exists with the same `Level` root and
-  a different shape of 80 painted cells, which is what proves a level can be
-  duplicated and swapped without editing anything else.
-  Every level file uses `Level` as its root node name, so `Main` always holds
-  a node called `Level` whichever file is loaded, which is the name Module 13
-  will look for when it changes level in code. `Main` holds one level at a
-  time and is not a container for all of them. Lesson 4.1 had four steps
-  corrected while it was walked. Automatic tile creation was found
-  to fill the whole grid rather than skip the fully transparent square, which
-  the Godot page's wording had suggested it would, so the lesson now creates
-  48 tiles and deletes `(10, 1)` by right-clicking it. The square was confirmed
-  to be genuinely empty, with a maximum alpha of `0.0` across all 16384 pixels,
-  so the artwork is not the cause. The other corrections were holding `Shift`
-  while dragging to select every tile, switching the atlas from **Setup** to
-  **Select** before editing tile properties, and drawing each collision polygon
-  with the **Add points** tool by clicking the four corners, since a tile
-  starts with no polygon at all. Both lessons use `terrain.png`, a 768-by-256
-  redraw of the terrain example tilesheet in Godot's own **Using TileSets**
-  page, matching it in size as well as in layout: the same 12-by-4
-  arrangement, the same four shapes, and the same hole at `(10, 1)`.
-  Lesson 4.2's peering-bit data is settled and shipped as
-  `assets/terrain_peering_reference.png`, generated by
-  `assets/make_terrain_peering_reference.gd`. Two earlier attempts to derive it
-  failed and were discarded: reading it from the artwork stalls because an open
-  bottom edge is drawn the same plain ground as a bottom that continues, and
-  assuming each drawn shape is a solid rectangle produces a terrain that paints
-  every cell while putting grass along the underside of the level, because the
-  shapes carry notches the rectangle model misses. What worked was differencing
-  the two versions of the sheet that the Godot page publishes, one plain and
-  one with its terrain configured, across nine sample regions per tile. The
-  result was confirmed against a tileset configured by hand in the editor: all
-  47 tiles and all 376 peering bits matched. The lesson still teaches reading
-  the marks from the artwork and keeps the reference for checking, and it
-  states plainly that an absence of empty cells does not mean the terrain is
-  right. The level geometry was
-  re-measured after the move to 64-pixel tiles: the ground surface is at
-  `y = 960`, the platform floats with its surface at `y = 704`, a held jump
-  rises 310 pixels against the 256-pixel step leaving 54 pixels of clearance,
-  and a tapped jump reaches 109 pixels so it still cannot make the step.
-  Module 1, Lesson 1.2, **Set Up the Game Window**, is now
-  Validated: its procedure was replayed from Lesson 1.1's end state in a
-  scratch copy and reproduced the live project's window settings exactly. The
-  **Track Player Movement States** blueprint stays drafted at Lesson 5.5 until
+  and 3.6 do. The **Track Player Movement States** blueprint stays drafted at
+  Lesson 5.5 until
   Module 5 is reached, and must be re-checked against the Module 4 result
   before implementation. Module 6 was also restructured to open with extracting
   input and movement into components, so 5.5 writes the movement state into
   `player.gd` and Lesson 6.1 then moves it into the movement component that
   owns it.
-- **Checkpoint:** Commit `8e07139` contains the validated curriculum through
-  Module 2, validated Module 3 Lessons 3.1-3.5, the movement-state blueprint
-  relocated to Lesson 5.5, and the Lesson 0.4 revision that creates the first
-  checkpoint with Git commands. Commit `c1874a8` then validated Lesson 3.6 and
-  closed Module 3. Commits `3abdd88`, `5ca7c9d`, and `b9ccbd2` set the
-  1920-by-1080 world, retuned movement, and recorded the interactive
-  confirmation; `6c74ab2` and `ffa165d` repaired Lesson 1.2 Part 5; `b653f5d`
-  and `d4d0b09` corrected two stale references and added the evidence rules.
-  Commit `2a23afa` validated
-  the Module 3.1 Player settings alongside a standalone target-based movement
-  bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
-  direct-assignment clarification and the integrated Lesson 3.2 acceleration
-  and Lesson 3.3 coyote-time features; commit `dd966c0` added the Lesson 3.4
-  jump-buffering feature. Headless Godot loading and runtime checks passed for
-  Lessons 3.2 and 3.3, followed by successful interactive validation. Lesson
-  3.4 received focused Godot validation. Lesson 3.5 passed headless parse,
-  load, and behavior checks, then passed interactive Godot validation
-  including the Inspector presentation of **Jump Release Multiplier** and
-  keyboard/controller jump testing. The 1920-by-1080 viewport change and the
-  movement retune each passed a headless check of every stated value, geometry
-  measurement, and timing, and the retuned jump and run speed were then
-  confirmed by interactive play.
 
 ## Status Model
 
@@ -809,6 +587,259 @@ Remaining reconciliation work:
 - Replay the four rewritten checkpoint lessons, 1.6, 2.12, 3.6 and 4.8,
   against a real GitHub Desktop, including one run that skips every optional
   Codex part. Their status stays Implemented until that happens.
+
+## Validation Evidence
+
+What was measured when each lesson was validated, newest first. These are
+records of a past check, not claims about the project as it stands now: when a
+lesson is later rewritten its evidence here lapses, and the lesson's row under
+Curriculum and Progress says so. Current state lives in Current Course State.
+
+### Lesson 4.8, Create a Module 4 Git Checkpoint
+
+This evidence applies to the superseded version of 4.8: the
+tested project state it preserves is unchanged, but the staging, commit and
+verification commands it describes are no longer in the lesson. It was
+validated the way Lesson 3.6 was, by replaying it in a scratch clone rather
+than in the working repository. The clone was reset to the state
+a learner reaches at the end of Module 3, and the resulting change set was
+compared against the lesson's expected file list by extracting the paths the
+lesson names and diffing them against `git status`: every named path was
+present, and the only files in the diff that the lesson does not name
+individually are the three `.uid` files, which it covers with a catch-all
+line. Staging those fourteen files, committing with a `Build Module 4`
+message, and running the three verification commands all behaved as the
+lesson describes, with `git show --stat --oneline -1` listing exactly the
+fourteen files. The Codex UI path is deferred to the full-course rebuild, as
+it is in the earlier checkpoints. The replay also demonstrated the authoring
+divergence recorded in `course_workflow.md`: in this repository the
+checkpoint's `git status` is noisy with course files and with a
+`project.godot` change that no lesson produces, because the main scene was
+repacked by script earlier in development. A learner sees neither, and the
+lesson's own guidance catches the second by telling them to open
+`project.godot` if it appears, since no Module 4 lesson touches it.
+
+### Lesson 4.7, Add Level Bounds and Fall Detection
+
+Lesson 4.7, **Add Level Bounds and Fall Detection**, is Validated, built in
+the editor and measured against the running project. `level_1.tscn` has a
+three-tile pit where the six ground cells at `(7, 15)` to `(9, 16)` were,
+leaving 64 painted cells, with `LeftWall` and `RightWall` `StaticBody2D`
+nodes at `(-32, 544)` and `(1952, 544)` and a `FallLimit` `Marker2D` at
+`(960, 1216)`. `level.gd` answers `get_fall_limit()` beside
+`get_spawn_position()`, `player.gd` gained `respawn_at()`, its first method
+that is not a callback, and `main.gd` compares the Player's depth against the
+limit in `_physics_process()`. Signals arrive in Lesson 6.1, so the check
+polls, which extends rather than fights the orchestrator pattern from Lesson
+4.4: Main asks the level a question, gives the Player an instruction, and
+names nothing inside the level. Measured: erasing with a terrain selected
+repaired the lips, `(6, 15)` becoming a right end at atlas `(11, 0)` and
+`(10, 15)` a left end at `(8, 0)`; the walls stop the Player flush with the
+frame at `x = 64` and `x = 1856`; and three consecutive falls were identical
+frame for frame, losing the ground on frame 41, passing below the viewport on
+frame 64 and returning to the spawn point on frame 73, which is `0.53`
+seconds, with the velocity cleared. The pit is three tiles rather than two
+because the Player is 128 pixels wide: measured on a two-tile pit it always
+keeps a corner on solid ground and walks straight across, so a pit has to be
+wider than what falls into it. The jump was recorded as a take-off window
+rather than a landing margin, which is the honest figure: a full-speed run
+clears the 192-pixel pit from anywhere in the last 192 pixels before the lip,
+about `0.43` seconds, against `136` pixels for a four-tile pit. A seventh
+part was added afterward, when drafting Lesson 4.8 exposed that
+`get_fall_limit()` makes a `FallLimit` marker mandatory in every level file
+while only the exercise said so; `level_2.tscn` had none, and swapping it in
+raised a `null instance` error once per physics frame. The marker was added
+and the requirement moved into a build step. The `Platforms` `TileMapLayer`
+had also been renamed `Platform` in the project, colliding with the terrain's
+own name and contradicting nine references across Lessons 4.5, 4.6 and 4.7;
+it was renamed back.
+
+### Lesson 4.6, Add Moving Platforms
+
+Lesson 4.6, **Add Moving Platforms**, is Validated, built in the editor and
+measured against the running project: the platform travels exactly 256.0
+pixels and returns to its start with no drift over 600 frames, a Player
+standing still with no input is carried for all 590 sampled frames with 0.000
+pixels of bounce and 5.00 pixels of slip, and a jump from the ground beneath
+it stops the Player's head at y = 768, the deck's underside. The scene is an
+`AnimatableBody2D` holding a `Deck` `TileMapLayer` with **Collision Enabled**
+off, three cells of the `Ground` terrain, a `Modulate` of `FFCC99`, and a
+`RectangleShape2D` of `(192, 64)`, driven by `moving_platform.gd` with an
+exported `travel` of `(256, 0)` and an exported `speed` of `150.0`.
+`sync_to_physics` is at its default of `true`, and
+`CharacterBody2D.platform_floor_layers` defaults to all layers, so no extra
+setting was needed to make the Player ride. One instance sits in
+`level_1.tscn` at `(1504, 736)`, deck at `y = 704` with a 128-pixel gap to
+the solid platform. Leaving the deck layer's own collision enabled was
+measured to break the carry silently: the tiles win the floor contact and
+report no motion, so the platform reached x = 1216 while the Player stayed at
+x = 960 and fell. The deck is painted with `Ground` rather than `Platform`
+because `Platform` means the pass-through strip from Lesson 4.5, and its
+`BFE6FF` tile tint would multiply with the deck's `FFCC99` node tint into a
+drab `BFB899`. A `RectangleShape2D` is a resource shared by every instance of
+a scene, so width is a copy of the scene rather than a per-instance setting.
+The three path variables are assigned in `_ready()` because a script-level
+initializer runs before Godot applies what the scene and level stored,
+reading a position of `(0, 0)` and the script's own default `travel` rather
+than the level's override.
+
+### Lesson 4.5, Add One-Way Platforms
+
+Lesson 4.5, **Add One-Way Platforms**, is Validated: the
+tiles at `(1, 3)`, `(2, 3)` and `(3, 3)` each got an alternative with a
+one-way collision polygon and a pale blue `Modulate`, those three joined a
+second terrain named `Platform` alongside `Ground` in the same terrain set,
+and a five-cell strip of them was painted on a new `Platforms` layer at row
+11 with its surface at `y = 704`. The second terrain was added after review
+asked whether peering bits would make drawing platforms faster. They do,
+and measurement showed the two terrains cannot contaminate each other:
+painting `Platform` across five cells produced the correct end, middle and
+end pieces with no empty cells, the `Ground` brush chose a one-way
+alternative zero times in 400 cells, and ground and platform painted side
+by side on one layer stayed solid and one-way respectively. An earlier
+draft had the variants placed by hand and deliberately kept out of any
+terrain; that instruction was wrong and was replaced. A second draft copied
+the alternatives from row 0 instead of row 3, which looks identical from
+the front but is the top of a taller block: its bottom peering bit reads
+as continuing ground rather than a finished edge, so the painted strip came
+out with a scalloped, dirt-textured underside instead of matching the solid
+platform. The project was corrected to row 3, which the `Ground` terrain
+already used for the solid platform, and the lesson and its callouts were
+rewritten to explain why row 3 is the correct source. Testing also fixed
+the Player's draw order, wrong since Lesson 4.3 and invisible until this
+lesson gave the Player something to pass in front of: `Main` listed
+`Player` before `Level`, so the level was drawn over the Player. The fix
+is folded into the testing part rather than a part of its own, and lands
+in Lesson 4.5 rather than 4.3 so the learner sees the problem before the
+fix. The full project was re-audited afterward against the tileset,
+scenes, and draw order and confirmed correct.
+A first draft used a second tile set instead and was discarded after review:
+both were prototyped and behave identically, but alternatives keep one tile
+set as the single home for the artwork, avoid defining the atlas source
+twice, and carry a per-tile `Modulate` so a pass-through platform does not
+look identical to solid ground. One-way must be a separate tile either way,
+because it is a property of a tile's collision polygon, so a tile is
+one-way everywhere it is painted or nowhere. Measured in both prototypes:
+from the ground the Player passes up through the strip and lands on top at
+`y = 704`, walking off the end returns it to `y = 960`, the ground and the
+solid platform stay solid, and the same jump under the solid platform rises
+only 64 pixels against its underside rather than the full 310, which is the
+contrast the lesson is built around. Godot's documentation confirms that an
+alternative inherits none of the base tile's properties, which matches the
+prototype and is why the lesson draws the collision polygon again.
+
+### Lessons 4.1 to 4.4
+
+Lessons 4.1 to 4.4 are Validated and walked in the editor, with
+nothing left unconfirmed in them. Lesson 4.4 introduced `Marker2D`,
+`@onready`, node references, `global_position`, and the first scripts
+outside the Player: `main.gd` on the orchestrator and `level.gd` on the
+level. Its design was checked as well as its behaviour: `main.gd` never
+names `PlayerSpawn`, so the level can rearrange its insides freely, and with
+the level offset to `(0, -128)` the Player still arrives at the marker.
+Swapping `global_position` for `position` was tried during drafting and puts
+the Player 128 pixels low so it misses the ground, which is the evidence
+behind that callout. Both level files carry the script and their own marker,
+so a level brings its own spawn with no edit to `main.gd`.
+Lesson 4.3 confirmed that
+reparenting `Terrain` under a node at the origin leaves its position
+untouched and its 70 cells intact, and the **Save Branch as Scene** menu
+wording was checked against the running editor. Its learner exercise was
+replayed: `res://levels/level_2.tscn` exists with the same `Level` root and
+a different shape of 80 painted cells, which is what proves a level can be
+duplicated and swapped without editing anything else.
+Every level file uses `Level` as its root node name, so `Main` always holds
+a node called `Level` whichever file is loaded, which is the name Module 13
+will look for when it changes level in code. `Main` holds one level at a
+time and is not a container for all of them. Lesson 4.1 had four steps
+corrected while it was walked. Automatic tile creation was found
+to fill the whole grid rather than skip the fully transparent square, which
+the Godot page's wording had suggested it would, so the lesson now creates
+48 tiles and deletes `(10, 1)` by right-clicking it. The square was confirmed
+to be genuinely empty, with a maximum alpha of `0.0` across all 16384 pixels,
+so the artwork is not the cause. The other corrections were holding `Shift`
+while dragging to select every tile, switching the atlas from **Setup** to
+**Select** before editing tile properties, and drawing each collision polygon
+with the **Add points** tool by clicking the four corners, since a tile
+starts with no polygon at all. Both lessons use `terrain.png`, a 768-by-256
+redraw of the terrain example tilesheet in Godot's own **Using TileSets**
+page, matching it in size as well as in layout: the same 12-by-4
+arrangement, the same four shapes, and the same hole at `(10, 1)`.
+Lesson 4.2's peering-bit data is settled and shipped as
+`assets/terrain_peering_reference.png`, generated by
+`assets/make_terrain_peering_reference.gd`. Two earlier attempts to derive it
+failed and were discarded: reading it from the artwork stalls because an open
+bottom edge is drawn the same plain ground as a bottom that continues, and
+assuming each drawn shape is a solid rectangle produces a terrain that paints
+every cell while putting grass along the underside of the level, because the
+shapes carry notches the rectangle model misses. What worked was differencing
+the two versions of the sheet that the Godot page publishes, one plain and
+one with its terrain configured, across nine sample regions per tile. The
+result was confirmed against a tileset configured by hand in the editor: all
+47 tiles and all 376 peering bits matched. The lesson still teaches reading
+the marks from the artwork and keeps the reference for checking, and it
+states plainly that an absence of empty cells does not mean the terrain is
+right. The level geometry was
+re-measured after the move to 64-pixel tiles: the ground surface is at
+`y = 960`, the platform floats with its surface at `y = 704`, a held jump
+rises 310 pixels against the 256-pixel step leaving 54 pixels of clearance,
+and a tapped jump reaches 109 pixels so it still cannot make the step.
+
+### Modules 0 to 3
+
+Module 1, Lesson 1.2, **Set Up the Game Window**, is now
+Validated: its procedure was replayed from Lesson 1.1's end state in a
+scratch copy and reproduced the live project's window settings exactly.
+
+Lesson 1.2 was replay-verified
+against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
+Part 2-4 settings, applied there, reproduced the live project's `[display]`
+block exactly, the Label survived, and a headless load and run produced no
+errors or warnings. The
+lessons that state Floor, platform, or jump values were revised for the
+1920-by-1080 viewport and the retuned movement defaults, then revised again
+for 64-pixel tiles and the `-1200.0` jump. That second pass was re-validated
+by rebuilding the Module 3 end state from Lessons 2.9 and 3.3 as written and
+measuring it: the Floor surface lands at `y = 960`, the platform at `y = 704`
+with 64 pixels of clearance beneath, a held jump rises 310 pixels against the
+256-pixel step, coyote time is accepted after 3 frames and refused after 10
+while still airborne, and a jump pressed before landing still buffers. The
+Lesson 3.5 final listing matches `player.gd` exactly. Jump feel at `-1200.0`
+was confirmed interactively. The
+coordinate-theory split, revised transform and composition procedures,
+dot-syntax bridge, horizontal movement, gravity/floor procedures,
+conditional floor-state procedure, jumping procedure, exported movement
+settings, target-based horizontal acceleration and deceleration, coyote
+time, jump buffering, and variable jump height remain validated. Lesson 0.4
+was validated from Codex project, Git metadata, and Changes-to-Review UI
+evidence; that evidence lapsed when the lesson was rewritten around GitHub
+Desktop, so it is Implemented until replayed, and an empty-project replay
+remains part of the full-course rebuild gate.
+
+### Checkpoint commits
+
+Commit `8e07139` contains the validated curriculum through
+Module 2, validated Module 3 Lessons 3.1-3.5, the movement-state blueprint
+relocated to Lesson 5.5, and the Lesson 0.4 revision that creates the first
+checkpoint with Git commands. Commit `c1874a8` then validated Lesson 3.6 and
+closed Module 3. Commits `3abdd88`, `5ca7c9d`, and `b9ccbd2` set the
+1920-by-1080 world, retuned movement, and recorded the interactive
+confirmation; `6c74ab2` and `ffa165d` repaired Lesson 1.2 Part 5; `b653f5d`
+and `d4d0b09` corrected two stale references and added the evidence rules.
+Commit `2a23afa` validated
+the Module 3.1 Player settings alongside a standalone target-based movement
+bridge; commit `3b0f0c5` superseded that bridge with the Lesson 2.8
+direct-assignment clarification and the integrated Lesson 3.2 acceleration
+and Lesson 3.3 coyote-time features; commit `dd966c0` added the Lesson 3.4
+jump-buffering feature. Headless Godot loading and runtime checks passed for
+Lessons 3.2 and 3.3, followed by successful interactive validation. Lesson
+3.4 received focused Godot validation. Lesson 3.5 passed headless parse,
+load, and behavior checks, then passed interactive Godot validation
+including the Inspector presentation of **Jump Release Multiplier** and
+keyboard/controller jump testing. The 1920-by-1080 viewport change and the
+movement retune each passed a headless check of every stated value, geometry
+measurement, and timing, and the retuned jump and run speed were then
+confirmed by interactive play.
 
 ## Decision Log
 
