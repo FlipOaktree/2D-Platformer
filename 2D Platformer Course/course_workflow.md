@@ -188,9 +188,13 @@ Keep explanation proportionate to what the learner needs at that moment:
   predict what will happen, then run it and compare. One line in the build
   steps, not a separate exercise.
 - Treat these as signals to re-read a lesson, not as limits: more than about
-  six callouts, callout text longer than the build steps it sits among, a
+  six blue callouts, callout text longer than the build steps it sits among, a
   callout that has to begin "Step 8 is...", or a checklist that repeats the
-  build steps item by item. Modules 0 to 3 average about three callouts, with
+  build steps item by item. Count only the blue explanation callouts. A gray
+  **If something differs** block is recovery guidance rather than explanation
+  and is never counted, so a lesson with four blue callouts and four gray ones
+  is inside the signal, not at twice it. Measured across the 28 lessons in
+  Modules 0 to 3: 3.18 blue callouts per lesson, the highest being 6, with
   roughly one word of explanation for every two words of instruction.
 
 Write each verification checklist item in the voice that matches what it

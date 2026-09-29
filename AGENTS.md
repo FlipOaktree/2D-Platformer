@@ -66,6 +66,12 @@ the same written course material that learners will later use.
   learners. When needed, a short manual continuation note is enough.
 - Do not force AI into a task when it provides no clear learning or efficiency
   benefit.
+- Keep the tools to their own jobs. GitHub Desktop owns version control in
+  this course: the changed-file list, the diff, the commit and the push. Codex
+  reviews files and, where a lesson offers it, repeats work the learner has
+  already done by hand. No lesson asks Codex to stage or commit, no checkpoint
+  depends on having Codex, and no lesson asks the learner to type a Git
+  command. `course_workflow.md` holds the detail.
 - Keep internal production tools, including ShareX, out of learner requirements
   unless the learner genuinely needs them.
 

@@ -61,7 +61,8 @@ its work rather than asking AI to generate a game as a black box.
 
 ### A free core learner toolchain
 
-The core learner-facing workflow uses free tools: Godot and Git. Codex is an
+The core learner-facing workflow uses free tools: Godot, GitHub Desktop, and
+a free GitHub account. Codex is an
 optional accelerator, and any AI subscription or paid usage is disclosed
 separately. Internal course-production utilities are not presented as learner
 requirements.
@@ -113,8 +114,9 @@ project using only the written material.
 - **A reusable reference:** the course material remains useful after completion.
 - **Organization taught in context:** file organization, Git checkpoints, and
   Codex appear when they genuinely help the current work.
-- **Practical tool fluency:** learners pick up useful Godot, Git, and Codex best
-  practices, tips, and shortcuts while using each tool for real work.
+- **Practical tool fluency:** learners pick up useful Godot, GitHub Desktop,
+  and Codex best practices, tips, and shortcuts while using each tool for real
+  work.
 
 ## Claim Guardrails
 

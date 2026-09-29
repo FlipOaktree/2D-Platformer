@@ -23,10 +23,13 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** Module 0, Lessons 0.1-0.4; Module 1, Lessons
-  1.1-1.6, which completes Module 1; Module 2, Lessons 2.1-2.12; Module 3,
-  Lessons 3.1-3.6, which completes Module 3; and Module 4, Lessons 4.1-4.8,
-  which completes Module 4.
+- **Validated curriculum:** 29 lessons are Validated: 0.2, 1.1-1.5,
+  2.1-2.11, 3.1-3.5, and 4.1-4.7. Seven are Implemented and awaiting a replay
+  against a real GitHub Desktop: 0.1, 0.3, 0.4, 1.6, 2.12, 3.6, and 4.8. Every
+  module is built and tested through Module 4; what is outstanding is the
+  version-control procedure each module ends with, not the project work. The
+  per-lesson rows under Curriculum and Progress are the authority for this and
+  agree with each lesson file's own status line.
   Lesson 1.2 was replay-verified
   against a scratch copy of Lesson 1.1's validated end state (`e918e66`): its
   Part 2-4 settings, applied there, reproduced the live project's `[display]`
@@ -46,22 +49,27 @@ not infer progress from chat history or from learner verification checkboxes.
   dot-syntax bridge, horizontal movement, gravity/floor procedures,
   conditional floor-state procedure, jumping procedure, exported movement
   settings, target-based horizontal acceleration and deceleration, coyote
-  time, jump buffering, and variable jump height remain validated. Lesson 0.4 is
-  validated from the current Codex
-  project, Git metadata, and Changes-to-Review UI evidence; an empty-project
-  replay remains part of the full-course rebuild gate.
+  time, jump buffering, and variable jump height remain validated. Lesson 0.4
+  was validated from Codex project, Git metadata, and Changes-to-Review UI
+  evidence; that evidence lapsed when the lesson was rewritten around GitHub
+  Desktop, so it is Implemented until replayed, and an empty-project replay
+  remains part of the full-course rebuild gate.
 - **Godot evidence:** The project draws a 1920-by-1080 viewport with stretch
   mode `canvas_items` and aspect `keep`. `Main` contains one inherited `Player`
   instance at `(128, 128)` and one `Level` instance of
   `res://levels/level_1.tscn`, whose own root is a `Node2D` named `Level`
-  holding the `Terrain` `TileMapLayer`. The temporary `Floor` and
-  `CoyoteTestPlatform` were removed by Lesson 4.2, and Lesson 4.3 moved the
-  level out of `main.tscn`. `Main` carries `res://scenes/main.gd`, which in
-  `_ready()` places the Player at the position the level reports. The level
-  holds a `PlayerSpawn` `Marker2D` at `(256, 896)` and carries
-  `res://levels/level.gd`, whose one method `get_spawn_position()` returns
-  that marker's `global_position`. `res://levels/level_2.tscn` has the same
-  script and its own marker at `(316, 679)`. The Input
+  holding, in order, `Terrain` and `Platforms` `TileMapLayer` nodes, a
+  `PlayerSpawn` `Marker2D`, one `MovingPlatform` instance, `LeftWall` and
+  `RightWall` `StaticBody2D` nodes, and a `FallLimit` `Marker2D`. The temporary
+  `Floor` and `CoyoteTestPlatform` were removed by Lesson 4.2, and Lesson 4.3
+  moved the level out of `main.tscn`. `Main` carries `res://scenes/main.gd`,
+  which in `_ready()` places the Player at the position the level reports and
+  in `_physics_process()` compares the Player's depth against the fall limit.
+  The level's `PlayerSpawn` sits at `(256, 896)` and its `FallLimit` at
+  `(960, 1216)`, and it carries `res://levels/level.gd`, whose two methods
+  `get_spawn_position()` and `get_fall_limit()` return those markers'
+  `global_position`. `res://levels/level_2.tscn` has the same script, its own
+  marker at `(316, 679)`, and its own `FallLimit` at `(960, 1216)`. The Input
   Map defines
   `move_left`, `move_right`, and `jump`, each with a deadzone of `0.2` and the
   validated keyboard/controller events. `res://actors/actor.tscn` provides the
@@ -71,13 +79,17 @@ not infer progress from chat history or from learner verification checkboxes.
   its temporary 128-by-128 `Sprite2D` marker beneath `Visuals`.
   `Terrain` sits at `(0, 0)` inside the level scene and uses
   `res://levels/tiles/terrain_tileset.tres`, a 47-tile TileSet of 64-pixel
-  tiles built from `res://levels/tiles/terrain.png`. Every tile carries one
-  full-square collision polygon on a single physics layer, and every tile
-  belongs to the one `Ground` terrain in a single `Match Corners and Sides`
-  terrain set. `Terrain` holds 70 painted cells: a full-width ground across
-  columns 0-29 in rows 15 and 16, with its surface at `y = 960`, and a
-  floating platform across columns 10-19 in row 11, with its surface at
-  `y = 704` and its underside at `y = 768`. The Player rests with its collider
+  tiles built from `res://levels/tiles/terrain.png`. Each of the 47 base
+  tiles carries one full-square collision polygon on the single physics layer,
+  and three of them also carry an alternative whose polygon is one-way and
+  whose `Modulate` is pale blue. The one `Match Corners and Sides` terrain set
+  holds two terrains: `Ground`, which every base tile belongs to, and
+  `Platform`, which the three one-way alternatives belong to. `Terrain` holds
+  64 painted cells: ground across columns 0-29 in rows 15 and 16 with its
+  surface at `y = 960`, broken by a three-cell pit where `(7, 15)` to `(9, 16)`
+  were, and a floating platform across columns 10-19 in row 11, with its
+  surface at `y = 704` and its underside at `y = 768`. The `Platforms` layer
+  holds a five-cell one-way strip at row 11. The Player rests with its collider
   bottom at `y = 960` and its head at `y = 832`, so it can run underneath the
   platform with 64 pixels of clearance. The step is 256 pixels against a
   measured 310-pixel held jump, leaving 54 pixels of clearance, and a tapped
@@ -100,9 +112,9 @@ not infer progress from chat history or from learner verification checkboxes.
   documented `@export_range()` annotations, and the jump, gravity, and
   jump-shortening conditions have regular implementation comments. Other
   gameplay systems remain absent.
-- **Observed Git head:** `d4d0b09` (`Add five evidence rules for recurring
-  mistakes`), with a clean working tree. Local `main` is one commit ahead of
-  `origin/main`, which is at `b653f5d`.
+- **Observed Git head:** `2444041` (`Remove a GitHub Desktop fallback that
+  named a Mac-only menu`), with a clean working tree and `main` level with
+  `origin/main`.
 - **Exact next step:** Draft the Module 5, Lesson 5.1 blueprint, **Add a
   Following Camera**, which opens Module 5. Module 4 is built and tested:
   Lessons 4.1 to 4.7 are Validated. Lesson 4.8, **Create a Module 4 Git
@@ -245,7 +257,7 @@ not infer progress from chat history or from learner verification checkboxes.
   untouched and its 70 cells intact, and the **Save Branch as Scene** menu
   wording was checked against the running editor. Its learner exercise was
   replayed: `res://levels/level_2.tscn` exists with the same `Level` root and
-  a different shape of 91 painted cells, which is what proves a level can be
+  a different shape of 80 painted cells, which is what proves a level can be
   duplicated and swapped without editing anything else.
   Every level file uses `Level` as its root node name, so `Main` always holds
   a node called `Level` whichever file is loaded, which is the name Module 13
@@ -474,14 +486,14 @@ elements around clear spawn and boundary contracts.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 64-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | Uncommitted working tree; procedure walked in the editor and four UI steps corrected |
-| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | Uncommitted working tree; procedure walked in the editor; Part 3 now ends by turning Visible Collision Shapes back off |
-| 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level, and one Level root name shared by every level file | Validated | Uncommitted working tree; procedure walked in the editor; the Visible Collision Shapes check was dropped from Part 3, which 4.2 now turns off |
-| 4.4 | Add Player Spawn Points | `Marker2D`, `@onready`, node references, `global_position`, an orchestrator script on Main, and a level that answers one typed question | Validated | Uncommitted working tree; procedure walked in the editor |
-| 4.5 | Add One-Way Platforms | Alternative tiles, one-way collision on a tile's polygon, per-tile `Modulate`, a second terrain in the same terrain set, a second level layer, and sibling draw order | Validated | Uncommitted working tree; procedure walked in the editor, terrain 1 renamed 'Platform', variants corrected from row 0 to row 3, terrain and draw order re-audited |
-| 4.6 | Add Moving Platforms | `AnimatableBody2D`, `sync_to_physics`, a reusable moving-surface scene, a `TileMapLayer` used as artwork with its collision disabled, `Vector2.move_toward()`, and an exported `Vector2` offset | Validated | Uncommitted working tree; built in the editor and validated against the running project |
-| 4.7 | Add Level Bounds and Fall Detection | A pit in the terrain, `StaticBody2D` walls, a fall-limit marker, a second question the level answers, the Player's first non-callback method, and a per-frame check in the orchestrator | Validated | Uncommitted working tree; built in the editor and validated against the running project; a seventh part was added so every level file carries its own fall limit |
-| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, a saved-value audit after seven exercises, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | Uncommitted working tree; rewritten for GitHub Desktop and awaiting a replay |
+| 4.1 | Build a TileSet with Collision | TileSet resource, atlas source, 64-pixel tile size, a tile physics layer, and per-tile collision polygons across 47 tiles | Validated | `ae82818`; procedure walked in the editor and four UI steps corrected |
+| 4.2 | Paint a Level with Terrain Autotiling | Terrain set, Match Corners and Sides mode, peering bits, terrain painting, and removal of the temporary Floor and CoyoteTestPlatform | Validated | `ff75c36`; procedure walked in the editor; Part 3 now ends by turning Visible Collision Shapes back off |
+| 4.3 | Build a Reusable Level Scene | Level scene boundary, Save Branch as Scene, and the rule that the Player belongs to Main rather than to a level, and one Level root name shared by every level file | Validated | `e22943d`; procedure walked in the editor; the Visible Collision Shapes check was dropped from Part 3, which 4.2 now turns off |
+| 4.4 | Add Player Spawn Points | `Marker2D`, `@onready`, node references, `global_position`, an orchestrator script on Main, and a level that answers one typed question | Validated | `872b87d`; procedure walked in the editor |
+| 4.5 | Add One-Way Platforms | Alternative tiles, one-way collision on a tile's polygon, per-tile `Modulate`, a second terrain in the same terrain set, a second level layer, and sibling draw order | Validated | `18202bf`; procedure walked in the editor, terrain 1 renamed 'Platform', variants corrected from row 0 to row 3, terrain and draw order re-audited |
+| 4.6 | Add Moving Platforms | `AnimatableBody2D`, `sync_to_physics`, a reusable moving-surface scene, a `TileMapLayer` used as artwork with its collision disabled, `Vector2.move_toward()`, and an exported `Vector2` offset | Validated | `e211d40`; built in the editor and validated against the running project |
+| 4.7 | Add Level Bounds and Fall Detection | A pit in the terrain, `StaticBody2D` walls, a fall-limit marker, a second question the level answers, the Player's first non-callback method, and a per-frame check in the orchestrator | Validated | `471906c`, with Part 6 added in `7cdc590`; built in the editor and validated against the running project; a seventh part was added so every level file carries its own fall limit |
+| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, a saved-value audit after seven exercises, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | `12036c4`, rewritten in `a0bc0a8`; rewritten for GitHub Desktop and awaiting a replay |
 
 ### Module 5: Camera and Character Presentation
 
@@ -778,8 +790,10 @@ in the local course files:
 - Lesson 1.1 no longer treats the single-word node name `Main` as an example
   of PascalCase; naming conventions will be introduced later with useful
   multiword examples.
-- Lesson 0.4's missing step number is corrected.
-- Lesson 0.3's recovery notes now sit beside the lesson parts they address.
+- Lesson 0.4's missing step number was corrected, and Lesson 0.3's recovery
+  notes were moved beside the parts they address. Both repairs applied to the
+  versions of those lessons that the GitHub Desktop rewrite has since
+  replaced, so neither is a live claim about the current files.
 
 Remaining reconciliation work:
 
@@ -818,7 +832,7 @@ Remaining reconciliation work:
 | Match temporary Player collision to its visible marker without changing Actor's shared default | Lesson 2.8 replaces Player's inherited Shape with a local 128-by-128 rectangle matching its temporary marker. Actor keeps its reusable 32-by-32 placeholder, and later actor specializations choose collision shapes that fit their own visuals. |
 | Connect the existing Godot folder to Codex during the first Git checkpoint (superseded) | Module 0 now gives each lesson one explicit responsibility: install the tools in 0.1, create the only Godot project in 0.2, configure Git without creating a repository in 0.3, then associate the existing folder with Codex and checkpoint it in 0.4. The learner initializes Git manually in Codex's terminal, uses a read-only prompt to review the proposed checkpoint, inspects the diff, and commits through Codex's Git controls. Later checkpoints should use prompts only when review, explanation, or error detection adds value. |
 | Keep the first Codex/Git checkpoint focused (superseded) | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
-| Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
+| Validate Lesson 0.4 without a separate empty-project replay (superseded) | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
 | Add one reviewed Git checkpoint at the end of each completed module (partly superseded) | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
 | Set the game window in Module 1 and size the world at 1920 by 1080 | Lesson 1.1 ran the project in Godot's default 1152-by-648 window, which is uncomfortably small on a high-resolution monitor and was never a deliberate choice. New Lesson 1.2 sets the viewport, stretch mode, and aspect right after the learner first feels the problem, following the same reasoning that placed viewport navigation in 1.1. Later Module 1 lessons shift to 1.3-1.6. Because jump height is a fixed pixel distance rather than a proportion of the screen, a larger viewport makes the same jump look smaller, so `jump_velocity` moved from `-400.0` to `-700.0` and the Player again clears twice its own height. The Floor, the test platform, and the 200-pixel step between them were repositioned to match. The result felt floaty and slow, so a follow-up pass raised `gravity` to `2400.0` and `jump_velocity` to `-1100.0`, cutting airtime from 1.47 to 0.97 seconds at the same height, and scaled the three horizontal values by 1.5 to `450.0`, `1800.0`, and `2700.0`. The jump-velocity range widened to `-1500.0` so the new default is not pinned at the limit. |
 | Create the first checkpoint with Git commands, not the Codex controls (superseded) | Lesson 0.4 now has the learner stage with `git add .`, read `git status`, and commit with `git commit -m`. The Codex Review tab and the read-only AI review are unchanged, because inspecting a diff visually is genuinely easier for a beginner. Typing the commands once makes the later checkpoint lessons' offline fallback actionable, keeps the commands transferable to any editor, and limits how much of the course depends on third-party UI wording that cannot be version-frozen the way the Godot version is. Modules 1 onward still use the Codex controls as the convenient path, so the manual cycle is taught first and the tool is used afterward. |
