@@ -14,6 +14,11 @@ so its visible boundary and physical boundary remain easy to compare.
 This lesson adds only horizontal movement. Gravity, floor collision, jumping,
 camera behavior, and player artwork will be added later.
 
+- A Player that moves left and right under your control.
+- Input read as a single number, so keyboard and controller behave alike.
+- A collision shape that matches the marker you can see, so the two are easy
+  to compare.
+
 ## Before you start
 
 - Module 2, Lesson 7 is complete.

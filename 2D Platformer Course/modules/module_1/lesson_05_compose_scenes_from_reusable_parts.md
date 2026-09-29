@@ -9,11 +9,10 @@ will see how source-scene changes reach every linked instance, how a property
 customized on one instance becomes an override, and how an independent copy
 stops following the source at all.
 
-- `res://scenes/project_icon.tscn` contains a `Sprite2D` root named
-  `ProjectIcon`.
-- `Main` retains its direct `Label` child at Position `(0, 0)`.
-- `Main` contains one `ProjectIcon` instance at Position `(256, 240)`.
-- Running the project displays `Project ready` and the project icon.
+- The icon saved as a scene of its own, so it can be used more than once.
+- One instance of that scene in `Main`, still linked to its source.
+- Proof that editing the source reaches every instance.
+- Proof that an independent copy stops listening to the source.
 
 ## Before you start
 

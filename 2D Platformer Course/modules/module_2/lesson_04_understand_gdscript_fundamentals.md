@@ -13,6 +13,10 @@ This is a code-reading lesson. You will not attach a script or change the
 Godot project yet. Its purpose is to make the first gameplay script feel
 understandable rather than mysterious.
 
+- What a comment, a value, a variable, and a type each are.
+- Which operators the Player script uses, and what each one does.
+- Why GDScript treats indentation as part of the code.
+
 ## Before you start
 
 - Module 2, Lesson 3 is complete.

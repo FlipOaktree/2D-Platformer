@@ -9,8 +9,8 @@ is the material; drawing a level with it is the next lesson. By the end of this
 one the tiles exist, they are solid, and you have watched the Player stand on
 tiles you painted yourself.
 
-- `res://levels/tiles/terrain_tileset.tres` is a reusable TileSet holding 47
-  tiles of 64 by 64 pixels.
+- A reusable TileSet at `res://levels/tiles/terrain_tileset.tres`, holding
+  every tile the levels in this module are made from.
 - Every tile carries a collision shape, so a painted tile is solid ground.
 - `main.tscn` contains a `Terrain` layer, ready to paint on and empty.
 - The temporary `Floor` and `CoyoteTestPlatform` are still in place. The next

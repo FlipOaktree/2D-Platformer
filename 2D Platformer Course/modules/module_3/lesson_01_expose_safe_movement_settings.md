@@ -9,12 +9,10 @@ tuned without editing the movement code. Each setting will keep the validated
 default from Module 2, use a range that prevents values which reverse its
 intended direction, and provide a short tooltip explaining what it controls.
 
-- **Speed** defaults to `450.0` and allows values from `0.0` to `1000.0`.
-- **Gravity** defaults to `2400.0` and allows values from `0.0` to `3000.0`.
-- **Jump Velocity** defaults to `-1200.0` and allows values from `-1500.0` to
-  `0.0`.
-- Running `main.tscn` with the defaults preserves the movement, falling,
-  landing, and grounded jumping validated in Module 2.
+- The movement values moved out of the code and into the Inspector.
+- A range on each one, so a tuning experiment cannot reverse its direction.
+- A tooltip on each one, so its meaning survives being read months later.
+- The same feel as Module 2 whenever the defaults are left alone.
 
 ## Before you start
 

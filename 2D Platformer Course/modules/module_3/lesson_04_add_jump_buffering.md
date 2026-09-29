@@ -8,14 +8,10 @@ Remember a jump press made shortly before the Player lands, then start the jump
 as soon as landing makes jumping possible. This makes slightly early input feel
 more responsive without adding an air jump.
 
-- **Jump Buffer Time** defaults to `0.1` seconds.
-- The setting appears in the Player Inspector with a documentation tooltip and
-  a safe range from `0.0` to `0.5` seconds in steps of `0.01`.
-- A script-level countdown remembers a recent jump request.
-- The jump condition separates whether a jump was requested from whether the
-  Player is currently allowed to jump.
-- The raised platform from Lesson 3.3 remains above the original Floor so the
-  buffered landing can be tested repeatedly.
+- A jump pressed just before landing remembered, then started on landing.
+- A second countdown, kept separate from the coyote one.
+- The jump condition split in two: was a jump asked for, and is one allowed.
+- Still no air jump, because the permission half never changes.
 
 ## Before you start
 

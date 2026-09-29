@@ -8,9 +8,9 @@ Associate Codex with the Godot project folder created in Lesson 0.2, then give
 it a read-only first task. This does not create, duplicate, or move the Godot
 project.
 
-- Codex opens the folder containing `project.godot`.
-- Codex answers a first task without changing any file.
-- The learner can state what Codex can and cannot see.
+- Codex is pointed at the Godot project folder and nothing else.
+- A first task that only reads, so you can judge its answer by reading.
+- You can say what Codex can see and what it cannot.
 
 ## Before you start
 

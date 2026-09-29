@@ -8,6 +8,10 @@ Pass values into a custom function, return a calculated value, and print the
 result in Godot's Output panel. You will use a small coin-total example, then
 remove the temporary code so the Player script is ready for movement.
 
+- A function of your own that takes values in and hands a value back.
+- The names for the parts: parameter, argument, and return value.
+- Why a function that returns is more reusable than one that prints.
+
 ## Before you start
 
 - Module 2, Lesson 5 is complete.

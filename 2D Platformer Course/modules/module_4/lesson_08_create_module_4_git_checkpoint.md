@@ -14,8 +14,7 @@ back.
   you meant to keep rather than one an exercise left behind.
 - The tile set, the two levels, the moving platform, and the two new scripts
   are all present and understood.
-- The reviewed Module 4 changes are recorded in one new commit on `main`.
-- That commit is on GitHub as well as on this computer.
+- One commit holding Module 4's work, and a copy of it on GitHub.
 
 ## Before you start
 

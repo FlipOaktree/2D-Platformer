@@ -7,9 +7,9 @@
 Create a tested Git checkpoint for the completed Module 1 scene foundations and
 send it to your private GitHub repository.
 
-- The Module 1 scene changes are recorded in one new commit on `main`.
-- That commit is on GitHub as well as on this computer.
-- The **Changes** tab is empty afterward.
+- One commit that records Module 1's scene work and nothing else.
+- A copy of it on GitHub, so the checkpoint is not only on this machine.
+- The order every later checkpoint follows: test, read the changes, commit.
 
 ## Before you start
 

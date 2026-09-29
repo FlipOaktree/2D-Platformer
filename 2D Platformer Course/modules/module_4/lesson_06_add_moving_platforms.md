@@ -16,8 +16,8 @@ Player's feet, and the Player goes along for the ride.
   fast, so a second copy can be a lift without touching the script.
 - `level_1.tscn` holds one instance, reachable by a jump from the solid
   platform.
-- Standing still on it moves the Player. Running, jumping, coyote time, jump
-  buffering, and variable jump height are unchanged.
+- Standing still on it carries the Player along, with every movement feature
+  from Module 3 left untouched.
 
 ## Before you start
 

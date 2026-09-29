@@ -5,16 +5,13 @@
 ## By the end
 
 Create a reusable `Player` scene that inherits the shared structure from
-`Actor`, then add one `Player` instance to `Main`. The finished project will
-contain:
+`Actor`, then add one `Player` instance to `Main`. The Player will not move or
+display artwork yet.
 
-- `res://actors/player.tscn`, inherited from `res://actors/actor.tscn`.
-- A `CharacterBody2D` root named `Player`.
-- The inherited `Visuals`, `CollisionShape2D`, and `Components` children.
-- One `Player` instance in `main.tscn` at Position `(128, 128)`.
-
-The player will not move or display artwork yet. With collision shapes visible
-for debugging, its square collision boundary will appear when the project runs.
+- A `Player` scene inherited from `Actor` rather than copied from it, so a
+  later change to `Actor` still reaches it.
+- The shared children arriving for free, with nothing rebuilt by hand.
+- One Player in `Main`, visible as a collision box until artwork arrives.
 
 ## Before you start
 

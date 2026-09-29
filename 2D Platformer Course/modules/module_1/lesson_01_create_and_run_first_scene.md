@@ -9,11 +9,10 @@ first visible result introduces the scene structure that later gameplay
 features will build on. You will also learn how to find and inspect small
 content in the 2D viewport without moving it.
 
-- A `Main` scene exists at `res://scenes/main.tscn`.
-- Its root is a `Node2D` named `Main`.
-- It contains a `Label` child at Position `(0, 0)` that displays
-  `Project ready`.
-- Running the current scene and the whole project both show that message.
+- A saved `Main` scene that every later scene will hang off.
+- A `Label` inside it, so the project has something visible to run.
+- The project knows which scene to open when it starts.
+- You can move around the 2D viewport without moving what you are looking at.
 
 ## Before you start
 

@@ -8,11 +8,12 @@ Give GitHub Desktop a deliberate commit identity, turn the Godot project
 folder into a Git repository, save its first checkpoint, and back that
 checkpoint up to a private GitHub repository.
 
-- Commits carry an intentional author name and email.
-- The project folder is a Git repository on `main`.
-- Generated Godot files are excluded from Git.
-- The first commit contains only reviewed project files.
-- A private GitHub repository holds a copy of that commit.
+- Commits carry a name and email you chose rather than a default.
+- The project folder becomes a Git repository, so its history is kept.
+- Godot's generated files stay out of that history.
+- A first checkpoint containing only files you looked at and understood.
+- A private GitHub repository holds a copy, so the work survives this
+  computer.
 
 ## Before you start
 

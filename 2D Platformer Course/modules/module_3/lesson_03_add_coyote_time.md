@@ -8,12 +8,10 @@ Give the Player a short grace period for jumping after walking off a ledge.
 The Player will still jump normally from the floor, but a slightly late button
 press will feel more forgiving.
 
-- **Coyote Time** defaults to `0.1` seconds.
-- The setting appears in the Player Inspector with a documentation tooltip and
-  a safe range from `0.0` to `0.5` seconds in steps of `0.01`.
-- A script-level countdown tracks the remaining grace time.
-- A raised `CoyoteTestPlatform` provides a repeatable ledge while the original
-  temporary Floor remains below it as a safe landing surface.
+- A short grace period after walking off a ledge, so a late press still jumps.
+- A countdown in the script that measures how much grace is left.
+- An Inspector setting deciding how forgiving that grace period is.
+- A raised platform to walk off repeatedly, with the Floor below to land on.
 
 ## Before you start
 

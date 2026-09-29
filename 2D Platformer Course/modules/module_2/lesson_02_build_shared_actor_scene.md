@@ -6,16 +6,13 @@
 
 Create a reusable `Actor` scene that gives future players, NPCs, and enemies a
 small shared structure without giving every actor the same gameplay features.
-The finished scene will contain:
+It will not contain a script, movement, health, combat, or other optional
+behavior yet.
 
-- A `CharacterBody2D` root named `Actor`.
-- A `Node2D` child named `Visuals` for sprites and other visual nodes.
-- A `CollisionShape2D` child with a `RectangleShape2D` placeholder.
-- A `Node2D` child named `Components` for optional feature scenes added later.
-
-The scene will be saved as `res://actors/actor.tscn`. It will not contain a
-script, movement, health, combat, or other optional behavior yet. Running the
-project will still display `Project ready` and the project icon.
+- A `CharacterBody2D` root, so every actor is already a physics body.
+- `Visuals`, a place for sprites and anything else that is only seen.
+- A placeholder collision shape, so the body has a size to start from.
+- `Components`, an empty place for the optional features later modules add.
 
 ## Before you start
 

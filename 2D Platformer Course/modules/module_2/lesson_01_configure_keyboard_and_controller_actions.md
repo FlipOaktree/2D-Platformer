@@ -5,15 +5,13 @@
 ## By the end
 
 Create three named input actions that later player code can use without caring
-whether the player uses a keyboard or a controller. The running project will
-still display `Project ready` and the project icon, while the Input Map will
-contain:
+whether the player uses a keyboard or a controller.
 
-- `move_left`, controlled by `A`, `Left Arrow`, controller D-pad left, and the
-  left stick moved left.
-- `move_right`, controlled by `D`, `Right Arrow`, controller D-pad right, and
-  the left stick moved right.
-- `jump`, controlled by `Space` and the controller's bottom face button.
+- `move_left` and `move_right`, each answering to a letter key, an arrow, the
+  D-pad, and the left stick.
+- `jump`, answering to Space and the controller's bottom face button.
+- Player code that asks for an action by name and never asks which device
+  produced it.
 
 ## Before you start
 

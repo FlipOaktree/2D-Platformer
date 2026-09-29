@@ -12,6 +12,10 @@ is airborne.
 This lesson does not add jumping. Lesson 2.11 will use the established floor
 state to decide when the Player can jump.
 
+- A decision made in code, with `if`, `else`, and `not`.
+- The Player's floor state printed, so you can watch it change.
+- Gravity applied only while airborne, using that same condition.
+
 ## Before you start
 
 - Module 2, Lesson 9 is complete.

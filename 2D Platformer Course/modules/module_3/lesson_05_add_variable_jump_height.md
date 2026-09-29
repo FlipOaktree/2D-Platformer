@@ -8,13 +8,11 @@ Let the length of the jump press control the height of the jump. A quick tap
 produces a low hop, while holding the button produces the full jump the Player
 already has.
 
-- **Jump Release Multiplier** defaults to `0.5`.
-- The setting appears in the Player Inspector with a documentation tooltip and
-  a safe range from `0.0` to `1.0` in steps of `0.05`.
-- Releasing the jump button while the Player is still rising keeps only that
-  portion of the upward speed.
-- Releasing the button while the Player is falling changes nothing.
-- Grounded jumping, coyote time, and jump buffering continue to work unchanged.
+- A tap that gives a low hop and a hold that gives the full jump.
+- One Inspector setting deciding how much of the rise a release keeps.
+- A release while falling left alone, because there is no rise left to cut.
+- Grounded jumping, coyote time, and jump buffering still working alongside
+  it.
 
 ## Before you start
 

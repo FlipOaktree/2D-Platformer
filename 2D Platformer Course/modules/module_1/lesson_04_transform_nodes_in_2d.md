@@ -9,10 +9,10 @@ toolbar tools in order: Move, Rotate, and Scale. You will connect each visual
 tool to its matching Inspector property and observe how a parent's transform
 affects its children.
 
-- `Label` remains at Position `(0, 0)` and displays `Project ready`.
-- `ProjectIcon` displays `icon.svg` at Position `(256, 240)`, Rotation `0°`,
-  and Scale `(0.125, 0.125)`.
-- `Main` remains at Position `(0, 0)`.
+- An icon in the scene that you can move, turn, and resize.
+- Each toolbar tool connected to the Inspector property it changes.
+- Proof that moving a parent moves its children without changing their own
+  numbers.
 
 ## Before you start
 

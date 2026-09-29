@@ -9,12 +9,10 @@ acceleration and deceleration. Maximum speed will remain unchanged, while the
 Player will take a short, visible amount of time to reach that speed and stop
 after input is released.
 
-- **Acceleration** defaults to `1800.0` pixels per second squared.
-- **Deceleration** defaults to `2700.0` pixels per second squared.
-- Both settings appear in the Player Inspector with documentation tooltips and
-  safe ranges from `100.0` to `5000.0` in steps of `100.0`.
-- Horizontal movement becomes smoother without changing gravity, floor
-  collision, or grounded jumping.
+- A Player that takes a moment to reach full speed instead of snapping to it.
+- The same moment in reverse once you let go.
+- Two Inspector settings deciding how long each of those takes.
+- Maximum speed, gravity, floor collision, and jumping all left alone.
 
 ## Before you start
 

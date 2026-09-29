@@ -9,12 +9,10 @@ send it to your private GitHub repository. Module 3 changed a single script
 heavily rather than adding many files, so the review focuses on whether the
 settings and the interacting jump timers are the ones you meant to keep.
 
-- The Player accelerates, decelerates, reverses, falls, and lands as tuned.
-- Grounded jumping, coyote time, jump buffering, and variable jump height all
-  work together.
-- The eight movement settings show their validated defaults in the Inspector.
-- The reviewed Module 3 changes are recorded in one new commit on `main`.
-- That commit is on GitHub as well as on this computer.
+- A tested controller: it accelerates, decelerates, and jumps three ways.
+- The eight settings checked against their tuned defaults before anything is
+  saved, since every Module 3 exercise changed one and put it back.
+- One commit holding Module 3's work, and a copy of it on GitHub.
 
 ## Before you start
 

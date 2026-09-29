@@ -8,12 +8,10 @@ Create one tested Git checkpoint for the completed Player foundation and send
 it to your private GitHub repository. More files changed than in Module 1, so
 the review is the part that deserves your time.
 
-- The Player responds to the configured keyboard controls and, when available,
-  the configured controller controls.
-- The Player moves horizontally, falls onto the floor, and jumps only while
-  grounded.
-- The reviewed Module 2 changes are recorded in one new commit on `main`.
-- That commit is on GitHub as well as on this computer.
+- A tested Player: it runs, falls, lands, and jumps only from the floor.
+- One commit holding Module 2's work and nothing else.
+- A copy of it on GitHub.
+- Practice reading a change list that is too big to skim.
 
 ## Before you start
 

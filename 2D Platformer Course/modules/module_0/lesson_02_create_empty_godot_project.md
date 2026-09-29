@@ -9,11 +9,11 @@ platformer template. Starting empty makes it clear where every later setting,
 scene, script, and asset comes from. This is the only Module 0 lesson that
 creates the Godot project and its files.
 
-- The `2D Platformer` project opens without errors.
-- The project uses the **Forward+** renderer.
-- The learner can locate the complete project folder in Windows.
-- The learner records the folder's full Windows path for Lesson 0.3.
-- The learner understands what `project.godot` does.
+- An empty `2D Platformer` project that every later lesson builds on.
+- The **Forward+** renderer, chosen once so no later lesson revisits it.
+- You can find the project folder in Windows, with its path written down for
+  Lesson 0.3.
+- You know what `project.godot` is and why its location matters.
 
 ## Before you start
 
