@@ -68,8 +68,7 @@ project and back them up online.
 6. Confirm that Codex is using the **Windows-native agent**. In Codex, open the
    agent or environment selector near the message box and select the option
    labeled **Windows-native**. Do not select a WSL or Linux environment.
-7. Beneath the message box, select **Ask for approval** so sandbox protections
-   are active. A sandbox is a restricted area an application is allowed to work in, so Codex cannot reach files elsewhere on your computer. This limits where it can work and lets you review broader actions first. Once a project is connected, Codex can inspect its files, but you still need to review and test its suggestions.
+7. Beneath the message box, select **Ask for approval** so sandbox protections are active to limit where Codex can work and to let you review broader actions first. Once a project is connected, Codex can inspect its files, but you still need to review and test its suggestions.
 8. Do not add a local project to Codex yet. Lesson 0.2 first creates the Godot
    project folder; Lesson 0.3 then connects that existing folder to Codex.
 
@@ -83,15 +82,15 @@ project and back them up online.
 
 ### Part 3: Create a GitHub account and install GitHub Desktop
 
-> 💡 **GitHub** is a website that stores copies of projects online. **GitHub
-> Desktop** is a free application that saves versions of a project and sends
-> them to GitHub without typing any commands. Later lessons use it at the end
-> of each module to record a tested version of the game.
+> 💡 **Git** is the tool that saves versions of your files, so you can compare
+> changes or return to an earlier one. **GitHub** is a website that stores
+> copies of projects online. **GitHub Desktop** is a free application that
+> uses Git to save those versions and sends them to GitHub, without typing any
+> commands. Later lessons use it at the end of each module to record a tested
+> version of the game.
 
-1. Open the official [GitHub sign-up page](https://github.com/signup) and
-   create a free account, completing any required verification.
-2. Download the Windows version from the official
-   [GitHub Desktop page](https://github.com/apps/desktop).
+1. Open the official [GitHub sign-up page](https://github.com/signup) and create a free account, completing any required verification.
+2. Download the Windows version from the official [GitHub Desktop page](https://github.com/apps/desktop).
 3. Run the downloaded installer.
 4. Open GitHub Desktop and choose the option to sign in to GitHub.com.
 5. Complete the sign-in in the browser window that opens, then return to
@@ -128,8 +127,7 @@ Without reading the steps again:
 - [ ] GitHub Desktop is installed from the official source.
 - [ ] GitHub Desktop is signed in to a GitHub account.
 - [ ] No repository has been created or cloned yet.
-- [ ] The learner can explain the different roles of Godot, Codex, and GitHub
-      Desktop.
+- [ ] The learner can explain the different roles of Godot, Codex, and GitHub Desktop.
 
 ## References
 
