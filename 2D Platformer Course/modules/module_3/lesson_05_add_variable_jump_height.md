@@ -18,7 +18,7 @@ already has.
 ## Before you start
 
 - Module 3, Lesson 4 is complete.
-- `res://actors/player.gd` contains the validated acceleration, deceleration,
+- `res://actors/player.gd` contains the acceleration, deceleration,
   gravity, grounded jump, coyote-time, and jump-buffering logic.
 - `res://scenes/main.tscn` contains the original Floor and the centered raised
   `CoyoteTestPlatform`.
@@ -52,7 +52,7 @@ update of a press. Nothing in the script reacts to the button being let go.
 > ⚠️ **If something differs**
 >
 > - If the two jumps already reach different heights, compare `player.gd` with
->   the validated Lesson 3.4 script before continuing.
+>   the Lesson 3.4 script before continuing.
 > - If the Player cannot jump at all, confirm that the `jump` action from
 >   Lesson 2.1 is still assigned to Space and the controller's bottom button.
 
@@ -277,7 +277,7 @@ with the completed script in Part 3, then continue.
 > ⚠️ **If something differs**
 >
 > - If a held jump no longer reaches the platform, confirm that Jump Release
->   Multiplier is `0.5` and that `jump_velocity` still uses its validated
+>   Multiplier is `0.5` and that `jump_velocity` still uses its
 >   default of `-1200.0`.
 > - If tapping produces no visible difference, confirm that `player.gd` was
 >   saved and that the new block sits inside `_physics_process()`.

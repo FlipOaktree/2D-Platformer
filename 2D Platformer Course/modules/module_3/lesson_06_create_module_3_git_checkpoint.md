@@ -161,7 +161,7 @@ Without creating another commit:
       work before the checkpoint.
 - [ ] Grounded jumping, coyote time, jump buffering, and variable jump height
       work before the checkpoint.
-- [ ] The eight Inspector settings show their validated defaults, with no value
+- [ ] The eight Inspector settings show their tuned defaults, with no value
       left at an exercise setting.
 - [ ] Configured controller behavior works when compatible hardware is
       available.

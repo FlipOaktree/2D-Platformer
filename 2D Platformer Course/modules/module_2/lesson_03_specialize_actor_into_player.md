@@ -17,7 +17,7 @@ display artwork yet.
 ## Before you start
 
 - Module 2, Lesson 2 is complete.
-- `res://actors/actor.tscn` contains the validated shared Actor structure.
+- `res://actors/actor.tscn` contains the shared Actor structure.
 - `main.tscn` displays `Project ready` and contains one `ProjectIcon` instance.
 - The project opens and runs without related errors or warnings.
 

@@ -16,7 +16,7 @@ more responsive without adding an air jump.
 ## Before you start
 
 - Module 3, Lesson 3 is complete.
-- `res://actors/player.gd` contains the validated acceleration, deceleration,
+- `res://actors/player.gd` contains the acceleration, deceleration,
   gravity, grounded jump, and coyote-time logic.
 - `res://scenes/main.tscn` contains the original Floor and the centered raised
   `CoyoteTestPlatform`.
@@ -53,7 +53,7 @@ not a coyote jump.
 > - If the Player misses the Floor, confirm that the original Floor remains at
 >   Position `(960, 992)` with its 1920-by-64 rectangle shape.
 > - If the Player cannot use the raised platform, compare `main.tscn` and
->   `player.gd` with the validated Lesson 3.3 result before continuing.
+>   `player.gd` with the Lesson 3.3 result before continuing.
 
 ### Part 2: Add the buffer setting and countdown
 
@@ -325,7 +325,7 @@ with the completed script in Part 3, then continue.
 - [ ] A press shortly before landing starts a jump when the Player lands.
 - [ ] A press made too early expires without starting a jump upon landing.
 - [ ] The Player cannot start a second jump while airborne.
-- [ ] The Floor and `CoyoteTestPlatform` retain their validated Lesson 3.3
+- [ ] The Floor and `CoyoteTestPlatform` retain their Lesson 3.3
       positions and collision shapes.
 - [ ] Acceleration, deceleration, reversal, gravity, landing, and maximum speed
       remain unchanged.

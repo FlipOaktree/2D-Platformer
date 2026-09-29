@@ -5,7 +5,7 @@
 ## Lesson goals
 
 Expose the Player's existing movement values in the Inspector so they can be
-tuned without editing the movement code. Each setting will keep the validated
+tuned without editing the movement code. Each setting will keep the
 default from Module 2, use a range that prevents values which reverse its
 intended direction, and provide a short tooltip explaining what it controls.
 
@@ -17,11 +17,11 @@ intended direction, and provide a short tooltip explaining what it controls.
 ## Before you start
 
 - Module 2 is complete.
-- `res://actors/player.gd` contains the validated `speed`, `gravity`, and
+- `res://actors/player.gd` contains the `speed`, `gravity`, and
   `jump_velocity` variables.
 - `main.tscn` contains one Player instance and the temporary Floor.
 - The Player moves horizontally, falls, lands, and jumps only while grounded.
-- The Input Map still supports the validated keyboard and controller actions.
+- The Input Map still supports the keyboard and controller actions.
 
 ## Build steps
 
@@ -112,7 +112,7 @@ use a different kind of comment to document a setting for the Inspector.
 The range starts at `0.0`, so an Inspector edit cannot turn a positive movement
 speed into an unintended negative direction. The upper limit keeps early
 tuning within a practical test range, while steps of `10.0` make the slider
-easy to adjust. The validated `450.0` remains the default.
+easy to adjust. The `450.0` value remains the default.
 
 2. Save `player.gd` with `Ctrl+S`.
 3. Open `res://actors/player.tscn` and select the `Player` root.
@@ -216,7 +216,7 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 9. Save `player.gd` with `Ctrl+S`.
 10. In `player.tscn`, reselect the Player root and confirm that **Speed**,
     **Gravity**, and **Jump Velocity** appear in the Inspector.
-11. Confirm that the three Inspector values match their validated defaults.
+11. Confirm that the three Inspector values match their default values.
 12. Hover over each property name and confirm that its tooltip explains the
     setting.
 13. Confirm that each control stops at its documented minimum and maximum,
@@ -239,7 +239,7 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 1. Open `res://scenes/main.tscn` and run the current scene with `F6`.
 2. Confirm that the default horizontal movement, gravity, and grounded jump
    still behave as they did in Module 2.
-3. Test the validated keyboard controls and, when available, the configured
+3. Test the keyboard controls and, when available, the configured
    controller controls.
 4. Stop the scene with `F8`.
 5. Open `res://actors/player.tscn`, select the Player root, and change
@@ -247,7 +247,7 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 6. Save `player.tscn`, run `main.tscn`, and confirm that horizontal movement
    is slower while gravity and jumping still work.
 7. Stop the scene, restore **Speed** to `450.0`, and save `player.tscn`.
-8. Run `main.tscn` once more and confirm that the validated default movement
+8. Run `main.tscn` once more and confirm that the default movement
    has returned without parser errors, runtime errors, or unexplained
    warnings.
 
@@ -256,7 +256,7 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 > - If the Inspector value changes but movement does not, confirm that the
 >   script still multiplies horizontal input by `speed`.
 > - If changing **Speed** also changes falling or jumping, compare
->   `_physics_process()` with the validated Module 2 script and confirm that
+>   `_physics_process()` with the Module 2 script and confirm that
 >   its calculations were not edited.
 > - If the final movement remains slow, restore **Speed** to `450.0` on the
 >   Player source scene and save it before running again.

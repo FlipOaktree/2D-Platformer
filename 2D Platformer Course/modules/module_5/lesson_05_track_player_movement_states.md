@@ -21,7 +21,7 @@ across separate conditions and nothing stores the result.
 ## Before you start
 
 - Module 5, Lesson 4 is complete.
-- `res://actors/player.gd` contains the validated movement logic from Module 3:
+- `res://actors/player.gd` contains the movement logic from Module 3:
   acceleration, deceleration, gravity, grounded jump, coyote time, jump
   buffering, and variable jump height.
 - The Player has imported character art and a working camera from Lessons 5.1
@@ -60,7 +60,7 @@ to know what the Player is doing has to work it out again from scratch.
 > ⚠️ **If something differs**
 >
 > - If any of the three conditions is missing, compare `player.gd` with the
->   validated Module 3 movement script before continuing.
+>   Module 3 movement script before continuing.
 
 ### Part 2: Name the states
 

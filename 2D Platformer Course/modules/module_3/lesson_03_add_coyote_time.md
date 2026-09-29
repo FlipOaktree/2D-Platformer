@@ -18,7 +18,7 @@ press will feel more forgiving.
 ## Before you start
 
 - Module 3, Lesson 2 is complete.
-- `res://actors/player.gd` contains the validated exported movement settings,
+- `res://actors/player.gd` contains the exported movement settings,
   target-based horizontal movement, gravity, and grounded jump.
 - `main.tscn` contains the Player and the temporary full-width Floor.
 - Keyboard movement and jumping work, and configured controller input works
@@ -302,7 +302,7 @@ prompt directly with the completed script in Part 3, then continue.
 >   while grounded and that the jump condition uses `can_jump`.
 > - If the Player cannot reach the platform from the Floor, confirm that the
 >   platform Position is `(960, 736)` and that `jump_velocity` still uses its
->   validated default of `-1200.0`.
+>   default of `-1200.0`.
 
 ## Learner exercise
 

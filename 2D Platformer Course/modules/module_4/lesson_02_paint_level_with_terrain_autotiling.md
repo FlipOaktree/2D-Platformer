@@ -223,7 +223,7 @@ shows both a collision outline and a green terrain centre.
 >   that each collision polygon covers the full tile rather than part of it.
 > - If the Player cannot reach the platform with the jump held, confirm that
 >   the platform surface is at `y = 704` and that `jump_velocity` still uses
->   its validated default of `-1200.0`.
+>   its default of `-1200.0`.
 > - If the Player catches on an invisible edge while running, one cell in the
 >   ground is empty. Look for a gap in the collision outlines.
 > - If a movement feature behaves differently, the cause is the level rather

@@ -23,7 +23,7 @@ Lesson 2.11.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
 - The Player has a 128-by-128 collision-shape override matching its temporary
   128-by-128 visual marker. Actor retains its shared 32-by-32 placeholder.
-- `res://actors/player.gd` contains the validated horizontal movement code
+- `res://actors/player.gd` contains the horizontal movement code
   from Lesson 2.8.
 - The project runs without related errors or warnings.
 

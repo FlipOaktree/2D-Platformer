@@ -19,9 +19,9 @@ after input is released.
 
 - Module 3, Lesson 1 is complete.
 - `res://actors/player.gd` contains the exported `speed`, `gravity`, and
-  `jump_velocity` settings with their validated defaults.
+  `jump_velocity` settings with their default values.
 - `_physics_process()` assigns `direction * speed` directly to `velocity.x`.
-- `main.tscn` contains the Player and temporary Floor, and the validated
+- `main.tscn` contains the Player and temporary Floor, and the
   movement and grounded jump work.
 
 ## Build steps
@@ -267,7 +267,7 @@ Without editing `player.gd`:
 
 ## Verification checklist
 
-- [ ] `speed`, `gravity`, and `jump_velocity` retain their validated defaults.
+- [ ] `speed`, `gravity`, and `jump_velocity` retain their default values.
 - [ ] `acceleration` is an exported `float` with default `1800.0`.
 - [ ] `deceleration` is an exported `float` with default `2700.0`.
 - [ ] Both new settings use a range of `100.0` through `5000.0` in steps of
