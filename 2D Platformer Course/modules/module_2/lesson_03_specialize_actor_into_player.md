@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Create a reusable `Player` scene that inherits the shared structure from
 `Actor`, then add one `Player` instance to `Main`. The Player will not move or

@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Attach the first script to `Player`, print a simple message in Godot's Output
 panel, and compare local and script-level variables. You will build the script

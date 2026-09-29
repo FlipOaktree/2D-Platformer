@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Add the Godot project icon to the main scene and transform it with the three
 toolbar tools in order: Move, Rotate, and Scale. You will connect each visual

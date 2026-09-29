@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 
-## By the end
+## Lesson goals
 
 Associate Codex with the Godot project folder created in Lesson 0.2, then give
 it a read-only first task. This does not create, duplicate, or move the Godot

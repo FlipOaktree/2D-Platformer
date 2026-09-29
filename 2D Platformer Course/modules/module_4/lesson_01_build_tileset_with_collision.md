@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Build the set of tiles that every level in this module is made from. A TileSet
 is the material; drawing a level with it is the next lesson. By the end of this

@@ -145,7 +145,7 @@ build steps where learners need them.
 
 Use this learner-facing lesson structure:
 
-1. **By the end** - a short paragraph giving the goal and any scope the
+1. **Lesson goals** - a short paragraph giving the goal and any scope the
    learner needs, then bullets naming what the lesson sets out to do. Begin
    each bullet with an -ing verb, so the list reads as a set of goals rather
    than a set of results: "Installing Godot and keeping it somewhere it will not
@@ -162,7 +162,7 @@ Use this learner-facing lesson structure:
    must change the project itself, end it with the exact value to restore.
 5. **Verification checklist** - the end state the lesson produces and the
    understanding it builds, not a restatement of each build step. This section
-   owns the checkable end state, so **By the end** states the goal and leaves
+   owns the checkable end state, so **Lesson goals** states the goal and leaves
    the values here.
 6. **References**.
 

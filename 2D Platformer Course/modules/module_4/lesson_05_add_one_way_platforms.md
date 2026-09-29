@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Add a platform the Player can jump up through from below and then stand on.
 The level already has a solid platform that stops a jump dead; this adds one

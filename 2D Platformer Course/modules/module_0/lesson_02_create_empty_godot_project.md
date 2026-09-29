@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Create and reopen the empty Godot project that will become the reusable 2D
 platformer template. Starting empty makes it clear where every later setting,

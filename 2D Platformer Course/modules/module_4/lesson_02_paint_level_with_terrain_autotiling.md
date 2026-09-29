@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Teach the tiles how they fit together, then draw the level by painting a shape
 instead of choosing tiles one at a time. The two grey test rectangles that have

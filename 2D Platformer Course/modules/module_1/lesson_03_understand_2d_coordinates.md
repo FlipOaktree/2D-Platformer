@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Understand how Godot describes a position in 2D using `x` and `y` coordinates.
 

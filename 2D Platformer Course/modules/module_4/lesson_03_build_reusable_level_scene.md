@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Move the painted level out of `main.tscn` and into a scene of its own, so a
 level becomes a thing you can make more of. Nothing about the game changes;

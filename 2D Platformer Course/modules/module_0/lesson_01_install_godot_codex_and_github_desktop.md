@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 
-## By the end
+## Lesson goals
 
 Install, open, and verify the three applications used throughout the course.
 Godot is where the game is built and run; Codex will later help inspect,

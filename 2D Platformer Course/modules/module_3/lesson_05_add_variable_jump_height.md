@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Let the length of the jump press control the height of the jump. A quick tap
 produces a low hop, while holding the button produces the full jump the Player

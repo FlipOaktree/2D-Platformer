@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Pass values into a custom function, return a calculated value, and print the
 result in Godot's Output panel. You will use a small coin-total example, then

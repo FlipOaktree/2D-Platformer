@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Create, save, and run a small main scene that displays `Project ready`. This
 first visible result introduces the scene structure that later gameplay

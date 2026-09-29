@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Create a reusable `Actor` scene that gives future players, NPCs, and enemies a
 small shared structure without giving every actor the same gameplay features.

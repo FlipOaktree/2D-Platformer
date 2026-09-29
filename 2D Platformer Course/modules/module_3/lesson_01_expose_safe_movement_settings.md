@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Expose the Player's existing movement values in the Inspector so they can be
 tuned without editing the movement code. Each setting will keep the validated

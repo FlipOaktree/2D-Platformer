@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Use the Player's floor state to make a decision with `if`, `else`, and `not`.
 The Output will show whether the Player is airborne or standing on the floor.

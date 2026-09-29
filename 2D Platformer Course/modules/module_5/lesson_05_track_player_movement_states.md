@@ -2,7 +2,7 @@
 
 **Status:** Blueprint drafted
 
-## By the end
+## Lesson goals
 
 Give the Player one named answer to the question "what is it doing right now?"
 The script already contains the facts needed to answer it, but they are spread

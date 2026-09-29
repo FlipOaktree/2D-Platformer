@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Turn `ProjectIcon` into a reusable scene and keep one instance in `Main`. You
 will see how source-scene changes reach every linked instance, how a property

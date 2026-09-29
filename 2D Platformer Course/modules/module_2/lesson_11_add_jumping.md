@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Make the Player jump from the floor with the existing `jump` action. The
 Player will jump when you press Space or the configured controller button, and

@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 
-## By the end
+## Lesson goals
 
 Create one tested Git checkpoint for the completed Player foundation and send
 it to your private GitHub repository. More files changed than in Module 1, so

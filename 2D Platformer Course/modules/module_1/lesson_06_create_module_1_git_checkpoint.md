@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 
-## By the end
+## Lesson goals
 
 Create a tested Git checkpoint for the completed Module 1 scene foundations and
 send it to your private GitHub repository.

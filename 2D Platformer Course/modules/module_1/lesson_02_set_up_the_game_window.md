@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Choose the size of the world the game draws, and make the running game
 comfortable to look at on your monitor. Lesson 1.1 ran the project in a small

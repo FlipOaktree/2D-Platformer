@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Understand the small set of GDScript building blocks needed to read and write
 the Player scripts introduced over the next lessons: comments, values,

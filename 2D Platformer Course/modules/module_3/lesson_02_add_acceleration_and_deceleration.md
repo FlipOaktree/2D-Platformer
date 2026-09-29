@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Replace the Player's instant horizontal starts and stops with configurable
 acceleration and deceleration. Maximum speed will remain unchanged, while the

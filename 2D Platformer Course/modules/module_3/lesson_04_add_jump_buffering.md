@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Remember a jump press made shortly before the Player lands, then start the jump
 as soon as landing makes jumping possible. This makes slightly early input feel

@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Give the Player a short grace period for jumping after walking off a ledge.
 The Player will still jump normally from the floor, but a slightly late button

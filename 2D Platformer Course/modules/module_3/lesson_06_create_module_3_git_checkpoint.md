@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 
-## By the end
+## Lesson goals
 
 Create one tested Git checkpoint for the completed responsive controller and
 send it to your private GitHub repository. Module 3 changed a single script

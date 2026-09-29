@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 
-## By the end
+## Lesson goals
 
 Give GitHub Desktop a deliberate commit identity, turn the Godot project
 folder into a Git repository, save its first checkpoint, and back that

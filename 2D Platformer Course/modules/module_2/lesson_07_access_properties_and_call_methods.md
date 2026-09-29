@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Read two common uses of the period in GDScript: accessing a property and
 calling a method. You will print the Player's horizontal position,

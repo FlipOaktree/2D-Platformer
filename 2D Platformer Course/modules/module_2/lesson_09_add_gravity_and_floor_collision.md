@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Add a temporary floor to `main.tscn`, then give the Player gravity. When you
 run the scene, the Player will fall, land on the floor, and retain the

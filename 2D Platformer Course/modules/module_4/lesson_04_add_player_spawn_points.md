@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Let each level say where the Player starts, instead of the Player sitting at a
 position somebody typed into `main.tscn`. This is the first time two nodes

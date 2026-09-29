@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Create three named input actions that later player code can use without caring
 whether the player uses a keyboard or a controller.

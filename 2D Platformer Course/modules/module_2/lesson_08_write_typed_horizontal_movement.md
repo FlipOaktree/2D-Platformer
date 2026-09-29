@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Build the Player's horizontal movement script one part at a time. When you run
 `main.tscn`, a temporary Player marker will move left with `A` or Left Arrow

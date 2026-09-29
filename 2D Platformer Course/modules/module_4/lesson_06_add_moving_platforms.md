@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Build a platform that travels back and forth and carries the Player with it.
 Everything solid so far has stayed where it was put. This one moves under the

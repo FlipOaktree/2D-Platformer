@@ -2,7 +2,7 @@
 
 **Status:** Validated
 
-## By the end
+## Lesson goals
 
 Give the level an edge it will not let you past, and a floor of last resort
 below it. Until now every surface has caught the Player. This lesson opens a
