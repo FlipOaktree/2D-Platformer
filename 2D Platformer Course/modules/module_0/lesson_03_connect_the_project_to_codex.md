@@ -35,11 +35,11 @@ local project to Codex only associates Codex with that existing folder.
 
 > ⚠️ **If something differs**
 >
-> - If Codex shows a different project, switch to `2D Platformer` before
->   starting a task. A task belongs to whichever project is current.
 > - If `project.godot` is missing from the folder you selected, you chose the
 >   parent folder or the generated `.godot` folder. Select the folder that
 >   holds `project.godot` instead.
+> - If Codex shows a different project, switch to `2D Platformer` before
+>   starting a task. A task belongs to whichever project is current.
 > - If the folder cannot be selected, confirm the path you recorded in
 >   Lesson 0.2.
 
@@ -58,10 +58,10 @@ local project to Codex only associates Codex with that existing folder.
 > A task that only reads can be judged by reading; a task that edits has to be
 > judged by inspecting and testing every change it made.
 
-> 💡 Codex reads the connected folder and nothing else. It cannot see this
-> course, other folders on your computer, or the game running. So it can only
-> answer questions about the files in front of it, and it is your job to check
-> its answer against everything it could not see.
+> 💡 In this course, Codex works from the files in the connected folder. It has
+> never read the lessons, and it cannot judge how the game looks or feels when
+> you play it. So its answers describe the files in front of it, and it is your
+> job to check them against everything it could not see.
 
 > ⚠️ **If something differs**
 >
