@@ -104,10 +104,15 @@ not infer progress from chat history or from learner verification checkboxes.
   mistakes`), with a clean working tree. Local `main` is one commit ahead of
   `origin/main`, which is at `b653f5d`.
 - **Exact next step:** Draft the Module 5, Lesson 5.1 blueprint, **Add a
-  Following Camera**, which opens Module 5. Module 4 is complete: Lesson 4.8,
-  **Create a Module 4 Git Checkpoint**, is Validated, and with it Lessons 4.1
-  to 4.8. It was validated the way Lesson 3.6 was, by replaying it in a scratch
-  clone rather than in the working repository. The clone was reset to the state
+  Following Camera**, which opens Module 5. Module 4 is built and tested:
+  Lessons 4.1 to 4.7 are Validated. Lesson 4.8, **Create a Module 4 Git
+  Checkpoint**, was Validated and has since been rewritten for GitHub Desktop,
+  so it is Implemented and awaits a replay, as Lessons 0.1, 0.3, 0.4, 1.6, 2.12
+  and 3.6 do. The evidence below applies to the superseded version of 4.8: the
+  tested project state it preserves is unchanged, but the staging, commit and
+  verification commands it describes are no longer in the lesson. It was
+  validated the way Lesson 3.6 was, by replaying it in a scratch clone rather
+  than in the working repository. The clone was reset to the state
   a learner reaches at the end of Module 3, and the resulting change set was
   compared against the lesson's expected file list by extracting the paths the
   lesson names and diffing them against `git status`: every named path was
@@ -492,7 +497,7 @@ explicit where the animation work first needs it.
 | 5.4 | Import Character Art | Import settings and sprite presentation, raster versus vector sources, and re-importing at a different scale | Planned | Unassigned |
 | 5.5 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()`; the state moves into the movement component in Lesson 6.1 | Blueprint drafted | `34c9235`; retuned values in `3abdd88` and `5ca7c9d` |
 | 5.6 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
-| 5.7 | Create a Module 5 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 5.7 | Create a Module 5 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 6: Shared Actor Capabilities
 
@@ -511,7 +516,7 @@ player, NPC, and enemy features reuse.
 | 6.7 | Add an Interaction Component | Generic interaction contract | Planned | Unassigned |
 | 6.8 | Add Persistent Actor Identity | Stable persistent IDs | Planned | Unassigned |
 | 6.9 | Customize and Remove Actor Components | Optional-component verification | Planned | Unassigned |
-| 6.10 | Create a Module 6 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 6.10 | Create a Module 6 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 7: Hazards, Defeat, and Respawning
 
@@ -525,7 +530,7 @@ identity to recovery and level reset behavior.
 | 7.3 | Respawn the Player | Respawn flow | Planned | Unassigned |
 | 7.4 | Add Respawn Checkpoints | Respawn checkpoint state | Planned | Unassigned |
 | 7.5 | Reset Level Actors Safely | Reset contract across actors | Planned | Unassigned |
-| 7.6 | Create a Module 7 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 7.6 | Create a Module 7 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 8: Player Combat
 
@@ -540,7 +545,7 @@ through the shared damage and faction contracts.
 | 8.4 | Add Knockback | Damage response data | Planned | Unassigned |
 | 8.5 | Add Temporary Invulnerability | Invulnerability window | Planned | Unassigned |
 | 8.6 | Customize or Remove Combat | Combat add/remove regression | Planned | Unassigned |
-| 8.7 | Create a Module 8 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 8.7 | Create a Module 8 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 9: Modular Enemies
 
@@ -555,7 +560,7 @@ distinct ground and flying enemy behaviors.
 | 9.4 | Create a Chasing Enemy | Targeting and chase behavior | Planned | Unassigned |
 | 9.5 | Create a Flying Enemy | Alternate movement capability | Planned | Unassigned |
 | 9.6 | Handle Enemy Defeat, Drops, and Reset | Enemy lifecycle and drops | Planned | Unassigned |
-| 9.7 | Create a Module 9 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 9.7 | Create a Module 9 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 10: Items, Inventory, and Equipment
 
@@ -572,7 +577,7 @@ with optional equipment and reusable world items.
 | 10.6 | Add Consumable Items | Item-use contract | Planned | Unassigned |
 | 10.7 | Add an Equipment Component | Optional equipment capability | Planned | Unassigned |
 | 10.8 | Extend Inventory Without Changing Its Core | Extension and regression exercise | Planned | Unassigned |
-| 10.9 | Create a Module 10 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 10.9 | Create a Module 10 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 11: NPCs and Dialogue
 
@@ -588,7 +593,7 @@ Resource-driven branching dialogue through the shared interaction contract.
 | 11.5 | Add Branching Choices | Choice paths | Planned | Unassigned |
 | 11.6 | Add Conditions and Actions | Data-driven conditions/actions | Planned | Unassigned |
 | 11.7 | Reuse Dialogue Across NPCs | Dialogue reuse verification | Planned | Unassigned |
-| 11.8 | Create a Module 11 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 11.8 | Create a Module 11 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 12: Quests and Objectives
 
@@ -605,7 +610,7 @@ composable objectives connected to dialogue, combat, items, and locations.
 | 12.6 | Connect Quests to Dialogue | Quest-aware conditions and actions | Planned | Unassigned |
 | 12.7 | Deliver Quest Rewards | Reward contract | Planned | Unassigned |
 | 12.8 | Build the Quest Journal | Quest view decoupled from state | Planned | Unassigned |
-| 12.9 | Create a Module 12 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 12.9 | Create a Module 12 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 13: World Progression and Game Flow
 
@@ -620,7 +625,7 @@ preserving the world and actor state that should survive transitions.
 | 13.4 | Centralize Scene Flow | Minimal cross-scene service | Planned | Unassigned |
 | 13.5 | Build Title, Restart, and Game-Over Flows | Game flow states | Planned | Unassigned |
 | 13.6 | Restore Persistent Actors Across Levels | Cross-level actor restoration | Planned | Unassigned |
-| 13.7 | Create a Module 13 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 13.7 | Create a Module 13 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 14: HUD, Menus, and Settings
 
@@ -635,7 +640,7 @@ settings without coupling UI to concrete actor implementations.
 | 14.4 | Add Audio Settings | Audio preferences | Planned | Unassigned |
 | 14.5 | Add Display and Accessibility Settings | Display/accessibility preferences | Planned | Unassigned |
 | 14.6 | Keep UI Independent from Actor Implementations | UI dependency audit | Planned | Unassigned |
-| 14.7 | Create a Module 14 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 14.7 | Create a Module 14 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 15: Saving and Persistence
 
@@ -653,7 +658,7 @@ framework state safely across versions and failure cases.
 | 15.7 | Persist Settings Separately | Settings storage boundary | Planned | Unassigned |
 | 15.8 | Migrate Older Save Versions | Migration functions | Planned | Unassigned |
 | 15.9 | Validate, Back Up, Reset, and Recover Save Data | Atomic replace and recovery | Planned | Unassigned |
-| 15.10 | Create a Module 15 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 15.10 | Create a Module 15 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 16: Audio and Gameplay Feedback
 
@@ -668,12 +673,13 @@ that respects player preferences and accessibility settings.
 | 16.4 | Add Particles and Hit Flash | Reusable visual feedback | Planned | Unassigned |
 | 16.5 | Add Camera Shake | Decoupled camera feedback | Planned | Unassigned |
 | 16.6 | Respect Feedback Accessibility Settings | Reduced/disabled feedback paths | Planned | Unassigned |
-| 16.7 | Create a Module 16 Git Checkpoint | Tested module boundary, reviewed local commit, and verification | Planned | Unassigned |
+| 16.7 | Create a Module 16 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 17: Validation, Packaging, and Extension
 
 **Depends on:** Modules 0-16. **Outcome:** Prove that shared and optional
-systems remain reusable, then package and document the framework.
+systems remain reusable, package and document the framework, then publish the
+repository.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
@@ -684,7 +690,8 @@ systems remain reusable, then package and document the framework.
 | 17.5 | Assemble Demonstration Levels | Representative framework demos | Planned | Unassigned |
 | 17.6 | Export the Framework Project | Export configuration | Planned | Unassigned |
 | 17.7 | Document Extension and Licensing Rules | Extension guide and licenses | Planned | Unassigned |
-| 17.8 | Create a Module 17 Git Checkpoint | Final tested course and framework checkpoint | Planned | Unassigned |
+| 17.8 | Create a Module 17 Git Checkpoint | Final tested course and framework checkpoint, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
+| 17.9 | Make the Repository Public | Repository visibility changed from private to public, a README and a license already in place, and what a public commit history exposes | Planned | Unassigned |
 
 ## Concept Sequencing Ledger
 
@@ -781,10 +788,13 @@ Remaining reconciliation work:
 - Reconcile the exact Git associations still marked pending for Lessons 1.3,
   1.4, and 2.6. Modules 0, 2, and 3 are reconciled, and Lesson 1.2 now names
   its commits.
-- Replay Lesson 0.4's revised `Checkpoint empty Godot project` staging and
-  commit path during the full-course empty-project rebuild. The production
-  repository's earliest historical message differs and must not be rewritten
-  merely to imitate the learner procedure.
+- Replay Lesson 0.4's `Checkpoint empty Godot project` commit and private
+  publish in GitHub Desktop during the full-course empty-project rebuild. The
+  production repository's earliest historical message differs and must not be
+  rewritten merely to imitate the learner procedure.
+- Replay the four rewritten checkpoint lessons, 1.6, 2.12, 3.6 and 4.8,
+  against a real GitHub Desktop, including one run that skips every optional
+  Codex part. Their status stays Implemented until that happens.
 
 ## Decision Log
 
@@ -806,12 +816,12 @@ Remaining reconciliation work:
 | Introduce conditional logic after gravity | Lesson 2.9 makes gravity and the floor state visible first. Lesson 2.10 then uses temporary Output messages to show `if`, `else`, `not`, and `is_on_floor()` in that working context before applying gravity only while airborne. Lesson 2.11 can reuse the established floor state for jumping without redefining it. |
 | Define physics bodies once, then use type-specific reminders | Lesson 2.2 is the first and only general definition of a physics body. Modules 3-17 must not repeat it; when they introduce another physics-body type, they should state only how that type differs from `CharacterBody2D` or `StaticBody2D`. |
 | Match temporary Player collision to its visible marker without changing Actor's shared default | Lesson 2.8 replaces Player's inherited Shape with a local 128-by-128 rectangle matching its temporary marker. Actor keeps its reusable 32-by-32 placeholder, and later actor specializations choose collision shapes that fit their own visuals. |
-| Connect the existing Godot folder to Codex during the first Git checkpoint | Module 0 now gives each lesson one explicit responsibility: install the tools in 0.1, create the only Godot project in 0.2, configure Git without creating a repository in 0.3, then associate the existing folder with Codex and checkpoint it in 0.4. The learner initializes Git manually in Codex's terminal, uses a read-only prompt to review the proposed checkpoint, inspects the diff, and commits through Codex's Git controls. Later checkpoints should use prompts only when review, explanation, or error detection adds value. |
-| Keep the first Codex/Git checkpoint focused | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
+| Connect the existing Godot folder to Codex during the first Git checkpoint (superseded) | Module 0 now gives each lesson one explicit responsibility: install the tools in 0.1, create the only Godot project in 0.2, configure Git without creating a repository in 0.3, then associate the existing folder with Codex and checkpoint it in 0.4. The learner initializes Git manually in Codex's terminal, uses a read-only prompt to review the proposed checkpoint, inspects the diff, and commits through Codex's Git controls. Later checkpoints should use prompts only when review, explanation, or error detection adds value. |
+| Keep the first Codex/Git checkpoint focused (superseded) | Lesson 0.4 teaches only the decisions a beginner must make: select the existing project folder, initialize Git, inspect the starting status, request a read-only review, inspect the staged diff, commit, and verify. It defers folder-listing commands, repeated status checks, and detailed line-ending metadata to avoid turning setup into a terminal tour. |
 | Validate Lesson 0.4 without a separate empty-project replay | The current Codex project, Git metadata, branch state, and Changes-to-Review UI evidence are accepted as sufficient for Lesson 0.4. Its complete clean-project replay remains required by the final full-course rebuild gate. |
-| Add one reviewed Git checkpoint at the end of each completed module | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
+| Add one reviewed Git checkpoint at the end of each completed module (partly superseded) | Module 0 teaches the manual checkpoint cycle first. Modules 1 and 2 use Codex for a read-only review that can detect mismatches, then use the Git UI for staging and the local commit. Every roadmap module now reserves a final checkpoint lesson using the tested-review-inspect-commit-verify order, with prompting only when it adds useful safety or understanding. |
 | Set the game window in Module 1 and size the world at 1920 by 1080 | Lesson 1.1 ran the project in Godot's default 1152-by-648 window, which is uncomfortably small on a high-resolution monitor and was never a deliberate choice. New Lesson 1.2 sets the viewport, stretch mode, and aspect right after the learner first feels the problem, following the same reasoning that placed viewport navigation in 1.1. Later Module 1 lessons shift to 1.3-1.6. Because jump height is a fixed pixel distance rather than a proportion of the screen, a larger viewport makes the same jump look smaller, so `jump_velocity` moved from `-400.0` to `-700.0` and the Player again clears twice its own height. The Floor, the test platform, and the 200-pixel step between them were repositioned to match. The result felt floaty and slow, so a follow-up pass raised `gravity` to `2400.0` and `jump_velocity` to `-1100.0`, cutting airtime from 1.47 to 0.97 seconds at the same height, and scaled the three horizontal values by 1.5 to `450.0`, `1800.0`, and `2700.0`. The jump-velocity range widened to `-1500.0` so the new default is not pinned at the limit. |
-| Create the first checkpoint with Git commands, not the Codex controls | Lesson 0.4 now has the learner stage with `git add .`, read `git status`, and commit with `git commit -m`. The Codex Review tab and the read-only AI review are unchanged, because inspecting a diff visually is genuinely easier for a beginner. Typing the commands once makes the later checkpoint lessons' offline fallback actionable, keeps the commands transferable to any editor, and limits how much of the course depends on third-party UI wording that cannot be version-frozen the way the Godot version is. Modules 1 onward still use the Codex controls as the convenient path, so the manual cycle is taught first and the tool is used afterward. |
+| Create the first checkpoint with Git commands, not the Codex controls (superseded) | Lesson 0.4 now has the learner stage with `git add .`, read `git status`, and commit with `git commit -m`. The Codex Review tab and the read-only AI review are unchanged, because inspecting a diff visually is genuinely easier for a beginner. Typing the commands once makes the later checkpoint lessons' offline fallback actionable, keeps the commands transferable to any editor, and limits how much of the course depends on third-party UI wording that cannot be version-frozen the way the Godot version is. Modules 1 onward still use the Codex controls as the convenient path, so the manual cycle is taught first and the tool is used afterward. |
 | Track movement state in Module 5 rather than Module 3 | The state has no consumer until the animation lesson, so teaching it in Module 3 produced a lesson with no observable result and a payoff two modules away. This applies the same rule that removed the standalone target-based movement bridge. Module 3 now ends with five felt movement features and its checkpoint. Placing the lesson after Module 4 also lets its conditions account for one-way and moving platforms: a Player standing on a moving platform can carry horizontal velocity, which a naive `velocity.x != 0.0` check would report as running. |
 | Teach target-based movement beside its first implementation | Lesson 2.8 identifies direct assignment as the reason basic movement starts, stops, and reverses instantly. Lesson 3.2 then introduces current and target velocity, horizontal rates, and `move_toward()` beside the acceleration code that needs them, while referring back to Lesson 2.9's established `rate * delta` pattern. This removes the separate theory bridge and keeps later Module 3 lessons focused. |
 | Open Module 4 with tiles, and include terrain autotiling before any level is drawn | Autotiling is what makes painting a level faster than placing bodies by hand, so teaching the TileSet without it would leave the learner choosing corner tiles manually through the rest of Module 4 and returning to the TileSet later. Match Sides compares only the four sides, so 16 tiles cover every combination; Match Corners and Sides would need 47. |
