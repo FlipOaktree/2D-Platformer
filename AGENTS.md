@@ -53,7 +53,11 @@ the same written course material that learners will later use.
   architecture, lifecycle status, validation status, or Git association.
 - Keep the Markdown course files in the local repository authoritative.
 
-## Integrated AI Workflow
+## AI in the Course
+
+These are the standing positions. `2D Platformer Course/course_workflow.md`
+holds the working detail under its own Integrated AI Workflow section; read it
+before drafting or revising a lesson that involves Codex.
 
 - Treat Codex as a prominent optional accelerator within the same lessons, not
   as a separate course path.

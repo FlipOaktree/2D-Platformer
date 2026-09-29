@@ -14,6 +14,8 @@ on chat history.
 | `2D Platformer Course/course_workflow.md` | Lesson planning, implementation, validation, and lesson lifecycle |
 | Lesson Markdown | Canonical learner instructions |
 | Godot project | Evidence of implemented behavior |
+| `2D Platformer Course/visual_design_system.md` | Palette, typography, layout, and image rules for course visuals |
+| `2D Platformer Course/selling_arguments.md` | Public claims the course makes, and the guardrails on wording them |
 
 If these sources disagree, report the discrepancy before making changes. Do
 not infer progress from chat history or from learner verification checkboxes.

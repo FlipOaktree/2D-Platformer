@@ -63,10 +63,9 @@ course path. Keep one lesson sequence and one learner outcome.
   never read a lesson. A prompt asking it to confirm that code matches the
   course invites an answer it has no basis for, and an agent asked to confirm
   usually confirms. Have it describe, and leave the comparing to the learner.
-- Remember that the authoring repository is not the learner's project. The
-  course files sit beside `project.godot` here and never do there, so a prompt
-  that reads lessons will appear to work when validated locally and fail
-  silently for everyone else.
+  The authoring repository is the trap here: the course files sit beside
+  `project.godot` here and never do there, so a prompt that reads lessons will
+  appear to work when validated locally and fail silently for everyone else.
 - Keep AI-assisted actions small enough that the learner understands what
   changed and where the behavior lives.
 - When AI is unavailable, give a brief continuation instruction based on the
