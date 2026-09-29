@@ -446,7 +446,7 @@ record the tested foundation in a reviewed Git checkpoint.
 | 2.9 | Add Gravity and Floor Collision | `StaticBody2D`, aligned Player/floor collision, gravity, and `delta` | Validated | `9f0efc4` |
 | 2.10 | Use Conditions to Respond to Floor State | `if`, `else`, `not`, conditions, and `is_on_floor()` | Validated | `ae5d31c`; audit fix in `5efd79a` |
 | 2.11 | Add Jumping | Jump action, one-time input checks, compound conditions, and vertical velocity | Validated | `cf34c54` |
-| 2.12 | Create a Module 2 Git Checkpoint | Tested Player foundation, Codex-assisted read-only review, local UI commit, and post-commit verification | Validated | `2452c6e`; terminal fallback now spells out its commands |
+| 2.12 | Create a Module 2 Git Checkpoint | Tested Player foundation, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex summary part | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay |
 
 ### Module 3: Responsive Player Movement
 
@@ -460,7 +460,7 @@ responsive controller.
 | 3.3 | Add Coyote Time | Configurable jump grace period, runtime countdown, `or`, and a raised reusable test platform | Validated | `3b0f0c5`; headless and interactive validation passed |
 | 3.4 | Add Jump Buffering | Configurable pre-landing input memory, request/permission separation, and a consumed countdown | Validated | `dd966c0`; focused Godot validation passed |
 | 3.5 | Add Variable Jump Height | Released-input detection, proportional velocity change, and a rising-only condition | Validated | `63f1115`; headless behavior checks and interactive Godot validation passed |
-| 3.6 | Create a Module 3 Git Checkpoint | Tested module boundary, Inspector default audit, Codex-assisted read-only review, local commit, and post-commit verification | Validated | `3c28cb6`; expected file list, staging, commit, and verification commands replayed in a scratch clone; Codex UI path deferred to the full-course rebuild; Codex prompt corrected so it lists the exported defaults instead of confirming them against lessons it cannot see, and the terminal fallback now spells out its commands |
+| 3.6 | Create a Module 3 Git Checkpoint | Tested module boundary, Inspector default audit, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex part that lists the exported defaults for the learner to compare | Implemented | `3c28cb6`; rewritten for GitHub Desktop and awaiting a replay; the eight defaults are checked twice, once in the Inspector and once in the diff, so the audit no longer depends on Codex |
 
 ### Module 4: Modular Level Building
 
@@ -476,7 +476,7 @@ elements around clear spawn and boundary contracts.
 | 4.5 | Add One-Way Platforms | Alternative tiles, one-way collision on a tile's polygon, per-tile `Modulate`, a second terrain in the same terrain set, a second level layer, and sibling draw order | Validated | Uncommitted working tree; procedure walked in the editor, terrain 1 renamed 'Platform', variants corrected from row 0 to row 3, terrain and draw order re-audited |
 | 4.6 | Add Moving Platforms | `AnimatableBody2D`, `sync_to_physics`, a reusable moving-surface scene, a `TileMapLayer` used as artwork with its collision disabled, `Vector2.move_toward()`, and an exported `Vector2` offset | Validated | Uncommitted working tree; built in the editor and validated against the running project |
 | 4.7 | Add Level Bounds and Fall Detection | A pit in the terrain, `StaticBody2D` walls, a fall-limit marker, a second question the level answers, the Player's first non-callback method, and a per-frame check in the orchestrator | Validated | Uncommitted working tree; built in the editor and validated against the running project; a seventh part was added so every level file carries its own fall limit |
-| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, a saved-value audit after seven exercises, both level files run, reviewed local commit, and verification | Validated | Uncommitted working tree; expected file list, staging, commit, and verification commands replayed in a scratch clone; Codex UI path deferred to the full-course rebuild |
+| 4.8 | Create a Module 4 Git Checkpoint | Tested module boundary, a saved-value audit after seven exercises, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | Uncommitted working tree; rewritten for GitHub Desktop and awaiting a replay |
 
 ### Module 5: Camera and Character Presentation
 
