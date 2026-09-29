@@ -16,7 +16,7 @@ settings and the interacting jump timers are the ones you meant to keep.
 
 ## Before you start
 
-- Module 3, Lessons 1 through 5 are complete and validated.
+- Module 3, Lessons 1 through 5 are complete.
 - The Module 2 checkpoint exists, and GitHub Desktop shows `2D Platformer` as
   the current repository.
 - `res://scenes/main.tscn` contains the original Floor and the raised

@@ -21,7 +21,7 @@ Player's.
 
 ## Before you start
 
-- Module 4, Lesson 3 is complete and validated.
+- Module 4, Lesson 3 is complete.
 - `main.tscn` contains the Player and one `Level` instance of
   `res://levels/level_1.tscn`.
 - `level_1.tscn` has a `Level` root with the `Terrain` layer inside it.

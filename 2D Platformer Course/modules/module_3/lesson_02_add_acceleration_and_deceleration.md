@@ -17,7 +17,7 @@ after input is released.
 
 ## Before you start
 
-- Module 3, Lesson 1 is complete and validated.
+- Module 3, Lesson 1 is complete.
 - `res://actors/player.gd` contains the exported `speed`, `gravity`, and
   `jump_velocity` settings with their validated defaults.
 - `_physics_process()` assigns `direction * speed` directly to `velocity.x`.

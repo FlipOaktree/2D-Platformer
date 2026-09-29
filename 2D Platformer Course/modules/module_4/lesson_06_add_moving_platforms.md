@@ -21,7 +21,7 @@ Player's feet, and the Player goes along for the ride.
 
 ## Before you start
 
-- Module 4, Lesson 5 is complete and validated.
+- Module 4, Lesson 5 is complete.
 - `level_1.tscn` contains a `Level` root, a `Terrain` layer, a `Platforms`
   layer holding the one-way strip, and a `PlayerSpawn` marker.
 - `main.tscn` lists `Level` first and `Player` second.

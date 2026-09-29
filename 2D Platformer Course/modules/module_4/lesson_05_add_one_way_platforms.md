@@ -19,7 +19,7 @@ that lets the jump pass and catches the Player on the way down.
 
 ## Before you start
 
-- Module 4, Lesson 4 is complete and validated.
+- Module 4, Lesson 4 is complete.
 - `level_1.tscn` contains a `Level` root, a `Terrain` layer, and a
   `PlayerSpawn` marker.
 - `res://levels/tiles/terrain_tileset.tres` holds 47 solid tiles.

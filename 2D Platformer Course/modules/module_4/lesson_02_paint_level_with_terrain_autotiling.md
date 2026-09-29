@@ -18,7 +18,7 @@ stood in for a level since Module 2 finally come out.
 
 ## Before you start
 
-- Module 4, Lesson 1 is complete and validated.
+- Module 4, Lesson 1 is complete.
 - `res://levels/tiles/terrain_tileset.tres` holds 47 solid tiles of 64 by 64
   pixels, each with a collision polygon covering the whole tile.
 - `main.tscn` contains the Player, an empty `Terrain` layer, the temporary

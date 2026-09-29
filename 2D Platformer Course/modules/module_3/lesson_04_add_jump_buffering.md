@@ -15,7 +15,7 @@ more responsive without adding an air jump.
 
 ## Before you start
 
-- Module 3, Lesson 3 is complete and validated.
+- Module 3, Lesson 3 is complete.
 - `res://actors/player.gd` contains the validated acceleration, deceleration,
   gravity, grounded jump, and coyote-time logic.
 - `res://scenes/main.tscn` contains the original Floor and the centered raised

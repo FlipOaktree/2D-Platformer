@@ -20,7 +20,7 @@ across separate conditions and nothing stores the result.
 
 ## Before you start
 
-- Module 5, Lesson 4 is complete and validated.
+- Module 5, Lesson 4 is complete.
 - `res://actors/player.gd` contains the validated movement logic from Module 3:
   acceleration, deceleration, gravity, grounded jump, coyote time, jump
   buffering, and variable jump height.

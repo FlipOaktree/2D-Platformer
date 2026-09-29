@@ -18,7 +18,7 @@ back.
 
 ## Before you start
 
-- Module 4, Lessons 1 through 7 are complete and validated.
+- Module 4, Lessons 1 through 7 are complete.
 - The Module 3 checkpoint exists, and GitHub Desktop shows `2D Platformer` as
   the current repository.
 - `main.tscn` holds `Level` first and `Player` second, with `level_1.tscn` at

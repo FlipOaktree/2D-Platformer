@@ -18,7 +18,7 @@ what changes is where the level lives and who owns it.
 
 ## Before you start
 
-- Module 4, Lesson 2 is complete and validated.
+- Module 4, Lesson 2 is complete.
 - `main.tscn` contains the Player and a `Terrain` layer holding the painted
   ground and platform.
 - `Floor` and `CoyoteTestPlatform` are gone.

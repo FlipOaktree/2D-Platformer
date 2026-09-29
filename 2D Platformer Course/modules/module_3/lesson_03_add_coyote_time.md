@@ -17,7 +17,7 @@ press will feel more forgiving.
 
 ## Before you start
 
-- Module 3, Lesson 2 is complete and validated.
+- Module 3, Lesson 2 is complete.
 - `res://actors/player.gd` contains the validated exported movement settings,
   target-based horizontal movement, gravity, and grounded jump.
 - `main.tscn` contains the Player and the temporary full-width Floor.

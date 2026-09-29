@@ -18,7 +18,7 @@ tiles you painted yourself.
 
 ## Before you start
 
-- Module 3, Lesson 6 is complete and validated.
+- Module 3, Lesson 6 is complete.
 - `main.tscn` contains the Player, the temporary `Floor`, and the raised
   `CoyoteTestPlatform`.
 - The course asset `assets/terrain.png` is available on your computer.

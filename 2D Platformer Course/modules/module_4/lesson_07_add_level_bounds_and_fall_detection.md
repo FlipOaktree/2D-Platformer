@@ -23,7 +23,7 @@ through it.
 
 ## Before you start
 
-- Module 4, Lesson 6 is complete and validated.
+- Module 4, Lesson 6 is complete.
 - `level_1.tscn` contains a `Level` root, a `Terrain` layer, a `Platforms`
   layer, a `PlayerSpawn` marker, and a `MovingPlatform` instance.
 - `main.gd` places the Player using `level.get_spawn_position()`.
