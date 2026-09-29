@@ -29,9 +29,7 @@ local project to Codex only associates Codex with that existing folder.
 
 1. Open Codex in the ChatGPT desktop app.
 2. In the sidebar's project area, add an existing local project.
-3. Select the `2D Platformer` folder that contains `project.godot`. If
-   `project.godot` is not in the folder you chose, you have selected the parent
-   folder or the generated `.godot` folder rather than the project folder.
+3. Select the `2D Platformer` folder that contains `project.godot`.
 4. Confirm that Codex shows `2D Platformer` as the current project.
 5. Start a local task for it.
 
@@ -39,6 +37,9 @@ local project to Codex only associates Codex with that existing folder.
 >
 > - If Codex shows a different project, switch to `2D Platformer` before
 >   starting a task. A task belongs to whichever project is current.
+> - If `project.godot` is missing from the folder you selected, you chose the
+>   parent folder or the generated `.godot` folder. Select the folder that
+>   holds `project.godot` instead.
 > - If the folder cannot be selected, confirm the path you recorded in
 >   Lesson 0.2.
 
