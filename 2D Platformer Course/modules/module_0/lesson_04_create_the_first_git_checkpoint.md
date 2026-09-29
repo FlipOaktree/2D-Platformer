@@ -90,11 +90,8 @@ account without exposing a personal email. For example,
 
 > ⚠️ **If something differs**
 >
-> - If GitHub Desktop does not offer to create a repository, close the dialog
->   and open **Repository → Create a New Repository on your Hard Drive…**. Set
->   **Local path** to the folder that contains the `2D Platformer` folder and
->   **Name** to `2D Platformer`, leave the README, Git ignore, and License
->   options untouched, then select **Create repository**.
+> - If GitHub Desktop does not offer to create a repository, confirm that you
+>   selected the folder containing `project.godot` and not its parent.
 > - If the current branch is not `main`, open the branch menu at the top of the
 >   window and rename the branch to `main`.
 
