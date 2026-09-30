@@ -66,7 +66,7 @@ make both patterns visible.
 7. Save `project_icon.tscn`, then return to `main.tscn`.
 8. Confirm that both icons are rotated by `20°`.
 
-> 💡 An **instance** stays linked to the source scene it came from. A saved source-scene change flows to all its instances. You can think of instances more or less like mirror reflections.
+> 💡 An **instance** stays linked to the source scene it came from. A saved source-scene change flows to all its instances. You can think of instances more or less as mirror reflections of a subject.
 
 9. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
 10. Return to `main.tscn` and confirm that both icons are upright again.
@@ -110,6 +110,11 @@ make both patterns visible.
    the copy `project_icon_copy.tscn`.
 2. Select `Main`, then select **Instantiate Child Scene**.
 3. Choose `res://scenes/project_icon_copy.tscn` and select **Open**.
+
+> 💡 You can also instance a scene by dragging it from **FileSystem** and
+> dropping it onto `Main` in the Scene dock. It becomes a child of `Main`, just
+> like using the button.
+
 4. Set the new instance's **Transform → Position** to `(448, 240)`.
 5. Open `project_icon.tscn`, set its root **Transform → Rotation** to `20°`,
    and save.
