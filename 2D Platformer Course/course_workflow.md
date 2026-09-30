@@ -86,13 +86,13 @@ course path. Keep one lesson sequence and one learner outcome.
   first needed, not as a lesson of its own. An optional Part is skipped with a
   single line, while an optional lesson leaves a gap in the numbering and a
   prerequisite every later lesson has to qualify. Start its heading with the
-  label `Optional`, as in "### `Optional` Part 2: Connect the project to Codex",
-  and say at its start how to continue without it. Prefer to put the Part after
-  the required ones, so that skipping it means stopping, but this is a habit
-  and not a rule: place it wherever it teaches best, and let it come first or
-  in the middle when the lesson reads better that way. A Part that has to be
-  done either way, such as Lesson 3.1 Part 4 where Codex or the learner writes
-  required code, is not optional and does not take the label.
+  label `Optional`, as in "### `Optional` Part 3: Title", and say at its start
+  how to continue without it. Prefer to put the Part after the required ones,
+  so that skipping it means stopping, but this is a habit and not a rule: place
+  it wherever it teaches best, and let it come first or in the middle when the
+  lesson reads better that way. A Part that has to be done either way, because
+  Codex or the learner writes required code in it, is not optional and does not
+  take the label.
 - Offer an agentic step as an optional Part, after the learner has done the
   same work manually. The lesson fixes how many repetitions come first; the
   learner decides whether to take the optional Part or continue by hand. Only
