@@ -47,10 +47,10 @@ project is using Godot's default size, which no one chose for this game.
 > course assumes this viewport.
 
 8. Run the scene with `F6` and confirm that the label still appears.
-9. Stop the scene with `F8`.
-
-The window is now larger, but the game still draws at a fixed size. If you
-resize the window, the view does not follow.
+9. Drag a corner of the game window to resize it. Notice that the label stays
+   the same size: the game draws at a fixed size and does not follow the
+   window.
+10. Stop the scene with `F8`.
 
 > ⚠️ **If something differs**
 >
@@ -63,7 +63,8 @@ resize the window, the view does not follow.
 
 1. Return to **Project Settings > Display > Window**.
 2. Under **Stretch**, set **Mode** to `canvas_items`.
-3. Set **Aspect** to `keep`.
+3. Confirm that **Aspect** is `keep`, which is Godot's default, then close
+   Project Settings.
 
 > 💡 **Mode** `canvas_items` scales the drawn world to fill the window, so the
 > game looks right on any monitor while your positions stay in the same
