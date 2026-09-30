@@ -66,7 +66,9 @@ make both patterns visible.
 7. Save `project_icon.tscn`, then return to `main.tscn`.
 8. Confirm that both icons are rotated by `20°`.
 
-> 💡 An **instance** stays linked to the source scene it came from. A saved source-scene change flows to all its instances. You can think of instances more or less as mirror reflections of a subject.
+> 💡 An **instance** stays linked to the source scene it came from, like a
+> shortcut to a file: edit the file, and every shortcut opens the new version.
+> A saved source-scene change flows to all its instances.
 
 9. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
 10. Return to `main.tscn` and confirm that both icons are upright again.
@@ -124,7 +126,8 @@ make both patterns visible.
 > 💡 The copy is a separate scene file, so it has no link to
 > `project_icon.tscn`. Changes to the original no longer reach it, because its
 > instance follows `project_icon_copy.tscn` instead. An **independent copy** is
-> a new scene that starts with the same contents.
+> like duplicating a file instead of making a shortcut to it: it starts with
+> the same contents and then goes its own way.
 
 7. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
 8. In `main.tscn`, delete the copy's instance and save.
