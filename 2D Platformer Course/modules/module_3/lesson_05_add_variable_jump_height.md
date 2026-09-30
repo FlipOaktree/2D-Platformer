@@ -218,38 +218,7 @@ happen: a jump starts, and then an early release shortens it.
 > - If buffered or coyote jumps stop working, confirm that the new block
 >   changes only `velocity.y` and leaves both countdowns alone.
 
-### Part 4: Ask Codex to review the release condition
-
-1. Return to the Codex project associated with this Godot folder.
-2. Ask:
-
-   > Review `actors/player.gd` without changing it. Check that a jump is
-   > shortened only when the `jump` action is just released and `velocity.y`
-   > is negative, that the shortening multiplies `velocity.y` by
-   > `jump_release_multiplier` instead of replacing it, and that the existing
-   > jump, coyote time, jump buffering, and movement remain unchanged. Report
-   > any mismatch with line references.
-
-3. Read the response and inspect every referenced line in `player.gd`.
-4. If Codex identifies a real mismatch, correct only that mismatch manually and
-   compare the result with the completed script in Part 3.
-
-This review is useful because the shortening is a single short condition whose
-sign test is easy to leave out. The resulting slow fall looks like a gravity
-problem, so a second reading of the exact condition saves time. The final
-decision still comes from inspecting the code and testing the behavior.
-
-If Codex is unavailable, compare the three requirements in the prompt directly
-with the completed script in Part 3, then continue.
-
-> ⚠️ **If something differs**
->
-> - If Codex proposes unrelated rewrites, ignore them and keep the review
->   limited to the requested checks.
-> - If its description disagrees with the visible code, trust the code you can
->   inspect and verify the behavior in the next part.
-
-### Part 5: Test tapped and held jumps
+### Part 4: Test tapped and held jumps
 
 1. Predict how a tapped jump will differ from a held one, then open
    `res://scenes/main.tscn` and run it with `F6`.
@@ -283,6 +252,38 @@ with the completed script in Part 3, then continue.
 >   saved and that the new block sits inside `_physics_process()`.
 > - If the tapped jump barely leaves the floor, confirm that Jump Release
 >   Multiplier is `0.5` rather than a much smaller value.
+
+### `Optional` Part 5: Ask Codex to review the release condition
+
+If you do not use Codex, continue to the learner exercise. Nothing later in the
+course depends on this Part.
+
+1. Return to the Codex project associated with this Godot folder, which you
+   connected in Lesson 0.2.
+2. Ask:
+
+   > Review `actors/player.gd` without changing it. Check that a jump is
+   > shortened only when the `jump` action is just released and `velocity.y`
+   > is negative, that the shortening multiplies `velocity.y` by
+   > `jump_release_multiplier` instead of replacing it, and that the existing
+   > jump, coyote time, jump buffering, and movement remain unchanged. Report
+   > any mismatch with line references.
+
+3. Read the response and inspect every referenced line in `player.gd`.
+4. If Codex identifies a real mismatch, correct only that mismatch manually and
+   compare the result with the completed script in Part 3.
+
+This review is useful because the shortening is a single short condition whose
+sign test is easy to leave out. The resulting slow fall looks like a gravity
+problem, so a second reading of the exact condition saves time. The final
+decision still comes from inspecting the code and testing the behavior.
+
+> ⚠️ **If something differs**
+>
+> - If Codex proposes unrelated rewrites, ignore them and keep the review
+>   limited to the requested checks.
+> - If its description disagrees with the visible code, trust the code you can
+>   inspect and the behavior you tested in Part 4.
 
 ## Learner exercise
 

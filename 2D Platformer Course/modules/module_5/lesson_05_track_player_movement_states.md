@@ -154,7 +154,7 @@ descending.
 > 💡 The Output repeats the same number many times because
 > `_physics_process()` runs continuously. Watch for the moment the number
 > changes rather than reading every line. You will remove this diagnostic in
-> Part 5.
+> Part 4.
 
 > ⚠️ **If something differs**
 >
@@ -167,38 +167,7 @@ descending.
 > - If the editor reports an indentation error, confirm that the inner `if` and
 >   `else` lines sit one level deeper than the outer ones.
 
-### Part 4: Ask Codex to review the state decisions
-
-1. Return to the Codex project associated with this Godot folder.
-2. Ask:
-
-   > Review `actors/player.gd` without changing it. Check that exactly one
-   > `movement_state` assignment can run per update, that a grounded Player is
-   > reported as running or idle and an airborne Player as rising or falling,
-   > that the state is decided after `move_and_slide()`, and that the existing
-   > movement and jump behavior is unchanged. Report any mismatch with line
-   > references.
-
-3. Read the response and inspect every referenced line in `player.gd`.
-4. If Codex identifies a real mismatch, correct only that mismatch manually and
-   compare the result with the completed script in Part 5.
-
-This review is useful because a nested condition can look correct while leaving
-one situation unreachable. A state that never occurs is easy to miss by playing
-and easy to see by reading. The final decision still comes from inspecting the
-code and testing the behavior.
-
-If Codex is unavailable, compare the four requirements in the prompt directly
-with the completed script in Part 5, then continue.
-
-> ⚠️ **If something differs**
->
-> - If Codex proposes replacing the nested conditions with syntax this course
->   has not introduced, keep the version above.
-> - If its description disagrees with the visible code, trust the code you can
->   inspect and verify the behavior in the next part.
-
-### Part 5: Remove the diagnostic and confirm the movement is unchanged
+### Part 4: Remove the diagnostic and confirm the movement is unchanged
 
 1. Delete the temporary `print(movement_state)` line.
 2. Compare your completed script with this version:
@@ -319,6 +288,38 @@ these conditions.
 >   assigns `movement_state` and never changes `velocity`.
 > - If the Player stops moving entirely, confirm that `move_and_slide()` still
 >   runs before the new block.
+
+### `Optional` Part 5: Ask Codex to review the state decisions
+
+If you do not use Codex, continue to the learner exercise. Nothing later in the
+course depends on this Part.
+
+1. Return to the Codex project associated with this Godot folder, which you
+   connected in Lesson 0.2.
+2. Ask:
+
+   > Review `actors/player.gd` without changing it. Check that exactly one
+   > `movement_state` assignment can run per update, that a grounded Player is
+   > reported as running or idle and an airborne Player as rising or falling,
+   > that the state is decided after `move_and_slide()`, and that the existing
+   > movement and jump behavior is unchanged. Report any mismatch with line
+   > references.
+
+3. Read the response and inspect every referenced line in `player.gd`.
+4. If Codex identifies a real mismatch, correct only that mismatch manually and
+   compare the result with the completed script in Part 4.
+
+This review is useful because a nested condition can look correct while leaving
+one situation unreachable. A state that never occurs is easy to miss by playing
+and easy to see by reading. The final decision still comes from inspecting the
+code and testing the behavior.
+
+> ⚠️ **If something differs**
+>
+> - If Codex proposes replacing the nested conditions with syntax this course
+>   has not introduced, keep the version above.
+> - If its description disagrees with the visible code, trust the code you can
+>   inspect and the behavior you tested in Part 4.
 
 ## Learner exercise
 

@@ -235,36 +235,7 @@ the same remembered press or the same coyote-time permission for another jump.
 > - If the buffer never expires, confirm that the `else` branch moves its
 >   timer toward `0.0` by `delta`.
 
-### Part 4: Ask Codex to review the two timing windows
-
-1. Return to the Codex project associated with this Godot folder.
-2. Ask:
-
-   > Review `actors/player.gd` without changing it. Check that an immediate
-   > jump still works when `jump_buffer_time` is `0.0`, a recent airborne jump
-   > press is remembered until landing, an expired request does not jump, an
-   > accepted jump consumes both countdowns, and the existing movement remains
-   > before `move_and_slide()`. Report any mismatch with line references.
-
-3. Read the response and inspect every referenced line in `player.gd`.
-4. If Codex identifies a real mismatch, correct only that mismatch manually and
-   compare the result with the completed script in Part 3.
-
-This focused review is useful because coyote time and jump buffering use
-similar countdowns for opposite sides of a landing. The final decision still
-comes from inspecting the code and testing the behavior.
-
-If Codex is unavailable, compare the five requirements in the prompt directly
-with the completed script in Part 3, then continue.
-
-> ⚠️ **If something differs**
->
-> - If Codex proposes unrelated rewrites, ignore them and keep the review
->   limited to the requested timing checks.
-> - If its description disagrees with the visible code, trust the code you can
->   inspect and verify the behavior in the next part.
-
-### Part 5: Test the buffered jump and its limits
+### Part 4: Test the buffered jump and its limits
 
 1. Predict what will happen if you press jump just before landing, then open
    `res://scenes/main.tscn` and run it with `F6`.
@@ -295,6 +266,36 @@ with the completed script in Part 3, then continue.
 >   toward `0.0` by `delta` and Jump Buffer Time is restored to `0.1`.
 > - If coyote time stops working, confirm that `can_jump` still checks the
 >   grounded state or a positive `coyote_timer`.
+
+### `Optional` Part 5: Ask Codex to review the two timing windows
+
+If you do not use Codex, continue to the learner exercise. Nothing later in the
+course depends on this Part.
+
+1. Return to the Codex project associated with this Godot folder, which you
+   connected in Lesson 0.2.
+2. Ask:
+
+   > Review `actors/player.gd` without changing it. Check that an immediate
+   > jump still works when `jump_buffer_time` is `0.0`, a recent airborne jump
+   > press is remembered until landing, an expired request does not jump, an
+   > accepted jump consumes both countdowns, and the existing movement remains
+   > before `move_and_slide()`. Report any mismatch with line references.
+
+3. Read the response and inspect every referenced line in `player.gd`.
+4. If Codex identifies a real mismatch, correct only that mismatch manually and
+   compare the result with the completed script in Part 3.
+
+This focused review is useful because coyote time and jump buffering use
+similar countdowns for opposite sides of a landing. The final decision still
+comes from inspecting the code and testing the behavior.
+
+> ⚠️ **If something differs**
+>
+> - If Codex proposes unrelated rewrites, ignore them and keep the review
+>   limited to the requested timing checks.
+> - If its description disagrees with the visible code, trust the code you can
+>   inspect and the behavior you tested in Part 4.
 
 ## Learner exercise
 

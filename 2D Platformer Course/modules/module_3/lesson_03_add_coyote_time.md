@@ -240,36 +240,7 @@ starts. Pressing jump again while airborne therefore cannot start another jump.
 > - If a grace-period jump is slightly lower than a grounded jump, confirm that
 >   the gravity block appears before the jump block.
 
-### Part 4: Ask Codex to review the timing logic
-
-1. Return to the Codex project associated with this Godot folder.
-2. Ask:
-
-   > Review `actors/player.gd` without changing it. Check that grounded jumping
-   > still works when `coyote_time` is `0.0`, the coyote timer counts down only
-   > after leaving the floor, one jump consumes the timer, gravity is applied
-   > before an accepted jump, and the existing acceleration and deceleration
-   > remain before `move_and_slide()`. Report any mismatch with line references.
-
-3. Read the response and inspect every referenced line in `player.gd`.
-4. If Codex identifies a real mismatch, correct only that mismatch manually and
-   compare the result with the completed script in Part 3.
-
-This review is useful because a misplaced timer reset can look correct while
-quietly allowing an extra air jump or disabling normal jumping. The final
-decision still comes from inspecting the code and testing the behavior.
-
-If Codex is unavailable, compare the four timer and jump requirements from the
-prompt directly with the completed script in Part 3, then continue.
-
-> ⚠️ **If something differs**
->
-> - If Codex proposes unrelated rewrites, ignore them and keep the review
->   limited to the four requested timing checks.
-> - If its description disagrees with the visible code, trust the code you can
->   inspect and verify the behavior in the next part.
-
-### Part 5: Test the grace window and its limits
+### Part 4: Test the grace window and its limits
 
 1. Predict what will happen if you press jump just after walking off the
    platform, then open `res://scenes/main.tscn` and run it with `F6`.
@@ -303,6 +274,36 @@ prompt directly with the completed script in Part 3, then continue.
 > - If the Player cannot reach the platform from the Floor, confirm that the
 >   platform Position is `(960, 736)` and that `jump_velocity` still uses its
 >   default of `-1200.0`.
+
+### `Optional` Part 5: Ask Codex to review the timing logic
+
+If you do not use Codex, continue to the learner exercise. Nothing later in the
+course depends on this Part.
+
+1. Return to the Codex project associated with this Godot folder, which you
+   connected in Lesson 0.2.
+2. Ask:
+
+   > Review `actors/player.gd` without changing it. Check that grounded jumping
+   > still works when `coyote_time` is `0.0`, the coyote timer counts down only
+   > after leaving the floor, one jump consumes the timer, gravity is applied
+   > before an accepted jump, and the existing acceleration and deceleration
+   > remain before `move_and_slide()`. Report any mismatch with line references.
+
+3. Read the response and inspect every referenced line in `player.gd`.
+4. If Codex identifies a real mismatch, correct only that mismatch manually and
+   compare the result with the completed script in Part 3.
+
+This review is useful because a misplaced timer reset can look correct while
+quietly allowing an extra air jump or disabling normal jumping. The final
+decision still comes from inspecting the code and testing the behavior.
+
+> ⚠️ **If something differs**
+>
+> - If Codex proposes unrelated rewrites, ignore them and keep the review
+>   limited to the four requested timing checks.
+> - If its description disagrees with the visible code, trust the code you can
+>   inspect and the behavior you tested in Part 4.
 
 ## Learner exercise
 

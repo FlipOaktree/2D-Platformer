@@ -146,42 +146,7 @@ stood in for a level since Module 2 finally come out.
 > - If the ground stops short of the right edge, the last column is 29, not
 >   30. The viewport is 1920 pixels wide, which is 30 tiles of 64.
 
-### Part 4: Ask Codex to check the tile data
-
-1. Return to the Codex project associated with this Godot folder.
-2. Ask:
-
-   > Read `levels/tiles/terrain_tileset.tres` and change nothing. Answer three
-   > questions, giving atlas coordinates:
-   >
-   > 1. How many tiles does the file define?
-   > 2. Which tiles have no collision shape?
-   > 3. Which tiles are not part of the `Ground` terrain?
-
-3. Read the response and open the **TileSet** tab to inspect every tile it
-   mentions.
-4. If Codex reports a real problem, correct only that tile.
-
-The answers you want are 47, none, and none. Each question catches a mistake
-that is invisible in the atlas, because a tile with something missing looks
-exactly like a tile without.
-
-The count matters most. A stray click in **Paint** mode can recreate the empty
-tile at `(10, 1)` that Lesson 1 deleted, and the new one carries no artwork,
-no collision, and no terrain. It is easy to make and almost impossible to
-notice. If the count comes back as 48, delete `(10, 1)` again.
-
-If Codex is unavailable, count the tiles yourself and check that every one
-shows both a collision outline and a green terrain centre.
-
-> ⚠️ **If something differs**
->
-> - If Codex offers to rewrite the resource file, decline. Tile data is edited
->   through the **TileSet** tab, where you can see the result.
-> - If its description disagrees with what the panel shows, trust the panel and
->   confirm the behaviour in Part 5.
-
-### Part 5: Test the level
+### Part 4: Test the level
 
 1. Confirm that **Visible Collision Shapes** is still enabled in the **Debug**
    menu.
@@ -228,6 +193,46 @@ shows both a collision outline and a green terrain centre.
 >   ground is empty. Look for a gap in the collision outlines.
 > - If a movement feature behaves differently, the cause is the level rather
 >   than the script; `player.gd` was not edited in this lesson.
+> - If a tile behaves oddly, open the **TileSet** tab and check three things:
+>   it still holds 47 tiles, every tile shows a collision outline and a green
+>   terrain centre, and `(10, 1)` is empty. A stray click in **Paint** mode
+>   can recreate `(10, 1)`; if it has come back, delete it again.
+
+### `Optional` Part 5: Ask Codex to check the tile data
+
+If you do not use Codex, continue to the learner exercise. Nothing later in the
+course depends on this Part.
+
+1. Return to the Codex project associated with this Godot folder, which you
+   connected in Lesson 0.2.
+2. Ask:
+
+   > Read `levels/tiles/terrain_tileset.tres` and change nothing. Answer three
+   > questions, giving atlas coordinates:
+   >
+   > 1. How many tiles does the file define?
+   > 2. Which tiles have no collision shape?
+   > 3. Which tiles are not part of the `Ground` terrain?
+
+3. Read the response and open the **TileSet** tab to inspect every tile it
+   mentions.
+4. If Codex reports a real problem, correct only that tile.
+
+The answers you want are 47, none, and none. Each question catches a mistake
+that is invisible in the atlas, because a tile with something missing looks
+exactly like a tile without.
+
+The count matters most. A stray click in **Paint** mode can recreate the empty
+tile at `(10, 1)` that Lesson 1 deleted, and the new one carries no artwork,
+no collision, and no terrain. It is easy to make and almost impossible to
+notice. If the count comes back as 48, delete `(10, 1)` again.
+
+> ⚠️ **If something differs**
+>
+> - If Codex offers to rewrite the resource file, decline. Tile data is edited
+>   through the **TileSet** tab, where you can see the result.
+> - If its description disagrees with what the panel shows, trust the panel and
+>   the behaviour you tested in Part 4.
 
 ## Learner exercise
 
