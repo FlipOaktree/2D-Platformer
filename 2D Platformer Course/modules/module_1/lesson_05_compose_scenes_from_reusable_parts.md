@@ -7,12 +7,12 @@
 Turn `ProjectIcon` into a reusable scene and keep one instance in `Main`. You
 will see how source-scene changes reach every linked instance, how a property
 customized on one instance becomes an override, and how an independent copy
-stops following the source at all.
+no longer follows the original scene.
 
 - Saving the icon as a scene of its own, so it can be used more than once
 - Placing one instance of that scene in `Main`, still linked to its source
 - Seeing that editing the source reaches every instance
-- Seeing that an independent copy stops listening to the source
+- Seeing that an independent copy no longer follows the original scene
 
 ## Before you start
 
@@ -40,10 +40,10 @@ stops following the source at all.
 7. With the instance selected, set **Transform → Position** to `(256, 240)`.
 8. Save `main.tscn` with `Ctrl+S`.
 
-> 💡 In this project, node names use **PascalCase**: each word begins with a
-> capital letter, with no spaces. File names use **snake_case**: lowercase
-> words joined with underscores. `ProjectIcon` and `project_icon.tscn` 
-> make both patterns visible.
+In this project, node names use **PascalCase**: each word begins with a
+capital letter, with no spaces. File names use **snake_case**: lowercase
+words joined with underscores. `ProjectIcon` and `project_icon.tscn` 
+make both patterns visible.
 
 > ⚠️ **If something differs**
 >
@@ -66,8 +66,7 @@ stops following the source at all.
 7. Save `project_icon.tscn`, then return to `main.tscn`.
 8. Confirm that both icons are rotated by `20°`.
 
-> 💡 An **instance** stays linked to the source scene it came from. A saved
-> source-scene change flows to all its instances.
+> 💡 An **instance** stays linked to the source scene it came from. A saved source-scene change flows to all its instances. You can think of instances more or less like mirror reflections.
 
 9. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
 10. Return to `main.tscn` and confirm that both icons are upright again.
@@ -118,8 +117,9 @@ stops following the source at all.
    icon stays upright.
 
 > 💡 The copy is a separate scene file, so it has no link to
-> `project_icon.tscn`. An **independent copy** does not receive later source
-> changes, which is what makes it different from an instance.
+> `project_icon.tscn`. Changes to the original no longer reach it, because its
+> instance follows `project_icon_copy.tscn` instead. An **independent copy** is
+> a new scene that starts with the same contents.
 
 7. Return to `project_icon.tscn`, restore Rotation to `0°`, and save.
 8. In `main.tscn`, delete the copy's instance and save.
