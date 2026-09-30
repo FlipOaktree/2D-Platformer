@@ -10,7 +10,7 @@ features will build on. You will also learn how to find and inspect small
 content in the 2D viewport without moving it.
 
 - Creating and saving a `Main` scene that every later scene will hang off
-- Adding a `Label` to it, so the project has something visible to run
+- Adding a `Label` node to it, so the project has something visible to run
 - Telling the project which scene to open when it starts
 - Moving around the 2D viewport without moving what you are looking at
 
@@ -78,8 +78,11 @@ content in the 2D viewport without moving it.
 5. When Godot asks to choose a main scene, select the current `main.tscn`
    scene.
 
-> 💡 Use **Run Current Scene** while working on one scene. It is a quick way to
-   check the scene before testing the whole project. The **main scene** is the project's starting point when you run the whole project, and using **Run Project** will always run that scene.
+> 💡 **Run Current Scene** runs only the scene open in the editor, which makes
+> it a quick way to check the scene you are working on. **Run Project** always
+> starts the game from its **main scene**—the project's starting
+> point—regardless of which scene is open.
+
 
 6. Confirm that the game window again displays `Project ready`.
 7. Stop the project.
@@ -111,15 +114,15 @@ Without following the steps again:
 - [ ] `res://scenes/main.tscn` exists.
 - [ ] The root node is a `Node2D` named `Main`.
 - [ ] A `Label` is a child of `Main`.
-- [ ] The Label displays `Project ready` at Position `(0, 0)`.
+- [ ] The Label displays `Project ready`.
 - [ ] Running the current scene succeeds without related errors or warnings.
 - [ ] Running the project opens `main.tscn` and shows the same message.
 - [ ] Closing and reopening the scene preserves its nodes and text.
-- [ ] The learner can explain node, scene, root node, child node, Inspector,
-    and main scene in simple language.
+- [ ] The learner can explain node, scene, root node, child node, parent node,
+    Inspector, and main scene in simple language.
 - [ ] The learner can change the Label text through the Inspector.
-- [ ] The learner can pan, zoom, and center a node without changing its
-    position.
+- [ ] The learner can pan, zoom, and center the view on a node without
+    moving it.
 
 ## References
 
