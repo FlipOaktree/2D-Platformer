@@ -45,21 +45,12 @@ send it to your private GitHub repository.
 
 1. Open GitHub Desktop and select the **Changes** tab.
 2. Confirm that the list contains only these three files:
-
    - `project.godot`, which records `main.tscn` as the project's main scene
-     and the viewport size and stretch settings from Lesson 1.2.
-   - `scenes/main.tscn`, which stores `Main`, its Label, and the icon
-     instance.
+    and the viewport size and stretch settings from Lesson 1.2.
+   - `scenes/main.tscn`, which stores `Main`, its Label, and the icon instance.
    - `scenes/project_icon.tscn`, which stores the reusable icon scene.
-
-3. Select `project.godot` and read its diff.
-
-> 💡 A **UID** is a stable identifier Godot assigns to each file. It looks
-> like `uid://` followed by a short code, and it is unique to your project.
-> Godot records the main scene by its UID instead of its file path, so the
-> reference keeps working if the file is later renamed or moved. That is why
-> the diff shows a `uid://` value rather than `main.tscn`.
-
+3. Select `scenes/main.tscn` and read its diff. Find `text = "Project ready"`:
+   it is the text you entered for the Label in Lesson 1.1.
 4. Select each remaining file and confirm you can explain why it changed.
    Course notes, generated `.godot/` files, credentials, or any change you
    cannot explain do not belong in this checkpoint.
