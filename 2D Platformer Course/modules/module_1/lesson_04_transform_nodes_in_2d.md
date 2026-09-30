@@ -79,8 +79,7 @@ affects its children.
 > value in degrees: positive values turn clockwise in the 2D viewport, while
 > negative values turn counterclockwise.
 
-3. Press `Ctrl+Z` to undo the rotation.
-4. Confirm that Rotation is `0°`. If it is not, enter `0` in the Inspector.
+3. Under **Transform → Rotation**, set the value back to `0`.
 
 > ⚠️ **If something differs**
 >
@@ -100,18 +99,15 @@ affects its children.
 > values above `1` make it larger. Equal `x` and `y` values preserve the
 > image's proportions; different values stretch it.
 
-3. Press `Ctrl+Z` to undo the scale change.
-4. Under **Transform → Scale**, set both `x` and `y` to `0.125`.
+3. Under **Transform → Scale**, set both `x` and `y` to `0.125`. The icon
+   should now look much smaller.
 
 > 💡 Be careful scaling an image above `1`. An image contains a fixed number
-> of pixels, so drawing it larger than its native pixel size makes it look
-> blurred.
+> of pixels, so drawing it larger than its native pixel size makes it look blurred.
 
-5. Confirm that **Transform → Scale** shows `x` and `y` both as `0.125`.
-
-   The toolbar tools and Inspector properties control the same transform:
-   Move Mode (`W`) changes Position, Rotate Mode (`E`) changes Rotation, and
-   Scale Mode (`S`) changes Scale.
+The toolbar tools and Inspector properties control the same transform: Move
+Mode (`W`) changes Position, Rotate Mode (`E`) changes Rotation, and Scale Mode
+(`S`) changes Scale.
 
 > ⚠️ **If something differs**
 >
@@ -131,7 +127,7 @@ affects its children.
    
 > 💡 `Main` and `ProjectIcon` are `Node2D`-based nodes, so **Transform** appears
 > directly in the Inspector. `Label` is a `Control` node, so its **Transform**
-> subsection appears under **Layout**.   
+> subsection appears under **Layout**. 
    
 1. Select `Main` and restore its Position to `(0, 0)`.
 2. Save the scene with `Ctrl+S`.
