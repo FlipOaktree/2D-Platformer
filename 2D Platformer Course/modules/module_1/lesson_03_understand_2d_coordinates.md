@@ -65,8 +65,8 @@ its parent rather than directly from the screen's origin. This is called a
 
 For example, suppose a parent is at `(100, 50)` and its child is at the local
 Position `(20, 10)`. When only their positions are involved, the child appears
-at `(120, 60)` because it is 20 pixels to the right and 10 pixels below its
-parent.
+at `(120, 60)`: 20 pixels to the right of the parent's `x` of 100, and 10
+pixels below the parent's `y` of 50.
 
 Moving the parent also moves the child on screen, but the child's stored local
 Position remains `(20, 10)`. This lets a whole scene branch move together
