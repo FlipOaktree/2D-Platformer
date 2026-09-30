@@ -163,8 +163,8 @@ Use this learner-facing lesson structure:
    be lost", not "Godot is installed and kept somewhere it will not be lost".
    A bullet that states a value or a finished condition is a checklist item,
    and belongs in the verification checklist instead. Keep the paragraph: it
-   carries scope a bullet list has nowhere to put, such as Lesson 2.9's note
-   that jumping arrives two lessons later. Lesson 0.1 is the model to copy.
+   carries scope a bullet list has nowhere to put, such as a note that a
+   feature arrives in a later lesson.
 2. **Before you start** - include only real prerequisites.
 3. **Build steps** - teach concepts and reasoning beside the relevant actions.
 4. **Learner exercise** - a small change to what was just built: predict what
