@@ -25,9 +25,10 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** 28 lessons are Validated: 1.1-1.5, 2.1-2.11,
-  3.1-3.5, and 4.1-4.7. Seven are Implemented and awaiting a replay against a
-  real GitHub Desktop: 0.1, 0.2, 0.3, 1.6, 2.12, 3.6, and 4.8. Every
+- **Validated curriculum:** 28 lessons are Validated: 1.1-1.4, 1.6,
+  2.1-2.11, 3.1-3.5, and 4.1-4.7. Seven are Implemented and awaiting a replay
+  against a real GitHub Desktop: 0.1, 0.2, 0.3, 1.7, 2.12, 3.6, and 4.8. Lesson
+  1.5, **Understand Node Types and Families**, is Planned. Every
   module is built and tested through Module 4; what is outstanding is the
   version-control procedure each module ends with, not the project work. The
   per-lesson rows under Curriculum and Progress are the authority for this and
@@ -94,11 +95,13 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Observed Git head:** `2444041` (`Remove a GitHub Desktop fallback that
   named a Mac-only menu`), with a clean working tree and `main` level with
   `origin/main`.
-- **Exact next step:** Draft the Module 5, Lesson 5.1 blueprint, **Add a
+- **Exact next step:** Draft the Module 1, Lesson 1.5 blueprint, **Understand
+  Node Types and Families**, inserted before scene composition. After it, draft
+  the Module 5, Lesson 5.1 blueprint, **Add a
   Following Camera**, which opens Module 5. Module 4 is built and tested:
   Lessons 4.1 to 4.7 are Validated. Lesson 4.8, **Create a Module 4 Git
   Checkpoint**, was Validated and has since been rewritten for GitHub Desktop,
-  so it is Implemented and awaits a replay, as Lessons 0.1, 0.2, 0.3, 1.6, 2.12
+  so it is Implemented and awaits a replay, as Lessons 0.1, 0.2, 0.3, 1.7, 2.12
   and 3.6 do. The **Track Player Movement States** blueprint stays drafted at
   Lesson 5.5 until
   Module 5 is reached, and must be re-checked against the Module 4 result
@@ -220,8 +223,9 @@ a reviewed Git checkpoint.
 | 1.2 | Set Up the Game Window | Viewport size versus window size, `1920`-by-`1080` world, stretch mode and aspect, window override | Validated | `3abdd88`; Part 5 repaired in `6c74ab2` and `ffa165d`; replay-verified against the Lesson 1.1 end state in `e918e66`; Part 1 (observe the default window) merged into Part 2 (set the viewport size), 4 parts reduced to 3 |
 | 1.3 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
 | 1.4 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
-| 1.5 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed; exact commit pending reconciliation |
-| 1.6 | Create a Module 1 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay |
+| 1.5 | Understand Node Types and Families | Node type versus node name; the main families (`Node`, `CanvasItem`, `Node2D`, `Control`, `Node3D`); type inheritance as an ancestor line, with a genetic analogy; reading inherited sections in the Inspector; contrast with scene inheritance | Planned | Unassigned |
+| 1.6 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed as Lesson 1.5; exact commit pending reconciliation; renumbered from 1.5 |
+| 1.7 | Create a Module 1 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay |
 
 ### Module 2: Actor and Player Foundations
 
@@ -495,7 +499,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Viewport size, window size, stretch mode, and aspect | 1.2 | Every placed position and size, level design, cameras, and UI |
 | Coordinate pairs, screen axes, and local positions | 1.3 | Transforms, levels, actors, cameras, combat, enemies, feedback, UI |
 | Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | 1.4 | Levels, actors, cameras, combat, enemies, feedback, UI |
-| Scene composition, instantiation, source propagation, and instance overrides | 1.5 | Actors, components, levels, attacks, enemies, items |
+| Node types, node families, and type inheritance | 1.5 | Choosing a node for each later feature, `extends` in Lesson 2.5, inherited properties in Lesson 2.7, and physics bodies in Lesson 2.2 |
+| Scene composition, instantiation, source propagation, and instance overrides | 1.6 | Actors, components, levels, attacks, enemies, items |
 | Codex project context, read-only requests, and the boundary of what Codex can see | 0.2 | AI-assisted review, debugging, testing, and documentation |
 | Commit identity, repository, diff, commit, and a private remote in GitHub Desktop | 0.3 | End-of-module recovery points, off-machine backup, and reviewed course milestones |
 | Input actions and device abstraction | 2.1 | Movement, combat, interaction, UI |
@@ -585,7 +590,7 @@ Remaining reconciliation work:
   publish in GitHub Desktop during the full-course empty-project rebuild. The
   production repository's earliest historical message differs and must not be
   rewritten merely to imitate the learner procedure.
-- Replay the four rewritten checkpoint lessons, 1.6, 2.12, 3.6 and 4.8,
+- Replay the four rewritten checkpoint lessons, 1.7, 2.12, 3.6 and 4.8,
   against a real GitHub Desktop, including one run that skips every optional
   Codex part. Their status stays Implemented until that happens.
 
@@ -909,3 +914,4 @@ confirmed by interactive play.
 | Introduce dragging a scene onto a node as a tip in Lesson 1.5 | Lessons 4.3, 4.6 and 4.7 tell the learner to drag a scene from FileSystem into `Main` or onto the `Level` root, but no earlier lesson taught it: Lessons 1.5 and 2.3 only use the **Instantiate Child Scene** button. A brief tip now follows the second instancing step in Lesson 1.5, saying that dropping a scene onto `Main` in the Scene dock adds it as a child of `Main`, like the button. The button stays the main path, so the lesson still shows one way to do each thing and the drag is a shortcut tip. The behaviour comes from the user's test in the editor and from Modules 4.3 and 4.6 being validated in the editor with these steps; the official instancing page documents only the button, so it is not backed by the documentation. The tip applies to dropping onto a node in the Scene dock, where the parent is explicit. Dropping into the 2D viewport places the instance where the mouse was and is covered separately in Lesson 4.3. Lesson 1.5 now has five blue callouts. |
 | Explain instances in Lesson 1.5 with a file shortcut, not a mirror | A draft used a mirror reflection for the instance and a separate subject for the copy. It fits the first half of the lesson, since a reflection always shows the current state of its subject, but it fails on overrides: a reflection cannot differ from what it reflects, while Lesson 1.5 Part 3 rotates one instance to `-20°` and leaves it linked. It also added a third word, "subject", beside "source scene" and "original". A file shortcut covers all three ideas with no new vocabulary: editing the file changes what every shortcut opens, a shortcut can carry its own settings, and duplicating the file instead of making a shortcut gives a copy that goes its own way. The course already assumes basic file-management skills and is Windows-only, so the comparison fits. Word-processor styles also cover all three ideas but assume familiarity with style lists. Analogies that describe a template, such as a blueprint, a recipe or a cookie cutter, were rejected because they get the direction of change wrong: altering the template does not change what was already made from it. Only one analogy is used per lesson. |
 | Drop the UID explanation from Lesson 1.6 and read a scene diff instead | Lesson 1.6 asked the learner to read the `project.godot` diff and carried a callout defining a UID to explain why the main scene appears as a `uid://` value. It was the only definition of UID in the course, nothing built on it, and Lesson 4.8 explains its `.uid` files separately. The learner only needs to confirm that the change list is the expected one, so whether they understand the value does not change what they do. The callout also pointed at a line in a configuration file that the lesson never located, which made the simplest review step harder. Step 3 now has the learner open the diff of `scenes/main.tscn` and find `text = "Project ready"`, the text they typed in Lesson 1.1, which teaches recognising their own change inside a diff. A Module 1-era `main.tscn` was checked and does contain that line. Reading the `project.godot` diff remains covered by the step that asks the learner to explain why each remaining file changed. The word UID no longer appears anywhere in Module 1, and Lesson 1.6 has two blue callouts. |
+| Add a theory lesson on node types and families as Lesson 1.5 | No lesson explained what a node type is or that types inherit from one another, although four lessons rely on it without saying so: Lesson 1.4 tells the learner that `Node2D` nodes show **Transform** directly while a `Control` node shows it under **Layout**; Lesson 2.2 picks `CharacterBody2D` as a physics body; Lesson 2.5 says `extends` names the kind of node a script builds on; and Lesson 2.7 calls `position` an inherited property without saying where from. A short introductory lesson covers node type versus node name, the main families, type inheritance as an ancestor line, and how the Inspector groups a node's properties by the ancestor that contributed them. It was placed as 1.5, after the transform lesson, rather than just before the checkpoint, so Module 1 alternates practice and theory and the lesson before the checkpoint builds what the checkpoint records; by 1.5 the learner has met `Node2D`, `Label` and `Sprite2D`, which is enough of a tree to read. Placing it before Lesson 2.2 would pay off sooner but would renumber 2.2 to 2.12, which are referenced across Modules 3 to 5. Scene composition moved from 1.5 to 1.6 and the checkpoint from 1.6 to 1.7; no lesson text referred to either by number, so only their titles, prerequisites and roadmap rows changed. Older Decision Log rows keep the previous numbers, where 1.5 is composition and 1.6 the checkpoint. Two traps are to be handled in the blueprint: the word "inherit" already means scene inheritance in Lesson 2.3, so the two must be contrasted; and "parent" and "child" already mean scene-tree positions from Lesson 1.1, so type relationships should use "ancestor" and "family line". The genetic analogy fits the core idea of inherited traits, with the caution that a node type has a single line of ancestors and is an "is a" relationship. |

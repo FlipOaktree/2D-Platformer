@@ -1,4 +1,4 @@
-# Module 1, Lesson 6: Create a Module 1 Git Checkpoint
+# Module 1, Lesson 7: Create a Module 1 Git Checkpoint
 
 **Status:** Implemented
 
@@ -14,7 +14,7 @@ send it to your private GitHub repository.
 
 ## Before you start
 
-- Module 1, Lessons 1 through 5 are complete.
+- Module 1, Lessons 1 through 6 are complete.
 - The Module 0 checkpoint exists, and GitHub Desktop shows `2D Platformer` as
   the current repository.
 - `main.tscn` contains the `Label` and one `ProjectIcon` instance, and the

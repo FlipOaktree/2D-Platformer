@@ -1,4 +1,4 @@
-# Module 1, Lesson 5: Compose Scenes from Reusable Parts
+# Module 1, Lesson 6: Compose Scenes from Reusable Parts
 
 **Status:** Validated
 
@@ -16,7 +16,7 @@ no longer follows the original scene.
 
 ## Before you start
 
-- Module 1, Lesson 4 is complete.
+- Module 1, Lesson 5 is complete.
 - `main.tscn` contains `Label` at Position `(0, 0)` and `ProjectIcon` at
   Position `(256, 240)`, Rotation `0°`, and Scale `(0.125, 0.125)`.
 - `ProjectIcon` is a `Sprite2D` displaying `res://icon.svg`.
