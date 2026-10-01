@@ -25,10 +25,9 @@ not infer progress from chat history or from learner verification checkboxes.
 - **Course goal:** Build and validate a beginner-friendly written course that
   produces a modular Godot 2D platformer template by following the same steps
   learners will use.
-- **Validated curriculum:** 28 lessons are Validated: 1.1-1.4, 1.6,
-  2.1-2.11, 3.1-3.5, and 4.1-4.7. Seven are Implemented and awaiting a replay
-  against a real GitHub Desktop: 0.1, 0.2, 0.3, 1.7, 2.12, 3.6, and 4.8. Lesson
-  1.5, **Understand Node Types and Families**, is Planned. Every
+- **Validated curriculum:** 29 lessons are Validated: 1.1-1.6, 2.1-2.11,
+  3.1-3.5, and 4.1-4.7. Seven are Implemented and awaiting a replay against a
+  real GitHub Desktop: 0.1, 0.2, 0.3, 1.7, 2.12, 3.6, and 4.8. Every
   module is built and tested through Module 4; what is outstanding is the
   version-control procedure each module ends with, not the project work. The
   per-lesson rows under Curriculum and Progress are the authority for this and
@@ -92,12 +91,10 @@ not infer progress from chat history or from learner verification checkboxes.
   jump-shortening conditions have regular implementation comments. Lesson 4.7
   added `respawn_at()`, the script's first method that is not a callback.
   Other gameplay systems remain absent.
-- **Observed Git head:** `2444041` (`Remove a GitHub Desktop fallback that
-  named a Mac-only menu`), with a clean working tree and `main` level with
-  `origin/main`.
-- **Exact next step:** Draft the Module 1, Lesson 1.5 blueprint, **Understand
-  Node Types and Families**, inserted before scene composition. After it, draft
-  the Module 5, Lesson 5.1 blueprint, **Add a
+- **Observed Git head:** `012dfa8` (`Approve the Lesson 1.5 blueprint and fix
+  the Inspector header claim`), with a clean working tree and `main` level with
+  `origin/main`, before the commit that validates Lesson 1.5.
+- **Exact next step:** Draft the Module 5, Lesson 5.1 blueprint, **Add a
   Following Camera**, which opens Module 5. Module 4 is built and tested:
   Lessons 4.1 to 4.7 are Validated. Lesson 4.8, **Create a Module 4 Git
   Checkpoint**, was Validated and has since been rewritten for GitHub Desktop,
@@ -223,7 +220,7 @@ a reviewed Git checkpoint.
 | 1.2 | Set Up the Game Window | Viewport size versus window size, `1920`-by-`1080` world, stretch mode and aspect, window override | Validated | `3abdd88`; Part 5 repaired in `6c74ab2` and `ffa165d`; replay-verified against the Lesson 1.1 end state in `e918e66`; Part 1 (observe the default window) merged into Part 2 (set the viewport size), 4 parts reduced to 3 |
 | 1.3 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
 | 1.4 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
-| 1.5 | Understand Node Types and Families | Node type versus node name; the main families (`Node`, `CanvasItem`, `Node2D`, `Control`, `Node3D`); type inheritance as an ancestor line, with an animal-classification analogy; reading inherited sections in the Inspector; contrast with scene inheritance | Blueprint approved | Committed; exact commit pending reconciliation |
+| 1.5 | Understand Node Types and Families | Node type versus node name; the main families (`Node`, `CanvasItem`, `Node2D`, `Control`, `Node3D`); type inheritance as an ancestor line, with an animal-classification analogy; reading inherited sections in the Inspector; contrast with scene inheritance | Validated | Committed; exact commit pending reconciliation |
 | 1.6 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed as Lesson 1.5; exact commit pending reconciliation; renumbered from 1.5 |
 | 1.7 | Create a Module 1 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay |
 
@@ -603,8 +600,10 @@ Curriculum and Progress says so. Current state lives in Current Course State.
 
 ### Lesson 1.5, Understand Node Types and Families
 
-The blueprint was approved after a partial check against Godot 4.7.2; the lesson
-stays at Blueprint approved because one editor claim is unconfirmed.
+Validated by checking each claim the lesson makes against Godot 4.7.2, its
+documentation, and screenshots of the editor. The lesson was not replayed from
+start to finish in a scratch copy, so each step is covered by an individual
+check and not by a continuous run.
 
 Checked by querying the engine's class database headlessly: `Sprite2D` descends
 through `Node2D`, `CanvasItem` and `Node`; `Label` through `Control`,
@@ -629,12 +628,14 @@ selected node's icon, its name", not its type. The first draft of Part 1 said
 the top showed the type and was corrected; the type is the first section
 heading.
 
-Not confirmed: that the Add Child Node dialog shows a tree of types when its
-search field is empty. The documentation calls it "the long list of available
-nodes" and does not describe a tree, and the editor window could not be driven
-from this session. Part 2 depends on it. The check is to open the dialog on
-`Main`, clear the search field, and look for `Node2D` and `Control` with
-expand arrows beside them.
+Checked against a screenshot of the Create New Node dialog with an empty search
+field: it is a tree with `Node` at the root, `CanvasItem` inside it, and `Node2D`
+and `Control` inside `CanvasItem`, each with an expand arrow. `Node2D`, `Control`
+and `Node3D` have blue, green and red icons. `Viewport`, `CanvasItem` and
+`AnimationMixer` are greyed, and the engine confirms they are exactly the types
+it cannot create directly, while `Node`, `Node2D`, `Control`, `Window`, `Sprite2D`
+and `Label` can be created. The official documentation calls the dialog only "the
+long list of available nodes", so this claim rests on the screenshot.
 
 ### Lesson 4.8, Create a Module 4 Git Checkpoint
 

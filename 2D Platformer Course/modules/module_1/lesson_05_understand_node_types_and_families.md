@@ -1,6 +1,6 @@
 # Module 1, Lesson 5: Understand Node Types and Families
 
-**Status:** Blueprint approved
+**Status:** Validated
 
 ## Lesson goals
 
@@ -38,11 +38,11 @@ lesson: you will read the Inspector but not change the project.
 
 Godot has hundreds of node types, but most belong to a few families:
 
-| Family | What it is for | Examples in this course |
-| --- | --- | --- |
-| `Node2D` | Objects placed in the 2D game world | `Main`, `ProjectIcon` |
-| `Control` | Interface elements such as text, buttons, and menus | `Label` |
-| `Node3D` | Objects in a 3D world | None; this course is 2D |
+| Family | What it is for | Examples in this course | Icon colour |
+| --- | --- | --- | --- |
+| `Node2D` | Objects placed in the 2D game world | `Main`, `ProjectIcon` | Blue |
+| `Control` | Interface elements such as text, buttons, and menus | `Label` | Green |
+| `Node3D` | Objects in a 3D world | None; this course is 2D | Red |
 
 `Node2D` and `Control` both belong to a larger family, `CanvasItem`, which
 holds everything Godot draws in 2D. At the very top sits `Node`, which every
@@ -50,8 +50,9 @@ node type comes from.
 
 1. Select `Main`, then select **Add Child Node**.
 2. With the search field empty, look at the list. It is arranged as a tree:
-   `Node` at the top, with families such as `CanvasItem`, `Node2D`, and
-   `Control` nested inside it.
+   `Node` at the top, `CanvasItem` inside it, and `Node2D` and `Control` inside
+   `CanvasItem`. Names shown in grey, such as `CanvasItem`, cannot be created
+   directly; they exist to hold abilities that the types below them share.
 3. Expand `Node2D` and find `Sprite2D` inside it. Expand `Control` and find
    `Label` inside it.
 4. Close the dialog with **Cancel** without creating anything.
@@ -110,8 +111,8 @@ Without opening the dialog again:
 - [ ] `main.tscn` is unchanged by this lesson.
 - [ ] The learner can explain the difference between a node's type and its
     name.
-- [ ] The learner can name the `Node2D`, `Control`, and `Node3D` families and
-    say what each is for.
+- [ ] The learner can name the `Node2D`, `Control`, and `Node3D` families, say
+    what each is for, and tell them apart by icon colour.
 - [ ] The learner can trace `Sprite2D` up its ancestor line to `Node`.
 - [ ] The learner can use the Inspector's section headings to tell which
     ancestor a property comes from.
