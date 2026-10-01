@@ -127,7 +127,7 @@ Mode (`W`) changes Position, Rotate Mode (`E`) changes Rotation, and Scale Mode
    
 > 💡 `Main` and `ProjectIcon` are `Node2D`-based nodes, so **Transform** appears
 > directly in the Inspector. `Label` is a `Control` node, so its **Transform**
-> subsection appears under **Layout**. 
+> subsection appears under **Layout**. The next lesson explains why.
    
 1. Select `Main` and restore its Position to `(0, 0)`.
 2. Save the scene with `Ctrl+S`.
