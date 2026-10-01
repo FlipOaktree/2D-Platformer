@@ -62,10 +62,12 @@ node type comes from.
 
 ### Part 3: Read a node's ancestor line
 
-A node type **inherits** from the type above it, the way a child inherits
-traits from a family line of parents and grandparents. A `Sprite2D` has
-everything a `Node2D` has and adds a texture. A `Node2D` has everything a
-`CanvasItem` has and adds a position. Following the line upward:
+A node type **inherits** from the type above it, the way a cat is a kind of
+mammal and a mammal is a kind of animal. Everything true of animals is true of
+mammals, and everything true of mammals is true of cats, which add traits of
+their own. A `Sprite2D` works the same way: it has everything a `Node2D` has
+and adds a texture, and a `Node2D` has everything a `CanvasItem` has and adds a
+position. Following the line upward:
 
 `Node` → `CanvasItem` → `Node2D` → `Sprite2D`
 
@@ -87,10 +89,6 @@ So a `Sprite2D` *is* a `Node2D`, a `CanvasItem`, and a `Node` at once.
 This is why **Transform** appeared in a different place on `Label` earlier: a
 `Label` belongs to the `Control` family, not the `Node2D` family.
 
-> 💡 In the Scene dock, *parent* and *child* describe where a node sits in the
-> tree. Inheritance between types is a different relationship, so this course
-> calls the types above a node its *ancestors*.
-
 > ⚠️ **If something differs**
 >
 > - If the sections are collapsed, the headings still show; expand one only to
@@ -109,8 +107,7 @@ Without opening the dialog again:
 ## Verification checklist
 
 - [ ] `main.tscn` is unchanged by this lesson.
-- [ ] The learner can explain the difference between a node's type and its
-    name.
+- [ ] The learner can explain the difference between a node's type and its name.
 - [ ] The learner can name the `Node2D`, `Control`, and `Node3D` families and
     say what each is for.
 - [ ] The learner can trace `Sprite2D` up its ancestor line to `Node`.
