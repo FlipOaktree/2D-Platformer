@@ -223,7 +223,7 @@ a reviewed Git checkpoint.
 | 1.2 | Set Up the Game Window | Viewport size versus window size, `1920`-by-`1080` world, stretch mode and aspect, window override | Validated | `3abdd88`; Part 5 repaired in `6c74ab2` and `ffa165d`; replay-verified against the Lesson 1.1 end state in `e918e66`; Part 1 (observe the default window) merged into Part 2 (set the viewport size), 4 parts reduced to 3 |
 | 1.3 | Understand 2D Coordinates | Coordinate pairs, origin, screen axes, and local positions | Validated | Committed; exact commit pending reconciliation |
 | 1.4 | Transform Nodes in 2D | `ProjectIcon`, Position, Rotation, Scale, toolbar tools, and applied parent-relative transforms | Validated | Committed; exact commit pending reconciliation |
-| 1.5 | Understand Node Types and Families | Node type versus node name; the main families (`Node`, `CanvasItem`, `Node2D`, `Control`, `Node3D`); type inheritance as an ancestor line, with an animal-classification analogy; reading inherited sections in the Inspector; contrast with scene inheritance | Blueprint drafted | Committed; exact commit pending reconciliation |
+| 1.5 | Understand Node Types and Families | Node type versus node name; the main families (`Node`, `CanvasItem`, `Node2D`, `Control`, `Node3D`); type inheritance as an ancestor line, with an animal-classification analogy; reading inherited sections in the Inspector; contrast with scene inheritance | Blueprint approved | Committed; exact commit pending reconciliation |
 | 1.6 | Compose Scenes from Reusable Parts | Reusable child scenes, source propagation, per-instance overrides | Validated | Committed as Lesson 1.5; exact commit pending reconciliation; renumbered from 1.5 |
 | 1.7 | Create a Module 1 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, push to the private remote, and an optional Codex description part | Implemented | `2452c6e`; rewritten for GitHub Desktop and awaiting a replay |
 
@@ -600,6 +600,41 @@ What was measured when each lesson was validated, newest first. These are
 records of a past check, not claims about the project as it stands now: when a
 lesson is later rewritten its evidence here lapses, and the lesson's row under
 Curriculum and Progress says so. Current state lives in Current Course State.
+
+### Lesson 1.5, Understand Node Types and Families
+
+The blueprint was approved after a partial check against Godot 4.7.2; the lesson
+stays at Blueprint approved because one editor claim is unconfirmed.
+
+Checked by querying the engine's class database headlessly: `Sprite2D` descends
+through `Node2D`, `CanvasItem` and `Node`; `Label` through `Control`,
+`CanvasItem` and `Node`; `Node2D` and `Control` are both direct children of
+`CanvasItem`, and `Node3D` is a direct child of `Node`; `Sprite2D` is listed
+among the types inheriting from `Node2D` and `Label` among those inheriting from
+`Control`. `Node2D` defines a **Transform** group holding position, rotation,
+scale and skew, `Control` defines a **Layout** group with a **Transform**
+subgroup holding size, position, rotation and scale, and `Sprite2D` holds
+`texture` as its own first property. 283 types descend from `Node`, 239 of them
+instantiable, and `Node2D`, `Control` and `Node3D` account for 50, 75 and 120,
+or 245 together, so "hundreds of node types" and "most belong to a few families"
+both hold.
+
+Checked against a screenshot of the Inspector for a `Sprite2D`: the section
+headings run **Sprite2D, Node2D, CanvasItem, Node** from top to bottom, with
+Texture under the first, Transform under `Node2D`, and Script under `Node`.
+
+Checked against the Godot documentation: "Properties are grouped inside their
+respective classes as sections", and the top of the Inspector shows "the
+selected node's icon, its name", not its type. The first draft of Part 1 said
+the top showed the type and was corrected; the type is the first section
+heading.
+
+Not confirmed: that the Add Child Node dialog shows a tree of types when its
+search field is empty. The documentation calls it "the long list of available
+nodes" and does not describe a tree, and the editor window could not be driven
+from this session. Part 2 depends on it. The check is to open the dialog on
+`Main`, clear the search field, and look for `Node2D` and `Control` with
+expand arrows beside them.
 
 ### Lesson 4.8, Create a Module 4 Git Checkpoint
 

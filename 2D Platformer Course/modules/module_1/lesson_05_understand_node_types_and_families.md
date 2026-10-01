@@ -1,6 +1,6 @@
 # Module 1, Lesson 5: Understand Node Types and Families
 
-**Status:** Blueprint drafted
+**Status:** Blueprint approved
 
 ## Lesson goals
 
@@ -24,9 +24,10 @@ lesson: you will read the Inspector but not change the project.
 
 1. Open `res://scenes/main.tscn`.
 2. Select `ProjectIcon` in the Scene dock.
-3. Look at the top of the Inspector. Confirm that it shows `Sprite2D`, not
-   `ProjectIcon`.
-4. Select `Main` and confirm that the Inspector shows `Node2D`.
+3. Look at the top of the Inspector. It shows the node's name, `ProjectIcon`.
+   Just below it, the first section heading shows the node's type, `Sprite2D`.
+4. Select `Main`. Confirm that the top shows `Main` and the first section
+   heading shows `Node2D`.
 
 > 💡 Every node has a **type** and a **name**. The type decides what the node
 > can do; the name is only a label you choose. Renaming `Node2D` to `Main`
@@ -107,7 +108,8 @@ Without opening the dialog again:
 ## Verification checklist
 
 - [ ] `main.tscn` is unchanged by this lesson.
-- [ ] The learner can explain the difference between a node's type and its name.
+- [ ] The learner can explain the difference between a node's type and its
+    name.
 - [ ] The learner can name the `Node2D`, `Control`, and `Node3D` families and
     say what each is for.
 - [ ] The learner can trace `Sprite2D` up its ancestor line to `Node`.
