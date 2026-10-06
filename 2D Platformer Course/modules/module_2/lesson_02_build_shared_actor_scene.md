@@ -94,8 +94,8 @@ behavior yet.
 
 6. Save `actor.tscn` with `Ctrl+S`.
 
-   `Actor` does not appear in the running project yet because it has not been
-   added to `Main`. The next lesson will specialize this shared scene into a
+   `Actor` does not appear in the running project: it has not been added to
+   `Main`, and it has no visuals yet. The next lesson specializes it into a
    player before placing it in the project.
 
 > ⚠️ **If something differs**
