@@ -54,19 +54,24 @@ is important because it tells GDScript that those lines belong together.
 
 ### Part 2: Store values with variables
 
-A **variable** gives a **value** a name so code can read or change it later. Instead of repeating a value multiple times, use the variable’s name. When its value changes, every later use of that variable uses the updated value.
+A **variable** assigns a name to a **value**. Instead of repeating a value multiple times, use the variable’s name so when its value changes, every later use of that variable uses the updated value.
 
-> 💡 A value's **type** describes what kind of information it stores. The
-> first types used in this course are whole numbers, decimal numbers,
-> true-or-false values, text, and two-coordinate positions.
+For example, suppose “my car” refers to a Ford. Your to-do list says “wash my
+car” and “check my car's tires”. When you replace the Ford with a Nissan, both
+tasks now refer to the Nissan without rewriting the list. Had you written
+“Ford” in each task, you would have to change each one. A variable works
+similarly: its name stays the same, and code can use that name in several
+places. Change its value once, and each later use reads the new value.
 
-| Type | Example | Possible Player use |
-| --- | --- | --- |
-| `int` | `3` or `-10` | Remaining lives |
-| `float` | `10.2` or `-6.5` | Movement speed |
-| `bool` | `true` or `false` | Whether the Player is grounded |
-| `String` | `"Player"` | The Player's name |
-| `Vector2` | `Vector2(5.4, 8.1)` | The Player's position |
+A value's **type** describes what kind of information it stores. The first types used in this course are whole numbers, decimal numbers, true-or-false values, text, and two-coordinate positions.
+
+| Type      | Description                            | Example             | Possible Player use            |
+| --------- | -------------------------------------- | ------------------- | ------------------------------ |
+| `int`     | Whole numbers                          | `3` or `-10`        | Remaining lives                |
+| `float`   | Numbers that can include decimals      | `10.2` or `-6.5`    | Movement speed                 |
+| `bool`    | True-or-false values                   | `true` or `false`   | Whether the Player is grounded |
+| `String`  | Text                                   | `"Alex"`            | The Player's name              |
+| `Vector2` | Two numbers stored together as x and y | `Vector2(5.4, 8.1)` | The Player's position          |
 
 Read the following script:
 
@@ -78,16 +83,19 @@ Read the following script:
    var spawn_position: Vector2 = Vector2(128.0, 128.0)
    ```
 
-Read each line as “create a new variable, name it, and assign it a value.” Let's break down the first line `var player_name: String = "Mina"`:
+Let's break down the first line `var player_name: String = "Mina"`:
    - `var` declares that you are creating a variable.
    - `player_name` is the name of the variable.
    - `String` is the type hint, which specifies the variable's value type.
    - `=` assigns the value to the variable.
    - `"Mina"` is the variable's value.
 
-> 💡 **Type hints** are optional in GDScript. This course uses type hints
-> because they let Godot catch more mistakes in the editor before the game
-> runs.
+So, you read each line as “create a new variable, name it, and assign it a value.” :
+   - `var player_name: String = "Mina"` means: create a variable named `player_name` that holds text, and assign it the value `"Mina"`.
+   - `var lives: int = 3` means: create a variable named `lives` that holds whole numbers, and assign it the value `3`.
+   - Etc.
+
+> 💡 Although **type hints** are optional in GDScript, this course uses them to specify the type each variable can hold. This helps Godot catch mistakes if you later try to assign a value of an incompatible type.
 
 ### Part 3: Combine and compare values with operators
 
@@ -118,7 +126,7 @@ operator adds `1` to its current value, so `coins` becomes `5`.
 | `and`, `or`, `not` | Combine or reverse `true`/`false` values |
 
 > 💡 `=` and `==` look similar but answer different questions. `coins = 5`
-> stores `5` in `coins`. `coins == 5` asks whether the current value of `coins`
+> assigns `5` in `coins`. `coins == 5` asks whether the current value of `coins`
 > is `5`. In short, `=` assigns and `==` compares. Reading that distinction
 > carefully prevents many beginner mistakes.
 
@@ -131,10 +139,7 @@ Read this example:
 var coins: int = 2
 ```
 
-Everything after `#` is a **comment**. Godot ignores it when the game runs.
-Comments help people reading the code understand why a choice was made. Keep
-them short, and use them to add useful context instead of repeating what an
-obvious line already says.
+The line starting with `#` is a **comment**. Godot ignores it when the game runs. Comments help people reading the code understand why a choice was made. Keep them short, and use them to add useful context instead of repeating what an obvious line already says.
 
 > 💡 Comments can appear on their own lines or at the end of a line of code.
 
@@ -159,15 +164,15 @@ speed -= 100.0
 ## Verification checklist
 
 - [ ] The learner can explain what GDScript is and why it is used in this
-      Godot course.
+    Godot course.
 - [ ] The learner knows that indentation groups related instructions.
 - [ ] The learner can identify a comment and explain why it is useful.
 - [ ] The learner can identify a variable, its value and type hint.
 - [ ] The learner can recognize `int`, `float`, `bool`, `String`, and
-      `Vector2` values.
+    `Vector2` values.
 - [ ] The learner can explain the difference between `=` and `==`.
 - [ ] The learner can read basic arithmetic, assignment, comparison, and
-      logical operators.
+    logical operators.
 
 ## References
 

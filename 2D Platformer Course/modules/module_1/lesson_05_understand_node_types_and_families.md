@@ -109,8 +109,7 @@ Without opening the dialog again:
 ## Verification checklist
 
 - [ ] `main.tscn` is unchanged by this lesson.
-- [ ] The learner can explain the difference between a node's type and its
-    name.
+- [ ] The learner can explain the difference between a node's type and its name.
 - [ ] The learner can name the `Node2D`, `Control`, and `Node3D` families, say
     what each is for, and tell them apart by icon colour.
 - [ ] The learner can trace `Sprite2D` up its ancestor line to `Node`.

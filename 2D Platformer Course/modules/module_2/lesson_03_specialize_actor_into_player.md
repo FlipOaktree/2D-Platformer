@@ -127,17 +127,14 @@ Without repeating the build steps:
 - [ ] Its root is a `CharacterBody2D` named `Player`.
 - [ ] `Visuals`, `CollisionShape2D`, and `Components` remain inherited children.
 - [ ] The Player scene contains no script, movement, camera, or artwork yet.
-- [ ] `main.tscn` contains one direct `Player` instance at Position
-      `(128, 128)`.
+- [ ] `main.tscn` contains one direct `Player` instance at Position `(128, 128)`.
 - [ ] Running `main.tscn` still displays `Project ready` and the project icon.
-- [ ] **Visible Collision Shapes** reveals the Player collision boundary at its
-      expected position.
-- [ ] A Player-only child can be added and removed without changing
-      `actor.tscn`.
-- [ ] The learner can explain the difference between inheriting a scene and
-      instancing a scene.
+- [ ] **Visible Collision Shapes** reveals the Player collision boundary at its expected position.
+- [ ] A Player-only child can be added and removed without changing `actor.tscn`.
+- [ ] The learner can explain the difference between inheriting a scene and instancing
+    a scene.
 - [ ] The learner can explain why player-specific behavior does not belong in
-      the shared Actor scene.
+    the shared Actor scene.
 
 ## References
 

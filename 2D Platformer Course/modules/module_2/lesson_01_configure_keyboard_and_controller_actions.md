@@ -152,8 +152,7 @@ Without repeating the build steps:
 
 ## Verification checklist
 
-- [ ] `move_left`, `move_right`, and `jump` exist with exact `snake_case`
-      names.
+- [ ] `move_left`, `move_right`, and `jump` exist with exact `snake_case` names.
 - [ ] `move_left` contains `A` and `Left Arrow` keyboard events.
 - [ ] `move_right` contains `D` and `Right Arrow` keyboard events.
 - [ ] `jump` contains a `Space` keyboard event.
@@ -161,12 +160,11 @@ Without repeating the build steps:
 - [ ] `move_right` contains D-pad right and left-stick-right controller events.
 - [ ] `jump` contains the controller's bottom face button.
 - [ ] Each action uses the project deadzone of `0.2`.
-- [ ] The learner can explain the difference between an input event and an
-      input action.
+- [ ] The learner can explain the difference between an input event and an input action.
 - [ ] The learner can explain why action names describe intent instead of a
-      particular key or controller button.
+    particular key or controller button.
 - [ ] With a connected compatible controller, **Listening for Input** detects
-      each mapped control while it is being added.
+    each mapped control while it is being added.
 
 ## References
 

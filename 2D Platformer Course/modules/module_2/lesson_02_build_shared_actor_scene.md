@@ -125,16 +125,16 @@ Without repeating the build steps:
 - [ ] Its root is a `CharacterBody2D` named `Actor`.
 - [ ] `Visuals` is a direct `Node2D` child of `Actor`.
 - [ ] `CollisionShape2D` is a direct child of `Actor` and contains a
-      `RectangleShape2D` with Size `(32, 32)`.
+    `RectangleShape2D` with Size `(32, 32)`.
 - [ ] `Components` is a direct `Node2D` child of `Actor`.
 - [ ] The shared scene contains no script or actor-specific gameplay features.
 - [ ] The learner can explain why `CharacterBody2D` is the shared root.
 - [ ] The learner can explain the different roles of `Visuals`,
-      `CollisionShape2D`, and `Components`.
+    `CollisionShape2D`, and `Components`.
 - [ ] A temporary child can be added to and removed from `Components` without
-      changing the other branches.
+    changing the other branches.
 - [ ] Running the project still displays `Project ready` and the project icon
-      without related errors or warnings.
+    without related errors or warnings.
 
 ## References
 
