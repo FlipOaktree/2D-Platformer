@@ -54,6 +54,8 @@ replace `pass` with the calculation after creating the custom function.
 
 ### Part 2: Create a function that receives values
 
+As we saw in Lesson 2.5, a function can *return* a value after following its instructions. It can also *receive* values through **parameters**. Imagine asking a waiter to “Collect payment” and handing him a bill. He takes the bill to the customer, collects the payment, and brings it back to you. The bill is like a value the function receives through a parameter; the payment brought back is like its returned value. The same instructions work with a different bill each time.
+
 1. Beneath the complete `_ready()` function, add this custom function:
 
    ```gdscript
@@ -75,7 +77,7 @@ func add_coins(current_coins: int, collected_coins: int) -> int:
 
 2. Save the script with `Ctrl+S`.
 
-`current_coins` and `collected_coins` are **parameters**. A parameter is a
+`current_coins` and `collected_coins` are parameters. A parameter is a
 named value that a function receives and can use while it runs. The `int` type
 hints say that both parameters must receive whole numbers.
 
@@ -129,12 +131,7 @@ parameters in the same order: `2` becomes `current_coins`, and `3` becomes
 > receive. An **argument** is the actual value supplied when the function is
 > called.
 >
-> Think of a reusable name tag. The blank labeled **Name** is like a parameter.
-> Writing **Alex** on the tag is like supplying an argument. Because it is a
-> name tag, you expect text rather than a number—just as a parameter's type
-> tells GDScript what kind of value it can receive. The same tag can be reused
-> with a different name, just as the same function can be called with different
-> arguments.
+>  Imagine a coffee order slip with a field labeled **Sugar cubes: ____**. The label **Sugar cubes:** is like a parameter: it names the value the barista needs. Writing **2** after the colon is like supplying an argument. You enter a whole number because it counts cubes, just as an `int` parameter expects a whole number. The same slip can be used for another order with **3** cubes.
 
 4. Open `res://scenes/main.tscn`.
 5. In the **Output** panel, select **Clear** if it contains messages from an
@@ -192,19 +189,16 @@ Without adding the temporary code again, explain:
 2. In `add_coins(2, 5)`, which values are arguments?
 3. Which parameters receive those arguments?
 4. What does `-> int` promise that the function will return?
-5. Why did changing only the second argument change the result from `5` to
-   `7`?
+5. Why did changing only the second argument change the result from `5` to `7`?
 
 ## Verification checklist
 
 - [ ] The learner created `_ready()` with a temporary `pass` instruction.
-- [ ] The learner can explain the difference between a parameter and an
-      argument.
+- [ ] The learner can explain the difference between a parameter and an argument.
 - [ ] Both parameters in `add_coins()` use `int` type hints.
 - [ ] The learner knows that `-> int` means the function returns an integer.
 - [ ] The learner replaced `pass` with code that calls `add_coins()`.
-- [ ] The learner used `return` to send the calculated value back to
-      `_ready()`.
+- [ ] The learner used `return` to send the calculated value back to `_ready()`.
 - [ ] `add_coins(2, 3)` printed `5`.
 - [ ] Changing the call to `add_coins(2, 5)` printed `7`.
 - [ ] The temporary `_ready()` and `add_coins()` functions have been removed.

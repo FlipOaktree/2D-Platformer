@@ -75,7 +75,7 @@ func _ready() -> void:
 
 Some functions are **callbacks**. Godot calls them automatically at specific moments, like coffee shop staff following the “Make coffee” recipe whenever the shop opens. `_ready()` is a Godot callback that runs when the Player is ready in the running scene.
 
-A function can return a value to the code that called it, or perform a task without returning one. Imagine asking a server to follow two sets of instructions. **“Bring coffee”** means picking up the coffee, walking to the customer, and placing it on the table. The task is completed without giving you a value back. **“Take an order”** means asking the customer what they want and bringing their answer back to you—for example, `"cappuccino"`. That answer is like a returned value.
+A function can return a value to the code that called it, or perform a task without returning one. Imagine asking a waiter to follow two sets of instructions. **“Bring coffee”** means picking up the coffee, walking to the customer, and placing it on the table. The task is completed without giving you a value back. **“Take an order”** means asking the customer what they want and bringing their answer back to you—for example, `"cappuccino"`. That answer is like a returned value.
 
 `-> void` is a **type hint** that describes the type of value a function returns. `void` is used when no value is returned. The next lesson explores functions that do return a value.
 
