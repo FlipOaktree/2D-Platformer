@@ -34,7 +34,7 @@ programming bridges can build toward movement in Lesson 2.8.
 6. Set **Path** to `res://actors/player.gd`.
 7. Select **Create**.
 
-> 💡 A script adds instructions and behavior to the node it is attached to. This script belongs on `Player`, not the shared `Actor`, because later it will read the player's controls.
+> 💡 A script adds instructions and behavior to the node it is attached to. This script belongs on `Player` because it will read the player’s controls. Putting it on the shared `Actor` would make enemies and NPCs that inherit from Actor respond to those controls too, which we don't want.
 
 The new script contains one line:
 
@@ -71,15 +71,13 @@ func _ready() -> void:
 	pass
 ```
 
-`func` starts a **function**. A function is simply a named group of instructions.
+`func` starts a **function**: a named group of instructions. Think of a recipe named “Make coffee” that groups steps such as boiling water, brewing coffee, and frothing milk. Writing the recipe does not make coffee. Asking someone to follow it is like **calling the function**. Whenever you want coffee, you can say “Make coffee” instead of repeating every instruction.
 
-Some functions are **callbacks**. Godot calls these functions automatically at
-specific moments. `_ready()` is a Godot callback that runs when the Player is
-ready in the running scene.
+Some functions are **callbacks**. Godot calls them automatically at specific moments, like coffee shop staff following the “Make coffee” recipe whenever the shop opens. `_ready()` is a Godot callback that runs when the Player is ready in the running scene.
 
-`-> void` is a **type hint** that describes the type of value a function
-returns. `void` is used when no value is returned. The next lesson explores
-functions that do return a value.
+A function can return a value to the code that called it, or perform a task without returning one. Imagine asking a server to follow two sets of instructions. **“Bring coffee”** means picking up the coffee, walking to the customer, and placing it on the table. The task is completed without giving you a value back. **“Take an order”** means asking the customer what they want and bringing their answer back to you—for example, `"cappuccino"`. That answer is like a returned value.
+
+`-> void` is a **type hint** that describes the type of value a function returns. `void` is used when no value is returned. The next lesson explores functions that do return a value.
 
 A function needs at least one indented instruction; otherwise, Godot reports an error. You can use `pass`, which simply means “do nothing,” to keep a function valid while you add its instructions later.
 
@@ -112,8 +110,7 @@ func _ready() -> void:
 
 3. Save the script with `Ctrl+S`.
 
-`message` applies the variable and `String` type-hint syntax from Lesson 2.4.
-The text between quotation marks is its value.
+As we saw in Lesson 2.4, `var message: String = "Player is ready"` creates a variable named `message` that holds text and assigns it the value `"Player is ready"`.
 
 `print(message)` sends the value of that variable to the **Output** panel,
 located under the main viewport. `print()` is often used only for testing.
@@ -159,11 +156,7 @@ func show_message() -> void:
 	print(message)
 ```
 
-> 💡 `show_message()` is a **custom function**: you give it a name and choose
-> the instructions it contains. Unlike `_ready()`, Godot does not call it
-> automatically. A custom function can help you avoid writing the same large
-> block of instructions multiple times: write the instructions once, then call
-> the function by name when needed.
+> 💡 `show_message()` is a **custom function**: you choose its name and instructions, like creating your own coffee recipe called “Make Alexpresso”. Unlike `_ready()`, it waits until your code calls it. You can then reuse those instructions by calling the function’s name instead of writing them again.
 
 2. Save the script with `Ctrl+S`.
 
@@ -284,8 +277,7 @@ Without adding the temporary code again, explain:
    `_ready()` called `show_message()`?
 3. Why did the Output panel show two lines after `_ready()` called
    `show_message()`?
-4. Why did changing the script-level `message` variable change both printed
-   lines?
+4. Why did changing the script-level `message` variable change both printed lines?
 5. What line remains in `player.gd`, and what does it tell GDScript?
 
 ## Verification checklist
@@ -297,13 +289,10 @@ Without adding the temporary code again, explain:
 - [ ] The learner used `pass` as a temporary instruction and then replaced it.
 - [ ] Running `main.tscn` printed `Player is ready` in the Output panel.
 - [ ] The learner saw why a local `message` variable caused an error in
-      another function.
-- [ ] The learner can explain the difference between local and script-level
-      scope.
-- [ ] The learner called `show_message()` from `_ready()` and saw the message
-      twice.
-- [ ] The learner changed `message` once and saw both printed lines use its
-      updated value.
+    another function.
+- [ ] The learner can explain the difference between local and script-level scope.
+- [ ] The learner called `show_message()` from `_ready()` and saw the message twice.
+- [ ] The learner changed `message` once and saw both printed lines use its updated value.
 - [ ] The temporary `_ready()` diagnostic has been removed.
 - [ ] `player.gd` ends with only `extends CharacterBody2D`.
 - [ ] No input or physics behavior has been added yet.
