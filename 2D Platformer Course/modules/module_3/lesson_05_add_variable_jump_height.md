@@ -1,6 +1,6 @@
 # Module 3, Lesson 5: Add Variable Jump Height
 
-**Status:** Validated
+**Status:** Implemented
 
 ## Lesson goals
 
@@ -54,7 +54,7 @@ update of a press. Nothing in the script reacts to the button being let go.
 > - If the two jumps already reach different heights, compare `player.gd` with
 >   the Lesson 3.4 script before continuing.
 > - If the Player cannot jump at all, confirm that the `jump` action from
->   Lesson 2.1 is still assigned to Space and the controller's bottom button.
+>   Lesson 2.7 is still assigned to Space and the controller's bottom button.
 
 ### Part 2: Add the jump release setting
 
@@ -105,7 +105,7 @@ be remembered afterward.
    ```
 
 > 💡 `Input.is_action_just_released("jump")` is the counterpart to
-> `Input.is_action_just_pressed()` from Lesson 2.11. It returns `true` only on
+> `Input.is_action_just_pressed()` from Lesson 2.10. It returns `true` only on
 > the update when the button is let go, then returns `false` again. One reports
 > the start of a press; the other reports its end.
 
@@ -177,9 +177,8 @@ happen: a jump starts, and then an early release shortens it.
    	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
    	var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
 
-   	# Skip gravity while the Player is grounded.
-   	if not is_on_floor():
-   		velocity.y += gravity * delta
+   	# Apply gravity before a new jump sets its full upward speed.
+   	velocity.y += gravity * delta
 
    	# Start a jump when a request and permission overlap.
    	if has_jump_request and can_jump:

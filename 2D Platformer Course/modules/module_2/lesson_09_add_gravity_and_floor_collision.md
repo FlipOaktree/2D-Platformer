@@ -8,14 +8,12 @@ Add a temporary floor to `main.tscn`, then give the Player gravity. When you
 run the scene, the Player will fall, land on the floor, and retain the
 horizontal movement from Lesson 2.8.
 
-This lesson adds falling and floor collision only. Lesson 2.10 will use the
-floor state to introduce conditional logic, and jumping will be added in
-Lesson 2.11.
+This lesson adds falling and floor collision only. Lesson 2.10 will use
+the `jump` action and floor state to add grounded jumping.
 
 - Giving the Player something solid to land on
 - Adding gravity that pulls the Player down a little more every frame
-- Keeping the horizontal movement from Lesson 2.8 working while the Player
-  falls
+- Keeping the horizontal movement from Lesson 2.8 working while the Player falls
 
 ## Before you start
 
@@ -125,13 +123,12 @@ After about one second of falling, it reaches about 2400 pixels per second.
 2. Save the script with `Ctrl+S`.
 
 `move_and_slide()` remains after the velocity calculations. It moves the
-Player and handles the collision with the floor. Lesson 2.10 will refine when
-the gravity calculation runs by using the floor state.
+Player and handles the collision with the floor. Lesson 2.10 will use the
+floor state to decide whether a jump can start.
 
 3. Open `res://scenes/main.tscn`.
 4. In the editor's **Debug** menu, enable **Visible Collision Shapes**.
-5. Predict what the Player will do now, then run the current scene with
-   `F6`.
+5. Predict what the Player will do now, then run the current scene with `F6`.
 6. Confirm that the Player falls and stops on top of the floor.
 7. Confirm that the bottoms of the Player marker and its collision outline
    meet the top edge of the Floor collision shape.
@@ -139,8 +136,7 @@ the gravity calculation runs by using the floor state.
    movement still works while the Player is on the floor.
 9. Release the input and confirm that the Player stops horizontally without
    falling through the floor.
-10. If a compatible controller is connected, test its configured horizontal
-    controls too.
+10. If a compatible controller is connected, test its configured horizontal controls too.
 11. Confirm that neither `ProjectIcon` nor `Project ready` appears.
 12. Stop the running scene with `F8`.
 
@@ -169,23 +165,17 @@ the gravity calculation runs by using the floor state.
 ## Verification checklist
 
 - [ ] `main.tscn` contains a `Floor` `StaticBody2D` at Position `(960, 992)`.
-- [ ] `Floor` has a `CollisionShape2D` using a `RectangleShape2D` with Size
-      `(1920, 64)`.
+- [ ] `Floor` has a `CollisionShape2D` using a `RectangleShape2D` with Size `(1920, 64)`.
 - [ ] Player's 128-by-128 collision-shape override matches its temporary
-      128-by-128 marker.
+    128-by-128 marker.
 - [ ] `res://actors/player.gd` declares typed `speed` and `gravity` variables.
-- [ ] `_physics_process()` uses the `delta` parameter without a leading
-      underscore.
-- [ ] Gravity changes `velocity.y` by `gravity * delta` during each physics
-      update.
-- [ ] `move_and_slide()` remains after the vertical and horizontal velocity
-      calculations.
+- [ ] `_physics_process()` uses the `delta` parameter without a leading underscore.
+- [ ] Gravity changes `velocity.y` by `gravity * delta` during each physics update.
+- [ ] `move_and_slide()` remains after the vertical and horizontal velocity calculations.
 - [ ] The Player falls, lands on the floor, and does not fall through it.
-- [ ] The bottoms of the Player marker and collision outline meet the top edge
-      of the Floor collision shape.
+- [ ] The bottoms of the Player marker and collision outline meet the top edge of the Floor collision shape.
 - [ ] Keyboard horizontal movement and stopping still work on the floor.
-- [ ] Configured controller movement still works when a compatible controller
-      is available.
+- [ ] Configured controller movement still works when a compatible controller is available.
 - [ ] Neither `ProjectIcon` nor `Project ready` appears when `main.tscn` runs.
 - [ ] The gravity exercise ends with `gravity` restored to `2400.0`.
 - [ ] The Player cannot jump yet.

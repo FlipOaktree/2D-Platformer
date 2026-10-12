@@ -1,6 +1,6 @@
 # Module 3, Lesson 1: Expose Safe Movement Settings
 
-**Status:** Validated
+**Status:** Implemented
 
 ## Lesson goals
 
@@ -57,25 +57,24 @@ movement calculations that use them.
 ### Part 2: Add useful regular comments
 
 1. Return to `res://actors/player.gd`.
-2. Add one regular comment above the jump condition and another above the
-   gravity condition:
+2. Add one regular comment above the gravity line and another above the
+   jump condition:
 
    ```gdscript
    func _physics_process(delta: float) -> void:
-   	# Prevent another jump from starting while the Player is airborne.
+   	# Apply gravity before a new jump sets its full upward speed.
+   	velocity.y += gravity * delta
+
+   	# Start a jump only while the Player is grounded.
    	if Input.is_action_just_pressed("jump") and is_on_floor():
    		velocity.y = jump_velocity
-
-   	# Skip gravity while the Player is grounded.
-   	if not is_on_floor():
-   		velocity.y += gravity * delta
 
    	var direction: float = Input.get_axis("move_left", "move_right")
    	velocity.x = direction * speed
    	move_and_slide()
    ```
 
-Regular comments were introduced in Lesson 2.4. Godot ignores them when the
+Regular comments were introduced in Lesson 2.3. Godot ignores them when the
 game runs, but they can explain an implementation decision to someone reading
 the code.
 
@@ -87,7 +86,7 @@ use a different kind of comment to document a setting for the Inspector.
 > ⚠️ **If something differs**
 >
 > - If the script reports an indentation error, align each comment with the
->   `if` statement directly below it.
+>   line directly below it.
 > - If movement behavior changes, compare the function with the code block and
 >   confirm that only the two comment lines were added.
 

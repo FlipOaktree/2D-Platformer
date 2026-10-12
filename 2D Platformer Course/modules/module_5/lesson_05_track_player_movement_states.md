@@ -228,9 +228,8 @@ descending.
    	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
    	var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
 
-   	# Skip gravity while the Player is grounded.
-   	if not is_on_floor():
-   		velocity.y += gravity * delta
+   	# Apply gravity before a new jump sets its full upward speed.
+   	velocity.y += gravity * delta
 
    	# Start a jump when a request and permission overlap.
    	if has_jump_request and can_jump:

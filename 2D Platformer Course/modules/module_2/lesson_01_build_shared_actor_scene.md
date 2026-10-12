@@ -1,4 +1,4 @@
-# Module 2, Lesson 2: Build the Shared Actor Scene
+# Module 2, Lesson 1: Build the Shared Actor Scene
 
 **Status:** Validated
 
@@ -18,8 +18,7 @@ behavior yet.
 
 ## Before you start
 
-- Module 2, Lesson 1 is complete.
-- The Input Map contains `move_left`, `move_right`, and `jump`.
+- Module 1 is complete.
 - You can create child nodes, use the Inspector, save a scene, and recognize a
   reusable scene from Module 1.
 - The project opens and runs without related errors or warnings.

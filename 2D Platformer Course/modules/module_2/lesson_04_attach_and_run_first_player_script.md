@@ -1,4 +1,4 @@
-# Module 2, Lesson 5: Attach and Run Your First Player Script
+# Module 2, Lesson 4: Attach and Run Your First Player Script
 
 **Status:** Validated
 
@@ -16,7 +16,7 @@ programming bridges can build toward movement in Lesson 2.8.
 
 ## Before you start
 
-- Module 2, Lesson 4 is complete.
+- Module 2, Lesson 3 is complete.
 - `res://actors/player.tscn` inherits from `res://actors/actor.tscn`.
 - `main.tscn` contains one Player instance.
 - The project runs without related errors or warnings.
@@ -110,7 +110,7 @@ func _ready() -> void:
 
 3. Save the script with `Ctrl+S`.
 
-As we saw in Lesson 2.4, `var message: String = "Player is ready"` creates a variable named `message` that holds text and assigns it the value `"Player is ready"`.
+As we saw in Lesson 2.3, `var message: String = "Player is ready"` creates a variable named `message` that holds text and assigns it the value `"Player is ready"`.
 
 `print(message)` sends the value of that variable to the **Output** panel,
 located under the main viewport. `print()` is often used only for testing.

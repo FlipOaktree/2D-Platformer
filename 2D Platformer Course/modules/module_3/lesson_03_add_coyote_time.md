@@ -1,6 +1,6 @@
 # Module 3, Lesson 3: Add Coyote Time
 
-**Status:** Validated
+**Status:** Implemented
 
 ## Lesson goals
 
@@ -132,13 +132,12 @@ pattern from Lesson 3.2 without allowing the value to pass below zero.
 > coyote time remains. Keeping the normal floor check means setting Coyote Time
 > to `0.0` disables only the grace period, not grounded jumping.
 
-2. Move the existing gravity comment and condition so they sit immediately
+2. Move the existing gravity comment and calculation so they sit immediately
    below the `can_jump` declaration, above the jump condition:
 
    ```gdscript
-   # Skip gravity while the Player is grounded.
-   if not is_on_floor():
-   	velocity.y += gravity * delta
+   # Apply gravity before a new jump sets its full upward speed.
+   velocity.y += gravity * delta
    ```
 
 Gravity is calculated before the jump so a jump accepted during coyote time
@@ -204,9 +203,8 @@ starts. Pressing jump again while airborne therefore cannot start another jump.
 
    	var can_jump: bool = is_on_floor() or coyote_timer > 0.0
 
-   	# Skip gravity while the Player is grounded.
-   	if not is_on_floor():
-   		velocity.y += gravity * delta
+   	# Apply gravity before a new jump sets its full upward speed.
+   	velocity.y += gravity * delta
 
    	# Allow one jump from the floor or during the grace period.
    	if Input.is_action_just_pressed("jump") and can_jump:

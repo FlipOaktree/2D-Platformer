@@ -1,4 +1,4 @@
-# Module 2, Lesson 12: Create a Module 2 Git Checkpoint
+# Module 2, Lesson 11: Create a Module 2 Git Checkpoint
 
 **Status:** Implemented
 
@@ -15,7 +15,7 @@ the review is the part that deserves your time.
 
 ## Before you start
 
-- Module 2, Lessons 1 through 11 are complete.
+- Module 2, Lessons 1 through 10 are complete.
 - The Module 1 checkpoint exists, and GitHub Desktop shows `2D Platformer` as
   the current repository.
 - `main.tscn` contains the Player and floor, and the project runs without
@@ -52,8 +52,7 @@ the review is the part that deserves your time.
 
    - `project.godot`, with the input actions and their events.
    - `actors/actor.tscn`, with the reusable Actor structure.
-   - `actors/player.tscn` and `actors/player.gd`, with the Player scene and
-     movement script.
+   - `actors/player.tscn` and `actors/player.gd`, with the Player scene and movement script.
    - `scenes/main.tscn`, with the Player instance and floor collision.
 
 3. Select `actors/player.gd` and read its diff. Confirm that every line you
@@ -115,15 +114,13 @@ Without creating another commit:
 1. Open the **History** tab and select the checkpoint to see its files.
 2. Name one Player behavior that lives in `player.gd` and one scene detail
    that lives in `main.tscn`.
-3. Explain why a larger change list makes the review step more valuable, not
-   less.
+3. Explain why a larger change list makes the review step more valuable, not less.
 
 ## Verification checklist
 
 - [ ] Keyboard movement, falling, floor collision, and grounded jumping work
-      before the checkpoint.
-- [ ] Configured controller behavior works when compatible hardware is
-      available.
+    before the checkpoint.
+- [ ] Configured controller behavior works when compatible hardware is available.
 - [ ] The changed-file list was read before the commit was created.
 - [ ] The checkpoint contains only understood Module 2 project changes.
 - [ ] The latest commit summary is `Build Module 2 Player foundation`.

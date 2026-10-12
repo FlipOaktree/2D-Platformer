@@ -1,4 +1,4 @@
-# Module 2, Lesson 7: Access Properties and Call Methods
+# Module 2, Lesson 6: Access Properties and Call Methods
 
 **Status:** Validated
 
@@ -18,7 +18,7 @@ script is ready for movement.
 
 ## Before you start
 
-- Module 2, Lesson 6 is complete.
+- Module 2, Lesson 5 is complete.
 - `res://actors/player.gd` is attached to the Player root and contains only
   `extends CharacterBody2D`.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
@@ -108,7 +108,7 @@ func _ready() -> void:
 
 A **method** is a function that belongs to something, such as a node or a value. For example, `add_coins()` from the previous lessons is a method, as it belongs to the Player script. `print()` on the other hand, is a globally available function: it does not belong to a particular node or value, so it is not a method.
 
-In `player_name.begins_with("Play")`, the period accesses the method `begins_with()` and the parentheses call it. `begins_with()` is a built-in method belonging to String values. The method checks whether the text in `player_name` starts with the supplied argument. It returns a `bool`, just as the custom function in Lesson 2.6 returned an `int`.
+In `player_name.begins_with("Play")`, the period accesses the method `begins_with()` and the parentheses call it. `begins_with()` is a built-in method belonging to String values. The method checks whether the text in `player_name` starts with the supplied argument. It returns a `bool`, just as the custom function in Lesson 2.5 returned an `int`.
 
 > 💡 Between **functions**, **callbacks**, and **methods**, it can become
 > confusing. Although they are closely related, they have specific definitions.
@@ -173,24 +173,19 @@ the method received a different argument.
 
 Without adding the temporary code again:
 
-1. In `position.x`, identify what appears on the left and what the period
-   accesses.
+1. In `position.x`, identify what appears on the left and what the period accesses.
 2. In `player_name.begins_with("Play")`, identify the value, method, argument,
    and returned value type.
-3. Explain why `begins_with("Play")` includes parentheses but `position.x`
-   does not.
+3. Explain why `begins_with("Play")` includes parentheses but `position.x` does not.
 
 ## Verification checklist
 
 - [ ] `position.x` reports the Player's horizontal position from `main.tscn`.
 - [ ] `player_name.begins_with("Play")` reports `true`.
 - [ ] Changing the argument to `"Enemy"` makes the method report `false`.
-- [ ] The learner can explain that a property stores a value belonging to
-      something.
-- [ ] The learner can explain that a method is a function belonging to
-      something.
-- [ ] The learner can distinguish property access from a method call by the
-      parentheses.
+- [ ] The learner can explain that a property stores a value belonging to something.
+- [ ] The learner can explain that a method is a function belonging to something.
+- [ ] The learner can distinguish property access from a method call by the parentheses.
 - [ ] `res://actors/player.gd` ends with only `extends CharacterBody2D`.
 
 ## References

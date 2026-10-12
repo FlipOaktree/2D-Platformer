@@ -1,21 +1,24 @@
-# Module 2, Lesson 1: Configure Keyboard and Controller Actions
+# Module 2, Lesson 7: Configure Keyboard and Controller Actions
 
 **Status:** Validated
 
 ## Lesson goals
 
-Create three named input actions that later player code can use without caring
-whether the player uses a keyboard or a controller.
+Create three named input actions for the upcoming movement and jumping code.
+The code can use them without caring whether the player uses a keyboard or a
+controller.
 
 - Creating `move_left` and `move_right`, each answering to a letter key, an
   arrow, the D-pad, and the left stick
 - Creating `jump`, answering to Space and the controller's bottom face button
-- Writing player code that asks for an action by name and never asks which
-  device produced it
+- Preparing action names that the next lesson's player code can use without
+  checking which device produced an input
 
 ## Before you start
 
-- Module 1 is complete.
+- Module 2, Lesson 6 is complete.
+- `res://actors/player.gd` is attached to Player and contains only
+  `extends CharacterBody2D`.
 - `main.tscn` displays `Project ready` and contains one `ProjectIcon` instance
   of `project_icon.tscn`.
 - The project opens and runs without related errors or warnings.

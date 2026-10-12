@@ -1,4 +1,4 @@
-# Module 2, Lesson 6: Use Function Parameters and Return Values
+# Module 2, Lesson 5: Use Function Parameters and Return Values
 
 **Status:** Validated
 
@@ -15,7 +15,7 @@ remove the temporary code so the Player script is ready for movement.
 
 ## Before you start
 
-- Module 2, Lesson 5 is complete.
+- Module 2, Lesson 4 is complete.
 - `res://actors/player.gd` is attached to the Player root and contains only
   `extends CharacterBody2D`.
 - `main.tscn` contains one Player instance.
@@ -44,7 +44,7 @@ func _ready() -> void:
 
 3. Save the script with `Ctrl+S`.
 
-Use the same `_ready()` and temporary `pass` pattern from Lesson 2.5. You will
+Use the same `_ready()` and temporary `pass` pattern from Lesson 2.4. You will
 replace `pass` with the calculation after creating the custom function.
 
 > ⚠️ **If something differs**
@@ -54,7 +54,7 @@ replace `pass` with the calculation after creating the custom function.
 
 ### Part 2: Create a function that receives values
 
-As we saw in Lesson 2.5, a function can *return* a value after following its instructions. It can also *receive* values through **parameters**. Imagine asking a waiter to “Collect payment” and handing him a bill. He takes the bill to the customer, collects the payment, and brings it back to you. The bill is like a value the function receives through a parameter; the payment brought back is like its returned value. The same instructions work with a different bill each time.
+As we saw in Lesson 2.4, a function can *return* a value after following its instructions. It can also *receive* values through **parameters**. Imagine asking a waiter to “Collect payment” and handing him a bill. He takes the bill to the customer, collects the payment, and brings it back to you. The bill is like a value the function receives through a parameter; the payment brought back is like its returned value. The same instructions work with a different bill each time.
 
 1. Beneath the complete `_ready()` function, add this custom function:
 
@@ -82,7 +82,7 @@ named value that a function receives and can use while it runs. The `int` type
 hints say that both parameters must receive whole numbers.
 
 `-> int` says that `add_coins()` returns an integer. Unlike the `-> void`
-function from Lesson 2.5, it sends a value back to the code that called it.
+function from Lesson 2.4, it sends a value back to the code that called it.
 
 `return current_coins + collected_coins` adds the two values and sends the
 result back to the code that called the function.

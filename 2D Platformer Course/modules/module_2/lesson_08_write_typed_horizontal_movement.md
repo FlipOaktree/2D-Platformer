@@ -26,8 +26,7 @@ camera behavior, and player artwork will be added later.
   `extends CharacterBody2D`.
 - `main.tscn` contains one Player instance at Position `(128, 128)`.
 - `res://actors/player.tscn` has the inherited `Visuals` attachment point.
-- The Input Map contains the `move_left` and `move_right` actions from Lesson
-  2.1.
+- The Input Map contains the `move_left` and `move_right` actions from Lesson 2.7.
 - The project runs without related errors or warnings.
 
 ## Build steps
@@ -83,7 +82,7 @@ own visuals without inheriting the Player's size.
 
 4. Save the script with `Ctrl+S`.
 
-> 💡 `speed` applies the variable syntax from Lesson 2.4 to the Player's
+> 💡 `speed` applies the variable syntax from Lesson 2.3 to the Player's
 > movement speed. The `float` type matches the decimal values used for
 > movement. Lesson 3.1 will make this value adjustable in the Inspector.
 
@@ -114,6 +113,7 @@ own visuals without inheriting the Player's size.
    ```gdscript
    var direction: float = Input.get_axis("move_left", "move_right")
    ```
+
 `Input` is a built-in Godot tool for reading input from devices, such as a keyboard or controller. `get_axis()` is one of its methods. It reads two named movement actions passed in the parentheses and returns a number that represents their combined direction.
 
 `Input.get_axis()` reads the negative action first and the positive action
@@ -123,7 +123,7 @@ between `-1.0` and `1.0`, so partially tilting it can produce a smaller value.
 
 We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or controller input continuously.
 
-> 💡 "move_left" and "move_right" are the Input Map action names you created in Lesson 2.1. Godot checks the keyboard and controller events assigned to those actions, rather than checking individual keys or buttons directly.
+> 💡 "move_left" and "move_right" are the Input Map action names you created in Lesson 2.7. Godot checks the keyboard and controller events assigned to those actions, rather than checking individual keys or buttons directly.
 
 > ⚠️ **If something differs**
 >
@@ -139,10 +139,9 @@ We place `Input.get_axis()` inside `_physics_process()` so it reads keyboard or 
    velocity.x = direction * speed
    ```
 
-`velocity` is a built-in `CharacterBody2D` property that stores how fast and in which direction the Player should move. It is a `Vector2`: `velocity.x` is horizontal speed, and `velocity.y` is vertical speed. Setting `velocity.x` alone does not move the Player; `move_and_slide()` uses the velocity to move it and handle collisions.
+`velocity` is a built-in `CharacterBody2D` property that stores how fast and in which direction the Player should move. It is a `Vector2`: `velocity.x` is horizontal speed, and `velocity.y` is vertical speed. Setting `velocity.x` alone does not move the Player; the`move_and_slide()` method that we will add next uses the velocity to move it and handle collisions.
 
-This direct assignment replaces the previous `velocity.x` on every physics
-update. That is why the Player starts, stops, and changes direction instantly.
+On every physics update, `velocity.x = direction * speed` sets the Player’s horizontal speed based on the current input. As a result, the Player starts, stops, and changes direction immediately.
 
 2. Add this final indented line beneath `velocity.x = direction * speed`:
 
@@ -183,8 +182,7 @@ update. That is why the Player starts, stops, and changes direction instantly.
    the current scene with `F6`.
 7. Confirm that the Player's collision outline matches the edges of the
    temporary marker.
-8. Hold `A` or Left Arrow and confirm that the temporary Player marker moves
-   left.
+8. Hold `A` or Left Arrow and confirm that the temporary Player marker moves left.
 9. Hold `D` or Right Arrow and confirm that the marker moves right.
 10. Release the input and confirm that the marker stops.
 11. If a compatible controller is connected, test its configured D-pad and left
@@ -211,30 +209,26 @@ update. That is why the Player starts, stops, and changes direction instantly.
 3. Restore `speed` to `450.0`, save, and run the scene once more.
 4. Explain why the speed currently belongs to Player rather than Actor.
 5. Open `actor.tscn` and `player.tscn`, compare their collision-shape sizes,
-   and explain why Player uses an override instead of changing Actor's
-   placeholder.
+   and explain why Player uses an override instead of changing Actor's placeholder.
 
 ## Verification checklist
 
 - [ ] `res://actors/player.gd` remains attached to the Player root.
 - [ ] The script extends `CharacterBody2D`.
-- [ ] The script uses typed `speed`, `_delta`, `direction`, and a `void` return
-      type.
-- [ ] `Input.get_axis()` uses the exact `move_left` and `move_right` action
-      names.
+- [ ] The script uses typed `speed`, `_delta`, `direction`, and a `void` return type.
+- [ ] `Input.get_axis()` uses the exact `move_left` and `move_right` action names.
 - [ ] The script assigns horizontal velocity through `velocity.x` and calls
-      `move_and_slide()`.
+    `move_and_slide()`.
 - [ ] A `Sprite2D` with `res://icon.svg` is beneath the Player's `Visuals`
-      node as a temporary test marker.
+    node as a temporary test marker.
 - [ ] Actor retains its shared 32-by-32 placeholder collision shape.
 - [ ] Player overrides the inherited Shape with a 128-by-128
-      `RectangleShape2D` at Position `(0, 0)`.
+    `RectangleShape2D` at Position `(0, 0)`.
 - [ ] With visible collision shapes enabled, the Player collision outline
-      matches the temporary marker.
+    matches the temporary marker.
 - [ ] `A`/Left Arrow moves the Player left, and `D`/Right Arrow moves it right.
 - [ ] Releasing the input stops horizontal movement.
-- [ ] Configured controller movement works when a compatible controller is
-      available.
+- [ ] Configured controller movement works when a compatible controller is available.
 - [ ] `main.tscn` no longer contains `ProjectIcon` or `Label`.
 - [ ] The Player marker is the only visible element when `main.tscn` runs.
 - [ ] The speed exercise ends with `speed` restored to `450.0`.

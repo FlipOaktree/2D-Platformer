@@ -1,4 +1,4 @@
-# Module 2, Lesson 4: Understand GDScript Fundamentals
+# Module 2, Lesson 3: Understand GDScript Fundamentals
 
 **Status:** Validated
 
@@ -7,7 +7,7 @@
 Understand the small set of GDScript building blocks needed to read and write
 the Player scripts introduced over the next lessons: comments, values,
 variables, types, operators, and indentation. Horizontal movement begins in
-Lesson 2.8 after three short programming bridges.
+Lesson 2.8 after three short programming bridges and input setup.
 
 This is a code-reading lesson. You will not attach a script or change the
 Godot project yet. Its purpose is to make the first gameplay script feel
@@ -19,7 +19,7 @@ understandable rather than mysterious.
 
 ## Before you start
 
-- Module 2, Lesson 3 is complete.
+- Module 2, Lesson 2 is complete.
 - You understand that `Player` is a `CharacterBody2D` scene inherited from
   `Actor`.
 - `main.tscn` contains the Player instance that later lessons will control.

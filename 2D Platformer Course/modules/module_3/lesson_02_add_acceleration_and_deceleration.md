@@ -1,6 +1,6 @@
 # Module 3, Lesson 2: Add Acceleration and Deceleration
 
-**Status:** Validated
+**Status:** Implemented
 
 ## Lesson goals
 
@@ -141,6 +141,10 @@ Before adding that gradual change, meet the function that will calculate it:
    	velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
    ```
 
+> 💡 `else` runs its indented instructions when the `if` condition is
+> `false`. Here that means no horizontal direction is pressed, so the
+> Player slows toward zero. Only one branch runs each physics update.
+
 Read each call from left to right: current velocity, target velocity, and the
 maximum change allowed during this update. `move_toward()` returns the new
 number, so the assignment stores that result back in `velocity.x`. The first
@@ -180,13 +184,12 @@ an update is slightly shorter or longer.
    var jump_velocity: float = -1200.0
 
    func _physics_process(delta: float) -> void:
-   	# Prevent another jump from starting while the Player is airborne.
+   	# Apply gravity before a new jump sets its full upward speed.
+   	velocity.y += gravity * delta
+
+   	# Start a jump only while the Player is grounded.
    	if Input.is_action_just_pressed("jump") and is_on_floor():
    		velocity.y = jump_velocity
-
-   	# Skip gravity while the Player is grounded.
-   	if not is_on_floor():
-   		velocity.y += gravity * delta
 
    	var direction: float = Input.get_axis("move_left", "move_right")
    	var target_speed: float = direction * speed
