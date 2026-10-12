@@ -1,4 +1,4 @@
-# Module 5, Lesson 5: Track Player Movement States
+# Module 5, Lesson 6: Track Player Movement States
 
 **Status:** Blueprint drafted
 
@@ -20,12 +20,12 @@ across separate conditions and nothing stores the result.
 
 ## Before you start
 
-- Module 5, Lesson 4 is complete.
+- Module 5, Lesson 5 is complete.
 - `res://actors/player.gd` contains the movement logic from Module 3:
   acceleration, deceleration, gravity, grounded jump, coyote time, jump
   buffering, and variable jump height.
-- The Player has imported character art and a working camera from Lessons 5.1
-  through 5.4.
+- The Player has imported character art and a working camera from Lessons 5.2
+  through 5.5.
 - A level from Module 4 is available to move and jump around in.
 - Keyboard movement and jumping work, and configured controller input works
   when compatible hardware is available.
@@ -193,7 +193,7 @@ descending.
    @export_range(0.0, 3000.0, 10.0)
    var gravity: float = 2400.0
 
-   ## Upward velocity applied when a grounded jump begins.
+   ## Upward velocity applied when a jump begins.
    @export_range(-1500.0, 0.0, 10.0)
    var jump_velocity: float = -1200.0
 

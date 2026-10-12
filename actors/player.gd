@@ -16,7 +16,7 @@ var deceleration: float = 2700.0
 @export_range(0.0, 3000.0, 10.0)
 var gravity: float = 2400.0
 
-## Upward velocity applied when a grounded jump begins.
+## Upward velocity applied when a jump begins.
 @export_range(-1500.0, 0.0, 10.0)
 var jump_velocity: float = -1200.0
 

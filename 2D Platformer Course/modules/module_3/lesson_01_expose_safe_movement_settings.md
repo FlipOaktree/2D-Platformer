@@ -213,11 +213,9 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 8. Confirm that `_physics_process()` still contains the two regular comments
    from Part 2 and that none of its executable instructions changed.
 9. Save `player.gd` with `Ctrl+S`.
-10. In `player.tscn`, reselect the Player root and confirm that **Speed**,
-    **Gravity**, and **Jump Velocity** appear in the Inspector.
+10. In `player.tscn`, reselect the Player root and confirm that **Speed**, **Gravity**, and **Jump Velocity** appear in the Inspector.
 11. Confirm that the three Inspector values match their default values.
-12. Hover over each property name and confirm that its tooltip explains the
-    setting.
+12. Hover over each property name and confirm that its tooltip explains the setting.
 13. Confirm that each control stops at its documented minimum and maximum,
     then restore all three defaults.
 
@@ -247,8 +245,7 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
    is slower while gravity and jumping still work.
 7. Stop the scene, restore **Speed** to `450.0`, and save `player.tscn`.
 8. Run `main.tscn` once more and confirm that the default movement
-   has returned without parser errors, runtime errors, or unexplained
-   warnings.
+   has returned without parser errors, runtime errors, or unexplained warnings.
 
 > ⚠️ **If something differs**
 >
@@ -264,48 +261,44 @@ step of `10.0` keeps both Inspector controls consistent with Speed.
 
 Without editing `player.gd`:
 
-1. In the Player Inspector, change **Jump Velocity** from `-1200.0` to
-   `-600.0`.
+1. In the Player Inspector, change **Jump Velocity** from `-1200.0` to `-600.0`.
 2. Predict how the new value will change the jump, then run `main.tscn` and
    check the prediction.
 3. Try to move **Jump Velocity** above `0.0` and explain why the Inspector
    range prevents it.
 4. Restore **Jump Velocity** to `-1200.0`, save `player.tscn`, and verify the
    original jump again.
-5. Explain the separate purpose of the exported default, range, step, and
-   tooltip.
+5. Explain the separate purpose of the exported default, range, step, and tooltip.
 6. Explain why the function comments use `#` while the exported-property
    descriptions use `##`.
 
 ## Verification checklist
 
-- [ ] `speed`, `gravity`, and `jump_velocity` remain typed `float` variables
-      with defaults `450.0`, `2400.0`, and `-1200.0`.
-- [ ] `_physics_process()` contains regular comments explaining why the jump
-      condition prevents airborne jumps and why gravity is skipped while
-      grounded.
+- [ ] `speed`, `gravity`, and `jump_velocity` remain typed `float` variables with defaults `450.0`, `2400.0`, and `-1200.0`.
+- [ ] `_physics_process()` contains regular comments explaining why a jump
+    requires floor contact and why gravity runs before a new jump sets its
+    upward speed.
 - [ ] Each movement variable has a documentation comment and an
-      `@export_range()` annotation.
+    `@export_range()` annotation.
 - [ ] **Speed** is limited to `0.0` through `1000.0` in steps of `10.0`.
 - [ ] **Gravity** is limited to `0.0` through `3000.0` in steps of `10.0`.
-- [ ] **Jump Velocity** is limited to `-1500.0` through `0.0` in steps of
-      `10.0`.
+- [ ] **Jump Velocity** is limited to `-1500.0` through `0.0` in steps of `10.0`.
 - [ ] All three settings appear on the Player root in the Inspector.
 - [ ] Hovering each setting reveals a useful tooltip.
 - [ ] `_physics_process()` and its movement calculations remain unchanged.
 - [ ] The default keyboard movement and grounded jump still work.
 - [ ] Configured controller movement and jumping still work when a compatible
-      controller is available.
+    controller is available.
 - [ ] The slower-Speed test works and ends with **Speed** restored to `450.0`.
 - [ ] The learner exercise ends with **Jump Velocity** restored to `-1200.0`.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors,
-      or unexplained warnings.
+    or unexplained warnings.
 - [ ] The learner can explain how exported ranges and documentation tooltips
-      make Inspector customization safer and clearer.
+    make Inspector customization safer and clearer.
 - [ ] The learner can distinguish a regular implementation comment from a
-      documentation comment used for an Inspector property.
+    documentation comment used for an Inspector property.
 - [ ] Any Codex-assisted edit was inspected, explained, corrected if needed,
-      and tested before acceptance.
+    and tested before acceptance.
 
 ## References
 

@@ -9,8 +9,7 @@ acceleration and deceleration. Maximum speed will remain unchanged, while the
 Player will take a short, visible amount of time to reach that speed and stop
 after input is released.
 
-- Letting the Player take a moment to reach full speed instead of snapping to
-  it
+- Letting the Player take a moment to reach full speed instead of snapping to it
 - Applying the same moment in reverse once you let go
 - Exposing two Inspector settings that decide how long each of those takes
 - Leaving maximum speed, gravity, floor collision, and jumping alone
@@ -111,26 +110,22 @@ acceleration so the Player gains speed smoothly but still stops promptly.
    var target_speed: float = direction * speed
    ```
 
-> 💡 A **target velocity** is the horizontal velocity requested by the current
-> input. The **current velocity** is the value the Player has reached so far.
-> For example, full right input produces `1.0 * 450.0`, so `target_speed` is
-> `450.0`, even while the current `velocity.x` is still lower. Keeping the two
-> values separate allows the current velocity to approach the target over
-> time.
+The value after `=` can be a number you write directly, the result of a
+calculation, or a value returned by a function. GDScript works out that value
+first, then stores it in the variable.
 
-Before adding that gradual change, meet the function that will calculate it:
+A **target velocity** is the horizontal velocity requested by the current input. The **current velocity** is the value the Player has reached so far. For example, full right input makes `direction` equal `1.0`. Multiplying it by `speed` (`450.0`) sets `target_speed` to `450.0`, even while `velocity.x` is still lower. Keeping the two values separate lets the current velocity approach the target over time.
 
-> 💡 `move_toward()` is a global GDScript function that produces a number
-> closer to a target. It receives three values: the current value, the target
-> value, and the maximum amount the current value may change during this
-> update. It stops exactly at the target rather than passing it.
->
-> For example, `move_toward(0.0, 450.0, 20.0)` returns `20.0`. If the current
-> value is already `290.0`, it returns `450.0`, not `310.0`.
->
-> Inside `_physics_process()`, Godot calls this code repeatedly. With this
-> example, the value can increase by up to `20.0` on each physics update until
-> it reaches the target value, `450.0`.
+Before adding that gradual change, meet the function that will calculate it: `move_toward()` is a global GDScript function that produces a number closer to a target. It receives three values: the current value, the target value, and the maximum amount the current value may change during this update. It stops exactly at the target rather than passing it.
+
+For example, `move_toward(0.0, 450.0, 20.0)` returns `20.0`. Starting from
+`290.0` returns `310.0`, because the value can change by at most `20.0`.
+Starting from `440.0` returns `450.0`: the function stops at the target
+instead of passing it.
+
+Inside `_physics_process()`, Godot calls this code repeatedly. With this
+example, the value can increase by up to `20.0` on each physics update until
+it reaches the target value, `450.0`.
 
 3. Beneath `target_speed`, add:
 
@@ -141,22 +136,13 @@ Before adding that gradual change, meet the function that will calculate it:
    	velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
    ```
 
-> 💡 `else` runs its indented instructions when the `if` condition is
-> `false`. Here that means no horizontal direction is pressed, so the
-> Player slows toward zero. Only one branch runs each physics update.
+In Lesson 2.10, a false `if` condition meant the indented jump instruction was skipped. Here, the Player needs an instruction for both outcomes: `if` handles `true`, and `else` handles `false`. When `direction != 0.0` is `true`, the Player accelerates toward `target_speed`. When it is `false`, `direction` is `0.0`, so the `else` branch slows the Player toward `0.0`. Only one branch runs during each physics update.
 
 Read each call from left to right: current velocity, target velocity, and the
 maximum change allowed during this update. `move_toward()` returns the new
-number, so the assignment stores that result back in `velocity.x`. The first
-branch approaches `target_speed` while input exists; the second approaches
-`0.0` when it does not.
+number, so the assignment stores that result back in `velocity.x`.
 
-Lesson 2.9 used `gravity * delta` to turn a per-second acceleration rate into
-the vertical velocity change for one physics update. These calls reuse the
-same time-based pattern horizontally. At roughly 60 physics updates per
-second, `1800.0 * (1.0 / 60.0)` permits a change of `30.0` during one
-update. Using the actual `delta` keeps the behavior based on elapsed time when
-an update is slightly shorter or longer.
+In Lesson 2.9, `gravity * delta` changed the Player’s downward speed based on how much time had passed. Horizontal acceleration works the same way. At about 60 physics updates per second, each update takes about `1.0 / 60.0` seconds. With `acceleration` set to `1800.0`, the calculation `1800.0 * (1.0 / 60.0)` allows the horizontal speed to change by up to `30.0` during that update. Using the actual `delta` keeps acceleration consistent when updates take slightly different amounts of time.
 
 4. Compare the completed script with this version:
 
@@ -260,8 +246,7 @@ Without editing `player.gd`:
 
 1. Change **Deceleration** from `2700.0` to `900.0` in the Player Inspector.
 2. Predict how the change will affect stopping distance.
-3. Run `main.tscn`, gain horizontal speed, release the input, and check the
-   prediction.
+3. Run `main.tscn`, gain horizontal speed, release the input, and check the prediction.
 4. Explain why this change does not alter maximum `speed` or jump height.
 5. Restore **Deceleration** to `2700.0`, save `player.tscn`, and verify the
    default response again.
@@ -274,27 +259,26 @@ Without editing `player.gd`:
 - [ ] `acceleration` is an exported `float` with default `1800.0`.
 - [ ] `deceleration` is an exported `float` with default `2700.0`.
 - [ ] Both new settings use a range of `100.0` through `5000.0` in steps of
-      `100.0` and have useful documentation tooltips.
-- [ ] `target_speed` is a typed local `float` calculated from
-      `direction * speed`.
+    `100.0` and have useful documentation tooltips.
+- [ ] `target_speed` is a typed local `float` calculated from `direction * speed`.
 - [ ] Horizontal input moves `velocity.x` toward `target_speed` using
-      `acceleration * delta`.
+    `acceleration * delta`.
 - [ ] Releasing horizontal input moves `velocity.x` toward `0.0` using
-      `deceleration * delta`.
+    `deceleration * delta`.
 - [ ] `move_and_slide()` remains after all velocity calculations.
 - [ ] The Player accelerates, decelerates to a complete stop, and reverses
-      direction smoothly.
+    direction smoothly.
 - [ ] Maximum horizontal speed remains controlled by `speed`.
 - [ ] Falling, landing, floor collision, and grounded jumping still work.
 - [ ] Keyboard behavior works, and configured controller behavior works when
-      compatible hardware is available.
+    compatible hardware is available.
 - [ ] All tuning exercises end with defaults `1800.0` and `2700.0` restored.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors,
-      or unexplained warnings.
+    or unexplained warnings.
 - [ ] The learner can distinguish maximum speed, target velocity, current
-      velocity, acceleration, and deceleration in the completed code.
+    velocity, acceleration, and deceleration in the completed code.
 - [ ] The learner can identify the current value, target value, and
-      maximum-change arguments in either `move_toward()` call.
+    maximum-change arguments in either `move_toward()` call.
 
 ## References
 

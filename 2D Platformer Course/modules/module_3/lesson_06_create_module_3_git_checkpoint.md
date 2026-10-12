@@ -80,16 +80,9 @@ settings and the interacting jump timers are the ones you meant to keep.
 
 1. Open GitHub Desktop and select the **Changes** tab.
 2. Confirm that the list is limited to these expected files:
-
-   - `actors/player.gd`, with the eight exported settings, the two runtime
-     countdowns, and the acceleration, coyote-time, jump-buffer, and
-     jump-shortening logic.
-   - `scenes/main.tscn`, with the raised `CoyoteTestPlatform` and its
-     collision shape.
-   - `actors/player.tscn` may show a small change that you did not type, or no
-     change at all. Saving a scene lets Godot write its own bookkeeping
-     attributes. Confirm that it contains no changed movement value before
-     accepting it.
+   - `actors/player.gd`, with the eight exported settings, the two runtime countdowns, and the acceleration, coyote-time, jump-buffer, and jump-shortening logic.
+   - `scenes/main.tscn`, with the raised `CoyoteTestPlatform` and its collision shape.
+   - `actors/player.tscn` may show a small change that you did not type, or no change at all. Saving a scene lets Godot write its own bookkeeping attributes. Confirm that it contains no changed movement value before accepting it.
 
 3. Select `actors/player.gd` and read its diff. Confirm that every exported
    default in it matches the table from Part 1.
@@ -158,22 +151,21 @@ Without creating another commit:
 ## Verification checklist
 
 - [ ] Acceleration, deceleration, reversal, gravity, landing, and maximum speed
-      work before the checkpoint.
+    work before the checkpoint.
 - [ ] Grounded jumping, coyote time, jump buffering, and variable jump height
-      work before the checkpoint.
+    work before the checkpoint.
 - [ ] The eight Inspector settings show their tuned defaults, with no value
-      left at an exercise setting.
-- [ ] Configured controller behavior works when compatible hardware is
-      available.
+    left at an exercise setting.
+- [ ] Configured controller behavior works when compatible hardware is available.
 - [ ] The changed-file list was read before the commit was created.
 - [ ] The checkpoint contains only understood Module 3 project changes.
 - [ ] Any change to `actors/player.tscn` was inspected and contains no altered
-      movement value.
+    movement value.
 - [ ] The latest commit summary is `Build Module 3 responsive movement`.
 - [ ] The **Changes** tab is empty afterward.
 - [ ] The commit is on GitHub as well as on this computer.
 - [ ] The learner can name which setting controls acceleration and which
-      controls the jump grace period.
+    controls the jump grace period.
 
 ## References
 

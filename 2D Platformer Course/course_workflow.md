@@ -241,6 +241,9 @@ across every lesson.
 - Introduce a practical best practice, tip, or shortcut when it directly helps
   the current task. Keep it brief and in context rather than turning it into a
   separate tool tutorial.
+- When drafting a scripted lesson, check applicable naming, formatting, clarity,
+  responsibility, duplication, and verification practices. Explain a practice
+  to learners only where it helps the current task.
 - Introduce each concept beside its first practical use, immediately before or
   after the action when that produces the clearest learner flow. Use only the
   detail needed for the current outcome. A callout that has to begin "Step 8

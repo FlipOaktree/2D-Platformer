@@ -28,8 +28,7 @@ more responsive without adding an air jump.
 ### Part 1: Test what an early jump press does now
 
 1. Open `res://scenes/main.tscn`.
-2. In the editor's **Debug** menu, confirm that **Visible Collision Shapes** is
-   enabled.
+2. In the editor's **Debug** menu, confirm that **Visible Collision Shapes** is enabled.
 3. Run the current scene with `F6`.
 4. Jump from the raised platform while moving toward either edge so the Player
    falls toward the original Floor.
@@ -37,9 +36,7 @@ more responsive without adding an air jump.
 6. Confirm that the Player lands but does not immediately jump again, then stop
    the scene with `F8`.
 
-> 💡 **Jump buffering** briefly remembers a jump press made before jumping is
-> allowed. If the Player lands while that request is still remembered, the jump
-> begins immediately. It does not permit a jump in midair.
+**Jump buffering** is another way to improve control responsiveness. It briefly remembers a jump press made just before landing. If the Player lands while that request is still remembered, the jump begins immediately. The remembered press does not grant an extra jump; it starts one only when jumping is allowed.
 
 Starting with the jump from the platform consumes the coyote-time countdown.
 This makes the failed pre-landing press a clear test of the missing behavior,
@@ -72,10 +69,10 @@ not a coyote jump.
    var jump_buffer_timer: float = 0.0
    ```
 
-> 💡 `jump_buffer_time` is the configurable duration. `jump_buffer_timer` is
-> the countdown that changes while the game runs. This is the same
-> setting-and-runtime-value pattern used for coyote time, but this countdown
-> remembers input instead of remembering the floor.
+`jump_buffer_time` is the configurable duration. `jump_buffer_timer` is
+the countdown that changes while the game runs. This is the same
+setting-and-runtime-value pattern used for coyote time, but this countdown
+remembers input instead of remembering the floor.
 
 4. Save `player.gd` with `Ctrl+S`.
 5. Open `res://actors/player.tscn` and select the Player root.
@@ -117,10 +114,7 @@ time toward `0.0` until the request is accepted or expires.
    var has_jump_request: bool = jump_requested or jump_buffer_timer > 0.0
    ```
 
-> 💡 The two Boolean values answer different questions. `can_jump` asks,
-> "Is jumping allowed now?" `has_jump_request` asks, "Did the player ask to
-> jump now or recently?" A jump starts only when permission and a request
-> overlap.
+The two Boolean values answer different questions. `can_jump` asks, "Is jumping allowed now?" `has_jump_request` asks, "Did the player ask to jump now or recently?" A jump starts only when permission and a request overlap.
 
 Keeping `jump_requested` in the condition is important. When Jump Buffer Time
 is `0.0`, an immediate grounded or coyote jump still works even though there is
@@ -169,7 +163,7 @@ the same remembered press or the same coyote-time permission for another jump.
    @export_range(0.0, 3000.0, 10.0)
    var gravity: float = 2400.0
 
-   ## Upward velocity applied when a grounded jump begins.
+   ## Upward velocity applied when a jump begins.
    @export_range(-1500.0, 0.0, 10.0)
    var jump_velocity: float = -1200.0
 
@@ -249,8 +243,7 @@ the same remembered press or the same coyote-time permission for another jump.
    coyote time still works.
 9. During a normal jump, press jump while well away from both the platform and
    the Floor. Confirm that the Player does not start a second air jump.
-10. Confirm that acceleration, deceleration, reversal, gravity, landing, and
-    maximum speed still behave as before.
+10. Confirm that acceleration, deceleration, reversal, gravity, landing, and maximum speed still behave as before.
 11. If a compatible controller is connected, repeat the buffered-jump and
     regression checks with its configured inputs.
 12. Stop the scene with `F8`.
@@ -275,7 +268,7 @@ course depends on this Part.
    connected in Lesson 0.2.
 2. Ask:
 
-   > Review `actors/player.gd` without changing it. Check that an immediate
+>    Review `actors/player.gd` without changing it. Check that an immediate
    > jump still works when `jump_buffer_time` is `0.0`, a recent airborne jump
    > press is remembered until landing, an expired request does not jump, an
    > accepted jump consumes both countdowns, and the existing movement remains
@@ -311,13 +304,11 @@ comes from inspecting the code and testing the behavior.
 ## Verification checklist
 
 - [ ] `jump_buffer_time` is an exported `float` with default `0.1`, range
-      `0.0` through `0.5`, step `0.01`, and a useful documentation tooltip.
-- [ ] `jump_buffer_timer` is a non-exported script-level `float` with default
-      `0.0`.
+    `0.0` through `0.5`, step `0.01`, and a useful documentation tooltip.
+- [ ] `jump_buffer_timer` is a non-exported script-level `float` with default `0.0`.
 - [ ] A new jump press fills the buffer countdown.
 - [ ] Without a new press, the buffer countdown approaches `0.0` by `delta`.
-- [ ] `has_jump_request` is true for an immediate press or while buffered time
-      remains.
+- [ ] `has_jump_request` is true for an immediate press or while buffered time remains.
 - [ ] `can_jump` still represents grounded or coyote-time permission.
 - [ ] A jump begins only when a request and permission overlap.
 - [ ] Starting a jump consumes both the coyote and jump-buffer countdowns.
@@ -326,17 +317,16 @@ comes from inspecting the code and testing the behavior.
 - [ ] A press made too early expires without starting a jump upon landing.
 - [ ] The Player cannot start a second jump while airborne.
 - [ ] The Floor and `CoyoteTestPlatform` retain their Lesson 3.3
-      positions and collision shapes.
+    positions and collision shapes.
 - [ ] Acceleration, deceleration, reversal, gravity, landing, and maximum speed
-      remain unchanged.
+    remain unchanged.
 - [ ] Keyboard behavior works, and configured controller behavior works when
-      compatible hardware is available.
+    compatible hardware is available.
 - [ ] The exercise ends with Jump Buffer Time restored to `0.1`.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors, or
-      unexplained warnings.
+    unexplained warnings.
 - [ ] The learner can explain the separate roles of `jump_buffer_time`,
-      `jump_buffer_timer`, `jump_requested`, `has_jump_request`, and
-      `can_jump`.
+    `jump_buffer_timer`, `jump_requested`, `has_jump_request`, and `can_jump`.
 
 ## References
 

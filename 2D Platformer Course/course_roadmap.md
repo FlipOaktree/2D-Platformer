@@ -102,16 +102,16 @@ not infer progress from chat history or from learner verification checkboxes.
   headings, and prerequisites; all 11 code fences in the seven moved lessons
   are unchanged, and no old lesson filenames remain referenced. Prior
   per-lesson technical validation remains recorded.
-- **Exact next step:** Draft the Module 5, Lesson 5.1 blueprint, **Add a
-  Following Camera**, which opens Module 5. Module 4 is built and tested:
+- **Exact next step:** Draft the Module 5, Lesson 5.1 blueprint, **Review Code
+  and Scene Design Practices**, which opens Module 5. Module 4 is built and tested:
   Lessons 4.1 to 4.7 are Validated. Lesson 4.8, **Create a Module 4 Git
   Checkpoint**, was Validated and has since been rewritten for GitHub Desktop,
   so it is Implemented and awaits a replay, as Lessons 0.1, 0.2, 0.3, 1.7, 2.11
   and 3.6 do. The **Track Player Movement States** blueprint stays drafted at
-  Lesson 5.5 until
+  Lesson 5.6 until
   Module 5 is reached, and must be re-checked against the Module 4 result
   before implementation. Module 6 was also restructured to open with extracting
-  input and movement into components, so 5.5 writes the movement state into
+  input and movement into components, so 5.6 writes the movement state into
   `player.gd` and Lesson 6.1 then moves it into the movement component that
   owns it.
 
@@ -284,19 +284,21 @@ elements around clear spawn and boundary contracts.
 
 ### Module 5: Camera and Character Presentation
 
-**Depends on:** Module 4. **Outcome:** Present movement clearly with a reusable
+**Depends on:** Module 4. **Outcome:** Review practical code and scene design
+choices in a working project, then present movement clearly with a reusable
 camera and animated character visuals, making the Player's movement state
 explicit where the animation work first needs it.
 
 | ID | Lesson | First concepts or artifacts | Lifecycle | Git |
 | --- | --- | --- | --- | --- |
-| 5.1 | Add a Following Camera | `Camera2D` ownership | Planned | Unassigned |
-| 5.2 | Configure Camera Limits and Smoothing | Limits and smoothing | Planned | Unassigned |
-| 5.3 | Add Look-Ahead Behavior | Camera behavior component | Planned | Unassigned |
-| 5.4 | Import Character Art | Import settings and sprite presentation, raster versus vector sources, and re-importing at a different scale | Planned | Unassigned |
-| 5.5 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()`; the state moves into the movement component in Lesson 6.1 | Blueprint drafted | `34c9235`; retuned values in `3abdd88` and `5ca7c9d` |
-| 5.6 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
-| 5.7 | Create a Module 5 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
+| 5.1 | Review Code and Scene Design Practices | After Module 4, compare short examples from `player.gd`, `main.gd`, `level.gd`, and the reusable moving-platform scene; justify clarity, KISS, SRP, DRY, and focused change/prediction/test/diff review without a lasting project change | Planned | Unassigned |
+| 5.2 | Add a Following Camera | `Camera2D` ownership | Planned | Unassigned |
+| 5.3 | Configure Camera Limits and Smoothing | Limits and smoothing | Planned | Unassigned |
+| 5.4 | Add Look-Ahead Behavior | Camera behavior component | Planned | Unassigned |
+| 5.5 | Import Character Art | Import settings and sprite presentation, raster versus vector sources, and re-importing at a different scale | Planned | Unassigned |
+| 5.6 | Track Player Movement States | `enum`, a stored movement state, and nested conditions decided after `move_and_slide()`; the state moves into the movement component in Lesson 6.1 | Blueprint drafted | `34c9235`; retuned values in `3abdd88` and `5ca7c9d` |
+| 5.7 | Animate and Face the Player | Animation and facing direction | Planned | Unassigned |
+| 5.8 | Create a Module 5 Git Checkpoint | Tested module boundary, changed-file review in GitHub Desktop, supplied commit summary, and push to the private remote | Planned | Unassigned |
 
 ### Module 6: Shared Actor Capabilities
 
@@ -530,7 +532,8 @@ practical use and later lessons can build on them without re-teaching them.
 | Jump grace windows, runtime countdowns, and `or` | 3.3 | Jump buffering and other short-lived gameplay allowances |
 | Buffered input and request/permission separation | 3.4 | Combat, interaction, and responsive controls |
 | Released-input detection and proportional velocity change | 3.5 | Held actions, charged abilities, and responsive controls |
-| `enum` and a stored movement state | 5.5 | Animation, facing direction, enemy behavior, and combat state |
+| Clarity, KISS, SRP, DRY, and focused change verification | 5.1 | Scripted lessons and the Module 6 component refactor; signals and component contracts begin in Module 6 |
+| `enum` and a stored movement state | 5.6 | Animation, facing direction, enemy behavior, and combat state |
 | Component contract, intent boundary, and orchestrator script | 6.1 | Every later component, and all NPC and enemy behavior |
 | Signals and removable components | 6.1-6.9 | Combat, inventory, quests, UI, saving |
 | Stable IDs and Resources | 6.8, 10.1 | Dialogue, quests, persistence |
@@ -894,6 +897,7 @@ confirmed by interactive play.
 
 | Decision | Reason and downstream effect |
 | --- | --- |
+| Place a coding practices review at Lesson 5.1 | After building the Player and levels, learners can judge descriptive names, consistent formatting, type hints, decision-focused comments, the smallest clear solution (KISS), Player/Level/Main responsibilities (SRP), and repetition that creates maintenance work (DRY) against real scripts and the reusable moving platform. A short comparison exercise asks them to justify improvements and to make, predict, test, and inspect a focused change without keeping it. Camera through checkpoint shift from 5.1-5.7 to 5.2-5.8; the existing movement-state blueprint becomes 5.6. Signals and component contracts remain in Module 6 at their first use. Earlier Decision Log references to Module 5 lesson numbers record the numbering in effect when written. |
 | Keep local Markdown files as the sole authoritative course record | New tasks can recover course state directly from the repository. |
 | Store course material under `2D Platformer Course/` | The descriptive folder is the canonical home for the roadmap, workflow, lessons, and course assets. |
 | Use a small `Actor` base plus removable components | Player, NPC, and enemy share only genuine common behavior. |

@@ -40,10 +40,8 @@ press will feel more forgiving.
 8. Select the original `Floor` and confirm that it still has Position
    `(960, 992)` and its 1920-by-64 rectangle shape.
 9. Save `main.tscn` with `Ctrl+S`.
-10. In the editor's **Debug** menu, confirm that **Visible Collision Shapes** is
-    enabled.
-11. Run the current scene with `F6` and let the Player land on the original
-    Floor.
+10. In the editor's **Debug** menu, confirm that **Visible Collision Shapes** is enabled.
+11. Run the current scene with `F6` and let the Player land on the original Floor.
 12. Move to either side of the raised platform, then jump while moving toward
     it to land on top. Begin the jump before you reach the platform's edge.
     It floats clear of the Floor, so run too far first and you pass underneath
@@ -52,11 +50,6 @@ press will feel more forgiving.
     button immediately afterward.
 14. Confirm that the Player does not jump once it has left the platform and
     lands safely on the original Floor below, then stop the scene with `F8`.
-
-> 💡 **Coyote time** is a short grace period during which a Player may still
-> jump after leaving a ledge. It does not add an air jump. It briefly remembers
-> that the Player was just standing on the floor, making slightly late input
-> more forgiving.
 
 > ⚠️ **If something differs**
 >
@@ -73,6 +66,8 @@ press will feel more forgiving.
 >   Collision Shapes** from the **Debug** menu.
 
 ### Part 2: Add the grace-period setting and countdown
+
+Small adjustments to movement rules can make controls feel more responsive. **Coyote time** is one example: it lets the Player jump for a brief moment after walking off a ledge. A player who presses jump just after the edge likely meant to jump from that platform; accepting that slightly late press makes the controls feel more forgiving. It does not give the Player an extra jump in midair.
 
 1. Open `res://actors/player.gd`.
 2. Immediately below the `jump_velocity` declaration, add:
@@ -127,10 +122,10 @@ duration on every physics update. After the Player leaves the floor,
 `move_toward()` reduces it toward `0.0` by `delta`, reusing the time-based
 pattern from Lesson 3.2 without allowing the value to pass below zero.
 
-> 💡 `or` combines two conditions and produces `true` when either one is true.
-> Here, `can_jump` is true while the Player is on the floor **or** while some
-> coyote time remains. Keeping the normal floor check means setting Coyote Time
-> to `0.0` disables only the grace period, not grounded jumping.
+`or` combines two conditions and produces `true` when either one is true.
+Here, `can_jump` is true while the Player is on the floor **or** while some
+coyote time remains. Keeping the normal floor check means setting Coyote Time
+to `0.0` disables only the grace period, not grounded jumping.
 
 2. Move the existing gravity comment and calculation so they sit immediately
    below the `can_jump` declaration, above the jump condition:
@@ -147,7 +142,7 @@ Grounded and grace-period jumps therefore begin with the same upward velocity.
 3. Replace the existing jump comment and condition:
 
    ```gdscript
-   # Prevent another jump from starting while the Player is airborne.
+   # Start a jump only while the Player is grounded.
    if Input.is_action_just_pressed("jump") and is_on_floor():
    	velocity.y = jump_velocity
    ```
@@ -185,7 +180,7 @@ starts. Pressing jump again while airborne therefore cannot start another jump.
    @export_range(0.0, 3000.0, 10.0)
    var gravity: float = 2400.0
 
-   ## Upward velocity applied when a grounded jump begins.
+   ## Upward velocity applied when a jump begins.
    @export_range(-1500.0, 0.0, 10.0)
    var jump_velocity: float = -1200.0
 
@@ -282,7 +277,7 @@ course depends on this Part.
    connected in Lesson 0.2.
 2. Ask:
 
-   > Review `actors/player.gd` without changing it. Check that grounded jumping
+>    Review `actors/player.gd` without changing it. Check that grounded jumping
    > still works when `coyote_time` is `0.0`, the coyote timer counts down only
    > after leaving the floor, one jump consumes the timer, gravity is applied
    > before an accepted jump, and the existing acceleration and deceleration
@@ -319,33 +314,32 @@ decision still comes from inspecting the code and testing the behavior.
 ## Verification checklist
 
 - [ ] The original Floor retains Position `(960, 992)` and its 1920-by-64
-      rectangle collision shape.
+    rectangle collision shape.
 - [ ] `CoyoteTestPlatform` is a duplicate `StaticBody2D` at Position
-      `(960, 736)` with its own 640-by-64 rectangle collision shape at local
-      Position `(0, 0)`.
+    `(960, 736)` with its own 640-by-64 rectangle collision shape at local
+    Position `(0, 0)`.
 - [ ] After walking off the raised platform, the Player lands safely on the
-      original Floor and can jump back onto the platform from either side.
+    original Floor and can jump back onto the platform from either side.
 - [ ] `coyote_time` is an exported `float` with default `0.1`, range `0.0`
-      through `0.5`, step `0.01`, and a useful documentation tooltip.
+    through `0.5`, step `0.01`, and a useful documentation tooltip.
 - [ ] `coyote_timer` is a non-exported script-level `float` with default `0.0`.
 - [ ] The timer refreshes to `coyote_time` while grounded and approaches `0.0`
-      by `delta` while airborne.
+    by `delta` while airborne.
 - [ ] `can_jump` is true while grounded or while coyote time remains.
 - [ ] Starting a jump assigns `jump_velocity` and consumes the timer by setting
-      it to `0.0`.
+    it to `0.0`.
 - [ ] Grounded jumping still works when Coyote Time is `0.0`.
-- [ ] The Player can jump immediately after walking off the ledge but cannot
-      jump after the grace period expires.
+- [ ] The Player can jump immediately after walking off the ledge but cannot jump after the grace period expires.
 - [ ] The Player cannot start a second jump while airborne.
 - [ ] Acceleration, deceleration, reversal, gravity, landing, and maximum speed
-      remain unchanged.
+    remain unchanged.
 - [ ] Keyboard behavior works, and configured controller behavior works when
-      compatible hardware is available.
+    compatible hardware is available.
 - [ ] The exercise ends with Coyote Time restored to `0.1`.
 - [ ] Running `main.tscn` produces no related parser errors, runtime errors, or
-      unexplained warnings.
+    unexplained warnings.
 - [ ] The learner can explain the separate roles of `coyote_time`,
-      `coyote_timer`, and `can_jump`.
+    `coyote_timer`, and `can_jump`.
 
 ## References
 

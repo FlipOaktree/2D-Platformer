@@ -85,7 +85,7 @@ Here, the `if` statement uses `Input.is_action_just_pressed("jump")` to check th
 
 `and` combines two conditions. The indented instruction runs only when the jump action has just been pressed **and** the Player is on the floor.
 
-`is_on_floor()` is a `CharacterBody2D` method that returns a `bool`. It returns `true` if the last `move_and_slide()` call detected a floor, and `false` otherwise. Requiring both a new jump press and contact with the floor lets the Player jump when grounded, but prevents jumping in midair.
+`is_on_floor()` is a `CharacterBody2D` method that returns a `bool`. It returns `true` if the last `move_and_slide()` call detected a floor, and `false` otherwise. Because `is_on_floor()` already returns `true` or `false`, the condition can use it directly. You do not need to write `is_on_floor() == true`. Requiring both a new jump press and contact with the floor lets the Player jump when grounded, but prevents jumping in midair.
 
 2. Compare your completed script with this version:
 
